@@ -8,6 +8,9 @@
       location = "group:README.md">
    </FileRef>
    <FileRef
+      location = "group:FlexColorPicker/FlexColorPicker/../../FlexColorPickerDemo/FlexColorPickerDemo.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:FlexColorPicker/FlexColorPicker.xcodeproj">
    </FileRef>
 </Workspace>
