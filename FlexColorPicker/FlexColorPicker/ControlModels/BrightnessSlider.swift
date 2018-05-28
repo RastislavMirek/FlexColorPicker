@@ -1,5 +1,5 @@
 //
-//  CircleShapedView.swift
+//  BrightnessSlider.swift
 //  FlexColorPicker
 //
 //  Created by Rastislav Mirek on 28/5/18.
@@ -26,16 +26,12 @@
 //  SOFTWARE.
 //
 
-import UIKit
-
-public class CircleShapedView: UIViewWithCommonInit {
-    public override var bounds: CGRect {
-        didSet {
-            cornerRadius = bounds.height / 2
-        }
+open class BrightnessSlider: ColorSlider {
+    public func modifyColor(_ color: UIColor, with value: CGFloat) -> UIColor {
+        return color.withBrightness(value)
     }
 
-    public override func commonInit() {
-        cornerRadius = bounds.height / 2
+    public func valueAndGradient(for color: UIColor) -> (value: CGFloat, gradientStart: UIColor, gradientEnd: UIColor) {
+        return (1 - color.hsb.brightness, color.withBrightness(1), color.withBrightness(0))
     }
 }

@@ -1,6 +1,6 @@
 //
-//  CircleShapedView.swift
-//  FlexColorPicker
+//  RadialHSBDemoController.swift
+//  FlexColorPickerDemo
 //
 //  Created by Rastislav Mirek on 28/5/18.
 //  
@@ -27,15 +27,13 @@
 //
 
 import UIKit
+import FlexColorPicker
 
-public class CircleShapedView: UIViewWithCommonInit {
-    public override var bounds: CGRect {
-        didSet {
-            cornerRadius = bounds.height / 2
-        }
-    }
+class RadialHSBDemoController: UIViewController {
+    @IBOutlet weak var colorPalete: ColorPaletteControl!
 
-    public override func commonInit() {
-        cornerRadius = bounds.height / 2
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        colorPalete.color = #colorLiteral(red: 0.04286014751, green: 0.3200677118, blue: 0.2021709982, alpha: 1)
     }
 }

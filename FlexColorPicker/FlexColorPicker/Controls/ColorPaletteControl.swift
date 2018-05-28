@@ -28,19 +28,21 @@
 
 import UIKit
 
-open class ColorPaletteControl: UIControl {
+let defaultSelectedColor = UIColor.white
+
+open class ColorPaletteControl: ColorControlWithThumbView, ColorPickerControl {
     /// The picture with hue and saturation color options.
-    open let colorMapImageView = UIImageView()
+    open let foregroundImageView = UIImageView()
     /// Black image in the background used to apply brightnes chnage by blending it with colorMapImageView.
     open let backgroundImageView = UIImageView()
-    public var thumbView = ColorPickerThumbView() {
+    public var selectedColor = defaultSelectedColor {
         didSet {
-            updateSelectedColor(at: colorPalete.position(for: color))
-        }
-    }
-    public var color = UIColor(named: "DefaultSelectedColor", in: flexColorPickerBundle)! {
-        didSet {
-            thumbView.color = color
+            thumbView.color = selectedColor
+            if oldValue != selectedColor {
+                let (position, foregroundAlpha) = colorPalete.positionAndAlpha(for: selectedColor)
+                thumbView.frame = CGRect(center: position, size: thumbView.intrinsicContentSize)
+                foregroundImageView.alpha = foregroundAlpha
+            }
         }
     }
     open var colorPalete: ColorPalette = RadialColorPalette() {
@@ -56,81 +58,26 @@ open class ColorPaletteControl: UIControl {
         }
     }
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-
-    open override func awakeFromNib() {
-        super.awakeFromNib()
-        commonInit()
-    }
-
-    open func commonInit() {
-        for imageView in [backgroundImageView, colorMapImageView] {
+    open override func commonInit() {
+        for imageView in [backgroundImageView, foregroundImageView] {
             addAutolayoutFillingSubview(imageView)
             imageView.contentMode = .scaleAspectFit
         }
         updatePaleteImages()
-        thumbView.frame = CGRect(center: colorPalete.position(for: color), size: thumbView.intrinsicContentSize)
-        thumbView.color = color
+        thumbView.frame = CGRect(center: colorPalete.positionAndAlpha(for: selectedColor).position, size: thumbView.intrinsicContentSize)
+        thumbView.color = selectedColor
         addSubview(thumbView)
-
-//        addGestureRecognizer(touchRecognizer)
-//        addGestureRecognizer(panGestureRecognizer)
     }
 
     open func updatePaleteImages() {
         colorPalete.size = bounds.size
-        colorMapImageView.image = colorPalete.renderForegroundImage()
+        foregroundImageView.image = colorPalete.renderForegroundImage()
         backgroundImageView.image = colorPalete.renderBackgroundImage()
     }
 
-    open func updateSelectedColor(at point: CGPoint) {
-        let pointInside = colorPalete.closestPoint(to: point)
-        color = colorPalete.color(at: pointInside)
+    open override func updateSelectedColor(at point: CGPoint) {
+        let pointInside = colorPalete.closestValidPoint(to: point)
+        selectedColor = colorPalete.modifyColor(selectedColor, with: pointInside)
         thumbView.frame = CGRect(center: pointInside, size: thumbView.intrinsicContentSize)
-    }
-}
-
-extension ColorPaletteControl {
-    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let location = locationForTouches(touches) else {
-            return
-        }
-        thumbView.setExpanded(true, animated: true)
-        updateSelectedColor(at: location)
-    }
-
-    open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let location = locationForTouches(touches) else {
-            return
-        }
-        updateSelectedColor(at: location)
-    }
-
-    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let location = locationForTouches(touches) else {
-            return
-        }
-        updateSelectedColor(at: location)
-        thumbView.setExpanded(false, animated: true)
-    }
-
-    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let location = locationForTouches(touches) else {
-            return
-        }
-        updateSelectedColor(at: location)
-        thumbView.setExpanded(false, animated: true)
-    }
-
-    private func locationForTouches(_ touches: Set<UITouch>) -> CGPoint? {
-        return touches.first?.location(in: self)
     }
 }

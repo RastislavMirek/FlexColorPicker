@@ -32,8 +32,9 @@ private let colorPickerThumbViewDiameter: CGFloat = 28
 private let defaultBorderWidth: CGFloat = 6
 private let defaultExpandedUpscaleRatio: CGFloat = 1.6
 private let expansionAnimationDuration = 0.3
+private let collapsingAnimationDelay = 0.1
 
-open class ColorPickerThumbView: UIView {
+open class ColorPickerThumbView: UIViewWithCommonInit {
     public let borderView = CircleShapedView()
     public let colorView = CircleShapedView()
     var expandedUpscaleRatio: CGFloat = defaultExpandedUpscaleRatio {
@@ -46,6 +47,7 @@ open class ColorPickerThumbView: UIView {
     open var color: UIColor = .clear {
         didSet {
             colorView.backgroundColor = color
+            setDarkBorderIfNeeded()
         }
     }
 
@@ -55,22 +57,11 @@ open class ColorPickerThumbView: UIView {
         return CGSize(width: colorPickerThumbViewDiameter, height: colorPickerThumbViewDiameter)
     }
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
+    var wideBorderWidth: CGFloat {
+        return defaultBorderWidth
     }
 
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-
-    open override func awakeFromNib() {
-        super.awakeFromNib()
-        commonInit()
-    }
-
-    open func commonInit() {
+    open override func commonInit() {
         addAutolayoutFillingSubview(borderView)
         addAutolayoutFillingSubview(colorView, edgeInsets: UIEdgeInsets(top: defaultBorderWidth, left: defaultBorderWidth, bottom: defaultBorderWidth, right: defaultBorderWidth))
         borderView.borderColor = UIColor(named: "BorderColor", in: flexColorPickerBundle)
@@ -81,13 +72,20 @@ open class ColorPickerThumbView: UIView {
     open func setExpanded(_ expanded: Bool, animated: Bool) {
         let transform = expanded ? CATransform3DMakeScale(expandedUpscaleRatio, expandedUpscaleRatio, 1) : CATransform3DIdentity
         isExpanded = expanded
-        UIView.animate(withDuration: animated ? expansionAnimationDuration : 0, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: [], animations: {
+        UIView.animate(withDuration: animated ? expansionAnimationDuration : 0, delay: expanded ? 0 : collapsingAnimationDelay, usingSpringWithDamping: 0.7, initialSpringVelocity: 0, options: [], animations: {
             self.borderView.layer.transform = transform
             self.colorView.layer.transform = transform
         }, completion: nil)
-//        UIView.animate(withDuration: animated ? expansionAnimationDuration : 0) {
-//            self.borderView.layer.transform = transform
-//            self.colorView.layer.transform = transform
-//        }
+    }
+
+    open func setDarkBorderIfNeeded() {
+        let (_, s, b) = color.hsb
+        let isBorderGrey = b > 0.7 && s < 0.25
+
+        UIView.animate(withDuration: 0.3) {
+            self.borderView.borderColor = UIColor(named: isBorderGrey ? "BorderColor" : "LightBorderColor", in: flexColorPickerBundle)
+            self.borderView.backgroundColor = UIColor(named: isBorderGrey ? "ThumbViewWideBorderDarkColor" : "ThumbViewWideBorderColor", in: flexColorPickerBundle)
+        }
+
     }
 }

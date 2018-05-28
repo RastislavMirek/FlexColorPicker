@@ -33,11 +33,11 @@ extension UIColor {
 //        super.init(hue: hue, saturation: saturation, brightness: 1, alpha: 1)
 //    }
 //
-//    public var rgb: (red: CGFloat, green: CGFloat, b: CGFloat) {
-//        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, a: CGFloat = 0
-//        getRed(&red, green: &green, blue: &blue, alpha: &a)
-//        return (red, green, blue)
-//    }
+    public var rgb: (red: CGFloat, green: CGFloat, b: CGFloat) {
+        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, a: CGFloat = 0
+        getRed(&red, green: &green, blue: &blue, alpha: &a)
+        return (red, green, blue)
+    }
 
     convenience init?(named name: String, in bundle: Bundle) {
         self.init(named: name, in: bundle, compatibleWith: nil)
@@ -68,7 +68,7 @@ extension UIColor {
 //        return UIColor(r: rgb.r, g: rgb.g, b: blue, alpha: alpha)
 //    }
 
-    public func colorWithBrightness(_ brightness: CGFloat) -> UIColor {
+    public func withBrightness(_ brightness: CGFloat) -> UIColor {
         let (h, s, _) = self.hsb
         return  UIColor(hue: h, saturation: s, brightness: brightness, alpha: alpha)
     }

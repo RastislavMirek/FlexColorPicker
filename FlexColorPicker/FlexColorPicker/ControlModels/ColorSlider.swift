@@ -1,5 +1,5 @@
 //
-//  CircleShapedView.swift
+//  ColorSlider.swift
 //  FlexColorPicker
 //
 //  Created by Rastislav Mirek on 28/5/18.
@@ -26,16 +26,7 @@
 //  SOFTWARE.
 //
 
-import UIKit
-
-public class CircleShapedView: UIViewWithCommonInit {
-    public override var bounds: CGRect {
-        didSet {
-            cornerRadius = bounds.height / 2
-        }
-    }
-
-    public override func commonInit() {
-        cornerRadius = bounds.height / 2
-    }
+public protocol ColorSlider {
+    func modifyColor(_ color: UIColor, with value: CGFloat) -> UIColor
+    func valueAndGradient(for color: UIColor) -> (value: CGFloat, gradientStart: UIColor, gradientEnd: UIColor)
 }

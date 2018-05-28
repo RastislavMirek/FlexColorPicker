@@ -1,8 +1,8 @@
 //
-//  CircleShapedView.swift
+//  ColorPalete.swift
 //  FlexColorPicker
 //
-//  Created by Rastislav Mirek on 28/5/18.
+//  Created by Rastislav Mirek on 27/5/18.
 //  
 //	MIT License
 //  Copyright (c) 2018 Rastislav Mirek
@@ -26,16 +26,18 @@
 //  SOFTWARE.
 //
 
-import UIKit
+public protocol ColorPalette: class {
+    var size: CGSize { get set }
+    func modifyColor(_ color: UIColor, with point: CGPoint) -> UIColor
+    func renderForegroundImage() -> UIImage
+    func renderBackgroundImage() -> UIImage?
+    func closestValidPoint(to: CGPoint) -> CGPoint
+    func positionAndAlpha(for color: UIColor) -> (position: CGPoint, foregroundImageAlpha: CGFloat)
+}
 
-public class CircleShapedView: UIViewWithCommonInit {
-    public override var bounds: CGRect {
-        didSet {
-            cornerRadius = bounds.height / 2
-        }
-    }
-
-    public override func commonInit() {
-        cornerRadius = bounds.height / 2
+extension ColorPalette {
+    @inline(__always)
+    public func colorComponentToUInt8(_ component: CGFloat) -> UInt8 {
+        return UInt8(max(0, min(255, 255 * component)))
     }
 }

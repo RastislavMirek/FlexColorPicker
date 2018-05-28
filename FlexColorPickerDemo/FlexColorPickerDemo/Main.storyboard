@@ -68,10 +68,10 @@
             </objects>
             <point key="canvasLocation" x="278" y="55"/>
         </scene>
-        <!--View Controller-->
+        <!--RadialHSB Demo Controller-->
         <scene sceneID="4Wg-fa-SNS">
             <objects>
-                <viewController id="KoP-gf-YCa" sceneMemberID="viewController">
+                <viewController id="KoP-gf-YCa" customClass="RadialHSBDemoController" customModule="FlexColorPickerDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nSc-Qt-TNq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -83,15 +83,27 @@
                                     <constraint firstAttribute="width" secondItem="tg1-v3-YPR" secondAttribute="height" id="st8-l7-ftW"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izc-c6-W8L" customClass="ColorSliderControl" customModule="FlexColorPicker">
+                                <rect key="frame" x="16" y="439" width="343" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="jL3-NK-zg0"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cL7-1B-Coh" firstAttribute="trailing" secondItem="tg1-v3-YPR" secondAttribute="trailing" constant="16" id="Bu7-ia-1Mi"/>
+                            <constraint firstItem="cL7-1B-Coh" firstAttribute="trailing" secondItem="izc-c6-W8L" secondAttribute="trailing" constant="16" id="HLE-MC-WOG"/>
                             <constraint firstItem="tg1-v3-YPR" firstAttribute="top" secondItem="cL7-1B-Coh" secondAttribute="top" constant="16" id="Hu1-If-3HS"/>
+                            <constraint firstItem="izc-c6-W8L" firstAttribute="leading" secondItem="cL7-1B-Coh" secondAttribute="leading" constant="16" id="LSw-pk-aa7"/>
+                            <constraint firstItem="izc-c6-W8L" firstAttribute="top" secondItem="tg1-v3-YPR" secondAttribute="bottom" constant="16" id="nDE-lB-T30"/>
                             <constraint firstItem="tg1-v3-YPR" firstAttribute="leading" secondItem="cL7-1B-Coh" secondAttribute="leading" constant="16" id="rLq-SL-g6K"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cL7-1B-Coh"/>
                     </view>
+                    <connections>
+                        <outlet property="colorPalete" destination="tg1-v3-YPR" id="lSt-mu-hzG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQK-up-aRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

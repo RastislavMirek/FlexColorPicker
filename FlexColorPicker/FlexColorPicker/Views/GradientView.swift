@@ -1,5 +1,5 @@
 //
-//  CircleShapedView.swift
+//  GradientView.swift
 //  FlexColorPicker
 //
 //  Created by Rastislav Mirek on 28/5/18.
@@ -28,14 +28,39 @@
 
 import UIKit
 
-public class CircleShapedView: UIViewWithCommonInit {
-    public override var bounds: CGRect {
+public class GradientView: UIView {
+    open override class var layerClass: AnyClass {
+        return CAGradientLayer.self
+    }
+
+    var gradientLayer: CAGradientLayer {
+        return layer as! CAGradientLayer
+    }
+
+    public var startColor: UIColor = .clear {
         didSet {
-            cornerRadius = bounds.height / 2
+            updateColors()
         }
     }
 
-    public override func commonInit() {
-        cornerRadius = bounds.height / 2
+    public var endColor: UIColor = .clear {
+        didSet {
+            updateColors()
+        }
+    }
+
+    public override var bounds: CGRect {
+        didSet {
+            updatePoints()
+        }
+    }
+
+    open func updateColors() {
+        gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+    }
+
+    open func updatePoints() {
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  CircleShapedView.swift
+//  UIViewWithCommonInit.swift
 //  FlexColorPicker
 //
 //  Created by Rastislav Mirek on 28/5/18.
@@ -28,14 +28,23 @@
 
 import UIKit
 
-public class CircleShapedView: UIViewWithCommonInit {
-    public override var bounds: CGRect {
-        didSet {
-            cornerRadius = bounds.height / 2
-        }
+open class UIViewWithCommonInit: UIView {
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
     }
 
-    public override func commonInit() {
-        cornerRadius = bounds.height / 2
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        commonInit()
+    }
+
+    /// This empty method is override point for initialization tasks that needs to be carried no matter how the view is constructed (e. g. via Interface Builder or from code).
+    open func commonInit() {
     }
 }

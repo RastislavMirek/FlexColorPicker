@@ -55,15 +55,12 @@ open class RadialColorPalette: ColorPalette {
             return (0, 0)
         }
         let hue = acos(dx / distance) / CGFloat.pi / 2
-        if abs(distance * radius - 117) <= 0.01 && dy > 0 {
-            print(dx, dy, hue, dx < 0 ? 1 + hue : hue)
-        }
         return (dy < 0 ? 1 - hue : hue, min(1, distance))
     }
 
-    public func color(at point: CGPoint) -> UIColor {
+    public func modifyColor(_ color: UIColor, with point: CGPoint) -> UIColor {
         let (hue, saturation) = hueAndSaturation(at: point)
-        return UIColor(hue: hue, saturation: saturation, brightness: 1, alpha: 1)
+        return UIColor(hue: hue, saturation: saturation, brightness: color.hsb.brightness, alpha: color.alpha)
     }
 
     open func renderForegroundImage() -> UIImage {
@@ -105,8 +102,11 @@ open class RadialColorPalette: ColorPalette {
     open func renderBackgroundImage() -> UIImage? {
         let imageRect = CGRect(x: 0,y: 0, width: diameter, height: diameter)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        UIBezierPath(ovalIn: imageRect).addClip()
+
         UIColor.black.setFill()
+        let context = UIGraphicsGetCurrentContext()
+        context?.addPath(UIBezierPath(ovalIn: imageRect).cgPath)
+        context?.drawPath(using: .fill)
         defer {
             UIGraphicsEndImageContext()
         }
@@ -116,7 +116,7 @@ open class RadialColorPalette: ColorPalette {
         return UIImage()
     }
 
-    open func closestPoint(to point: CGPoint) -> CGPoint {
+    open func closestValidPoint(to point: CGPoint) -> CGPoint {
         let distance = point.distanceTo(x: midX, y: midY)
         if distance <= radius {
             return point
@@ -126,7 +126,11 @@ open class RadialColorPalette: ColorPalette {
         return CGPoint(x: x, y: y)
     }
 
-    open func position(for color: UIColor) -> CGPoint {
-        return CGPoint(x: size.width / 2, y: size.height / 2)
+    open func positionAndAlpha(for color: UIColor) -> (position: CGPoint, foregroundImageAlpha: CGFloat) {
+        let (hue, saturation, brightness) = color.hsb
+        let radius = saturation * self.radius
+        let x = self.radius + radius * cos(hue * 2 * CGFloat.pi)
+        let y = self.radius + radius * sin(hue * 2 * CGFloat.pi)
+        return (CGPoint(x: x, y: y), brightness)
     }
 }
