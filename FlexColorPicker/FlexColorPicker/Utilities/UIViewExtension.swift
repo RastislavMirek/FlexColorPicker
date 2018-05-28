@@ -38,4 +38,34 @@ extension UIView {
         subview.rightAnchor.constraint(equalTo: rightAnchor, constant: -edgeInsets.right).isActive = true
         subview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -edgeInsets.bottom).isActive = true
     }
+
+    var borderWidth: CGFloat {
+        get {
+            return layer.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
+        }
+    }
+
+    var borderColor: UIColor? {
+        get {
+            if let cgColor = layer.borderColor {
+                return UIColor(cgColor: cgColor)
+            }
+            return nil
+        }
+        set {
+            layer.borderColor = newValue?.cgColor
+        }
+    }
+
+    var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+        }
+    }
 }

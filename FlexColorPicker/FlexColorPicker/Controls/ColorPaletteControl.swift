@@ -33,6 +33,16 @@ open class ColorPaletteControl: UIControl {
     open let colorMapImageView = UIImageView()
     /// Black image in the background used to apply brightnes chnage by blending it with colorMapImageView.
     open let backgroundImageView = UIImageView()
+    public var thumbView = ColorPickerThumbView() {
+        didSet {
+            updateSelectedColor(at: colorPalete.position(for: color))
+        }
+    }
+    public var color = UIColor(named: "DefaultSelectedColor", in: flexColorPickerBundle)! {
+        didSet {
+            thumbView.color = color
+        }
+    }
     open var colorPalete: ColorPalette = RadialColorPalette() {
         didSet {
             updatePaleteImages()
@@ -67,11 +77,60 @@ open class ColorPaletteControl: UIControl {
             imageView.contentMode = .scaleAspectFit
         }
         updatePaleteImages()
+        thumbView.frame = CGRect(center: colorPalete.position(for: color), size: thumbView.intrinsicContentSize)
+        thumbView.color = color
+        addSubview(thumbView)
+
+//        addGestureRecognizer(touchRecognizer)
+//        addGestureRecognizer(panGestureRecognizer)
     }
 
     open func updatePaleteImages() {
         colorPalete.size = bounds.size
         colorMapImageView.image = colorPalete.renderForegroundImage()
         backgroundImageView.image = colorPalete.renderBackgroundImage()
+    }
+
+    open func updateSelectedColor(at point: CGPoint) {
+        let pointInside = colorPalete.closestPoint(to: point)
+        color = colorPalete.color(at: pointInside)
+        thumbView.frame = CGRect(center: pointInside, size: thumbView.intrinsicContentSize)
+    }
+}
+
+extension ColorPaletteControl {
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let location = locationForTouches(touches) else {
+            return
+        }
+        thumbView.setExpanded(true, animated: true)
+        updateSelectedColor(at: location)
+    }
+
+    open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let location = locationForTouches(touches) else {
+            return
+        }
+        updateSelectedColor(at: location)
+    }
+
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let location = locationForTouches(touches) else {
+            return
+        }
+        updateSelectedColor(at: location)
+        thumbView.setExpanded(false, animated: true)
+    }
+
+    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let location = locationForTouches(touches) else {
+            return
+        }
+        updateSelectedColor(at: location)
+        thumbView.setExpanded(false, animated: true)
+    }
+
+    private func locationForTouches(_ touches: Set<UITouch>) -> CGPoint? {
+        return touches.first?.location(in: self)
     }
 }

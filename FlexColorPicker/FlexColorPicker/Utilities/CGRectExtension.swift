@@ -1,8 +1,8 @@
 //
-//  FlexColorPickerController.swift
+//  CGRectExtension.swift
 //  FlexColorPicker
 //
-//  Created by Rastislav Mirek on 27/5/18.
+//  Created by Rastislav Mirek on 28/5/18.
 //  
 //	MIT License
 //  Copyright (c) 2018 Rastislav Mirek
@@ -26,10 +26,8 @@
 //  SOFTWARE.
 //
 
-import UIKit
-
-let flexColorPickerBundle = Bundle(for: FlexColorPickerController.self)
-
-class FlexColorPickerController: UIViewController {
-    
+extension CGRect {
+    public init(center: CGPoint, size: CGSize) {
+        self.init(origin: CGPoint(x: center.x - size.width / 2, y: center.y - size.height / 2), size: size)
+    }
 }

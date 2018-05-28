@@ -39,6 +39,10 @@ extension UIColor {
 //        return (red, green, blue)
 //    }
 
+    convenience init?(named name: String, in bundle: Bundle) {
+        self.init(named: name, in: bundle, compatibleWith: nil)
+    }
+
     public var hsb: (hue: CGFloat, saturation: CGFloat, brightness: CGFloat) {
         var hue: CGFloat = 0, saturation: CGFloat = 0, brightness: CGFloat = 0, a: CGFloat = 0
         getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &a)

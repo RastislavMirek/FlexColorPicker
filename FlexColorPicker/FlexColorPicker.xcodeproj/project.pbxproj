@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3004B92420BB055100A0F93B /* FlexColorPicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 3004B92220BB055100A0F93B /* FlexColorPicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3034755920BC041700028A15 /* ColorPickerThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034755820BC041700028A15 /* ColorPickerThumbView.swift */; };
+		3034755B20BC072800028A15 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3034755A20BC072800028A15 /* Colors.xcassets */; };
+		3034756120BC0C4000028A15 /* CircleShapedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034756020BC0C4000028A15 /* CircleShapedView.swift */; };
+		3034756520BC14A600028A15 /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034756420BC14A600028A15 /* CGRectExtension.swift */; };
 		305A235020BB179000271A59 /* FlexColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A234F20BB179000271A59 /* FlexColorPickerController.swift */; };
 		305A235220BB181500271A59 /* ColorPaletteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A235120BB181500271A59 /* ColorPaletteControl.swift */; };
 		305A235420BB1A8200271A59 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A235320BB1A8200271A59 /* UIColorExtension.swift */; };
@@ -22,6 +26,10 @@
 		3004B91F20BB055100A0F93B /* FlexColorPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FlexColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3004B92220BB055100A0F93B /* FlexColorPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlexColorPicker.h; sourceTree = "<group>"; };
 		3004B92320BB055100A0F93B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3034755820BC041700028A15 /* ColorPickerThumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerThumbView.swift; sourceTree = "<group>"; };
+		3034755A20BC072800028A15 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		3034756020BC0C4000028A15 /* CircleShapedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleShapedView.swift; sourceTree = "<group>"; };
+		3034756420BC14A600028A15 /* CGRectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
 		305A234F20BB179000271A59 /* FlexColorPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexColorPickerController.swift; sourceTree = "<group>"; };
 		305A235120BB181500271A59 /* ColorPaletteControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPaletteControl.swift; sourceTree = "<group>"; };
 		305A235320BB1A8200271A59 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -63,17 +71,53 @@
 			isa = PBXGroup;
 			children = (
 				305A234F20BB179000271A59 /* FlexColorPickerController.swift */,
+				3034755F20BC0C1300028A15 /* Controls */,
+				3034755C20BC0BD600028A15 /* Views */,
+				3034756220BC0C5E00028A15 /* ColorPalette */,
+				3034756320BC0C7300028A15 /* Utilities */,
+				3004B92220BB055100A0F93B /* FlexColorPicker.h */,
+				3004B92320BB055100A0F93B /* Info.plist */,
+				3034755A20BC072800028A15 /* Colors.xcassets */,
+			);
+			path = FlexColorPicker;
+			sourceTree = "<group>";
+		};
+		3034755C20BC0BD600028A15 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3034755820BC041700028A15 /* ColorPickerThumbView.swift */,
+				3034756020BC0C4000028A15 /* CircleShapedView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3034755F20BC0C1300028A15 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
 				305A235120BB181500271A59 /* ColorPaletteControl.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		3034756220BC0C5E00028A15 /* ColorPalette */ = {
+			isa = PBXGroup;
+			children = (
 				305A235720BB2C8400271A59 /* ColorPalette.swift */,
 				305A235920BB2D9100271A59 /* RadialColorPalette.swift */,
+			);
+			path = ColorPalette;
+			sourceTree = "<group>";
+		};
+		3034756320BC0C7300028A15 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
 				305A235320BB1A8200271A59 /* UIColorExtension.swift */,
 				305A235520BB279800271A59 /* CGPointExtension.swift */,
 				305A235B20BB4A7100271A59 /* UIViewExtension.swift */,
 				305A239620BB837B00271A59 /* CGSizeExtensions.swift */,
-				3004B92220BB055100A0F93B /* FlexColorPicker.h */,
-				3004B92320BB055100A0F93B /* Info.plist */,
+				3034756420BC14A600028A15 /* CGRectExtension.swift */,
 			);
-			path = FlexColorPicker;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +189,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3034755B20BC072800028A15 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +208,9 @@
 				305A235620BB279800271A59 /* CGPointExtension.swift in Sources */,
 				305A239720BB837B00271A59 /* CGSizeExtensions.swift in Sources */,
 				305A235220BB181500271A59 /* ColorPaletteControl.swift in Sources */,
+				3034755920BC041700028A15 /* ColorPickerThumbView.swift in Sources */,
+				3034756120BC0C4000028A15 /* CircleShapedView.swift in Sources */,
+				3034756520BC14A600028A15 /* CGRectExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

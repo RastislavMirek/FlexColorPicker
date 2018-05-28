@@ -1,5 +1,5 @@
 //
-//  FlexColorPickerController.swift
+//  ColorPalete.swift
 //  FlexColorPicker
 //
 //  Created by Rastislav Mirek on 27/5/18.
@@ -26,10 +26,18 @@
 //  SOFTWARE.
 //
 
-import UIKit
+public protocol ColorPalette: class {
+    var size: CGSize { get set }
+    func color(at: CGPoint) -> UIColor
+    func renderForegroundImage() -> UIImage
+    func renderBackgroundImage() -> UIImage?
+    func closestPoint(to: CGPoint) -> CGPoint
+    func position(for color: UIColor) -> CGPoint
+}
 
-let flexColorPickerBundle = Bundle(for: FlexColorPickerController.self)
-
-class FlexColorPickerController: UIViewController {
-    
+extension ColorPalette {
+    @inline(__always)
+    public func colorComponentToUInt8(_ component: CGFloat) -> UInt8 {
+        return UInt8(max(0, min(255, 255 * component)))
+    }
 }

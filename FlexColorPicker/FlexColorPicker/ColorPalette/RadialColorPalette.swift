@@ -47,26 +47,31 @@ open class RadialColorPalette: ColorPalette {
     }
 
     @inline(__always)
-    open func hueAndSaturation(at point: CGPoint) -> (hue: CGFloat, saturation: CGFloat, alpha: CGFloat) {
+    open func hueAndSaturation(at point: CGPoint) -> (hue: CGFloat, saturation: CGFloat) {
         let dy = (point.y - midY) / radius
         let dx = (point.x - midX) / radius
         let distance = sqrt(dx * dx + dy * dy)
         if distance <= 0 {
-            return (0, 0, 1)
+            return (0, 0)
         }
         let hue = acos(dx / distance) / CGFloat.pi / 2
         if abs(distance * radius - 117) <= 0.01 && dy > 0 {
             print(dx, dy, hue, dx < 0 ? 1 + hue : hue)
         }
-        return (dy < 0 ? 1 - hue : hue, min(1, distance), distance > 1 ? 0 : 1)
+        return (dy < 0 ? 1 - hue : hue, min(1, distance))
+    }
+
+    public func color(at point: CGPoint) -> UIColor {
+        let (hue, saturation) = hueAndSaturation(at: point)
+        return UIColor(hue: hue, saturation: saturation, brightness: 1, alpha: 1)
     }
 
     open func renderForegroundImage() -> UIImage {
         var imageData = [UInt8](repeating: 255, count: (4 * ceiledDiameter * ceiledDiameter))
-        for i in 0 ..< ceiledDiameter {
-            for j in 0 ..< ceiledDiameter {
+        for i in 0 ..< ceiledDiameter{
+              for j in 0 ..< ceiledDiameter {
                 let index = 4 * (i * ceiledDiameter + j)
-                let (hue, saturation, _) = hueAndSaturation(at: CGPoint(x: i, y: j))
+                let (hue, saturation) = hueAndSaturation(at: CGPoint(x: j, y: i)) // rendering image transforms it as it it was mirrored around x = -y axis - adjusting for it by switching i and j here
                 let (r, g, b) = rgbFrom(hue: hue, saturation: saturation)
                 imageData[index] = colorComponentToUInt8(r)
                 imageData[index + 1] = colorComponentToUInt8(g)
@@ -97,7 +102,7 @@ open class RadialColorPalette: ColorPalette {
         return UIImage()
     }
 
-    open func renderBackgroundImage() -> UIImage {
+    open func renderBackgroundImage() -> UIImage? {
         let imageRect = CGRect(x: 0,y: 0, width: diameter, height: diameter)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         UIBezierPath(ovalIn: imageRect).addClip()
@@ -113,11 +118,15 @@ open class RadialColorPalette: ColorPalette {
 
     open func closestPoint(to point: CGPoint) -> CGPoint {
         let distance = point.distanceTo(x: midX, y: midY)
-        if distance <= diameter {
+        if distance <= radius {
             return point
         }
         let x = midX + radius * ((point.x - midX) / distance)
         let y = midY + radius * ((point.y - midY) / distance)
         return CGPoint(x: x, y: y)
+    }
+
+    open func position(for color: UIColor) -> CGPoint {
+        return CGPoint(x: size.width / 2, y: size.height / 2)
     }
 }
