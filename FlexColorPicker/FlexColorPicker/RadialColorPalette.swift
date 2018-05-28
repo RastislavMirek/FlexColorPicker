@@ -28,7 +28,7 @@
 
 import UIKit
 
-open class RadialColorPalete: ColorPalete {
+open class RadialColorPalette: ColorPalette {
     public private(set) var diameter: CGFloat = 0
     public private(set) var radius: CGFloat = 0
     public private(set) var midX: CGFloat = 0

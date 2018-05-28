@@ -28,12 +28,12 @@
 
 import UIKit
 
-open class ColorPaleteControl: UIControl {
+open class ColorPaletteControl: UIControl {
     /// The picture with hue and saturation color options.
     open let colorMapImageView = UIImageView()
     /// Black image in the background used to apply brightnes chnage by blending it with colorMapImageView.
     open let backgroundImageView = UIImageView()
-    open var colorPalete: ColorPalete = RadialColorPalete() {
+    open var colorPalete: ColorPalette = RadialColorPalette() {
         didSet {
             updatePaleteImages()
         }

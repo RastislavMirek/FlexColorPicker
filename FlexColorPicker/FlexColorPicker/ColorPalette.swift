@@ -26,7 +26,7 @@
 //  SOFTWARE.
 //
 
-public protocol ColorPalete: class {
+public protocol ColorPalette: class {
     var size: CGSize { get set }
     func hueAndSaturation(at point: CGPoint) -> (hue: CGFloat, saturation: CGFloat, alpha: CGFloat)
     func renderForegroundImage() -> UIImage
@@ -34,7 +34,7 @@ public protocol ColorPalete: class {
     func closestPoint(to: CGPoint) -> CGPoint
 }
 
-extension ColorPalete {
+extension ColorPalette {
     @inline(__always)
     public func colorComponentToUInt8(_ component: CGFloat) -> UInt8 {
         return UInt8(max(0, min(255, 255 * component)))
