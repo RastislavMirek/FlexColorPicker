@@ -46,12 +46,12 @@ open class ColorSliderControl: ColorControlWithThumbView, ColorPickerControl {
 
     open var selectedHSBColor: HSBColor = defaultSelectedColor {
         didSet {
-            updateThumb(alsoUpdateGradient: oldValue.saturation != selectedHSBColor.saturation || oldValue.hue != selectedHSBColor.hue)
+            updateThumbAndGradient()
         }
     }
     open var colorSlider: ColorSlider = BrightnessSlider() {
         didSet {
-            updateThumb(alsoUpdateGradient: true)
+            updateThumbAndGradient()
         }
     }
 
@@ -73,7 +73,7 @@ open class ColorSliderControl: ColorControlWithThumbView, ColorPickerControl {
         gradientBackgroundView.addAutolayoutFillingSubview(gradientView)
         updateCornerRadius()
         gradientBackgroundView.clipsToBounds = true
-        updateThumb(alsoUpdateGradient: true)
+        updateThumbAndGradient()
         addSubview(thumbView)
     }
 
@@ -81,15 +81,13 @@ open class ColorSliderControl: ColorControlWithThumbView, ColorPickerControl {
         gradientBackgroundView.cornerRadius = gradientViewHeight / 2
     }
 
-    open func updateThumb(alsoUpdateGradient: Bool) {
+    open func updateThumbAndGradient() {
         let (value, gradientStart, gradientEnd) = colorSlider.valueAndGradient(for: selectedHSBColor)
         let gradientLength = bounds.width - thumbView.frame.width
         thumbView.frame = CGRect(center: CGPoint(x: thumbView.frame.width / 2 + gradientLength * min(max(0, value), 1), y: bounds.midY), size: thumbView.intrinsicContentSize)
         thumbView.color = selectedHSBColor.toUIColor()
-        if alsoUpdateGradient {
-            gradientView.startColor = gradientStart
-            gradientView.endColor = gradientEnd
-        }
+        gradientView.startColor = gradientStart
+        gradientView.endColor = gradientEnd
     }
 
     open override func updateSelectedColor(at point: CGPoint) {

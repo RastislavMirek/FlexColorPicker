@@ -33,6 +33,8 @@
 		30B787DA20BD646000F3BB4C /* GreenSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B787D920BD646000F3BB4C /* GreenSlider.swift */; };
 		30B787DC20BD646900F3BB4C /* BlueSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B787DB20BD646900F3BB4C /* BlueSlider.swift */; };
 		30B787DE20BD647A00F3BB4C /* SaturationSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B787DD20BD647A00F3BB4C /* SaturationSlider.swift */; };
+		30B787E020BD737E00F3BB4C /* ColorPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B787DF20BD737E00F3BB4C /* ColorPreview.swift */; };
+		30B787E220BD73BA00F3BB4C /* RadialColorPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B787E120BD73BA00F3BB4C /* RadialColorPreview.swift */; };
 		30EF527420BD431900E9E247 /* HSLColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF527320BD431900E9E247 /* HSLColor.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +67,8 @@
 		30B787D920BD646000F3BB4C /* GreenSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenSlider.swift; sourceTree = "<group>"; };
 		30B787DB20BD646900F3BB4C /* BlueSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSlider.swift; sourceTree = "<group>"; };
 		30B787DD20BD647A00F3BB4C /* SaturationSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaturationSlider.swift; sourceTree = "<group>"; };
+		30B787DF20BD737E00F3BB4C /* ColorPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPreview.swift; sourceTree = "<group>"; };
+		30B787E120BD73BA00F3BB4C /* RadialColorPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialColorPreview.swift; sourceTree = "<group>"; };
 		30EF527320BD431900E9E247 /* HSLColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,9 +119,11 @@
 		3034755C20BC0BD600028A15 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				30B787DF20BD737E00F3BB4C /* ColorPreview.swift */,
 				3034756C20BC768000028A15 /* UIViewWithCommonInit.swift */,
 				3034755820BC041700028A15 /* ColorPickerThumbView.swift */,
 				3034756020BC0C4000028A15 /* CircleShapedView.swift */,
+				30B787E120BD73BA00F3BB4C /* RadialColorPreview.swift */,
 				3034756A20BC677000028A15 /* GradientView.swift */,
 			);
 			path = Views;
@@ -268,6 +274,7 @@
 				30EF527420BD431900E9E247 /* HSLColor.swift in Sources */,
 				30B787DE20BD647A00F3BB4C /* SaturationSlider.swift in Sources */,
 				305A235A20BB2D9100271A59 /* RadialHSBPalette.swift in Sources */,
+				30B787E220BD73BA00F3BB4C /* RadialColorPreview.swift in Sources */,
 				30B787DA20BD646000F3BB4C /* GreenSlider.swift in Sources */,
 				305A235C20BB4A7100271A59 /* UIViewExtension.swift in Sources */,
 				305A235620BB279800271A59 /* CGPointExtension.swift in Sources */,
@@ -276,6 +283,7 @@
 				305A239720BB837B00271A59 /* CGSizeExtensions.swift in Sources */,
 				3034757520BC821100028A15 /* BrightnessSlider.swift in Sources */,
 				305A235220BB181500271A59 /* ColorPaletteControl.swift in Sources */,
+				30B787E020BD737E00F3BB4C /* ColorPreview.swift in Sources */,
 				3034755920BC041700028A15 /* ColorPickerThumbView.swift in Sources */,
 				3034756B20BC677000028A15 /* GradientView.swift in Sources */,
 				3034756120BC0C4000028A15 /* CircleShapedView.swift in Sources */,
