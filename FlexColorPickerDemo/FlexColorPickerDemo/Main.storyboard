@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fTz-VN-FmS">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,10 +16,10 @@
             <objects>
                 <tableViewController id="dXB-46-rD8" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="grq-w5-HjG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="aEy-sF-c3W">
+                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="aEy-sF-c3W">
                             <rect key="frame" x="0.0" y="132" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -31,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OzU-EF-tC8" id="Ngx-Zn-Keh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -42,7 +42,7 @@
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JGW-T7-wbs" id="9cn-vp-R1C">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -50,7 +50,7 @@
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TdS-wF-Ac8" id="UAF-qH-xOA">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -73,31 +73,112 @@
             <objects>
                 <viewController id="KoP-gf-YCa" customClass="RadialHSBDemoController" customModule="FlexColorPickerDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nSc-Qt-TNq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tg1-v3-YPR" customClass="ColorPaletteControl" customModule="FlexColorPicker">
-                                <rect key="frame" x="16" y="80" width="343" height="343"/>
+                                <rect key="frame" x="16" y="104" width="343" height="343"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tg1-v3-YPR" secondAttribute="height" id="st8-l7-ftW"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                        <color key="value" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izc-c6-W8L" customClass="ColorSliderControl" customModule="FlexColorPicker">
-                                <rect key="frame" x="16" y="439" width="343" height="51"/>
+                                <rect key="frame" x="16" y="463" width="343" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="jL3-NK-zg0"/>
+                                    <constraint firstAttribute="height" constant="45" id="jL3-NK-zg0"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                        <color key="value" red="1" green="0.74436461499999995" blue="0.67417946620000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientViewHeight">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZaV-oB-ccN" customClass="ColorSliderControl" customModule="FlexColorPicker">
+                                <rect key="frame" x="16" y="508" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="KGr-8L-dKg"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                        <color key="value" red="1" green="0.74436461499999995" blue="0.67417946620000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientViewHeight">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVD-iC-oOa" customClass="ColorSliderControl" customModule="FlexColorPicker">
+                                <rect key="frame" x="16" y="553" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="34i-3O-s7d"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                        <color key="value" red="1" green="0.74436461499999995" blue="0.67417946620000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientViewHeight">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkA-9B-dcq" customClass="ColorSliderControl" customModule="FlexColorPicker">
+                                <rect key="frame" x="16" y="598" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="JAz-CH-UyQ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                        <color key="value" red="1" green="0.74436461499999995" blue="0.67417946620000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientViewHeight">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ht4-QW-N84" customClass="ColorSliderControl" customModule="FlexColorPicker">
+                                <rect key="frame" x="16" y="643" width="343" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="4Mg-tR-Gyh"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                        <color key="value" red="1" green="0.74436461499999995" blue="0.67417946620000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientViewHeight">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="NkA-9B-dcq" firstAttribute="top" secondItem="EVD-iC-oOa" secondAttribute="bottom" id="7h1-bo-gfH"/>
+                            <constraint firstItem="cL7-1B-Coh" firstAttribute="trailing" secondItem="NkA-9B-dcq" secondAttribute="trailing" constant="16" id="Asi-Sb-yH3"/>
                             <constraint firstItem="cL7-1B-Coh" firstAttribute="trailing" secondItem="tg1-v3-YPR" secondAttribute="trailing" constant="16" id="Bu7-ia-1Mi"/>
+                            <constraint firstItem="ht4-QW-N84" firstAttribute="top" secondItem="NkA-9B-dcq" secondAttribute="bottom" id="CZ0-wK-2Lk"/>
+                            <constraint firstItem="cL7-1B-Coh" firstAttribute="trailing" secondItem="ZaV-oB-ccN" secondAttribute="trailing" constant="16" id="Ex0-H7-uGA"/>
+                            <constraint firstItem="EVD-iC-oOa" firstAttribute="top" secondItem="ZaV-oB-ccN" secondAttribute="bottom" id="Ezb-qM-jqH"/>
                             <constraint firstItem="cL7-1B-Coh" firstAttribute="trailing" secondItem="izc-c6-W8L" secondAttribute="trailing" constant="16" id="HLE-MC-WOG"/>
                             <constraint firstItem="tg1-v3-YPR" firstAttribute="top" secondItem="cL7-1B-Coh" secondAttribute="top" constant="16" id="Hu1-If-3HS"/>
                             <constraint firstItem="izc-c6-W8L" firstAttribute="leading" secondItem="cL7-1B-Coh" secondAttribute="leading" constant="16" id="LSw-pk-aa7"/>
+                            <constraint firstItem="ZaV-oB-ccN" firstAttribute="top" secondItem="izc-c6-W8L" secondAttribute="bottom" id="M8p-T1-gkJ"/>
+                            <constraint firstItem="cL7-1B-Coh" firstAttribute="trailing" secondItem="EVD-iC-oOa" secondAttribute="trailing" constant="16" id="P7O-Gq-Kpe"/>
+                            <constraint firstItem="cL7-1B-Coh" firstAttribute="trailing" secondItem="ht4-QW-N84" secondAttribute="trailing" constant="16" id="PTa-8r-LwJ"/>
+                            <constraint firstItem="EVD-iC-oOa" firstAttribute="leading" secondItem="cL7-1B-Coh" secondAttribute="leading" constant="16" id="REK-FI-wbE"/>
+                            <constraint firstItem="ht4-QW-N84" firstAttribute="leading" secondItem="cL7-1B-Coh" secondAttribute="leading" constant="16" id="YWm-xE-blS"/>
                             <constraint firstItem="izc-c6-W8L" firstAttribute="top" secondItem="tg1-v3-YPR" secondAttribute="bottom" constant="16" id="nDE-lB-T30"/>
+                            <constraint firstItem="NkA-9B-dcq" firstAttribute="leading" secondItem="cL7-1B-Coh" secondAttribute="leading" constant="16" id="q6e-fd-yz4"/>
                             <constraint firstItem="tg1-v3-YPR" firstAttribute="leading" secondItem="cL7-1B-Coh" secondAttribute="leading" constant="16" id="rLq-SL-g6K"/>
+                            <constraint firstItem="ZaV-oB-ccN" firstAttribute="leading" secondItem="cL7-1B-Coh" secondAttribute="leading" constant="16" id="rVo-Xc-jC6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cL7-1B-Coh"/>
                     </view>
@@ -106,15 +187,25 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQK-up-aRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="xcv-ea-2XN" customClass="FlexColorPicker" customModule="FlexColorPicker">
+                    <connections>
+                        <outlet property="blueSlider" destination="ht4-QW-N84" id="jhu-2l-qfm"/>
+                        <outlet property="brightnessSlider" destination="izc-c6-W8L" id="xuz-qj-ad0"/>
+                        <outlet property="greenSlider" destination="NkA-9B-dcq" id="9xu-FB-NDe"/>
+                        <outlet property="radialHsbPalete" destination="tg1-v3-YPR" id="u4p-sm-zFT"/>
+                        <outlet property="redSlider" destination="EVD-iC-oOa" id="San-9s-znp"/>
+                        <outlet property="saturationSlider" destination="ZaV-oB-ccN" id="aUA-TD-xEX"/>
+                    </connections>
+                </customObject>
             </objects>
-            <point key="canvasLocation" x="1045.5999999999999" y="53.523238380809602"/>
+            <point key="canvasLocation" x="1340" y="45"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2MD-Ze-PAl">
             <objects>
                 <navigationController id="fTz-VN-FmS" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UYG-u8-2zb">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

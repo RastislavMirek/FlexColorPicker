@@ -44,6 +44,11 @@ open class UIControlWithCommonInit: UIControl {
         commonInit()
     }
 
+    open override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        commonInit()
+    }
+
     /// This empty method is override point for initialization tasks that needs to be carried no matter how the view is constructed (e. g. via Interface Builder or from code).
     open func commonInit() {
     }

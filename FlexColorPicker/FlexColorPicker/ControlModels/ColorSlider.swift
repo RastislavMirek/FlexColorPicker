@@ -27,6 +27,6 @@
 //
 
 public protocol ColorSlider {
-    func modifyColor(_ color: UIColor, with value: CGFloat) -> UIColor
-    func valueAndGradient(for color: UIColor) -> (value: CGFloat, gradientStart: UIColor, gradientEnd: UIColor)
+    func modifyColor(_ color: HSBColor, with value: CGFloat) -> HSBColor
+    func valueAndGradient(for color: HSBColor) -> (value: CGFloat, gradientStart: UIColor, gradientEnd: UIColor)
 }

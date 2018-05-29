@@ -1,5 +1,5 @@
 //
-//  ColorPickerControl.swift
+//  BrightnessSlider.swift
 //  FlexColorPicker
 //
 //  Created by Rastislav Mirek on 28/5/18.
@@ -26,8 +26,12 @@
 //  SOFTWARE.
 //
 
-public protocol ColorPickerControl: class {
-    var selectedHSBColor: HSBColor { get set }
-    func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents)
-    func removeTarget(_ target: Any?, action: Selector?, for controlEvents: UIControlEvents)
+struct BrightnessSlider: ColorSlider {
+    public func modifyColor(_ color: HSBColor, with value: CGFloat) -> HSBColor {
+        return color.withBrightness(1 - value)
+    }
+
+    public func valueAndGradient(for color: HSBColor) -> (value: CGFloat, gradientStart: UIColor, gradientEnd: UIColor) {
+        return (1 - color.brightness, color.withBrightness(1).toUIColor(), color.withBrightness(0).toUIColor())
+    }
 }

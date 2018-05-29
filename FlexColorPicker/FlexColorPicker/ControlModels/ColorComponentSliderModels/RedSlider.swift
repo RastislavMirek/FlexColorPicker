@@ -1,8 +1,8 @@
 //
-//  BrightnessSlider.swift
+//  RedSlider.swift
 //  FlexColorPicker
 //
-//  Created by Rastislav Mirek on 28/5/18.
+//  Created by Rastislav Mirek on 29/5/18.
 //  
 //	MIT License
 //  Copyright (c) 2018 Rastislav Mirek
@@ -26,12 +26,12 @@
 //  SOFTWARE.
 //
 
-open class BrightnessSlider: ColorSlider {
-    public func modifyColor(_ color: UIColor, with value: CGFloat) -> UIColor {
-        return color.withBrightness(value)
+struct RedSlider: ColorSlider {
+    public func modifyColor(_ color: HSBColor, with value: CGFloat) -> HSBColor {
+        return color.withRed(value)
     }
 
-    public func valueAndGradient(for color: UIColor) -> (value: CGFloat, gradientStart: UIColor, gradientEnd: UIColor) {
-        return (1 - color.hsb.brightness, color.withBrightness(1), color.withBrightness(0))
+    public func valueAndGradient(for color: HSBColor) -> (value: CGFloat, gradientStart: UIColor, gradientEnd: UIColor) {
+        return (color.red, color.toUIColor().withRed(0), color.toUIColor().withRed(1))
     }
 }

@@ -1,8 +1,8 @@
 //
-//  ColorPickerControl.swift
+//  BlueSlider.swift
 //  FlexColorPicker
 //
-//  Created by Rastislav Mirek on 28/5/18.
+//  Created by Rastislav Mirek on 29/5/18.
 //  
 //	MIT License
 //  Copyright (c) 2018 Rastislav Mirek
@@ -26,8 +26,12 @@
 //  SOFTWARE.
 //
 
-public protocol ColorPickerControl: class {
-    var selectedHSBColor: HSBColor { get set }
-    func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents)
-    func removeTarget(_ target: Any?, action: Selector?, for controlEvents: UIControlEvents)
+struct BlueSlider: ColorSlider {
+    public func modifyColor(_ color: HSBColor, with value: CGFloat) -> HSBColor {
+        return color.withBlue(value)
+    }
+
+    public func valueAndGradient(for color: HSBColor) -> (value: CGFloat, gradientStart: UIColor, gradientEnd: UIColor) {
+        return (color.blue, color.toUIColor().withBlue(0), color.toUIColor().withBlue(1))
+    }
 }

@@ -28,7 +28,7 @@
 
 import UIKit
 
-open class RadialColorPalette: ColorPalette {
+open class RadialHSBPalette: ColorPalette {
     public private(set) var diameter: CGFloat = 0
     public private(set) var radius: CGFloat = 0
     public private(set) var midX: CGFloat = 0
@@ -58,9 +58,9 @@ open class RadialColorPalette: ColorPalette {
         return (dy < 0 ? 1 - hue : hue, min(1, distance))
     }
 
-    public func modifyColor(_ color: UIColor, with point: CGPoint) -> UIColor {
+    public func modifyColor(_ color: HSBColor, with point: CGPoint) -> HSBColor {
         let (hue, saturation) = hueAndSaturation(at: point)
-        return UIColor(hue: hue, saturation: saturation, brightness: color.hsb.brightness, alpha: color.alpha)
+        return color.withHue(hue, andSaturation: saturation)
     }
 
     open func renderForegroundImage() -> UIImage {
@@ -69,7 +69,7 @@ open class RadialColorPalette: ColorPalette {
               for j in 0 ..< ceiledDiameter {
                 let index = 4 * (i * ceiledDiameter + j)
                 let (hue, saturation) = hueAndSaturation(at: CGPoint(x: j, y: i)) // rendering image transforms it as it it was mirrored around x = -y axis - adjusting for it by switching i and j here
-                let (r, g, b) = rgbFrom(hue: hue, saturation: saturation)
+                let (r, g, b) = rgbFrom(hue: hue, saturation: saturation, brightness: 1)
                 imageData[index] = colorComponentToUInt8(r)
                 imageData[index + 1] = colorComponentToUInt8(g)
                 imageData[index + 2] = colorComponentToUInt8(b)
@@ -126,8 +126,8 @@ open class RadialColorPalette: ColorPalette {
         return CGPoint(x: x, y: y)
     }
 
-    open func positionAndAlpha(for color: UIColor) -> (position: CGPoint, foregroundImageAlpha: CGFloat) {
-        let (hue, saturation, brightness) = color.hsb
+    open func positionAndAlpha(for color: HSBColor) -> (position: CGPoint, foregroundImageAlpha: CGFloat) {
+        let (hue, saturation, brightness) = color.asTupleNoAlpha()
         let radius = saturation * self.radius
         let x = self.radius + radius * cos(hue * 2 * CGFloat.pi)
         let y = self.radius + radius * sin(hue * 2 * CGFloat.pi)

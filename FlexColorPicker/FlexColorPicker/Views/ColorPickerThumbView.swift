@@ -33,7 +33,10 @@ private let defaultBorderWidth: CGFloat = 6
 private let defaultExpandedUpscaleRatio: CGFloat = 1.6
 private let expansionAnimationDuration = 0.3
 private let collapsingAnimationDelay = 0.1
+private let brightnessToChangeToDark: CGFloat = 0.3
+private let saturationToChangeToDark: CGFloat = 0.4
 
+@IBDesignable
 open class ColorPickerThumbView: UIViewWithCommonInit {
     public let borderView = CircleShapedView()
     public let colorView = CircleShapedView()
@@ -79,8 +82,8 @@ open class ColorPickerThumbView: UIViewWithCommonInit {
     }
 
     open func setDarkBorderIfNeeded() {
-        let (_, s, b) = color.hsb
-        let isBorderGrey = b > 0.7 && s < 0.25
+        let (_, s, b) = color.hsbColor.asTupleNoAlpha()
+        let isBorderGrey = 1 - b < brightnessToChangeToDark && s < saturationToChangeToDark
 
         UIView.animate(withDuration: 0.3) {
             self.borderView.borderColor = UIColor(named: isBorderGrey ? "BorderColor" : "LightBorderColor", in: flexColorPickerBundle)

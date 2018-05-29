@@ -28,11 +28,11 @@
 
 public protocol ColorPalette: class {
     var size: CGSize { get set }
-    func modifyColor(_ color: UIColor, with point: CGPoint) -> UIColor
+    func modifyColor(_ color: HSBColor, with point: CGPoint) -> HSBColor
     func renderForegroundImage() -> UIImage
     func renderBackgroundImage() -> UIImage?
     func closestValidPoint(to: CGPoint) -> CGPoint
-    func positionAndAlpha(for color: UIColor) -> (position: CGPoint, foregroundImageAlpha: CGFloat)
+    func positionAndAlpha(for color: HSBColor) -> (position: CGPoint, foregroundImageAlpha: CGFloat)
 }
 
 extension ColorPalette {

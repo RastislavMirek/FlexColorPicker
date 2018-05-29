@@ -28,24 +28,26 @@
 
 import UIKit
 
-let defaultSelectedColor = UIColor.white
+let defaultSelectedColor = UIColor.white.hsbColor
 
+@IBDesignable
 open class ColorPaletteControl: ColorControlWithThumbView, ColorPickerControl {
     /// The picture with hue and saturation color options.
     open let foregroundImageView = UIImageView()
     /// Black image in the background used to apply brightnes chnage by blending it with colorMapImageView.
     open let backgroundImageView = UIImageView()
-    public var selectedColor = defaultSelectedColor {
+
+    public var selectedHSBColor: HSBColor = defaultSelectedColor {
         didSet {
-            thumbView.color = selectedColor
-            if oldValue != selectedColor {
-                let (position, foregroundAlpha) = colorPalete.positionAndAlpha(for: selectedColor)
+            thumbView.color = selectedHSBColor.toUIColor()
+            if oldValue != selectedHSBColor {
+                let (position, foregroundAlpha) = colorPalete.positionAndAlpha(for: selectedHSBColor)
                 thumbView.frame = CGRect(center: position, size: thumbView.intrinsicContentSize)
                 foregroundImageView.alpha = foregroundAlpha
             }
         }
     }
-    open var colorPalete: ColorPalette = RadialColorPalette() {
+    open var colorPalete: ColorPalette = RadialHSBPalette() {
         didSet {
             updatePaleteImages()
         }
@@ -64,8 +66,8 @@ open class ColorPaletteControl: ColorControlWithThumbView, ColorPickerControl {
             imageView.contentMode = .scaleAspectFit
         }
         updatePaleteImages()
-        thumbView.frame = CGRect(center: colorPalete.positionAndAlpha(for: selectedColor).position, size: thumbView.intrinsicContentSize)
-        thumbView.color = selectedColor
+        thumbView.frame = CGRect(center: colorPalete.positionAndAlpha(for: selectedHSBColor).position, size: thumbView.intrinsicContentSize)
+        thumbView.color = selectedHSBColor.toUIColor()
         addSubview(thumbView)
     }
 
@@ -77,7 +79,20 @@ open class ColorPaletteControl: ColorControlWithThumbView, ColorPickerControl {
 
     open override func updateSelectedColor(at point: CGPoint) {
         let pointInside = colorPalete.closestValidPoint(to: point)
-        selectedColor = colorPalete.modifyColor(selectedColor, with: pointInside)
+        selectedHSBColor = colorPalete.modifyColor(selectedHSBColor, with: pointInside)
         thumbView.frame = CGRect(center: pointInside, size: thumbView.intrinsicContentSize)
+        sendActions(for: .valueChanged)
+    }
+}
+
+extension ColorPaletteControl {
+    @IBInspectable
+    var selectedColor: UIColor {
+        get {
+            return selectedHSBColor.toUIColor()
+        }
+        set {
+            selectedHSBColor = newValue.hsbColor
+        }
     }
 }

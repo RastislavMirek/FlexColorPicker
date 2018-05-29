@@ -33,7 +33,7 @@ extension UIColor {
 //        super.init(hue: hue, saturation: saturation, brightness: 1, alpha: 1)
 //    }
 //
-    public var rgb: (red: CGFloat, green: CGFloat, b: CGFloat) {
+    public var rgb: (red: CGFloat, green: CGFloat, blue: CGFloat) {
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, a: CGFloat = 0
         getRed(&red, green: &green, blue: &blue, alpha: &a)
         return (red, green, blue)
@@ -43,41 +43,40 @@ extension UIColor {
         self.init(named: name, in: bundle, compatibleWith: nil)
     }
 
-    public var hsb: (hue: CGFloat, saturation: CGFloat, brightness: CGFloat) {
-        var hue: CGFloat = 0, saturation: CGFloat = 0, brightness: CGFloat = 0, a: CGFloat = 0
-        getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &a)
-        return (hue, saturation, brightness)
+    public var hsbColor: HSBColor {
+        return HSBColor(color: self)
     }
 
     public var alpha: CGFloat {
         return cgColor.alpha
     }
 
-//    public func colorWithRed(_ red: CGFloat) -> UIColor {
-//        let rgb = self.rgb
-//        return UIColor(r: red, g: rgb.g, b: rgb.b, alpha: alpha)
-//    }
-//
-//    public func colorWithGreen(_ green: CGFloat) -> UIColor {
-//        let rgb = self.rgb
-//        return UIColor(r: rgb.red, g: green, b: rgb.blue, alpha: alpha)
-//    }
-//
-//    public func colorWithBlue(_ blue: CGFloat) -> UIColor {
-//        let rgb = self.rgb
-//        return UIColor(r: rgb.r, g: rgb.g, b: blue, alpha: alpha)
-//    }
-
-    public func withBrightness(_ brightness: CGFloat) -> UIColor {
-        let (h, s, _) = self.hsb
-        return  UIColor(hue: h, saturation: s, brightness: brightness, alpha: alpha)
+    public func withRed(_ red: CGFloat) -> UIColor {
+        let (_, g, b) = self.rgb
+        return UIColor(red: red, green: g, blue: b, alpha: alpha)
     }
+
+    public func withGreen(_ green: CGFloat) -> UIColor {
+        let (r, _ , b) = self.rgb
+        return UIColor(red: r, green: green, blue: b, alpha: alpha)
+    }
+
+    public func withBlue(_ blue: CGFloat) -> UIColor {
+        let (r, g, _) = self.rgb
+        return UIColor(red: r, green: g, blue: blue, alpha: alpha)
+    }
+
+//    public func withBrightness(_ brightness: CGFloat) -> UIColor {
+//        let (h, s, _) = self.hsbColor
+//        return  UIColor(hue: h, saturation: s, brightness: brightness, alpha: alpha)
+//    }
 }
 
 /// Translates color from HSB system to RGB, given constant Brightness value of 1.
-/// @param hue Hue value in range from 0 to 1.
-/// @saturation Saturation value in range from 0 to 1.
-public func rgbFrom(hue: CGFloat, saturation: CGFloat, brightness: CGFloat = 1) -> (red: CGFloat, green: CGFloat, b: CGFloat) {
+/// @param hue Hue value in range from 0 to 1 (inclusive).
+/// @saturation Saturation value in range from 0 to 1 (inclusive).
+/// @brightness Brightness value in range from 0 to 1 (inclusive).
+public func rgbFrom(hue: CGFloat, saturation: CGFloat, brightness: CGFloat) -> (red: CGFloat, green: CGFloat, b: CGFloat) {
     let hPrime: Int = Int(hue * 6)
     let f = hue * 6 - CGFloat(hPrime)
     let p = brightness * (1 - saturation)

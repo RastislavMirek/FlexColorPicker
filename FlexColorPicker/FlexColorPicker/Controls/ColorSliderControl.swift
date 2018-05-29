@@ -30,23 +30,28 @@ import UIKit
 
 private let defaultGradientViewHeight: CGFloat = 16
 
+@IBDesignable
 open class ColorSliderControl: ColorControlWithThumbView, ColorPickerControl {
+
     private var gradientViewHeightConstraint: NSLayoutConstraint?
     public let gradientBackgroundView = UIImageView()
     public let gradientView = GradientView()
+
+    @IBInspectable
     open var gradientViewHeight: CGFloat = defaultGradientViewHeight {
         didSet {
             gradientViewHeightConstraint?.constant = gradientViewHeight
         }
     }
-    public var selectedColor: UIColor = .white {
+
+    open var selectedHSBColor: HSBColor = defaultSelectedColor {
         didSet {
-            updateThumbAndGradient(with: selectedColor)
+            updateThumb(alsoUpdateGradient: oldValue.saturation != selectedHSBColor.saturation || oldValue.hue != selectedHSBColor.hue)
         }
     }
     open var colorSlider: ColorSlider = BrightnessSlider() {
         didSet {
-            updateThumbAndGradient(with: selectedColor)
+            updateThumb(alsoUpdateGradient: true)
         }
     }
 
@@ -57,6 +62,7 @@ open class ColorSliderControl: ColorControlWithThumbView, ColorPickerControl {
     }
 
     open override func commonInit() {
+        super.commonInit()
         gradientBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(gradientBackgroundView)
         gradientBackgroundView.leftAnchor.constraint(equalTo: leftAnchor, constant: thumbView.wideBorderWidth).isActive = true
@@ -67,7 +73,7 @@ open class ColorSliderControl: ColorControlWithThumbView, ColorPickerControl {
         gradientBackgroundView.addAutolayoutFillingSubview(gradientView)
         updateCornerRadius()
         gradientBackgroundView.clipsToBounds = true
-        updateThumbAndGradient(with: selectedColor)
+        updateThumb(alsoUpdateGradient: true)
         addSubview(thumbView)
     }
 
@@ -75,18 +81,33 @@ open class ColorSliderControl: ColorControlWithThumbView, ColorPickerControl {
         gradientBackgroundView.cornerRadius = gradientViewHeight / 2
     }
 
-    open func updateThumbAndGradient(with color: UIColor) {
-        let (value, gradientStart, gradientEnd) = colorSlider.valueAndGradient(for: color)
+    open func updateThumb(alsoUpdateGradient: Bool) {
+        let (value, gradientStart, gradientEnd) = colorSlider.valueAndGradient(for: selectedHSBColor)
         let gradientLength = bounds.width - thumbView.frame.width
-        thumbView.frame = CGRect(center: CGPoint(x: thumbView.frame.width / 2 + gradientLength * value, y: bounds.midY), size: thumbView.intrinsicContentSize)
-        thumbView.color = color
-        gradientView.startColor = gradientStart
-        gradientView.endColor = gradientEnd
+        thumbView.frame = CGRect(center: CGPoint(x: thumbView.frame.width / 2 + gradientLength * min(max(0, value), 1), y: bounds.midY), size: thumbView.intrinsicContentSize)
+        thumbView.color = selectedHSBColor.toUIColor()
+        if alsoUpdateGradient {
+            gradientView.startColor = gradientStart
+            gradientView.endColor = gradientEnd
+        }
     }
 
     open override func updateSelectedColor(at point: CGPoint) {
         let gradientLength = bounds.width - thumbView.frame.width
-        let value = 1 - (point.x - thumbView.intrinsicContentSize.width / 2) / gradientLength
-        selectedColor = selectedColor.withBrightness(min(max(0, value), 1))
+        let value = (point.x - thumbView.intrinsicContentSize.width / 2) / gradientLength
+        selectedHSBColor = colorSlider.modifyColor(selectedHSBColor, with: min(max(0, value), 1))
+        sendActions(for: .valueChanged)
+    }
+}
+
+extension ColorSliderControl {
+    @IBInspectable
+    var selectedColor: UIColor {
+        get {
+            return selectedHSBColor.toUIColor()
+        }
+        set {
+            selectedHSBColor = newValue.hsbColor
+        }
     }
 }
