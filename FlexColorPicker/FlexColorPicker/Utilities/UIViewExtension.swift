@@ -29,7 +29,7 @@
 import UIKit
 
 extension UIView {
-    public func addAutolayoutFillingSubview(_ subview: UIView, edgeInsets: UIEdgeInsets = .zero) {
+    func addAutolayoutFillingSubview(_ subview: UIView, edgeInsets: UIEdgeInsets = .zero) {
         subview.translatesAutoresizingMaskIntoConstraints = false
         addSubview(subview)
 
@@ -37,6 +37,14 @@ extension UIView {
         subview.topAnchor.constraint(equalTo: topAnchor, constant: edgeInsets.top).isActive = true
         subview.rightAnchor.constraint(equalTo: rightAnchor, constant: -edgeInsets.right).isActive = true
         subview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -edgeInsets.bottom).isActive = true
+    }
+
+    func addAutolayoutCentredView(_ subview: UIView, offset: CGSize = .zero) {
+        subview.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(subview)
+
+        subview.centerXAnchor.constraint(equalTo: centerXAnchor, constant: offset.width).isActive = true
+        subview.centerYAnchor.constraint(equalTo: centerYAnchor, constant: offset.height).isActive = true
     }
 
     var borderWidth: CGFloat {

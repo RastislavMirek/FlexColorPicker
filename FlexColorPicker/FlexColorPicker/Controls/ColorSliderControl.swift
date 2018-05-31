@@ -28,7 +28,8 @@
 
 import UIKit
 
-private let defaultGradientViewHeight: CGFloat = 16
+private let defaultGradientViewHeight: CGFloat = 15
+private let defaultBorderWidth: CGFloat = 1 / UIScreen.main.scale
 
 @IBDesignable
 open class ColorSliderControl: ColorControlWithThumbView, ColorPickerControl {
@@ -38,9 +39,19 @@ open class ColorSliderControl: ColorControlWithThumbView, ColorPickerControl {
     public let gradientView = GradientView()
 
     @IBInspectable
-    open var gradientViewHeight: CGFloat = defaultGradientViewHeight {
+    public var selectedColor: UIColor {
+        get {
+            return selectedHSBColor.toUIColor()
+        }
+        set {
+            selectedHSBColor = newValue.hsbColor
+        }
+    }
+    
+    @IBInspectable
+    open var gradientHeight: CGFloat = defaultGradientViewHeight {
         didSet {
-            gradientViewHeightConstraint?.constant = gradientViewHeight
+            gradientViewHeightConstraint?.constant = gradientHeight
         }
     }
 
@@ -68,17 +79,18 @@ open class ColorSliderControl: ColorControlWithThumbView, ColorPickerControl {
         gradientBackgroundView.leftAnchor.constraint(equalTo: leftAnchor, constant: thumbView.wideBorderWidth).isActive = true
         gradientBackgroundView.rightAnchor.constraint(equalTo: rightAnchor, constant: -thumbView.wideBorderWidth).isActive = true
         gradientBackgroundView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        gradientViewHeightConstraint = gradientBackgroundView.heightAnchor.constraint(equalToConstant: gradientViewHeight)
+        gradientViewHeightConstraint = gradientBackgroundView.heightAnchor.constraint(equalToConstant: gradientHeight)
         gradientViewHeightConstraint?.isActive = true
         gradientBackgroundView.addAutolayoutFillingSubview(gradientView)
         updateCornerRadius()
         gradientBackgroundView.clipsToBounds = true
         updateThumbAndGradient()
         addSubview(thumbView)
+        setDefaultBorder(on: borderOn)
     }
 
     private func updateCornerRadius() {
-        gradientBackgroundView.cornerRadius = gradientViewHeight / 2
+        gradientBackgroundView.cornerRadius = gradientHeight / 2
     }
 
     open func updateThumbAndGradient() {
@@ -92,20 +104,54 @@ open class ColorSliderControl: ColorControlWithThumbView, ColorPickerControl {
 
     open override func updateSelectedColor(at point: CGPoint) {
         let gradientLength = bounds.width - thumbView.frame.width
-        let value = (point.x - thumbView.intrinsicContentSize.width / 2) / gradientLength
+        let value = max(0, min(1, (point.x - thumbView.intrinsicContentSize.width / 2) / gradientLength))
+        thumbView.percentage = Int(round(value * 100))
+        thumbView.clipsToBounds = false
         selectedHSBColor = colorSlider.modifyColor(selectedHSBColor, with: min(max(0, value), 1))
         sendActions(for: .valueChanged)
+    }
+
+    open func setDefaultBorder(on: Bool) {
+        gradientBackgroundView.borderColor = UIColor(named: "BorderColor", in: flexColorPickerBundle)
+        gradientBackgroundView.borderWidth = on ? defaultBorderWidth : 0
+    }
+
+    @IBInspectable
+    public var borderOn: Bool = true {
+        didSet {
+            setDefaultBorder(on: borderOn)
+        }
     }
 }
 
 extension ColorSliderControl {
     @IBInspectable
-    var selectedColor: UIColor {
+    public var autoDaken: Bool {
         get {
-            return selectedHSBColor.toUIColor()
+            return thumbView.autoDarken
         }
         set {
-            selectedHSBColor = newValue.hsbColor
+            thumbView.autoDarken = newValue
+        }
+    }
+
+    @IBInspectable
+    public var showPercentage: Bool {
+        get {
+            return thumbView.showPercentage
+        }
+        set {
+            thumbView.showPercentage = newValue
+        }
+    }
+
+    @IBInspectable
+    public var expandOnTap: Bool {
+        get {
+            return thumbView.expandOnTap
+        }
+        set {
+            thumbView.expandOnTap = newValue
         }
     }
 }
