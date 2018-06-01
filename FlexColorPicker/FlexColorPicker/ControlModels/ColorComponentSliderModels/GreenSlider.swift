@@ -32,6 +32,6 @@ struct GreenSlider: ColorSlider {
     }
 
     public func valueAndGradient(for color: HSBColor) -> (value: CGFloat, gradientStart: UIColor, gradientEnd: UIColor) {
-        return (color.green, color.toUIColor().withGreen(0), color.toUIColor().withGreen(1))
+        return (color.rgb.green, color.toUIColor().withGreen(0), color.toUIColor().withGreen(1))
     }
 }

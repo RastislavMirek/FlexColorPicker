@@ -76,8 +76,8 @@ extension UIColor {
 /// @param hue Hue value in range from 0 to 1 (inclusive).
 /// @saturation Saturation value in range from 0 to 1 (inclusive).
 /// @brightness Brightness value in range from 0 to 1 (inclusive).
-public func rgbFrom(hue: CGFloat, saturation: CGFloat, brightness: CGFloat) -> (red: CGFloat, green: CGFloat, b: CGFloat) {
-    let hPrime: Int = Int(hue * 6)
+public func rgbFrom(hue: CGFloat, saturation: CGFloat, brightness: CGFloat) -> (red: CGFloat, green: CGFloat, blue: CGFloat) {
+    let hPrime = Int(hue * 6)
     let f = hue * 6 - CGFloat(hPrime)
     let p = brightness * (1 - saturation)
     let q = brightness * (1 - f * saturation)

@@ -39,11 +39,6 @@ public struct HSBColor {
     public let alpha: CGFloat
 
     public init(hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat = 1) {
-//        assert(hue >= 0 && hue <= 1, "Hue value out of range <0, 1>: \(hue)")
-//        assert(saturation >= 0 && saturation <= 1, "Saturation value out of range <0, 1>: \(saturation)")
-//        assert(brightness >= 0 && brightness <= 1, "Brightness value out of range <0, 1>: \(brightness)")
-//        assert(alpha >= 0 && alpha <= 1, "Alpha value out of range <0, 1>: \(alpha)")
-
         self.hue = max(0, min(1, hue))
         self.saturation = max(0, min(1, saturation))
         self.brightness = max(0, min(1, brightness))
@@ -52,16 +47,9 @@ public struct HSBColor {
 }
 
 extension HSBColor {
-    var red: CGFloat {
-        return toUIColor().rgb.red
-    }
 
-    var green: CGFloat {
-        return toUIColor().rgb.green
-    }
-
-    var blue: CGFloat {
-        return toUIColor().rgb.blue
+    var rgb: (red: CGFloat, green: CGFloat, blue: CGFloat) {
+        return rgbFrom(hue: hue, saturation: saturation, brightness: brightness)
     }
 
     init(color: UIColor) {
@@ -94,16 +82,52 @@ extension HSBColor {
         return HSBColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
     }
 
+    /// Adjusts curent color by applying given RGB color components. Basically, this computes new HSL color based on given RGB values while it uses alpha value of this color. Also, if the RGB values given specify achromatic color the hue of current color is kept.
+    /// @param red Red component of new color specified as value from <0, 1>
+    /// @param green Green component of new color specified as value from <0, 1>
+    /// @param blue Blue component of new color specified as value from <0, 1>
+    /// @return HSHColor specified by the given RGB values with the same alpha as current color.
+    public func withRGB(red: CGFloat, green: CGFloat, blue: CGFloat) -> HSBColor {
+        let red_ = min(1, max(0, red))
+        let green_ = min(1, max(0, green))
+        let blue_ = min(1, max(0, blue))
+
+        let max_ = fmax (red_, fmax(green_, blue_))
+        let min_ = fmin(red_, fmin(green_, blue_))
+
+        var h: CGFloat = 0, b = max_
+        let d = max_ - min_
+        let s = max_ == 0 ? 0 : d / max_
+
+        guard max_ != min_ else {
+            return HSBColor(hue: hue, saturation: 1 - max_, brightness: b, alpha: alpha) //achromatic: keep the original hue (that is why this is an extension)
+        }
+        if max_ == red_ {
+            h = (green_ - blue) / d + (green_ < blue_ ? 6 : 0)
+        }
+        else if max_ == green_ {
+            h = (blue_ - red_) / d + 2
+        }
+        else if max_ == blue_ {
+            h = (red_ - green_) / d + 4
+        }
+        h /= 6
+        return HSBColor(hue: h, saturation: s, brightness: b, alpha: alpha)
+    }
+
     public func withRed(_ red: CGFloat) -> HSBColor {
-        return toUIColor().withRed(red).hsbColor
+        let (_, g, b) = rgb
+        return withRGB(red: red, green: g, blue: b)
     }
 
     public func withGreen(_ green: CGFloat) -> HSBColor {
-        return toUIColor().withGreen(green).hsbColor
+        let (r, _, b) = rgb
+        return withRGB(red: r, green: green, blue: b)
     }
 
     public func withBlue(_ blue: CGFloat) -> HSBColor {
-        return toUIColor().withBlue(blue).hsbColor
+        let (r, g, _) = rgb
+        return withRGB(red: r, green: g, blue: blue)
     }
 
     public func withAlpha(_ alpha: CGFloat) -> HSBColor {
