@@ -29,7 +29,7 @@
 import UIKit
 
 private let defaultGradientViewHeight: CGFloat = 15
-private let defaultBorderWidth: CGFloat = 1 / UIScreen.main.scale
+internal let defaultBorderWidth: CGFloat = 1 / UIScreen.main.scale
 
 @IBDesignable
 open class ColorSliderControl: ColorControlWithThumbView, ColorPickerControl {
@@ -90,7 +90,7 @@ open class ColorSliderControl: ColorControlWithThumbView, ColorPickerControl {
     }
 
     private func updateCornerRadius() {
-        gradientBackgroundView.cornerRadius = gradientHeight / 2
+        gradientBackgroundView.cornerRadius_ = gradientHeight / 2
     }
 
     open func updateThumbAndGradient() {

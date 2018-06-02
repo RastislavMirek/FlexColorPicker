@@ -29,7 +29,7 @@
 import UIKit
 
 private let colorPickerThumbViewDiameter: CGFloat = 28
-private let defaultBorderWidth: CGFloat = 6
+private let defaultWideBorderWidth: CGFloat = 6
 private let defaultExpandedUpscaleRatio: CGFloat = 1.6
 private let expansionAnimationDuration = 0.3
 private let collapsingAnimationDelay = 0.1
@@ -37,6 +37,8 @@ private let expansionAnimationSpringDamping: CGFloat = 0.7
 private let brightnessToChangeToDark: CGFloat = 0.3
 private let saturationToChangeToDark: CGFloat = 0.4
 private let textLabelUpShift: CGFloat = 12
+private let maxContrastRatioWithWhiteToDarken: CGFloat = 0.25
+private let percentageTextFont = UIFont.monospacedDigitSystemFont(ofSize: 14, weight: .regular)
 
 @IBDesignable
 open class ColorPickerThumbView: UIViewWithCommonInit {
@@ -74,17 +76,18 @@ open class ColorPickerThumbView: UIViewWithCommonInit {
     }
 
     var wideBorderWidth: CGFloat {
-        return defaultBorderWidth
+        return defaultWideBorderWidth
     }
 
     open override func commonInit() {
+        super.commonInit()
         addAutolayoutFillingSubview(borderView)
-        addAutolayoutFillingSubview(colorView, edgeInsets: UIEdgeInsets(top: defaultBorderWidth, left: defaultBorderWidth, bottom: defaultBorderWidth, right: defaultBorderWidth))
+        addAutolayoutFillingSubview(colorView, edgeInsets: UIEdgeInsets(top: wideBorderWidth, left: wideBorderWidth, bottom: wideBorderWidth, right: wideBorderWidth))
         addAutolayoutCentredView(percentageLabel)
         borderView.borderColor = UIColor(named: "BorderColor", in: flexColorPickerBundle)
         borderView.borderWidth = 1 / UIScreen.main.scale
-        percentageLabel.font = UIFont.monospacedDigitSystemFont(ofSize: 14, weight: .regular)
-        percentageLabel.textColor = UIColor(named: "PercentageTextColor", in: flexColorPickerBundle)
+        percentageLabel.font = percentageTextFont
+        percentageLabel.textColor = UIColor(named: "LabelTextsColor", in: flexColorPickerBundle)
         percentageLabel.textAlignment = .center
         percentageLabel.alpha = 0
         clipsToBounds = false // required for the text label to be displayed ourside of bounds
@@ -114,6 +117,7 @@ extension ColorPickerThumbView {
     open func setDarkBorderIfNeeded() {
         let (_, s, b) = color.hsbColor.asTupleNoAlpha()
         let isBorderDark = autoDarken && 1 - b < brightnessToChangeToDark && s < saturationToChangeToDark
+//        let isBorderDark = autoDarken && color.constrastRatio(with: .white) < maxContrastRatioWithWhiteToDarken
 
         #if TARGET_INTERFACE_BUILDER
             setWideBorderColors(isBorderDark) //animations do not work

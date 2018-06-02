@@ -76,9 +76,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tg1-v3-YPR" customClass="ColorPaletteControl" customModule="FlexColorPicker">
-                                <rect key="frame" x="16" y="159.66666666666663" width="343" height="343"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c10-CA-jaD" customClass="ColorPreviewWithHex" customModule="FlexColorPicker">
+                                <rect key="frame" x="16" y="104" width="70" height="70"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Vf8-Or-mNP"/>
+                                    <constraint firstAttribute="width" secondItem="c10-CA-jaD" secondAttribute="height" id="ySK-iD-BjV"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="borderOn" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                        <color key="value" red="0.23277670149999999" green="0.91000002619999998" blue="0.74714094399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="displayHex" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tg1-v3-YPR" customClass="ColorPaletteControl" customModule="FlexColorPicker">
+                                <rect key="frame" x="16" y="138" width="343" height="343"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tg1-v3-YPR" secondAttribute="height" id="st8-l7-ftW"/>
                                 </constraints>
@@ -89,7 +107,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izc-c6-W8L" customClass="ColorSliderControl" customModule="FlexColorPicker">
-                                <rect key="frame" x="16" y="518.66666666666663" width="343" height="45"/>
+                                <rect key="frame" x="16" y="497" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="jL3-NK-zg0"/>
                                 </constraints>
@@ -101,7 +119,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZaV-oB-ccN" customClass="ColorSliderControl" customModule="FlexColorPicker">
-                                <rect key="frame" x="16" y="563.66666666666663" width="343" height="45"/>
+                                <rect key="frame" x="16" y="542" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="KGr-8L-dKg"/>
                                 </constraints>
@@ -113,7 +131,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVD-iC-oOa" customClass="ColorSliderControl" customModule="FlexColorPicker">
-                                <rect key="frame" x="16" y="608.66666666666663" width="343" height="45"/>
+                                <rect key="frame" x="16" y="587" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="34i-3O-s7d"/>
                                 </constraints>
@@ -128,7 +146,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkA-9B-dcq" customClass="ColorSliderControl" customModule="FlexColorPicker">
-                                <rect key="frame" x="16" y="653.66666666666663" width="343" height="45"/>
+                                <rect key="frame" x="16" y="632" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="JAz-CH-UyQ"/>
                                 </constraints>
@@ -142,7 +160,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ht4-QW-N84" customClass="ColorSliderControl" customModule="FlexColorPicker">
-                                <rect key="frame" x="16" y="698.66666666666663" width="343" height="45"/>
+                                <rect key="frame" x="16" y="677" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="4Mg-tR-Gyh"/>
                                 </constraints>
@@ -155,22 +173,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c10-CA-jaD" customClass="RadialColorPreview" customModule="FlexColorPicker">
-                                <rect key="frame" x="16" y="104" width="343" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="QYT-K2-5EV"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
-                                        <color key="value" red="1" green="0.74436461499999995" blue="0.67417946620000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NkA-9B-dcq" firstAttribute="top" secondItem="EVD-iC-oOa" secondAttribute="bottom" id="7h1-bo-gfH"/>
+                            <constraint firstItem="tg1-v3-YPR" firstAttribute="top" secondItem="cL7-1B-Coh" secondAttribute="top" constant="50" id="8Ow-01-sPD"/>
                             <constraint firstItem="cL7-1B-Coh" firstAttribute="trailing" secondItem="NkA-9B-dcq" secondAttribute="trailing" constant="16" id="Asi-Sb-yH3"/>
                             <constraint firstItem="cL7-1B-Coh" firstAttribute="trailing" secondItem="tg1-v3-YPR" secondAttribute="trailing" constant="16" id="Bu7-ia-1Mi"/>
                             <constraint firstItem="ht4-QW-N84" firstAttribute="top" secondItem="NkA-9B-dcq" secondAttribute="bottom" id="CZ0-wK-2Lk"/>
@@ -182,11 +189,9 @@
                             <constraint firstItem="ZaV-oB-ccN" firstAttribute="top" secondItem="izc-c6-W8L" secondAttribute="bottom" id="M8p-T1-gkJ"/>
                             <constraint firstItem="cL7-1B-Coh" firstAttribute="trailing" secondItem="EVD-iC-oOa" secondAttribute="trailing" constant="16" id="P7O-Gq-Kpe"/>
                             <constraint firstItem="cL7-1B-Coh" firstAttribute="trailing" secondItem="ht4-QW-N84" secondAttribute="trailing" constant="16" id="PTa-8r-LwJ"/>
-                            <constraint firstItem="cL7-1B-Coh" firstAttribute="trailing" secondItem="c10-CA-jaD" secondAttribute="trailing" constant="16" id="PhU-tX-ZVY"/>
                             <constraint firstItem="EVD-iC-oOa" firstAttribute="leading" secondItem="cL7-1B-Coh" secondAttribute="leading" constant="16" id="REK-FI-wbE"/>
                             <constraint firstItem="c10-CA-jaD" firstAttribute="top" secondItem="cL7-1B-Coh" secondAttribute="top" constant="16" id="UiA-3p-fbc"/>
                             <constraint firstItem="ht4-QW-N84" firstAttribute="leading" secondItem="cL7-1B-Coh" secondAttribute="leading" constant="16" id="YWm-xE-blS"/>
-                            <constraint firstItem="tg1-v3-YPR" firstAttribute="top" secondItem="c10-CA-jaD" secondAttribute="bottom" constant="16" id="eY8-3j-ROp"/>
                             <constraint firstItem="izc-c6-W8L" firstAttribute="top" secondItem="tg1-v3-YPR" secondAttribute="bottom" constant="16" id="nDE-lB-T30"/>
                             <constraint firstItem="NkA-9B-dcq" firstAttribute="leading" secondItem="cL7-1B-Coh" secondAttribute="leading" constant="16" id="q6e-fd-yz4"/>
                             <constraint firstItem="tg1-v3-YPR" firstAttribute="leading" secondItem="cL7-1B-Coh" secondAttribute="leading" constant="16" id="rLq-SL-g6K"/>
@@ -203,9 +208,9 @@
                     <connections>
                         <outlet property="blueSlider" destination="ht4-QW-N84" id="jhu-2l-qfm"/>
                         <outlet property="brightnessSlider" destination="izc-c6-W8L" id="xuz-qj-ad0"/>
+                        <outlet property="colorPreview" destination="c10-CA-jaD" id="iTC-bx-WWd"/>
                         <outlet property="greenSlider" destination="NkA-9B-dcq" id="9xu-FB-NDe"/>
                         <outlet property="radialHsbPalete" destination="tg1-v3-YPR" id="u4p-sm-zFT"/>
-                        <outlet property="radialPreview" destination="c10-CA-jaD" id="gUD-T2-InS"/>
                         <outlet property="redSlider" destination="EVD-iC-oOa" id="San-9s-znp"/>
                         <outlet property="saturationSlider" destination="ZaV-oB-ccN" id="aUA-TD-xEX"/>
                     </connections>

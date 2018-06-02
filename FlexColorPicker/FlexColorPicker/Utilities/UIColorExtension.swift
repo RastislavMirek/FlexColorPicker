@@ -33,9 +33,14 @@ extension UIColor {
 //        super.init(hue: hue, saturation: saturation, brightness: 1, alpha: 1)
 //    }
 //
+    public var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
+        getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        return (red, green, blue, alpha)
+    }
+
     public var rgb: (red: CGFloat, green: CGFloat, blue: CGFloat) {
-        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, a: CGFloat = 0
-        getRed(&red, green: &green, blue: &blue, alpha: &a)
+        let (red, green, blue, _) = rgba
         return (red, green, blue)
     }
 
@@ -66,16 +71,42 @@ extension UIColor {
         return UIColor(red: r, green: g, blue: blue, alpha: alpha)
     }
 
+    public func hexValue(alwaysIncludeAlpha: Bool = false) -> String {
+        let (red, green, blue, alpha) = rgba
+        let r = colorComponentToUInt8(red)
+        let g = colorComponentToUInt8(green)
+        let b = colorComponentToUInt8(blue)
+        let a = colorComponentToUInt8(alpha)
+
+        if alpha == 1 && !alwaysIncludeAlpha {
+            return String(format: "%02lX%02lX%02lX", r, g, b)
+        }
+        return String(format: "%02lX%02lX%02lX%02lX", r, g, b, a)
+    }
+
+    /// Computes contrast ratio between this color and given color as a value from interval <0, 1> where 0 is contrast ratio of the same colors and 1 is contrast ratio between black and white.
+    public func constrastRatio(with color: UIColor) -> CGFloat {
+        let (r1, g1, b1) = rgb
+        let (r2, g2, b2) = color.rgb
+
+        return (abs(r1 - r2) + abs(g1 - g2) + abs(b1 - b2)) / 3
+    }
+
 //    public func withBrightness(_ brightness: CGFloat) -> UIColor {
 //        let (h, s, _) = self.hsbColor
 //        return  UIColor(hue: h, saturation: s, brightness: brightness, alpha: alpha)
 //    }
 }
 
+@inline(__always)
+public func colorComponentToUInt8(_ component: CGFloat) -> UInt8 {
+    return UInt8(max(0, min(255, round(255 * component))))
+}
+
 /// Translates color from HSB system to RGB, given constant Brightness value of 1.
 /// @param hue Hue value in range from 0 to 1 (inclusive).
-/// @saturation Saturation value in range from 0 to 1 (inclusive).
-/// @brightness Brightness value in range from 0 to 1 (inclusive).
+/// @param saturation Saturation value in range from 0 to 1 (inclusive).
+/// @param brightness Brightness value in range from 0 to 1 (inclusive).
 public func rgbFrom(hue: CGFloat, saturation: CGFloat, brightness: CGFloat) -> (red: CGFloat, green: CGFloat, blue: CGFloat) {
     let hPrime = Int(hue * 6)
     let f = hue * 6 - CGFloat(hPrime)

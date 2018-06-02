@@ -21,6 +21,7 @@
 		3034757520BC821100028A15 /* BrightnessSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034757420BC821100028A15 /* BrightnessSlider.swift */; };
 		3034757720BC8D1300028A15 /* ControlWithThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034757620BC8D1300028A15 /* ControlWithThumbView.swift */; };
 		3034757920BC9DBB00028A15 /* FlexColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034757820BC9DBB00028A15 /* FlexColorPicker.swift */; };
+		3049576F20C1B19800CEC32F /* ColorPreviewWithHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3049576E20C1B19800CEC32F /* ColorPreviewWithHex.swift */; };
 		305A235020BB179000271A59 /* FlexColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A234F20BB179000271A59 /* FlexColorPickerController.swift */; };
 		305A235220BB181500271A59 /* ColorPaletteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A235120BB181500271A59 /* ColorPaletteControl.swift */; };
 		305A235420BB1A8200271A59 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A235320BB1A8200271A59 /* UIColorExtension.swift */; };
@@ -34,7 +35,6 @@
 		30B787DC20BD646900F3BB4C /* BlueSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B787DB20BD646900F3BB4C /* BlueSlider.swift */; };
 		30B787DE20BD647A00F3BB4C /* SaturationSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B787DD20BD647A00F3BB4C /* SaturationSlider.swift */; };
 		30B787E020BD737E00F3BB4C /* ColorPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B787DF20BD737E00F3BB4C /* ColorPreview.swift */; };
-		30B787E220BD73BA00F3BB4C /* RadialColorPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B787E120BD73BA00F3BB4C /* RadialColorPreview.swift */; };
 		30EF527420BD431900E9E247 /* HSLColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF527320BD431900E9E247 /* HSLColor.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +55,7 @@
 		3034757420BC821100028A15 /* BrightnessSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessSlider.swift; sourceTree = "<group>"; };
 		3034757620BC8D1300028A15 /* ControlWithThumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlWithThumbView.swift; sourceTree = "<group>"; };
 		3034757820BC9DBB00028A15 /* FlexColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlexColorPicker.swift; path = ../../FlexColorPickerDemo/FlexColorPickerDemo/FlexColorPicker.swift; sourceTree = "<group>"; };
+		3049576E20C1B19800CEC32F /* ColorPreviewWithHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPreviewWithHex.swift; sourceTree = "<group>"; };
 		305A234F20BB179000271A59 /* FlexColorPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexColorPickerController.swift; sourceTree = "<group>"; };
 		305A235120BB181500271A59 /* ColorPaletteControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPaletteControl.swift; sourceTree = "<group>"; };
 		305A235320BB1A8200271A59 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		30B787DB20BD646900F3BB4C /* BlueSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSlider.swift; sourceTree = "<group>"; };
 		30B787DD20BD647A00F3BB4C /* SaturationSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaturationSlider.swift; sourceTree = "<group>"; };
 		30B787DF20BD737E00F3BB4C /* ColorPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPreview.swift; sourceTree = "<group>"; };
-		30B787E120BD73BA00F3BB4C /* RadialColorPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialColorPreview.swift; sourceTree = "<group>"; };
 		30EF527320BD431900E9E247 /* HSLColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +104,7 @@
 			children = (
 				305A234F20BB179000271A59 /* FlexColorPickerController.swift */,
 				3034757820BC9DBB00028A15 /* FlexColorPicker.swift */,
-				30EF527220BD42CD00E9E247 /* Model */,
+				30EF527320BD431900E9E247 /* HSLColor.swift */,
 				3034755F20BC0C1300028A15 /* Controls */,
 				3034755C20BC0BD600028A15 /* Views */,
 				3034756220BC0C5E00028A15 /* ControlModels */,
@@ -123,8 +123,8 @@
 				3034756C20BC768000028A15 /* UIViewWithCommonInit.swift */,
 				3034755820BC041700028A15 /* ColorPickerThumbView.swift */,
 				3034756020BC0C4000028A15 /* CircleShapedView.swift */,
-				30B787E120BD73BA00F3BB4C /* RadialColorPreview.swift */,
 				3034756A20BC677000028A15 /* GradientView.swift */,
+				3049576E20C1B19800CEC32F /* ColorPreviewWithHex.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,14 +174,6 @@
 				30B787DB20BD646900F3BB4C /* BlueSlider.swift */,
 			);
 			path = ColorComponentSliderModels;
-			sourceTree = "<group>";
-		};
-		30EF527220BD42CD00E9E247 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				30EF527320BD431900E9E247 /* HSLColor.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,7 +266,6 @@
 				30EF527420BD431900E9E247 /* HSLColor.swift in Sources */,
 				30B787DE20BD647A00F3BB4C /* SaturationSlider.swift in Sources */,
 				305A235A20BB2D9100271A59 /* RadialHSBPalette.swift in Sources */,
-				30B787E220BD73BA00F3BB4C /* RadialColorPreview.swift in Sources */,
 				30B787DA20BD646000F3BB4C /* GreenSlider.swift in Sources */,
 				305A235C20BB4A7100271A59 /* UIViewExtension.swift in Sources */,
 				305A235620BB279800271A59 /* CGPointExtension.swift in Sources */,
@@ -290,6 +281,7 @@
 				3034757920BC9DBB00028A15 /* FlexColorPicker.swift in Sources */,
 				3034756520BC14A600028A15 /* CGRectExtension.swift in Sources */,
 				30B787DC20BD646900F3BB4C /* BlueSlider.swift in Sources */,
+				3049576F20C1B19800CEC32F /* ColorPreviewWithHex.swift in Sources */,
 				3034756D20BC768000028A15 /* UIViewWithCommonInit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,7 +29,7 @@
 open class FlexColorPicker: NSObject {
     open private(set) var colorControls = [ColorPickerControl]()
 
-    @IBOutlet public var radialPreview: RadialColorPreview?
+    @IBOutlet public var colorPreview: ColorPreviewWithHex?
 
     @IBOutlet open var radialHsbPalete: ColorPaletteControl? {
         didSet {
@@ -91,7 +91,7 @@ open class FlexColorPicker: NSObject {
         for control in colorControls.filter({ $0 !== control }) {
             control.selectedHSBColor = selectedColor
         }
-        radialPreview?.selectedColor = selectedColor.toUIColor()
+        colorPreview?.selectedColor = selectedColor.toUIColor()
     }
 
     open func sliderDidSet(newValue: ColorPickerControl?, oldValue: ColorPickerControl?) {

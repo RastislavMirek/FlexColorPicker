@@ -34,10 +34,3 @@ public protocol ColorPalette: class {
     func closestValidPoint(to: CGPoint) -> CGPoint
     func positionAndAlpha(for color: HSBColor) -> (position: CGPoint, foregroundImageAlpha: CGFloat)
 }
-
-extension ColorPalette {
-    @inline(__always)
-    public func colorComponentToUInt8(_ component: CGFloat) -> UInt8 {
-        return UInt8(max(0, min(255, 255 * component)))
-    }
-}

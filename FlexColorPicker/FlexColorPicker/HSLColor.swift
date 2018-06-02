@@ -82,7 +82,7 @@ extension HSBColor {
         return HSBColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
     }
 
-    /// Adjusts curent color by applying given RGB color components. Basically, this computes new HSL color based on given RGB values while it uses alpha value of this color. Also, if the RGB values given specify achromatic color the hue of current color is kept.
+    /// Computes new HSL color based on given RGB values while keeping alpha value of original color. Also, if the RGB values given specify achromatic color the hue of original color is kept.
     /// @param red Red component of new color specified as value from <0, 1>
     /// @param green Green component of new color specified as value from <0, 1>
     /// @param blue Blue component of new color specified as value from <0, 1>

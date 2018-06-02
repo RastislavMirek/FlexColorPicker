@@ -68,7 +68,8 @@ extension UIView {
         }
     }
 
-    var cornerRadius: CGFloat {
+    @objc
+    var cornerRadius_: CGFloat {
         get {
             return layer.cornerRadius
         }

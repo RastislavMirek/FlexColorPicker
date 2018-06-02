@@ -33,9 +33,9 @@ let defaultSelectedColor = UIColor.white.hsbColor
 @IBDesignable
 open class ColorPaletteControl: ColorControlWithThumbView, ColorPickerControl {
     /// The picture with hue and saturation color options.
-    open let foregroundImageView = UIImageView()
+    public let foregroundImageView = UIImageView()
     /// Black image in the background used to apply brightnes chnage by blending it with colorMapImageView.
-    open let backgroundImageView = UIImageView()
+    public let backgroundImageView = UIImageView()
 
     public var selectedHSBColor: HSBColor = defaultSelectedColor {
         didSet {
@@ -61,6 +61,7 @@ open class ColorPaletteControl: ColorControlWithThumbView, ColorPickerControl {
     }
 
     open override func commonInit() {
+        super.commonInit()
         for imageView in [backgroundImageView, foregroundImageView] {
             addAutolayoutFillingSubview(imageView)
             imageView.contentMode = .scaleAspectFit
