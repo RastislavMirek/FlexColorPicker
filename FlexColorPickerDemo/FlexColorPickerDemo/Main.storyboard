@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fTz-VN-FmS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fTz-VN-FmS">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -102,76 +102,54 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
-                                        <color key="value" red="1" green="0.74436461499999995" blue="0.67417946620000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="value" red="0.23277670149999999" green="0.91000002619999998" blue="0.74714094399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izc-c6-W8L" customClass="ColorSliderControl" customModule="FlexColorPicker">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izc-c6-W8L" customClass="BrightnessSliderControl" customModule="FlexColorPicker">
                                 <rect key="frame" x="16" y="497" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="jL3-NK-zg0"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
-                                        <color key="value" red="1" green="0.74436461499999995" blue="0.67417946620000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="value" red="0.23277670149999999" green="0.91000002619999998" blue="0.74714094399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoDaken" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZaV-oB-ccN" customClass="ColorSliderControl" customModule="FlexColorPicker">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZaV-oB-ccN" customClass="SaturationSliderControl" customModule="FlexColorPicker">
                                 <rect key="frame" x="16" y="542" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="KGr-8L-dKg"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
-                                        <color key="value" red="1" green="0.74436461499999995" blue="0.67417946620000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="value" red="0.23277670149999999" green="0.91000002619999998" blue="0.74714094399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showPercentage" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVD-iC-oOa" customClass="ColorSliderControl" customModule="FlexColorPicker">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EVD-iC-oOa" customClass="RedSliderControl" customModule="FlexColorPicker">
                                 <rect key="frame" x="16" y="587" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="34i-3O-s7d"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
-                                        <color key="value" red="1" green="0.74436461499999995" blue="0.67417946620000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="value" red="0.23277670149999999" green="0.91000002619999998" blue="0.74714094399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientViewHeight">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="expandOnTap" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkA-9B-dcq" customClass="ColorSliderControl" customModule="FlexColorPicker">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkA-9B-dcq" customClass="GreenSliderControl" customModule="FlexColorPicker">
                                 <rect key="frame" x="16" y="632" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="JAz-CH-UyQ"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
-                                        <color key="value" red="1" green="0.74436461499999995" blue="0.67417946620000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientViewHeight">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ht4-QW-N84" customClass="ColorSliderControl" customModule="FlexColorPicker">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ht4-QW-N84" customClass="BlueSliderControl" customModule="FlexColorPicker">
                                 <rect key="frame" x="16" y="677" width="343" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="4Mg-tR-Gyh"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
-                                        <color key="value" red="1" green="0.74436461499999995" blue="0.67417946620000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="gradientViewHeight">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -204,15 +182,20 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQK-up-aRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="xcv-ea-2XN" customClass="FlexColorPicker" customModule="FlexColorPicker">
+                <customObject id="acE-kv-rxs" customClass="FlexColorPicker" customModule="FlexColorPicker">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                            <color key="value" red="1" green="0.52120530610000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="blueSlider" destination="ht4-QW-N84" id="jhu-2l-qfm"/>
-                        <outlet property="brightnessSlider" destination="izc-c6-W8L" id="xuz-qj-ad0"/>
-                        <outlet property="colorPreview" destination="c10-CA-jaD" id="iTC-bx-WWd"/>
-                        <outlet property="greenSlider" destination="NkA-9B-dcq" id="9xu-FB-NDe"/>
-                        <outlet property="radialHsbPalete" destination="tg1-v3-YPR" id="u4p-sm-zFT"/>
-                        <outlet property="redSlider" destination="EVD-iC-oOa" id="San-9s-znp"/>
-                        <outlet property="saturationSlider" destination="ZaV-oB-ccN" id="aUA-TD-xEX"/>
+                        <outlet property="blueSlider" destination="ht4-QW-N84" id="B6q-cB-44J"/>
+                        <outlet property="brightnessSlider" destination="izc-c6-W8L" id="3hq-ro-zNr"/>
+                        <outlet property="colorPreview" destination="c10-CA-jaD" id="T2Q-nP-wTd"/>
+                        <outlet property="greenSlider" destination="NkA-9B-dcq" id="f2a-8y-Wfi"/>
+                        <outlet property="radialHsbPalete" destination="tg1-v3-YPR" id="Jmd-y2-1Z0"/>
+                        <outlet property="redSlider" destination="EVD-iC-oOa" id="2Kp-2p-OIp"/>
+                        <outlet property="saturationSlider" destination="ZaV-oB-ccN" id="gkS-wA-cwT"/>
                     </connections>
                 </customObject>
             </objects>

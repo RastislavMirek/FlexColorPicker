@@ -1,8 +1,8 @@
 //
-//  RedSlider.swift
+//  ComponentSliderControls.swift
 //  FlexColorPicker
 //
-//  Created by Rastislav Mirek on 29/5/18.
+//  Created by Rastislav Mirek on 2/6/18.
 //  
 //	MIT License
 //  Copyright (c) 2018 Rastislav Mirek
@@ -26,12 +26,39 @@
 //  SOFTWARE.
 //
 
-struct RedSlider: ColorSlider {
-    public func modifyColor(_ color: HSBColor, with value: CGFloat) -> HSBColor {
-        return color.withRed(value)
+@IBDesignable
+final public class SaturationSliderControl: ColorSliderControl {
+    public override func commonInit() {
+        colorSlider = SaturationSlider()
+        super.commonInit()
+    }
+}
+
+final public class BrightnessSliderControl: ColorSliderControl {
+    public override func commonInit() {
+        colorSlider = BrightnessSlider()
+        super.commonInit()
+    }
+}
+
+final public class RedSliderControl: ColorSliderControl {
+    public override func commonInit() {
+        colorSlider = RedSlider()
+        super.commonInit()
     }
 
-    public func valueAndGradient(for color: HSBColor) -> (value: CGFloat, gradientStart: UIColor, gradientEnd: UIColor) {
-        return (color.rgb.red, color.toUIColor().withRed(0), color.toUIColor().withRed(1))
+}
+
+final public class GreenSliderControl: ColorSliderControl {
+    public override func commonInit() {
+        colorSlider = GreenSlider()
+        super.commonInit()
+    }
+}
+
+final public class BlueSliderControl: ColorSliderControl {
+    public override func commonInit() {
+        colorSlider = BlueSlider()
+        super.commonInit()
     }
 }

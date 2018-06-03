@@ -26,6 +26,8 @@
 //  SOFTWARE.
 //
 
+import UIKit
+
 public protocol ColorPickerControl: class {
     var selectedHSBColor: HSBColor { get set }
     func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents)

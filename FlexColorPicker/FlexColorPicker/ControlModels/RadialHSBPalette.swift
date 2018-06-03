@@ -77,11 +77,7 @@ open class RadialHSBPalette: ColorPalette {
             }
         }
 
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-        let data = Data(bytes: imageData)
-        let mutableData = UnsafeMutableRawPointer.init(mutating: (data as NSData).bytes)
-        let context = CGContext(data: mutableData, width: ceiledDiameter, height: ceiledDiameter, bitsPerComponent: 8, bytesPerRow: 4 * ceiledDiameter, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: bitmapInfo.rawValue)
-        guard let cgImage = context?.makeImage() else {
+        guard let image = UIImage(rgbaBytes: imageData, width: ceiledDiameter, height: ceiledDiameter) else {
             return UIImage()
         }
 
@@ -89,7 +85,7 @@ open class RadialHSBPalette: ColorPalette {
         let imageRect = CGRect(x: 0,y: 0, width: diameter, height: diameter)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         UIBezierPath(ovalIn: imageRect).addClip()
-        UIImage(cgImage: cgImage).draw(in: imageRect)
+        image.draw(in: imageRect)
         defer {
             UIGraphicsEndImageContext()
         }
@@ -100,20 +96,9 @@ open class RadialHSBPalette: ColorPalette {
     }
 
     open func renderBackgroundImage() -> UIImage? {
-        let imageRect = CGRect(x: 0,y: 0, width: diameter, height: diameter)
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-
+        let imageSize = CGSize(width: diameter, height: diameter)
         UIColor.black.setFill()
-        let context = UIGraphicsGetCurrentContext()
-        context?.addPath(UIBezierPath(ovalIn: imageRect).cgPath)
-        context?.drawPath(using: .fill)
-        defer {
-            UIGraphicsEndImageContext()
-        }
-        if let image = UIGraphicsGetImageFromCurrentImageContext() {
-            return image
-        }
-        return UIImage()
+        return UIImage.drawImage(ofSize: imageSize, path: UIBezierPath(ovalIn: CGRect(origin: .zero, size: imageSize)))
     }
 
     open func closestValidPoint(to point: CGPoint) -> CGPoint {

@@ -49,13 +49,13 @@ open class ColorPaletteControl: ColorControlWithThumbView, ColorPickerControl {
     }
     open var colorPalete: ColorPalette = RadialHSBPalette() {
         didSet {
-            updatePaleteImages()
+            updatePaleteImagesAndThumb()
         }
     }
     open override var bounds: CGRect {
         didSet {
             if bounds.size != oldValue.size {
-                updatePaleteImages()
+                updatePaleteImagesAndThumb()
             }
         }
     }
@@ -66,16 +66,16 @@ open class ColorPaletteControl: ColorControlWithThumbView, ColorPickerControl {
             addAutolayoutFillingSubview(imageView)
             imageView.contentMode = .scaleAspectFit
         }
-        updatePaleteImages()
-        thumbView.frame = CGRect(center: colorPalete.positionAndAlpha(for: selectedHSBColor).position, size: thumbView.intrinsicContentSize)
-        thumbView.color = selectedHSBColor.toUIColor()
+        updatePaleteImagesAndThumb()
         addSubview(thumbView)
     }
 
-    open func updatePaleteImages() {
+    open func updatePaleteImagesAndThumb() {
         colorPalete.size = bounds.size
         foregroundImageView.image = colorPalete.renderForegroundImage()
         backgroundImageView.image = colorPalete.renderBackgroundImage()
+        thumbView.frame = CGRect(center: colorPalete.positionAndAlpha(for: selectedHSBColor).position, size: thumbView.intrinsicContentSize)
+        thumbView.color = selectedHSBColor.toUIColor()
     }
 
     open override func updateSelectedColor(at point: CGPoint) {

@@ -3,8 +3,8 @@
 //  FlexColorPicker
 //
 //  Created by Rastislav Mirek on 28/5/18.
-//  
-//	MIT License
+//
+//    MIT License
 //  Copyright (c) 2018 Rastislav Mirek
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,49 +26,57 @@
 //  SOFTWARE.
 //
 
-open class FlexColorPicker: NSObject {
+@IBDesignable
+internal class FlexColorPicker: NSObject {
     open private(set) var colorControls = [ColorPickerControl]()
 
     @IBOutlet public var colorPreview: ColorPreviewWithHex?
 
     @IBOutlet open var radialHsbPalete: ColorPaletteControl? {
         didSet {
-            oldValue?.remove(from: self)
-            radialHsbPalete?.add(to: self)
+            controlDidSet(newValue: radialHsbPalete, oldValue: oldValue)
         }
     }
 
-    @IBOutlet open var saturationSlider: ColorSliderControl? {
+    @IBOutlet open var saturationSlider: SaturationSliderControl? {
         didSet {
-            saturationSlider?.colorSlider = SaturationSlider()
-            sliderDidSet(newValue: saturationSlider, oldValue: oldValue)
+            controlDidSet(newValue: saturationSlider, oldValue: oldValue)
         }
     }
 
-    @IBOutlet open var brightnessSlider: ColorSliderControl? {
+    @IBOutlet open var brightnessSlider: BrightnessSliderControl? {
         didSet {
-            sliderDidSet(newValue: brightnessSlider, oldValue: oldValue)
+            controlDidSet(newValue: brightnessSlider, oldValue: oldValue)
         }
     }
 
-    @IBOutlet open var redSlider: ColorSliderControl? {
+    @IBOutlet open var redSlider: RedSliderControl? {
         didSet {
-            redSlider?.colorSlider = RedSlider()
-            sliderDidSet(newValue: redSlider, oldValue: oldValue)
+            controlDidSet(newValue: redSlider, oldValue: oldValue)
         }
     }
 
-    @IBOutlet open var greenSlider: ColorSliderControl? {
+    @IBOutlet open var greenSlider: GreenSliderControl? {
         didSet {
-            greenSlider?.colorSlider = GreenSlider()
-            sliderDidSet(newValue: greenSlider, oldValue: oldValue)
+            controlDidSet(newValue: greenSlider, oldValue: oldValue)
         }
     }
 
-    @IBOutlet open var blueSlider: ColorSliderControl? {
+    @IBOutlet open var blueSlider: BlueSliderControl? {
         didSet {
-            blueSlider?.colorSlider = BlueSlider()
-            sliderDidSet(newValue: blueSlider, oldValue: oldValue)
+            controlDidSet(newValue: blueSlider, oldValue: oldValue)
+        }
+    }
+
+    private(set) open var selectedHSBColor: HSBColor = defaultSelectedColor
+
+    @IBInspectable
+    public(set) open var selectedColor: UIColor {
+        get {
+            return selectedHSBColor.toUIColor()
+        }
+        set {
+            setColor(newValue.hsbColor, exceptControl: nil)
         }
     }
 
@@ -88,19 +96,25 @@ open class FlexColorPicker: NSObject {
             return
         }
         let selectedColor = control.selectedHSBColor
-        for control in colorControls.filter({ $0 !== control }) {
-            control.selectedHSBColor = selectedColor
+        setColor(selectedColor, exceptControl: control)
+    }
+
+    open func setColor(_ selectedColor: HSBColor, exceptControl control: ColorPickerControl?) {
+        for c in colorControls where c !== control {
+            c.selectedHSBColor = selectedColor
         }
+        selectedHSBColor = selectedColor
         colorPreview?.selectedColor = selectedColor.toUIColor()
     }
 
-    open func sliderDidSet(newValue: ColorPickerControl?, oldValue: ColorPickerControl?) {
+    open func controlDidSet(newValue: ColorPickerControl?, oldValue: ColorPickerControl?) {
         oldValue?.remove(from: self)
+        newValue?.selectedHSBColor = selectedHSBColor
         newValue?.add(to: self)
     }
 }
 
-public extension ColorPickerControl {
+extension ColorPickerControl {
     func add(to picker: FlexColorPicker) {
         picker.addControl(self)
     }

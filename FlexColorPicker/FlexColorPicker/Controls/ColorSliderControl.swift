@@ -60,6 +60,7 @@ open class ColorSliderControl: ColorControlWithThumbView, ColorPickerControl {
             updateThumbAndGradient()
         }
     }
+
     open var colorSlider: ColorSlider = BrightnessSlider() {
         didSet {
             updateThumbAndGradient()

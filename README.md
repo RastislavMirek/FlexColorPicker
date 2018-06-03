@@ -9,8 +9,6 @@ Use cases supported:
 3. framework that allows adding your own sliders, palettes &amp; previews or modifying existing ones without changing the code of the library
 4. combine 3 approaches above freely to get level of customisation that you need
 
-
-
 Features
 - life synchronization of all color picker components 
 - storyboards support with realistic design time preview and customisation directly from storyboard
@@ -22,7 +20,9 @@ Features
 - well-thought animations where appropriate
 - to add your own slider/palete just by implementing a protocol
 - or reuse existing slider/palete for different color model by implementing another protocol
-- all key classes are opened & ready for extending with many well-though override points 
+- all key classes are opened &amp ready for extending with many override points 
+
+Pull requests are wellcomed.
 
 Thanks
 Visual of sliders inspired by popular Objective-C library HRColorPicker.  
