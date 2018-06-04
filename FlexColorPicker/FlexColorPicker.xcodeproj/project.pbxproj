@@ -18,11 +18,12 @@
 		3034756920BC66E900028A15 /* ColorSliderControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034756820BC66E900028A15 /* ColorSliderControl.swift */; };
 		3034756B20BC677000028A15 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034756A20BC677000028A15 /* GradientView.swift */; };
 		3034756D20BC768000028A15 /* UIViewWithCommonInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034756C20BC768000028A15 /* UIViewWithCommonInit.swift */; };
-		3034756F20BC782D00028A15 /* UIControlWithCommonInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034756E20BC782D00028A15 /* UIControlWithCommonInit.swift */; };
-		3034757120BC7EE500028A15 /* ColorPickerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034757020BC7EE500028A15 /* ColorPickerControl.swift */; };
+		3034756F20BC782D00028A15 /* AbstractColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034756E20BC782D00028A15 /* AbstractColorControl.swift */; };
+		3034757120BC7EE500028A15 /* ColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034757020BC7EE500028A15 /* ColorControl.swift */; };
 		3034757320BC81CC00028A15 /* ColorSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034757220BC81CC00028A15 /* ColorSlider.swift */; };
 		3034757720BC8D1300028A15 /* ControlWithThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034757620BC8D1300028A15 /* ControlWithThumbView.swift */; };
 		3034757920BC9DBB00028A15 /* FlexColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034757820BC9DBB00028A15 /* FlexColorPicker.swift */; };
+		303ECED520C4A201005BB029 /* FlexColorPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303ECED420C4A201005BB029 /* FlexColorPickerDelegate.swift */; };
 		3049576F20C1B19800CEC32F /* ColorPreviewWithHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3049576E20C1B19800CEC32F /* ColorPreviewWithHex.swift */; };
 		305A235020BB179000271A59 /* FlexColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A234F20BB179000271A59 /* FlexColorPickerController.swift */; };
 		305A235220BB181500271A59 /* ColorPaletteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A235120BB181500271A59 /* ColorPaletteControl.swift */; };
@@ -33,7 +34,6 @@
 		305A235C20BB4A7100271A59 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A235B20BB4A7100271A59 /* UIViewExtension.swift */; };
 		305A239720BB837B00271A59 /* CGSizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A239620BB837B00271A59 /* CGSizeExtensions.swift */; };
 		306F04A420C2F6F900ABEB71 /* RectangularHSBPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306F04A320C2F6F900ABEB71 /* RectangularHSBPalette.swift */; };
-		30B787E020BD737E00F3BB4C /* ColorPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B787DF20BD737E00F3BB4C /* ColorPreview.swift */; };
 		30EF527420BD431900E9E247 /* HSLColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF527320BD431900E9E247 /* HSLColor.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,11 +51,12 @@
 		3034756820BC66E900028A15 /* ColorSliderControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSliderControl.swift; sourceTree = "<group>"; };
 		3034756A20BC677000028A15 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		3034756C20BC768000028A15 /* UIViewWithCommonInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewWithCommonInit.swift; sourceTree = "<group>"; };
-		3034756E20BC782D00028A15 /* UIControlWithCommonInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlWithCommonInit.swift; sourceTree = "<group>"; };
-		3034757020BC7EE500028A15 /* ColorPickerControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerControl.swift; sourceTree = "<group>"; };
+		3034756E20BC782D00028A15 /* AbstractColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractColorControl.swift; sourceTree = "<group>"; };
+		3034757020BC7EE500028A15 /* ColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorControl.swift; sourceTree = "<group>"; };
 		3034757220BC81CC00028A15 /* ColorSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSlider.swift; sourceTree = "<group>"; };
 		3034757620BC8D1300028A15 /* ControlWithThumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlWithThumbView.swift; sourceTree = "<group>"; };
 		3034757820BC9DBB00028A15 /* FlexColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlexColorPicker.swift; path = ../../FlexColorPickerDemo/FlexColorPickerDemo/FlexColorPicker.swift; sourceTree = "<group>"; };
+		303ECED420C4A201005BB029 /* FlexColorPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexColorPickerDelegate.swift; sourceTree = "<group>"; };
 		3049576E20C1B19800CEC32F /* ColorPreviewWithHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPreviewWithHex.swift; sourceTree = "<group>"; };
 		305A234F20BB179000271A59 /* FlexColorPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexColorPickerController.swift; sourceTree = "<group>"; };
 		305A235120BB181500271A59 /* ColorPaletteControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPaletteControl.swift; sourceTree = "<group>"; };
@@ -66,7 +67,6 @@
 		305A235B20BB4A7100271A59 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		305A239620BB837B00271A59 /* CGSizeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeExtensions.swift; sourceTree = "<group>"; };
 		306F04A320C2F6F900ABEB71 /* RectangularHSBPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularHSBPalette.swift; sourceTree = "<group>"; };
-		30B787DF20BD737E00F3BB4C /* ColorPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPreview.swift; sourceTree = "<group>"; };
 		30EF527320BD431900E9E247 /* HSLColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +100,7 @@
 		3004B92120BB055100A0F93B /* FlexColorPicker */ = {
 			isa = PBXGroup;
 			children = (
+				303ECED420C4A201005BB029 /* FlexColorPickerDelegate.swift */,
 				305A234F20BB179000271A59 /* FlexColorPickerController.swift */,
 				3034757820BC9DBB00028A15 /* FlexColorPicker.swift */,
 				30EF527320BD431900E9E247 /* HSLColor.swift */,
@@ -117,12 +118,10 @@
 		3034755C20BC0BD600028A15 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				30B787DF20BD737E00F3BB4C /* ColorPreview.swift */,
 				3034756C20BC768000028A15 /* UIViewWithCommonInit.swift */,
 				3034755820BC041700028A15 /* ColorPickerThumbView.swift */,
 				3034756020BC0C4000028A15 /* CircleShapedView.swift */,
 				3034756A20BC677000028A15 /* GradientView.swift */,
-				3049576E20C1B19800CEC32F /* ColorPreviewWithHex.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -130,9 +129,10 @@
 		3034755F20BC0C1300028A15 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				3034757020BC7EE500028A15 /* ColorPickerControl.swift */,
-				3034756E20BC782D00028A15 /* UIControlWithCommonInit.swift */,
+				3034757020BC7EE500028A15 /* ColorControl.swift */,
+				3034756E20BC782D00028A15 /* AbstractColorControl.swift */,
 				3034757620BC8D1300028A15 /* ControlWithThumbView.swift */,
+				3049576E20C1B19800CEC32F /* ColorPreviewWithHex.swift */,
 				305A235120BB181500271A59 /* ColorPaletteControl.swift */,
 				3034756820BC66E900028A15 /* ColorSliderControl.swift */,
 				300A24E220C30E8100BA8874 /* ComponentSliderControls.swift */,
@@ -246,10 +246,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				305A235420BB1A8200271A59 /* UIColorExtension.swift in Sources */,
-				3034757120BC7EE500028A15 /* ColorPickerControl.swift in Sources */,
+				3034757120BC7EE500028A15 /* ColorControl.swift in Sources */,
 				306F04A420C2F6F900ABEB71 /* RectangularHSBPalette.swift in Sources */,
 				305A235020BB179000271A59 /* FlexColorPickerController.swift in Sources */,
-				3034756F20BC782D00028A15 /* UIControlWithCommonInit.swift in Sources */,
+				3034756F20BC782D00028A15 /* AbstractColorControl.swift in Sources */,
 				3034757320BC81CC00028A15 /* ColorSlider.swift in Sources */,
 				305A235820BB2C8400271A59 /* ColorPalette.swift in Sources */,
 				30EF527420BD431900E9E247 /* HSLColor.swift in Sources */,
@@ -262,13 +262,13 @@
 				305A235220BB181500271A59 /* ColorPaletteControl.swift in Sources */,
 				300A24DF20C3069600BA8874 /* UIImageExtension.swift in Sources */,
 				300A24E320C30E8100BA8874 /* ComponentSliderControls.swift in Sources */,
-				30B787E020BD737E00F3BB4C /* ColorPreview.swift in Sources */,
 				3034755920BC041700028A15 /* ColorPickerThumbView.swift in Sources */,
 				3034756B20BC677000028A15 /* GradientView.swift in Sources */,
 				3034756120BC0C4000028A15 /* CircleShapedView.swift in Sources */,
 				300A24E120C30D7400BA8874 /* ComponentSliderModels.swift in Sources */,
 				3034757920BC9DBB00028A15 /* FlexColorPicker.swift in Sources */,
 				3034756520BC14A600028A15 /* CGRectExtension.swift in Sources */,
+				303ECED520C4A201005BB029 /* FlexColorPickerDelegate.swift in Sources */,
 				3049576F20C1B19800CEC32F /* ColorPreviewWithHex.swift in Sources */,
 				3034756D20BC768000028A15 /* UIViewWithCommonInit.swift in Sources */,
 			);

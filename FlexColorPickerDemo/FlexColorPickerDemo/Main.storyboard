@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fTz-VN-FmS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fTz-VN-FmS">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -62,7 +62,9 @@
                             <outlet property="delegate" destination="dXB-46-rD8" id="txZ-kr-FIo"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Flex Color Picker Demo" id="5yB-B9-cFb"/>
+                    <navigationItem key="navigationItem" title="Flex Color Picker Demo" id="5yB-B9-cFb">
+                        <barButtonItem key="backBarButtonItem" title="Demo" id="SpW-FY-olY"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Z9-v2-aZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -76,6 +78,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tg1-v3-YPR" customClass="ColorPaletteControl" customModule="FlexColorPicker">
+                                <rect key="frame" x="16" y="138" width="343" height="343"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="tg1-v3-YPR" secondAttribute="height" id="st8-l7-ftW"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                        <color key="value" red="0.23277670149999999" green="0.91000002619999998" blue="0.74714094399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c10-CA-jaD" customClass="ColorPreviewWithHex" customModule="FlexColorPicker">
                                 <rect key="frame" x="16" y="104" width="70" height="70"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -92,18 +106,6 @@
                                         <real key="value" value="999"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="displayHex" value="NO"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tg1-v3-YPR" customClass="ColorPaletteControl" customModule="FlexColorPicker">
-                                <rect key="frame" x="16" y="138" width="343" height="343"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="tg1-v3-YPR" secondAttribute="height" id="st8-l7-ftW"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
-                                        <color key="value" red="0.23277670149999999" green="0.91000002619999998" blue="0.74714094399999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izc-c6-W8L" customClass="BrightnessSliderControl" customModule="FlexColorPicker">

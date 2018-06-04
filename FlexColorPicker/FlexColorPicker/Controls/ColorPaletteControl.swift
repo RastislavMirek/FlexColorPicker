@@ -31,13 +31,13 @@ import UIKit
 let defaultSelectedColor = UIColor.white.hsbColor
 
 @IBDesignable
-open class ColorPaletteControl: ColorControlWithThumbView, ColorPickerControl {
+open class ColorPaletteControl: ColorControlWithThumbView {
     /// The picture with hue and saturation color options.
     public let foregroundImageView = UIImageView()
     /// Black image in the background used to apply brightnes chnage by blending it with colorMapImageView.
     public let backgroundImageView = UIImageView()
 
-    public var selectedHSBColor: HSBColor = defaultSelectedColor {
+    open override var selectedHSBColor: HSBColor {
         didSet {
             thumbView.color = selectedHSBColor.toUIColor()
             if oldValue != selectedHSBColor {
@@ -47,6 +47,7 @@ open class ColorPaletteControl: ColorControlWithThumbView, ColorPickerControl {
             }
         }
     }
+    
     open var colorPalete: ColorPalette = RadialHSBPalette() {
         didSet {
             updatePaleteImagesAndThumb()
@@ -83,17 +84,5 @@ open class ColorPaletteControl: ColorControlWithThumbView, ColorPickerControl {
         selectedHSBColor = colorPalete.modifyColor(selectedHSBColor, with: pointInside)
         thumbView.frame = CGRect(center: pointInside, size: thumbView.intrinsicContentSize)
         sendActions(for: .valueChanged)
-    }
-}
-
-extension ColorPaletteControl {
-    @IBInspectable
-    var selectedColor: UIColor {
-        get {
-            return selectedHSBColor.toUIColor()
-        }
-        set {
-            selectedHSBColor = newValue.hsbColor
-        }
     }
 }

@@ -32,21 +32,11 @@ private let defaultGradientViewHeight: CGFloat = 15
 internal let defaultBorderWidth: CGFloat = 1 / UIScreen.main.scale
 
 @IBDesignable
-open class ColorSliderControl: ColorControlWithThumbView, ColorPickerControl {
+open class ColorSliderControl: ColorControlWithThumbView {
 
     private var gradientViewHeightConstraint: NSLayoutConstraint?
     public let gradientBackgroundView = UIImageView()
     public let gradientView = GradientView()
-
-    @IBInspectable
-    public var selectedColor: UIColor {
-        get {
-            return selectedHSBColor.toUIColor()
-        }
-        set {
-            selectedHSBColor = newValue.hsbColor
-        }
-    }
     
     @IBInspectable
     open var gradientHeight: CGFloat = defaultGradientViewHeight {
@@ -55,7 +45,7 @@ open class ColorSliderControl: ColorControlWithThumbView, ColorPickerControl {
         }
     }
 
-    open var selectedHSBColor: HSBColor = defaultSelectedColor {
+    open override var selectedHSBColor: HSBColor {
         didSet {
             updateThumbAndGradient()
         }

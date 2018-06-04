@@ -28,8 +28,8 @@
 
 import UIKit
 
-public protocol ColorPickerControl: class {
+public protocol ColorControl: class {
     var selectedHSBColor: HSBColor { get set }
-    func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControlEvents)
-    func removeTarget(_ target: Any?, action: Selector?, for controlEvents: UIControlEvents)
+    func addTarget(_ target: Any?, action: Selector, for: UIControlEvents)
+    func removeTarget(_ target: Any?, action: Selector?, for: UIControlEvents)
 }

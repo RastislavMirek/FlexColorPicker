@@ -28,7 +28,19 @@
 
 import UIKit
 
-open class UIControlWithCommonInit: UIControl {
+open class AbstractColorControl: UIControl, ColorControl {
+    open var selectedHSBColor: HSBColor = defaultSelectedColor
+
+    @IBInspectable
+    public var selectedColor: UIColor {
+        get {
+            return selectedHSBColor.toUIColor()
+        }
+        set {
+            selectedHSBColor = newValue.hsbColor
+        }
+    }
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -51,5 +63,10 @@ open class UIControlWithCommonInit: UIControl {
 
     /// This empty method is override point for initialization tasks that needs to be carried no matter how the view is constructed (e. g. via Interface Builder or from code).
     open func commonInit() {
+        fatalError("commonInit() must be overriden")
+    }
+
+    func locationForTouches(_ touches: Set<UITouch>) -> CGPoint? {
+        return touches.first?.location(in: self)
     }
 }

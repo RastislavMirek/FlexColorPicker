@@ -16,13 +16,13 @@ Features
 - freely combine, leave out or add your own picker components
 - great UX and simplistic yet customisable design
 - extremly fast, no performance issues (unlike some older libraries)
-- /* fully documented  */, clean and easy to understand code
+- /* fully documented - not yet  */, clean and easy to understand code
 - well-thought animations where appropriate
 - to add your own slider/palete just by implementing a protocol
 - or reuse existing slider/palete for different color model by implementing another protocol
 - all key classes are opened &amp ready for extending with many override points 
 
-Pull requests are wellcomed.
+Suggestions, feedback & pull requests are very wellcomed.
 
 Thanks
 Visual of sliders inspired by popular Objective-C library HRColorPicker.  

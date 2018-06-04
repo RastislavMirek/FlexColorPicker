@@ -26,8 +26,7 @@
 //  SOFTWARE.
 //
 
-@objc
-public class HSBColor: NSObject { //cannot be struct becuase it must be @objc
+public struct HSBColor { //cannot be struct becuase it must be @objc
     /// Hue value in interval <0, 1>
     public let hue: CGFloat
     /// Saturation value in interval <0, 1>
@@ -51,7 +50,7 @@ extension HSBColor {
         return rgbFrom(hue: hue, saturation: saturation, brightness: brightness)
     }
 
-    convenience init(color: UIColor) {
+    init(color: UIColor) {
         var hue: CGFloat = 0, saturation: CGFloat = 0, brightness: CGFloat = 0, alpha: CGFloat = 0
         color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
         self.init(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
@@ -135,8 +134,8 @@ extension HSBColor {
 }
 
 private let multiplyForHashing: CGFloat = 255
-extension HSBColor {
-    public override var hashValue: Int {
+extension HSBColor: Hashable {
+    public var hashValue: Int {
         var hash = 17
         hash = 31 * hash + Int(hue * multiplyForHashing)
         hash = 31 * hash + Int(saturation * multiplyForHashing)

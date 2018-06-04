@@ -1,8 +1,8 @@
 //
-//  ColorPreview.swift
+//  FlexColorPickerDelegate.swift
 //  FlexColorPicker
 //
-//  Created by Rastislav Mirek on 29/5/18.
+//  Created by Rastislav Mirek on 4/6/18.
 //  
 //	MIT License
 //  Copyright (c) 2018 Rastislav Mirek
@@ -26,8 +26,7 @@
 //  SOFTWARE.
 //
 
-import UIKit
-
-protocol ColorPreview {
-    var selectedColor: UIColor { get set }
+public protocol FlexColorPickerDelegate: class {
+    func colorPicker(_ colorPicker: FlexColorPicker, selectedColor: UIColor, usingControl: ColorControl)
+    func colorPicker(_ colorPicker: FlexColorPicker, confirmedColor: UIColor, usingControl: ColorControl)
 }

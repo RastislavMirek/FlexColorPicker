@@ -28,11 +28,12 @@
 
 import UIKit
 
-open class ColorControlWithThumbView: UIControlWithCommonInit {
+open class ColorControlWithThumbView: AbstractColorControl {
     open let thumbView = ColorPickerThumbView()
 
     /// Abstract method (just override point). It is called everytime the touch is detected in new location. The thumbView should be moved accordingly and the color should be changed here.
     open func updateSelectedColor(at point: CGPoint) {
+        fatalError("updateSelectedColor(at:) must be overriden")
     }
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -41,6 +42,7 @@ open class ColorControlWithThumbView: UIControlWithCommonInit {
         }
         thumbView.setExpanded(true, animated: true)
         updateSelectedColor(at: location)
+        super.touchesBegan(touches, with: event)
     }
 
     open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -48,6 +50,7 @@ open class ColorControlWithThumbView: UIControlWithCommonInit {
             return
         }
         updateSelectedColor(at: location)
+        super.touchesMoved(touches, with: event)
     }
 
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -56,6 +59,7 @@ open class ColorControlWithThumbView: UIControlWithCommonInit {
         }
         updateSelectedColor(at: location)
         thumbView.setExpanded(false, animated: true)
+         super.touchesEnded(touches, with: event)
     }
 
     open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -64,9 +68,6 @@ open class ColorControlWithThumbView: UIControlWithCommonInit {
         }
         updateSelectedColor(at: location)
         thumbView.setExpanded(false, animated: true)
-    }
-
-    private func locationForTouches(_ touches: Set<UITouch>) -> CGPoint? {
-        return touches.first?.location(in: self)
+         super.touchesCancelled(touches, with: event)
     }
 }

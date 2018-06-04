@@ -27,10 +27,15 @@
 //
 
 @IBDesignable
-internal class FlexColorPicker: NSObject {
-    open private(set) var colorControls = [ColorPickerControl]()
+open class FlexColorPicker: NSObject {
+    public private(set) var colorControls = [ColorControl]()
+    open weak var delegate: FlexColorPickerDelegate?
 
-    @IBOutlet public var colorPreview: ColorPreviewWithHex?
+    @IBOutlet public var colorPreview: ColorPreviewWithHex? {
+        didSet {
+            controlDidSet(newValue: colorPreview, oldValue: oldValue)
+        }
+    }
 
     @IBOutlet open var radialHsbPalete: ColorPaletteControl? {
         didSet {
@@ -68,10 +73,28 @@ internal class FlexColorPicker: NSObject {
         }
     }
 
+//    @IBOutlet open var customControl1: AbstractColorControl? {
+//        didSet {
+//            controlDidSet(newValue: customControl1, oldValue: oldValue)
+//        }
+//    }
+//
+//    @IBOutlet open var customControl2: AbstractColorControl? {
+//        didSet {
+//            controlDidSet(newValue: customControl2, oldValue: oldValue)
+//        }
+//    }
+//
+//    @IBOutlet open var customControl3: AbstractColorControl? {
+//        didSet {
+//            controlDidSet(newValue: customControl3, oldValue: oldValue)
+//        }
+//    }
+
     private(set) open var selectedHSBColor: HSBColor = defaultSelectedColor
 
     @IBInspectable
-    public(set) open var selectedColor: UIColor {
+    open var selectedColor: UIColor {
         get {
             return selectedHSBColor.toUIColor()
         }
@@ -80,41 +103,53 @@ internal class FlexColorPicker: NSObject {
         }
     }
 
-    open func addControl(_ colorControl: ColorPickerControl) {
+    open func addControl(_ colorControl: ColorControl) {
         colorControls.append(colorControl)
         colorControl.addTarget(self, action: #selector(colorPicked(by:)), for: .valueChanged)
+        colorControl.addTarget(self, action: #selector(colorConfirmed(by:)), for: .primaryActionTriggered)
     }
 
-    open func removeControl(_ colorControl: ColorPickerControl) {
+    open func removeControl(_ colorControl: ColorControl) {
         colorControls = colorControls.filter { $0 !== colorControl}
-        colorControl.removeTarget(self, action: #selector(colorPicked(by:)), for: .valueChanged)
+        colorControl.removeTarget(self, action: nil, for: [.valueChanged, .primaryActionTriggered])
     }
 
     @objc
     open func colorPicked(by control: Any?) {
-        guard let control = control as? ColorPickerControl else {
+        guard let control = control as? ColorControl else {
             return
         }
         let selectedColor = control.selectedHSBColor
         setColor(selectedColor, exceptControl: control)
+        delegate?.colorPicker(self, selectedColor: self.selectedColor, usingControl: control)
     }
 
-    open func setColor(_ selectedColor: HSBColor, exceptControl control: ColorPickerControl?) {
+    @objc
+    open func colorConfirmed(by control: Any?) {
+        guard let control = control as? ColorControl else {
+            return
+        }
+        if selectedHSBColor != control.selectedHSBColor {
+            colorPicked(by: control)
+        }
+        delegate?.colorPicker(self, confirmedColor: selectedColor, usingControl: control)
+    }
+
+    open func setColor(_ selectedColor: HSBColor, exceptControl control: ColorControl?) {
         for c in colorControls where c !== control {
             c.selectedHSBColor = selectedColor
         }
         selectedHSBColor = selectedColor
-        colorPreview?.selectedColor = selectedColor.toUIColor()
     }
 
-    open func controlDidSet(newValue: ColorPickerControl?, oldValue: ColorPickerControl?) {
+    open func controlDidSet(newValue: ColorControl?, oldValue: ColorControl?) {
         oldValue?.remove(from: self)
         newValue?.selectedHSBColor = selectedHSBColor
         newValue?.add(to: self)
     }
 }
 
-extension ColorPickerControl {
+extension ColorControl {
     func add(to picker: FlexColorPicker) {
         picker.addControl(self)
     }

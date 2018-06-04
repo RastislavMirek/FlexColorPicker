@@ -32,16 +32,19 @@ private let hexFont = UIFont.systemFont(ofSize: 12)
 private let defaultHexLabelHeight: CGFloat = 20
 private let defaultCornerradius: CGFloat = 5
 
+private let confirmAnimationScaleRatio: CGFloat = 0.87
+private let confirmAnimationSpringDamping: CGFloat = 0.7
+private let confirmAnimationDuration = 0.3
+
 @IBDesignable
-open class ColorPreviewWithHex: UIViewWithCommonInit {
+open class ColorPreviewWithHex: AbstractColorControl {
     private var labelHeightConstraint = NSLayoutConstraint()
     public let colorView = UIView()
     public let hexLabel = UILabel()
 
-    @IBInspectable
-    public var selectedColor: UIColor = defaultSelectedColor.toUIColor() {
+    open override var selectedHSBColor: HSBColor {
         didSet {
-            updateSelectedColor(with: selectedColor)
+            updateSelectedColor(with: selectedHSBColor)
         }
     }
 
@@ -80,6 +83,9 @@ open class ColorPreviewWithHex: UIViewWithCommonInit {
         }
     }
 
+    @IBInspectable
+    public var tapToConfirm: Bool = true
+
     open override var bounds: CGRect {
         didSet {
             updateCornerRadius()
@@ -115,7 +121,7 @@ open class ColorPreviewWithHex: UIViewWithCommonInit {
         hexLabel.textAlignment = .center
         hexLabel.font = hexFont
         setDefaultBorder(on: borderOn)
-        updateSelectedColor(with: selectedColor) // set default color if it is not set, otherwise keep color set in storyboard via IBInspectable
+        updateSelectedColor(with: selectedHSBColor) // set default color if it is not set, otherwise keep color set in storyboard via IBInspectable
         updateCornerRadius()
     }
 
@@ -124,13 +130,36 @@ open class ColorPreviewWithHex: UIViewWithCommonInit {
         borderWidth = on ? defaultBorderWidth : 0
     }
 
+    open func updateSelectedColor(with selectedColor: HSBColor) {
+        let color = selectedColor.toUIColor()
+        colorView.backgroundColor = color
+        hexLabel.text = "#\(color.hexValue())"
+    }
+
     private func updateLabelHeight() {
         labelHeightConstraint.constant = displayHex ? hexHeight : 0
     }
 
-    private func updateSelectedColor(with selectedColor: UIColor) {
-        colorView.backgroundColor = selectedColor
-        hexLabel.text = "#\(selectedColor.hexValue())"
+    private func handleTouchDown() {
+        if !tapToConfirm {
+            return
+        }
+        UIView.animate(withDuration: confirmAnimationDuration, delay: 0, usingSpringWithDamping: confirmAnimationSpringDamping, initialSpringVelocity: 0, options: [], animations: {
+            self.layer.transform = CATransform3DMakeScale(confirmAnimationScaleRatio, confirmAnimationScaleRatio, 1)
+        }, completion: nil)
+    }
+
+    private func handleTouchUp(valid: Bool) {
+        if !tapToConfirm {
+            return
+        }
+        UIView.animate(withDuration: confirmAnimationDuration, delay: 0, usingSpringWithDamping: confirmAnimationSpringDamping, initialSpringVelocity: 0, options: [], animations:  {
+            self.layer.transform = CATransform3DIdentity
+        }) { _ in
+            if valid {
+                self.sendActions(for: .primaryActionTriggered)
+            }
+        }
     }
 
     private func updateCornerRadius() {
@@ -138,5 +167,28 @@ open class ColorPreviewWithHex: UIViewWithCommonInit {
         if cornerRadius_ > 0 {
             clipsToBounds = true
         }
+    }
+}
+
+extension ColorPreviewWithHex {
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let location = locationForTouches(touches), hitTest(location, with: event) != nil else {
+            return
+        }
+        handleTouchDown()
+        super.touchesBegan(touches, with: event)
+    }
+
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let location = locationForTouches(touches) else {
+            return
+        }
+        handleTouchUp(valid: hitTest(location, with: event) != nil)
+        super.touchesEnded(touches, with: event)
+    }
+
+    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        handleTouchUp(valid: false)
+        super.touchesCancelled(touches, with: event)
     }
 }
