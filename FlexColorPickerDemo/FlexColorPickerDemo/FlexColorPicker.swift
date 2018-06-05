@@ -26,8 +26,7 @@
 //  SOFTWARE.
 //
 
-@IBDesignable
-open class FlexColorPicker: NSObject {
+open class FlexColorPicker {
     public private(set) var colorControls = [ColorControl]()
     open weak var delegate: FlexColorPickerDelegate?
 
@@ -37,9 +36,9 @@ open class FlexColorPicker: NSObject {
         }
     }
 
-    @IBOutlet open var radialHsbPalete: ColorPaletteControl? {
+    @IBOutlet open var radialHsbPalette: ColorPaletteControl? {
         didSet {
-            controlDidSet(newValue: radialHsbPalete, oldValue: oldValue)
+            controlDidSet(newValue: radialHsbPalette, oldValue: oldValue)
         }
     }
 

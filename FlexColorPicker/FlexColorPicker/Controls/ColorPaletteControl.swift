@@ -42,7 +42,7 @@ open class ColorPaletteControl: ColorControlWithThumbView {
             thumbView.color = selectedHSBColor.toUIColor()
             if oldValue != selectedHSBColor {
                 let (position, foregroundAlpha) = colorPalete.positionAndAlpha(for: selectedHSBColor)
-                thumbView.frame = CGRect(center: position, size: thumbView.intrinsicContentSize)
+                updateThumbPosition(position: position)
                 foregroundImageView.alpha = foregroundAlpha
             }
         }
@@ -61,28 +61,54 @@ open class ColorPaletteControl: ColorControlWithThumbView {
         }
     }
 
+    open override var contentMode: UIViewContentMode {
+        didSet {
+            updateContentMode()
+            updateThumbPosition(position: colorPalete.positionAndAlpha(for: selectedHSBColor).position)
+        }
+    }
+
     open override func commonInit() {
         super.commonInit()
-        for imageView in [backgroundImageView, foregroundImageView] {
-            addAutolayoutFillingSubview(imageView)
-            imageView.contentMode = .scaleAspectFit
-        }
-        updatePaleteImagesAndThumb()
+        addAutolayoutFillingSubview(backgroundImageView)
+        backgroundImageView.addAutolayoutFillingSubview(foregroundImageView)
+        updateContentMode()
         addSubview(thumbView)
+        updatePaleteImagesAndThumb()
     }
 
     open func updatePaleteImagesAndThumb() {
         colorPalete.size = bounds.size
         foregroundImageView.image = colorPalete.renderForegroundImage()
         backgroundImageView.image = colorPalete.renderBackgroundImage()
-        thumbView.frame = CGRect(center: colorPalete.positionAndAlpha(for: selectedHSBColor).position, size: thumbView.intrinsicContentSize)
+        assert(foregroundImageView.image!.size.width <= bounds.size.width && foregroundImageView.image!.size.height <= bounds.size.height, "Size of rendered image must be smaller or equal specified palette size")
+        assert(backgroundImageView.image == nil || foregroundImageView.image?.size == backgroundImageView.image?.size, "foreground and background images rendered must have same size")
+        updateContentMode()
+        updateThumbPosition(position: colorPalete.positionAndAlpha(for: selectedHSBColor).position)
         thumbView.color = selectedHSBColor.toUIColor()
     }
 
+    open func convertToImageCoordinates(point: CGPoint) -> CGPoint {
+        return foregroundImageView.convertToImageSpace(point: foregroundImageView.convert(point, from: self), withBoundsSize: bounds.size)
+    }
+
+    open func convertFromImageCoordinates(point: CGPoint) -> CGPoint {
+        return foregroundImageView.convert(foregroundImageView.convertFromImageSpace(point: point, withBoundsSize: bounds.size), to: self)
+    }
+
     open override func updateSelectedColor(at point: CGPoint) {
-        let pointInside = colorPalete.closestValidPoint(to: point)
+        let pointInside = colorPalete.closestValidPoint(to: convertToImageCoordinates(point: point))
         selectedHSBColor = colorPalete.modifyColor(selectedHSBColor, with: pointInside)
-        thumbView.frame = CGRect(center: pointInside, size: thumbView.intrinsicContentSize)
+        updateThumbPosition(position: pointInside)
         sendActions(for: .valueChanged)
+    }
+
+    private func updateThumbPosition(position: CGPoint) {
+        thumbView.frame = CGRect(center: convertFromImageCoordinates(point: position), size: thumbView.intrinsicContentSize)
+    }
+
+    private func updateContentMode() {
+        backgroundImageView.contentMode = contentMode
+        foregroundImageView.contentMode = contentMode
     }
 }

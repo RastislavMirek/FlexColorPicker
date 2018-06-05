@@ -31,11 +31,16 @@ import UIKit
 public class CircleShapedView: UIViewWithCommonInit {
     public override var bounds: CGRect {
         didSet {
-            cornerRadius_ = bounds.height / 2
+            updateCornerRadius()
         }
     }
 
     public override func commonInit() {
-        cornerRadius_ = bounds.height / 2
+        super.commonInit()
+        updateCornerRadius()
+    }
+
+    private func updateCornerRadius() {
+        cornerRadius_ = min(bounds.height, bounds.width) / 2
     }
 }

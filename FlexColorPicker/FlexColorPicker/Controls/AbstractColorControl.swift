@@ -63,7 +63,6 @@ open class AbstractColorControl: UIControl, ColorControl {
 
     /// This empty method is override point for initialization tasks that needs to be carried no matter how the view is constructed (e. g. via Interface Builder or from code).
     open func commonInit() {
-        fatalError("commonInit() must be overriden")
     }
 
     func locationForTouches(_ touches: Set<UITouch>) -> CGPoint? {

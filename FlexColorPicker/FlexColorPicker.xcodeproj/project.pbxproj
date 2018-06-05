@@ -11,6 +11,7 @@
 		300A24DF20C3069600BA8874 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300A24DE20C3069600BA8874 /* UIImageExtension.swift */; };
 		300A24E120C30D7400BA8874 /* ComponentSliderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300A24E020C30D7400BA8874 /* ComponentSliderModels.swift */; };
 		300A24E320C30E8100BA8874 /* ComponentSliderControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300A24E220C30E8100BA8874 /* ComponentSliderControls.swift */; };
+		3021F6DA20C5C6AE004E5D5A /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3021F6D920C5C6AE004E5D5A /* UIImageViewExtension.swift */; };
 		3034755920BC041700028A15 /* ColorPickerThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034755820BC041700028A15 /* ColorPickerThumbView.swift */; };
 		3034755B20BC072800028A15 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3034755A20BC072800028A15 /* Colors.xcassets */; };
 		3034756120BC0C4000028A15 /* CircleShapedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034756020BC0C4000028A15 /* CircleShapedView.swift */; };
@@ -34,7 +35,7 @@
 		305A235C20BB4A7100271A59 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A235B20BB4A7100271A59 /* UIViewExtension.swift */; };
 		305A239720BB837B00271A59 /* CGSizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A239620BB837B00271A59 /* CGSizeExtensions.swift */; };
 		306F04A420C2F6F900ABEB71 /* RectangularHSBPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306F04A320C2F6F900ABEB71 /* RectangularHSBPalette.swift */; };
-		30EF527420BD431900E9E247 /* HSLColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF527320BD431900E9E247 /* HSLColor.swift */; };
+		30EF527420BD431900E9E247 /* HSBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF527320BD431900E9E247 /* HSBColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		300A24DE20C3069600BA8874 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		300A24E020C30D7400BA8874 /* ComponentSliderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentSliderModels.swift; sourceTree = "<group>"; };
 		300A24E220C30E8100BA8874 /* ComponentSliderControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentSliderControls.swift; sourceTree = "<group>"; };
+		3021F6D920C5C6AE004E5D5A /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		3034755820BC041700028A15 /* ColorPickerThumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerThumbView.swift; sourceTree = "<group>"; };
 		3034755A20BC072800028A15 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		3034756020BC0C4000028A15 /* CircleShapedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleShapedView.swift; sourceTree = "<group>"; };
@@ -67,7 +69,7 @@
 		305A235B20BB4A7100271A59 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		305A239620BB837B00271A59 /* CGSizeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeExtensions.swift; sourceTree = "<group>"; };
 		306F04A320C2F6F900ABEB71 /* RectangularHSBPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularHSBPalette.swift; sourceTree = "<group>"; };
-		30EF527320BD431900E9E247 /* HSLColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSLColor.swift; sourceTree = "<group>"; };
+		30EF527320BD431900E9E247 /* HSBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +105,7 @@
 				303ECED420C4A201005BB029 /* FlexColorPickerDelegate.swift */,
 				305A234F20BB179000271A59 /* FlexColorPickerController.swift */,
 				3034757820BC9DBB00028A15 /* FlexColorPicker.swift */,
-				30EF527320BD431900E9E247 /* HSLColor.swift */,
+				30EF527320BD431900E9E247 /* HSBColor.swift */,
 				3034755F20BC0C1300028A15 /* Controls */,
 				3034755C20BC0BD600028A15 /* Views */,
 				3034756220BC0C5E00028A15 /* ControlModels */,
@@ -161,6 +163,7 @@
 				305A239620BB837B00271A59 /* CGSizeExtensions.swift */,
 				3034756420BC14A600028A15 /* CGRectExtension.swift */,
 				300A24DE20C3069600BA8874 /* UIImageExtension.swift */,
+				3021F6D920C5C6AE004E5D5A /* UIImageViewExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -250,9 +253,10 @@
 				306F04A420C2F6F900ABEB71 /* RectangularHSBPalette.swift in Sources */,
 				305A235020BB179000271A59 /* FlexColorPickerController.swift in Sources */,
 				3034756F20BC782D00028A15 /* AbstractColorControl.swift in Sources */,
+				3021F6DA20C5C6AE004E5D5A /* UIImageViewExtension.swift in Sources */,
 				3034757320BC81CC00028A15 /* ColorSlider.swift in Sources */,
 				305A235820BB2C8400271A59 /* ColorPalette.swift in Sources */,
-				30EF527420BD431900E9E247 /* HSLColor.swift in Sources */,
+				30EF527420BD431900E9E247 /* HSBColor.swift in Sources */,
 				305A235A20BB2D9100271A59 /* RadialHSBPalette.swift in Sources */,
 				305A235C20BB4A7100271A59 /* UIViewExtension.swift in Sources */,
 				305A235620BB279800271A59 /* CGPointExtension.swift in Sources */,

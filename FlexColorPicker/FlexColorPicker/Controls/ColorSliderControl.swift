@@ -60,6 +60,7 @@ open class ColorSliderControl: ColorControlWithThumbView {
     open override var bounds: CGRect {
         didSet {
             updateCornerRadius()
+            updateThumbAndGradient()
         }
     }
 

@@ -28,6 +28,7 @@
 
 import UIKit
 
+internal let colorPreviewWithHexIntristicContentSize = CGSize(width: 65, height: 90)
 private let hexFont = UIFont.systemFont(ofSize: 12)
 private let defaultHexLabelHeight: CGFloat = 20
 private let defaultCornerradius: CGFloat = 5
@@ -93,7 +94,7 @@ open class ColorPreviewWithHex: AbstractColorControl {
     }
 
     open override var intrinsicContentSize: CGSize {
-        return CGSize(width: 65, height: 90)
+        return colorPreviewWithHexIntristicContentSize
     }
 
     open override func commonInit() {
@@ -172,7 +173,7 @@ open class ColorPreviewWithHex: AbstractColorControl {
 
 extension ColorPreviewWithHex {
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let location = locationForTouches(touches), hitTest(location, with: event) != nil else {
+        guard let location = locationForTouches(touches), point(inside: location, with: event) else {
             return
         }
         handleTouchDown()
@@ -183,7 +184,7 @@ extension ColorPreviewWithHex {
         guard let location = locationForTouches(touches) else {
             return
         }
-        handleTouchUp(valid: hitTest(location, with: event) != nil)
+        handleTouchUp(valid: point(inside: location, with: event))
         super.touchesEnded(touches, with: event)
     }
 

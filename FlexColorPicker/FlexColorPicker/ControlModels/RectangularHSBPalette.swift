@@ -66,7 +66,7 @@ class RectangularHSBPalette: ColorPalette {
 
     open func renderBackgroundImage() -> UIImage? {
         UIColor.black.setFill()
-        return UIImage.drawImage(ofSize: size, path: UIBezierPath(rect: CGRect(origin: .zero, size: size)))
+        return UIImage.drawImage(ofSize: size, path: UIBezierPath(rect: CGRect(origin: .zero, size: size)), fillColor: .black)
     }
 
     open func closestValidPoint(to point: CGPoint) -> CGPoint {

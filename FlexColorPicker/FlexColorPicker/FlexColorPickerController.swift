@@ -30,6 +30,112 @@ import UIKit
 
 let flexColorPickerBundle = Bundle(for: FlexColorPickerController.self)
 
-class FlexColorPickerController: UIViewController {
+open class FlexColorPickerController: UIViewController {
     
+    open let colorPicker = FlexColorPicker()
+
+    @IBOutlet public var colorPreview: ColorPreviewWithHex? {
+        get {
+            return colorPicker.colorPreview
+        }
+        set {
+            colorPicker.colorPreview = newValue
+        }
+    }
+
+    @IBOutlet open var radialHsbPalette: ColorPaletteControl? {
+        get {
+            return colorPicker.radialHsbPalette
+        }
+        set {
+            colorPicker.radialHsbPalette = newValue
+        }
+    }
+
+    @IBOutlet open var saturationSlider: SaturationSliderControl? {
+        get {
+            return colorPicker.saturationSlider
+        }
+        set {
+            colorPicker.saturationSlider = newValue
+        }
+    }
+
+    @IBOutlet open var brightnessSlider: BrightnessSliderControl? {
+        get {
+            return colorPicker.brightnessSlider
+        }
+        set {
+            colorPicker.brightnessSlider = newValue
+        }
+    }
+
+    @IBOutlet open var redSlider: RedSliderControl? {
+        get {
+            return colorPicker.redSlider
+        }
+        set {
+            colorPicker.redSlider = newValue
+        }
+    }
+
+    @IBOutlet open var greenSlider: GreenSliderControl? {
+        get {
+            return colorPicker.greenSlider
+        }
+        set {
+            colorPicker.greenSlider = newValue
+        }
+    }
+
+    @IBOutlet open var blueSlider: BlueSliderControl? {
+        get {
+            return colorPicker.blueSlider
+        }
+        set {
+            colorPicker.blueSlider = newValue
+        }
+    }
+
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        addStandardColorControls()
+    }
+
+    open override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        addStandardColorControls()
+    }
+
+    open func addStandardColorControls() {
+        if colorPreview == nil {
+            let colorPreview = ColorPreviewWithHex()
+            colorPreview.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(colorPreview)
+            colorPreview.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 0).isActive = true
+            colorPreview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24).isActive = true
+            self.colorPreview = colorPreview
+        }
+        if brightnessSlider == nil {
+            let brightnessSlider = BrightnessSliderControl()
+            brightnessSlider.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(brightnessSlider)
+            brightnessSlider.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: colorPreviewWithHexIntristicContentSize.width + 16).isActive = true
+            brightnessSlider.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: 0).isActive = true
+            brightnessSlider.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: colorPreviewWithHexIntristicContentSize.height + 24).isActive = true
+            brightnessSlider.heightAnchor.constraint(equalToConstant: 44).isActive = true
+            self.brightnessSlider = brightnessSlider
+        }
+        if radialHsbPalette == nil {
+            let radialPalette = ColorPaletteControl()
+            radialPalette.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(radialPalette)
+            radialPalette.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 0).isActive = true
+            radialPalette.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: 0).isActive = true
+            radialPalette.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: colorPreviewWithHexIntristicContentSize.height + 24 + 16).isActive = true
+            radialPalette.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: 0).isActive = true
+            radialPalette.contentMode = .top
+            self.radialHsbPalette = radialPalette
+        }
+    }
 }

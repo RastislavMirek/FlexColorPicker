@@ -29,7 +29,7 @@
 import UIKit
 
 extension UIView {
-    func addAutolayoutFillingSubview(_ subview: UIView, edgeInsets: UIEdgeInsets = .zero) {
+    public func addAutolayoutFillingSubview(_ subview: UIView, edgeInsets: UIEdgeInsets = .zero) {
         subview.translatesAutoresizingMaskIntoConstraints = false
         addSubview(subview)
 

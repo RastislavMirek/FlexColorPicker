@@ -1,8 +1,8 @@
 //
-//  RadialHSBDemoController.swift
+//  ModelDemoController.swift
 //  FlexColorPickerDemo
 //
-//  Created by Rastislav Mirek on 28/5/18.
+//  Created by Rastislav Mirek on 4/6/18.
 //  
 //	MIT License
 //  Copyright (c) 2018 Rastislav Mirek
@@ -26,14 +26,10 @@
 //  SOFTWARE.
 //
 
-import UIKit
 import FlexColorPicker
 
-class RadialHSBDemoController: UIViewController {
-    @IBOutlet weak var colorPalete: ColorPaletteControl!
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        colorPalete.color = #colorLiteral(red: 0.04286014751, green: 0.3200677118, blue: 0.2021709982, alpha: 1)
+class ModalDemoController: FlexColorPickerController {
+    @IBAction func donePressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }

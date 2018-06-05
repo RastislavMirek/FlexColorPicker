@@ -33,7 +33,6 @@ open class ColorControlWithThumbView: AbstractColorControl {
 
     /// Abstract method (just override point). It is called everytime the touch is detected in new location. The thumbView should be moved accordingly and the color should be changed here.
     open func updateSelectedColor(at point: CGPoint) {
-        fatalError("updateSelectedColor(at:) must be overriden")
     }
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

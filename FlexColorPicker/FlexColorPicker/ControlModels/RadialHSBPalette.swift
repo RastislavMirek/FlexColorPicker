@@ -83,7 +83,7 @@ open class RadialHSBPalette: ColorPalette {
 
         // clip the image to circle
         let imageRect = CGRect(x: 0,y: 0, width: diameter, height: diameter)
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        UIGraphicsBeginImageContextWithOptions(imageRect.size, false, 0)
         UIBezierPath(ovalIn: imageRect).addClip()
         image.draw(in: imageRect)
         defer {
@@ -97,8 +97,7 @@ open class RadialHSBPalette: ColorPalette {
 
     open func renderBackgroundImage() -> UIImage? {
         let imageSize = CGSize(width: diameter, height: diameter)
-        UIColor.black.setFill()
-        return UIImage.drawImage(ofSize: imageSize, path: UIBezierPath(ovalIn: CGRect(origin: .zero, size: imageSize)))
+        return UIImage.drawImage(ofSize: imageSize, path: UIBezierPath(ovalIn: CGRect(origin: .zero, size: CGSize(width: diameter, height: diameter))), fillColor: .black)
     }
 
     open func closestValidPoint(to point: CGPoint) -> CGPoint {
