@@ -30,21 +30,21 @@
 import UIKit
 
 extension UIImageView {
-    func convertToImageSpace(point: CGPoint, withBoundsSize boundsSize: CGSize) -> CGPoint {
-        return transform(point: point, withBoundsSize: boundsSize, toImageSpace: true)
+    func convertToImageSpace(point: CGPoint) -> CGPoint {
+        return transform(point: point, toImageSpace: true)
     }
 
-    func convertFromImageSpace(point: CGPoint, withBoundsSize boundsSize: CGSize) -> CGPoint {
-        return transform(point: point, withBoundsSize: boundsSize, toImageSpace: false)
+    func convertFromImageSpace(point: CGPoint) -> CGPoint {
+        return transform(point: point, toImageSpace: false)
     }
 
-    private func transform(point: CGPoint, withBoundsSize boundsSize: CGSize, toImageSpace: Bool) -> CGPoint {
+    private func transform(point: CGPoint, toImageSpace: Bool) -> CGPoint {
         guard let contentSize = image?.size else {
             return point
         }
         let multiplier: CGFloat = toImageSpace ? -1 : 1
-        let verticalDiff = (boundsSize.height - contentSize.height) * multiplier
-        let horizontalDiff = (boundsSize.width - contentSize.width) * multiplier
+        let verticalDiff = (bounds.height - contentSize.height) * multiplier
+        let horizontalDiff = (bounds.width - contentSize.width) * multiplier
         return CGPoint(
             x: adjustedCoordinate(for: point.x, axisAlignment: contentMode.horizontalAlighnment, difference: horizontalDiff),
             y: adjustedCoordinate(for: point.y, axisAlignment: contentMode.verticalAlighnment, difference: verticalDiff)

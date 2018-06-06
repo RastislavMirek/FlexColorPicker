@@ -28,10 +28,11 @@
 
 import UIKit
 
-open class ColorControlWithThumbView: AbstractColorControl {
+open class ColorControlWithThumbView: AdjustedHitBoxColorControl {
     open let thumbView = ColorPickerThumbView()
 
-    /// Abstract method (just override point). It is called everytime the touch is detected in new location. The thumbView should be moved accordingly and the color should be changed here.
+    /// Abstract method (just override point). It is called every time the touch is detected in new location. The thumbView should be moved accordingly and the color should be changed here.
+    /// Touches are in coordinate space of the content (adjusted for hitBoxInsets) that is in coordinate space of contentView
     open func updateSelectedColor(at point: CGPoint) {
     }
 

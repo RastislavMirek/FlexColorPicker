@@ -28,6 +28,7 @@
 
 import UIKit
 
+let minimumDistanceForInBoundsTouchFromValidPoint: CGFloat = 44
 let defaultSelectedColor = UIColor.white.hsbColor
 
 @IBDesignable
@@ -56,6 +57,7 @@ open class ColorPaletteControl: ColorControlWithThumbView {
     open override var bounds: CGRect {
         didSet {
             if bounds.size != oldValue.size {
+                layoutIfNeeded() //force subviews layout to make their bounds to be updated before calling updatePaleteImagesAndThumb(); foregroundImageView.convertToImageSpace uses bounds of foregroundImageView which is not automatically updated
                 updatePaleteImagesAndThumb()
             }
         }
@@ -70,41 +72,49 @@ open class ColorPaletteControl: ColorControlWithThumbView {
 
     open override func commonInit() {
         super.commonInit()
-        addAutolayoutFillingSubview(backgroundImageView)
+        contentView.addAutolayoutFillingSubview(backgroundImageView)
         backgroundImageView.addAutolayoutFillingSubview(foregroundImageView)
         updateContentMode()
-        addSubview(thumbView)
+        contentView.addSubview(thumbView)
         updatePaleteImagesAndThumb()
     }
 
     open func updatePaleteImagesAndThumb() {
-        colorPalete.size = bounds.size
+        colorPalete.size = foregroundImageView.bounds.size //cannot use self.bounds as that is extended compared to foregroundImageView.bounds when AdjustedHitBoxColorControl.hitBoxInsets are non-zero
         foregroundImageView.image = colorPalete.renderForegroundImage()
         backgroundImageView.image = colorPalete.renderBackgroundImage()
-        assert(foregroundImageView.image!.size.width <= bounds.size.width && foregroundImageView.image!.size.height <= bounds.size.height, "Size of rendered image must be smaller or equal specified palette size")
+        assert(foregroundImageView.image!.size.width <= colorPalete.size.width && foregroundImageView.image!.size.height <= colorPalete.size.height, "Size of rendered image must be smaller or equal specified palette size")
         assert(backgroundImageView.image == nil || foregroundImageView.image?.size == backgroundImageView.image?.size, "foreground and background images rendered must have same size")
         updateContentMode()
         updateThumbPosition(position: colorPalete.positionAndAlpha(for: selectedHSBColor).position)
         thumbView.color = selectedHSBColor.toUIColor()
     }
 
-    open func convertToImageCoordinates(point: CGPoint) -> CGPoint {
-        return foregroundImageView.convertToImageSpace(point: foregroundImageView.convert(point, from: self), withBoundsSize: bounds.size)
+    open func imageCoordinates(point: CGPoint, fromCoordinateSpace coordinateSpace: UICoordinateSpace) -> CGPoint {
+        return foregroundImageView.convertToImageSpace(point: foregroundImageView.convert(point, from: coordinateSpace))
     }
 
-    open func convertFromImageCoordinates(point: CGPoint) -> CGPoint {
-        return foregroundImageView.convert(foregroundImageView.convertFromImageSpace(point: point, withBoundsSize: bounds.size), to: self)
+    open func imageCoordinates(point: CGPoint, toCoordinateSpace coordinateSpace: UICoordinateSpace) -> CGPoint {
+        return foregroundImageView.convert(foregroundImageView.convertFromImageSpace(point: point), to: coordinateSpace)
     }
 
     open override func updateSelectedColor(at point: CGPoint) {
-        let pointInside = colorPalete.closestValidPoint(to: convertToImageCoordinates(point: point))
+        let pointInside = colorPalete.closestValidPoint(to: imageCoordinates(point: point, fromCoordinateSpace: contentView))
         selectedHSBColor = colorPalete.modifyColor(selectedHSBColor, with: pointInside)
         updateThumbPosition(position: pointInside)
         sendActions(for: .valueChanged)
     }
 
+    open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let maxTouchDistance = max(hitBoxInsets.bottom, hitBoxInsets.top, hitBoxInsets.left, hitBoxInsets.right, minimumDistanceForInBoundsTouchFromValidPoint)
+        if imageCoordinates(point: colorPalete.closestValidPoint(to: imageCoordinates(point: point, fromCoordinateSpace: self)), toCoordinateSpace: self).distance(to: point) > maxTouchDistance {
+            return nil
+        }
+        return super.hitTest(point, with: event)
+    }
+
     private func updateThumbPosition(position: CGPoint) {
-        thumbView.frame = CGRect(center: convertFromImageCoordinates(point: position), size: thumbView.intrinsicContentSize)
+        thumbView.frame = CGRect(center: imageCoordinates(point: position, toCoordinateSpace: contentView), size: thumbView.intrinsicContentSize)
     }
 
     private func updateContentMode() {

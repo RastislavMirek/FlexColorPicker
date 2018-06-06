@@ -12,6 +12,8 @@
 		300A24E120C30D7400BA8874 /* ComponentSliderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300A24E020C30D7400BA8874 /* ComponentSliderModels.swift */; };
 		300A24E320C30E8100BA8874 /* ComponentSliderControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300A24E220C30E8100BA8874 /* ComponentSliderControls.swift */; };
 		3021F6DA20C5C6AE004E5D5A /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3021F6D920C5C6AE004E5D5A /* UIImageViewExtension.swift */; };
+		3021F6DC20C80256004E5D5A /* UIEdgeInsetsExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3021F6DB20C80256004E5D5A /* UIEdgeInsetsExtenstion.swift */; };
+		3021F6DE20C82845004E5D5A /* AdjustedHitBoxColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3021F6DD20C82845004E5D5A /* AdjustedHitBoxColorControl.swift */; };
 		3034755920BC041700028A15 /* ColorPickerThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034755820BC041700028A15 /* ColorPickerThumbView.swift */; };
 		3034755B20BC072800028A15 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3034755A20BC072800028A15 /* Colors.xcassets */; };
 		3034756120BC0C4000028A15 /* CircleShapedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034756020BC0C4000028A15 /* CircleShapedView.swift */; };
@@ -46,6 +48,8 @@
 		300A24E020C30D7400BA8874 /* ComponentSliderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentSliderModels.swift; sourceTree = "<group>"; };
 		300A24E220C30E8100BA8874 /* ComponentSliderControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentSliderControls.swift; sourceTree = "<group>"; };
 		3021F6D920C5C6AE004E5D5A /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		3021F6DB20C80256004E5D5A /* UIEdgeInsetsExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsExtenstion.swift; sourceTree = "<group>"; };
+		3021F6DD20C82845004E5D5A /* AdjustedHitBoxColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustedHitBoxColorControl.swift; sourceTree = "<group>"; };
 		3034755820BC041700028A15 /* ColorPickerThumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerThumbView.swift; sourceTree = "<group>"; };
 		3034755A20BC072800028A15 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		3034756020BC0C4000028A15 /* CircleShapedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleShapedView.swift; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 			children = (
 				3034757020BC7EE500028A15 /* ColorControl.swift */,
 				3034756E20BC782D00028A15 /* AbstractColorControl.swift */,
+				3021F6DD20C82845004E5D5A /* AdjustedHitBoxColorControl.swift */,
 				3034757620BC8D1300028A15 /* ControlWithThumbView.swift */,
 				3049576E20C1B19800CEC32F /* ColorPreviewWithHex.swift */,
 				305A235120BB181500271A59 /* ColorPaletteControl.swift */,
@@ -164,6 +169,7 @@
 				3034756420BC14A600028A15 /* CGRectExtension.swift */,
 				300A24DE20C3069600BA8874 /* UIImageExtension.swift */,
 				3021F6D920C5C6AE004E5D5A /* UIImageViewExtension.swift */,
+				3021F6DB20C80256004E5D5A /* UIEdgeInsetsExtenstion.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -250,6 +256,7 @@
 			files = (
 				305A235420BB1A8200271A59 /* UIColorExtension.swift in Sources */,
 				3034757120BC7EE500028A15 /* ColorControl.swift in Sources */,
+				3021F6DE20C82845004E5D5A /* AdjustedHitBoxColorControl.swift in Sources */,
 				306F04A420C2F6F900ABEB71 /* RectangularHSBPalette.swift in Sources */,
 				305A235020BB179000271A59 /* FlexColorPickerController.swift in Sources */,
 				3034756F20BC782D00028A15 /* AbstractColorControl.swift in Sources */,
@@ -257,6 +264,7 @@
 				3034757320BC81CC00028A15 /* ColorSlider.swift in Sources */,
 				305A235820BB2C8400271A59 /* ColorPalette.swift in Sources */,
 				30EF527420BD431900E9E247 /* HSBColor.swift in Sources */,
+				3021F6DC20C80256004E5D5A /* UIEdgeInsetsExtenstion.swift in Sources */,
 				305A235A20BB2D9100271A59 /* RadialHSBPalette.swift in Sources */,
 				305A235C20BB4A7100271A59 /* UIViewExtension.swift in Sources */,
 				305A235620BB279800271A59 /* CGPointExtension.swift in Sources */,

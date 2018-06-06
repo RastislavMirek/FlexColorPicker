@@ -1,8 +1,8 @@
 //
-//  CGRectExtension.swift
+//  UIEdgeInsetsExtenstion.swift
 //  FlexColorPicker
 //
-//  Created by Rastislav Mirek on 28/5/18.
+//  Created by Rastislav Mirek on 6/6/18.
 //  
 //	MIT License
 //  Copyright (c) 2018 Rastislav Mirek
@@ -26,12 +26,10 @@
 //  SOFTWARE.
 //
 
-extension CGRect {
-    public init(center: CGPoint, size: CGSize) {
-        self.init(origin: CGPoint(x: center.x - size.width / 2, y: center.y - size.height / 2), size: size)
-    }
-    
-    public func rectByInsetting(_ edgeInsets: UIEdgeInsets) -> CGRect {
-        return UIEdgeInsetsInsetRect(self, edgeInsets)
+import UIKit
+
+extension UIEdgeInsets {
+    static prefix func -(insets: UIEdgeInsets) -> UIEdgeInsets {
+        return UIEdgeInsets(top: -insets.top, left: -insets.left, bottom: -insets.bottom, right: -insets.right)
     }
 }

@@ -128,6 +128,10 @@ extension ColorPickerThumbView {
         #endif
     }
 
+    open var colorIdicatorRadius: CGFloat {
+        return bounds.width / 2 - wideBorderWidth
+    }
+
     private func setWideBorderColors(_ isDark: Bool) {
         self.borderView.borderColor = UIColor(named: isDark ? "BorderColor" : "LightBorderColor", in: flexColorPickerBundle)
         self.borderView.backgroundColor = UIColor(named: isDark ? "ThumbViewWideBorderDarkColor" : "ThumbViewWideBorderColor", in: flexColorPickerBundle)

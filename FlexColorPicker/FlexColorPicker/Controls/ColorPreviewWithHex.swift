@@ -29,8 +29,8 @@
 import UIKit
 
 internal let colorPreviewWithHexIntristicContentSize = CGSize(width: 65, height: 90)
+internal let defaultHexLabelHeight: CGFloat = 20
 private let hexFont = UIFont.systemFont(ofSize: 12)
-private let defaultHexLabelHeight: CGFloat = 20
 private let defaultCornerradius: CGFloat = 5
 
 private let confirmAnimationScaleRatio: CGFloat = 0.87
@@ -42,6 +42,10 @@ open class ColorPreviewWithHex: AbstractColorControl {
     private var labelHeightConstraint = NSLayoutConstraint()
     public let colorView = UIView()
     public let hexLabel = UILabel()
+
+    open var hexLabelToLayoutAnchor: NSLayoutYAxisAnchor {
+        return hexLabel.topAnchor
+    }
 
     open override var selectedHSBColor: HSBColor {
         didSet {
