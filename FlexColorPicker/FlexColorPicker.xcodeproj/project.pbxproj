@@ -38,6 +38,7 @@
 		305A235C20BB4A7100271A59 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A235B20BB4A7100271A59 /* UIViewExtension.swift */; };
 		305A239720BB837B00271A59 /* CGSizeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A239620BB837B00271A59 /* CGSizeExtensions.swift */; };
 		306F04A420C2F6F900ABEB71 /* RectangularHSBPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306F04A320C2F6F900ABEB71 /* RectangularHSBPalette.swift */; };
+		30B45CC720C9769F000CF044 /* PaletteAwareScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B45CC620C9769F000CF044 /* PaletteAwareScrollView.swift */; };
 		30EF527420BD431900E9E247 /* HSBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF527320BD431900E9E247 /* HSBColor.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		305A235B20BB4A7100271A59 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		305A239620BB837B00271A59 /* CGSizeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSizeExtensions.swift; sourceTree = "<group>"; };
 		306F04A320C2F6F900ABEB71 /* RectangularHSBPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularHSBPalette.swift; sourceTree = "<group>"; };
+		30B45CC620C9769F000CF044 /* PaletteAwareScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteAwareScrollView.swift; sourceTree = "<group>"; };
 		30EF527320BD431900E9E247 /* HSBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +132,7 @@
 				3034755820BC041700028A15 /* ColorPickerThumbView.swift */,
 				3034756020BC0C4000028A15 /* CircleShapedView.swift */,
 				3034756A20BC677000028A15 /* GradientView.swift */,
+				30B45CC620C9769F000CF044 /* PaletteAwareScrollView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				305A235020BB179000271A59 /* FlexColorPickerController.swift in Sources */,
 				3021F6E220C8A7EB004E5D5A /* PaletteControls.swift in Sources */,
 				3034756F20BC782D00028A15 /* AbstractColorControl.swift in Sources */,
+				30B45CC720C9769F000CF044 /* PaletteAwareScrollView.swift in Sources */,
 				3021F6DA20C5C6AE004E5D5A /* UIImageViewExtension.swift in Sources */,
 				3034757320BC81CC00028A15 /* ColorSlider.swift in Sources */,
 				305A235820BB2C8400271A59 /* ColorPalette.swift in Sources */,

@@ -56,10 +56,7 @@ open class ColorPaletteControl: ColorControlWithThumbView {
     }
     open override var bounds: CGRect {
         didSet {
-            if bounds.size != oldValue.size {
-                layoutIfNeeded() //force subviews layout to make their bounds to be updated before calling updatePaleteImagesAndThumb(); foregroundImageView.convertToImageSpace uses bounds of foregroundImageView which is not automatically updated
-                updatePaleteImagesAndThumb()
-            }
+            updatePaleteImagesAndThumb()
         }
     }
 
@@ -80,6 +77,7 @@ open class ColorPaletteControl: ColorControlWithThumbView {
     }
 
     open func updatePaleteImagesAndThumb() {
+        layoutIfNeeded() //force subviews layout to update their bounds - bounds of subviews are not automatically updated
         colorPalete.size = foregroundImageView.bounds.size //cannot use self.bounds as that is extended compared to foregroundImageView.bounds when AdjustedHitBoxColorControl.hitBoxInsets are non-zero
         foregroundImageView.image = colorPalete.renderForegroundImage()
         backgroundImageView.image = colorPalete.renderBackgroundImage()

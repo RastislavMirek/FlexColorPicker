@@ -1,8 +1,8 @@
 //
-//  UIControlWithCommonInit.swift
+//  PaletteAwareScrollView.swift
 //  FlexColorPicker
 //
-//  Created by Rastislav Mirek on 28/5/18.
+//  Created by Rastislav Mirek on 7/6/18.
 //  
 //	MIT License
 //  Copyright (c) 2018 Rastislav Mirek
@@ -28,45 +28,28 @@
 
 import UIKit
 
-open class AbstractColorControl: UIControl, ColorControl {
-    open var selectedHSBColor: HSBColor = defaultSelectedColor
+open class PaletteAwareScrollView: UIScrollView {
 
-    @IBInspectable
-    public var selectedColor: UIColor {
-        get {
-            return selectedHSBColor.toUIColor()
+    open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer !== panGestureRecognizer {
+            return super.gestureRecognizerShouldBegin(gestureRecognizer)
         }
-        set {
-            selectedHSBColor = newValue.hsbColor
+
+        let touchLocation = gestureRecognizer.location(in: self)
+        let hitView = hitTest(touchLocation, with: nil)
+        if anyParent(ofView: hitView, satisfiesCondition: { $0 is ColorPaletteControl}) {
+            return false
         }
+        return super.gestureRecognizerShouldBegin(gestureRecognizer)
     }
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-
-    open override func awakeFromNib() {
-        super.awakeFromNib()
-        commonInit()
-    }
-
-    open override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        commonInit()
-    }
-
-    /// This empty method is override point for initialization tasks that needs to be carried no matter how the view is constructed (e. g. via Interface Builder or from code).
-    open func commonInit() {
-        isExclusiveTouch = true
-    }
-
-    func locationForTouches(_ touches: Set<UITouch>) -> CGPoint? {
-        return touches.first?.location(in: self)
+    private func anyParent(ofView view: UIView?, satisfiesCondition condition: (UIView) -> Bool) -> Bool {
+        guard let view = view, view !== self else {
+            return false
+        }
+        if condition(view) {
+            return true
+        }
+        return anyParent(ofView: view.superview, satisfiesCondition: condition)
     }
 }

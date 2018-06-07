@@ -78,6 +78,7 @@ open class ColorSliderControl: ColorControlWithThumbView {
     }
 
     open func updateThumbAndGradient() {
+        layoutIfNeeded() //ensure that subview bounds are updated as we are working with contentView.bounds
         let (value, gradientStart, gradientEnd) = colorSlider.valueAndGradient(for: selectedHSBColor)
         let gradientLength = contentView.bounds.width - thumbView.colorIdicatorRadius * 2 //cannot use self.bounds as that is extended compared to foregroundImageView.bounds when AdjustedHitBoxColorControl.hitBoxInsets are non-zero
         thumbView.frame = CGRect(center: CGPoint(x: thumbView.colorIdicatorRadius + gradientLength * min(max(0, value), 1), y: contentView.bounds.midY), size: thumbView.intrinsicContentSize)
@@ -87,6 +88,7 @@ open class ColorSliderControl: ColorControlWithThumbView {
     }
 
     open override func updateSelectedColor(at point: CGPoint) {
+        layoutIfNeeded()
         let gradientLength = contentView.bounds.width
         let value = max(0, min(1, (point.x - thumbView.intrinsicContentSize.width / 2) / gradientLength))
         thumbView.percentage = Int(round(value * 100))

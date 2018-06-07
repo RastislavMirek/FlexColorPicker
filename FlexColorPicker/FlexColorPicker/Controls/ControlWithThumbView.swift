@@ -59,7 +59,7 @@ open class ColorControlWithThumbView: AdjustedHitBoxColorControl {
         }
         updateSelectedColor(at: location)
         thumbView.setExpanded(false, animated: true)
-         super.touchesEnded(touches, with: event)
+        super.touchesEnded(touches, with: event)
     }
 
     open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -68,6 +68,6 @@ open class ColorControlWithThumbView: AdjustedHitBoxColorControl {
         }
         updateSelectedColor(at: location)
         thumbView.setExpanded(false, animated: true)
-         super.touchesCancelled(touches, with: event)
+        super.touchesCancelled(touches, with: event)
     }
 }
