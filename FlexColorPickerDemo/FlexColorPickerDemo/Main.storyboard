@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -203,36 +204,112 @@
         <!--Picker in UITableViewController-->
         <scene sceneID="eNa-7h-orU">
             <objects>
-                <tableViewController title="Picker in UITableViewController" id="eqA-LT-bQY" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JzH-39-95F">
+                <tableViewController title="Picker in UITableViewController" id="eqA-LT-bQY" customClass="PickerInTableDemoViewController" customModule="FlexColorPickerDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JzH-39-95F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
                             <tableViewSection id="vze-Uz-988">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="FI0-sJ-LfV">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="300" id="FI0-sJ-LfV">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FI0-sJ-LfV" id="mra-Le-gCG">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="299.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrY-Jr-a6s" customClass="RadialPaletteControl" customModule="FlexColorPicker">
+                                                    <rect key="frame" x="-10" y="0.0" width="385" height="299.66666666666669"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                            <color key="value" red="0.74115175102853725" green="1" blue="0.48205197265679023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="jrY-Jr-a6s" secondAttribute="bottom" constant="16" id="Bnl-9i-t57"/>
+                                                <constraint firstItem="jrY-Jr-a6s" firstAttribute="leading" secondItem="mra-Le-gCG" secondAttribute="leading" constant="6" id="GoL-q4-Cx9"/>
+                                                <constraint firstAttribute="trailing" secondItem="jrY-Jr-a6s" secondAttribute="trailing" constant="16" id="RPG-C0-tJi"/>
+                                                <constraint firstItem="jrY-Jr-a6s" firstAttribute="top" secondItem="mra-Le-gCG" secondAttribute="top" constant="16" id="lBZ-pA-L0f"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="SfZ-yl-iaS">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="53" id="SfZ-yl-iaS">
+                                        <rect key="frame" x="0.0" y="300" width="375" height="53"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SfZ-yl-iaS" id="bcQ-5t-zUz">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="52.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcr-L1-0BP" customClass="ColorPreviewWithHex" customModule="FlexColorPicker">
+                                                    <rect key="frame" x="102.66666666666669" y="4" width="170" height="44.666666666666664"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="170" id="oCD-mB-Hbq"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                            <color key="value" red="0.74115175099999997" green="1" blue="0.4820519727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gcr-L1-0BP" firstAttribute="centerX" secondItem="bcQ-5t-zUz" secondAttribute="centerX" id="68f-Ns-rsW"/>
+                                                <constraint firstAttribute="bottom" secondItem="gcr-L1-0BP" secondAttribute="bottom" constant="4" id="TxQ-Y7-iqU"/>
+                                                <constraint firstItem="gcr-L1-0BP" firstAttribute="top" secondItem="bcQ-5t-zUz" secondAttribute="top" constant="4" id="w7o-eW-I5B"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Rse-GP-hdd">
-                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="353" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rse-GP-hdd" id="OnK-O2-dWx">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jP2-WS-BfH" customClass="BrightnessSliderControl" customModule="FlexColorPicker">
+                                                    <rect key="frame" x="0.0" y="-1.6666666666666643" width="375" height="47"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                            <color key="value" red="0.74115175099999997" green="1" blue="0.4820519727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jP2-WS-BfH" firstAttribute="leading" secondItem="OnK-O2-dWx" secondAttribute="leading" constant="16" id="8Hu-ID-89g"/>
+                                                <constraint firstAttribute="trailing" secondItem="jP2-WS-BfH" secondAttribute="trailing" constant="16" id="NaU-Fj-Ofa"/>
+                                                <constraint firstItem="jP2-WS-BfH" firstAttribute="centerY" secondItem="OnK-O2-dWx" secondAttribute="centerY" id="XXV-K2-KQQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wLR-De-qdZ">
+                                        <rect key="frame" x="0.0" y="397" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wLR-De-qdZ" id="hW0-tV-k7g">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b3B-gb-hUi" customClass="SaturationSliderControl" customModule="FlexColorPicker">
+                                                    <rect key="frame" x="0.0" y="-1.6666666666666643" width="375" height="47"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                            <color key="value" red="0.74115175099999997" green="1" blue="0.4820519727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="b3B-gb-hUi" firstAttribute="centerY" secondItem="hW0-tV-k7g" secondAttribute="centerY" id="GHo-Ts-zI0"/>
+                                                <constraint firstAttribute="trailing" secondItem="b3B-gb-hUi" secondAttribute="trailing" constant="16" id="ooj-bZ-iGD"/>
+                                                <constraint firstItem="b3B-gb-hUi" firstAttribute="leading" secondItem="hW0-tV-k7g" secondAttribute="leading" constant="16" id="qwd-n2-EyX"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -243,10 +320,26 @@
                             <outlet property="delegate" destination="eqA-LT-bQY" id="6Nd-EC-1HH"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="pickerController" destination="PNQ-3i-pQR" id="Elc-B8-9rE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZ6-W9-JVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="PNQ-3i-pQR" customClass="ColorPickerController" customModule="FlexColorPicker">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                            <color key="value" red="0.74115175099999997" green="1" blue="0.4820519727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="brightnessSlider" destination="jP2-WS-BfH" id="bil-AE-8RI"/>
+                        <outlet property="colorPreview" destination="gcr-L1-0BP" id="aEw-tk-oAc"/>
+                        <outlet property="radialHsbPalette" destination="jrY-Jr-a6s" id="gAz-Np-9Es"/>
+                        <outlet property="saturationSlider" destination="b3B-gb-hUi" id="W9Q-7k-jc1"/>
+                    </connections>
+                </customObject>
             </objects>
-            <point key="canvasLocation" x="1188" y="811"/>
+            <point key="canvasLocation" x="1188" y="-605.17241379310349"/>
         </scene>
         <!--Custom Controls & Custom Layout-->
         <scene sceneID="Ygx-49-oFo">
@@ -261,27 +354,163 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YCn-AJ-8Ci" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1188" y="1564"/>
+            <point key="canvasLocation" x="2110" y="777"/>
         </scene>
         <!--Customized RGB Sliders-->
         <scene sceneID="529-sf-cIa">
             <objects>
-                <viewController title="Customized RGB Sliders" id="vAD-Mt-1yZ" sceneMemberID="viewController">
+                <viewController title="Customized RGB Sliders" id="vAD-Mt-1yZ" customClass="CustomColorPickerViewController" customModule="FlexColorPicker" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dHK-f6-WAT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ttT-xx-KWV" customClass="ColorPreviewWithHex" customModule="FlexColorPicker">
+                                <rect key="frame" x="137.66666666666666" y="108" width="100" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="lXX-20-ngX"/>
+                                    <constraint firstAttribute="width" constant="100" id="pFT-EE-9QU"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                        <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="L3x-MT-WOb">
+                                <rect key="frame" x="16" y="238" width="343" height="150"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chc-oP-JQG">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYi-Zw-2GO">
+                                                <rect key="frame" x="0.0" y="14.999999999999998" width="15.666666666666666" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="oyw-Qa-Plg" customClass="RedSliderControl" customModule="FlexColorPicker">
+                                                <rect key="frame" x="15.666666666666657" y="6" width="343.33333333333337" height="38"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="6" id="4FI-c2-RQ5"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                        <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoDaken" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="oyw-Qa-Plg" firstAttribute="centerY" secondItem="chc-oP-JQG" secondAttribute="centerY" id="ULz-gh-a5s"/>
+                                            <constraint firstItem="eYi-Zw-2GO" firstAttribute="leading" secondItem="chc-oP-JQG" secondAttribute="leading" id="XGc-ao-dOZ"/>
+                                            <constraint firstItem="oyw-Qa-Plg" firstAttribute="leading" secondItem="eYi-Zw-2GO" secondAttribute="trailing" constant="16" id="ZrB-RD-1sy"/>
+                                            <constraint firstItem="eYi-Zw-2GO" firstAttribute="centerY" secondItem="chc-oP-JQG" secondAttribute="centerY" id="lYd-eU-LMY"/>
+                                            <constraint firstAttribute="trailing" secondItem="oyw-Qa-Plg" secondAttribute="trailing" id="sUa-xx-MbL"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3rR-KH-84I">
+                                        <rect key="frame" x="0.0" y="50" width="343" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="G:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSP-b3-jOx">
+                                                <rect key="frame" x="0.0" y="15.333333333333313" width="17" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="qMZ-rn-jlb" customClass="GreenSliderControl" customModule="FlexColorPicker">
+                                                <rect key="frame" x="17" y="1.6666666666666856" width="342" height="47"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                        <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="borderOn" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showPercentage" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="expandOnTap" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="qMZ-rn-jlb" secondAttribute="trailing" id="7vF-3z-L3O"/>
+                                            <constraint firstItem="qMZ-rn-jlb" firstAttribute="leading" secondItem="KSP-b3-jOx" secondAttribute="trailing" constant="16" id="EAU-mR-Uf5"/>
+                                            <constraint firstItem="KSP-b3-jOx" firstAttribute="leading" secondItem="3rR-KH-84I" secondAttribute="leading" id="Sxf-l7-h6T"/>
+                                            <constraint firstItem="KSP-b3-jOx" firstAttribute="centerY" secondItem="3rR-KH-84I" secondAttribute="centerY" id="pOk-2c-fzf"/>
+                                            <constraint firstItem="qMZ-rn-jlb" firstAttribute="centerY" secondItem="3rR-KH-84I" secondAttribute="centerY" id="wc6-Yr-9Si"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9be-zW-JHg">
+                                        <rect key="frame" x="0.0" y="100" width="343" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERy-Kh-mZL">
+                                                <rect key="frame" x="0.0" y="15.666666666666684" width="15.666666666666666" height="20.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="0Oh-lL-Ue8" customClass="BlueSliderControl" customModule="FlexColorPicker">
+                                                <rect key="frame" x="31.666666666666657" y="0.0" width="311.33333333333337" height="50"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                        <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showPercentage" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="hitBoxInset">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="ERy-Kh-mZL" firstAttribute="leading" secondItem="9be-zW-JHg" secondAttribute="leading" id="Sov-nf-70W"/>
+                                            <constraint firstItem="0Oh-lL-Ue8" firstAttribute="leading" secondItem="ERy-Kh-mZL" secondAttribute="trailing" constant="16" id="Y96-cx-8rP"/>
+                                            <constraint firstItem="ERy-Kh-mZL" firstAttribute="centerY" secondItem="9be-zW-JHg" secondAttribute="centerY" id="dDo-O3-sgW"/>
+                                            <constraint firstAttribute="trailing" secondItem="0Oh-lL-Ue8" secondAttribute="trailing" id="hiu-RN-Y3Q"/>
+                                            <constraint firstItem="0Oh-lL-Ue8" firstAttribute="centerY" secondItem="9be-zW-JHg" secondAttribute="centerY" id="lFu-Ef-ynu"/>
+                                            <constraint firstItem="0Oh-lL-Ue8" firstAttribute="top" secondItem="9be-zW-JHg" secondAttribute="top" id="oEX-uf-Ekx"/>
+                                            <constraint firstAttribute="bottom" secondItem="0Oh-lL-Ue8" secondAttribute="bottom" id="pfJ-BS-qjN"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="BRT-z4-Scg"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ttT-xx-KWV" firstAttribute="centerX" secondItem="dHK-f6-WAT" secondAttribute="centerX" id="9zy-kx-C63"/>
+                            <constraint firstItem="L3x-MT-WOb" firstAttribute="leading" secondItem="dHK-f6-WAT" secondAttribute="leading" constant="16" id="Iyh-ZQ-h02"/>
+                            <constraint firstItem="ttT-xx-KWV" firstAttribute="top" secondItem="I9g-a1-qeO" secondAttribute="top" constant="20" id="VXE-Pe-H1P"/>
+                            <constraint firstItem="L3x-MT-WOb" firstAttribute="top" secondItem="ttT-xx-KWV" secondAttribute="bottom" constant="30" id="d0q-IJ-6aS"/>
+                            <constraint firstItem="I9g-a1-qeO" firstAttribute="trailing" secondItem="L3x-MT-WOb" secondAttribute="trailing" constant="16" id="idn-86-7RI"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="I9g-a1-qeO"/>
                     </view>
+                    <connections>
+                        <outlet property="blueSlider" destination="0Oh-lL-Ue8" id="ZzB-1Q-kKF"/>
+                        <outlet property="colorPreview" destination="ttT-xx-KWV" id="ESy-d3-aWV"/>
+                        <outlet property="greenSlider" destination="qMZ-rn-jlb" id="kRK-eS-Rdk"/>
+                        <outlet property="redSlider" destination="oyw-Qa-Plg" id="P3X-IU-MJM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c3z-WQ-BLB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2110" y="811"/>
+            <point key="canvasLocation" x="1176.8" y="777.33990147783254"/>
         </scene>
         <!--All Controls & Custom Layout-->
         <scene sceneID="KqZ-Wj-gB9">
             <objects>
-                <viewController title="All Controls &amp; Custom Layout" id="tAU-HG-9GZ" customClass="FlexColorPickerController" customModule="FlexColorPicker" sceneMemberID="viewController">
+                <viewController title="All Controls &amp; Custom Layout" id="tAU-HG-9GZ" customClass="CustomColorPickerViewController" customModule="FlexColorPicker" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dXO-T0-A22">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -294,7 +523,7 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h8A-xk-7aT" customClass="RadialPaletteControl" customModule="FlexColorPicker">
                                                 <rect key="frame" x="4" y="14" width="367" height="367"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="h8A-xk-7aT" secondAttribute="height" id="At1-Dl-lFc"/>
                                                 </constraints>
@@ -329,7 +558,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="r4n-Pk-nO9" firstAttribute="leading" secondItem="ErH-aU-SiF" secondAttribute="leading" id="4ka-6b-zJm"/>
                                                             <constraint firstItem="ssX-qZ-VK4" firstAttribute="leading" secondItem="r4n-Pk-nO9" secondAttribute="trailing" constant="16" id="Fh2-6D-p4i"/>
@@ -348,8 +577,8 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="fn3-mF-d7L" customClass="SaturationSliderControl" customModule="FlexColorPicker">
-                                                                <rect key="frame" x="15" y="4" width="336" height="43"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <rect key="frame" x="15.333333333333343" y="4" width="335.66666666666663" height="43"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="11" id="vtZ-sC-Sni"/>
                                                                 </constraints>
@@ -379,8 +608,8 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="kp2-5E-cmE" customClass="RedSliderControl" customModule="FlexColorPicker">
-                                                                <rect key="frame" x="15.333333333333343" y="4" width="335.66666666666663" height="43"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <rect key="frame" x="15.666666666666657" y="4" width="335.33333333333337" height="43"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="11" id="MW2-Gs-lKi"/>
                                                                 </constraints>
@@ -411,7 +640,7 @@
                                                             </label>
                                                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="djP-Iq-Ety" customClass="GreenSliderControl" customModule="FlexColorPicker">
                                                                 <rect key="frame" x="17" y="4" width="334" height="43"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="11" id="UYB-3l-sIQ"/>
                                                                 </constraints>
@@ -442,7 +671,7 @@
                                                             </label>
                                                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="j8r-5M-OJC" customClass="BlueSliderControl" customModule="FlexColorPicker">
                                                                 <rect key="frame" x="15.666666666666657" y="4" width="335.33333333333337" height="43"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="11" id="2fK-AG-SF8"/>
                                                                 </constraints>
@@ -474,12 +703,11 @@
                                                     <constraint firstAttribute="height" constant="250" id="eEa-5V-kEQ"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O0g-hn-3RI" customClass="ColorPreviewWithHex" customModule="FlexColorPicker">
-                                                <rect key="frame" x="20" y="16" width="60" height="60"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ezq-Ug-t9x" customClass="ColorPreviewWithHex" customModule="FlexColorPicker">
+                                                <rect key="frame" x="19.999999999999996" y="19.999999999999996" width="57.666666666666657" height="57.666666666666657"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="O0g-hn-3RI" secondAttribute="height" id="0X8-cT-YVR"/>
-                                                    <constraint firstAttribute="height" constant="60" id="3JN-4y-Qha"/>
+                                                    <constraint firstAttribute="width" secondItem="Ezq-Ug-t9x" secondAttribute="height" id="Dd1-Qw-kGj"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
@@ -487,7 +715,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="displayHex" value="NO"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="10000"/>
+                                                        <real key="value" value="499"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -495,7 +723,9 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="iL3-P6-WET" firstAttribute="leading" secondItem="qSg-J1-OlS" secondAttribute="leading" constant="20" id="05p-zD-B1Q"/>
+                                            <constraint firstItem="Ezq-Ug-t9x" firstAttribute="top" secondItem="qSg-J1-OlS" secondAttribute="top" constant="20" id="1Av-bj-NuQ"/>
                                             <constraint firstItem="h8A-xk-7aT" firstAttribute="top" secondItem="qSg-J1-OlS" secondAttribute="top" constant="30" id="2PE-d8-Rbq"/>
+                                            <constraint firstItem="Ezq-Ug-t9x" firstAttribute="leading" secondItem="qSg-J1-OlS" secondAttribute="leading" constant="20" id="6VK-AV-xR8"/>
                                             <constraint firstItem="3mX-rR-2Va" firstAttribute="leading" secondItem="qSg-J1-OlS" secondAttribute="leading" constant="20" id="ABR-2k-CRj"/>
                                             <constraint firstAttribute="trailing" secondItem="iL3-P6-WET" secondAttribute="trailing" constant="20" id="Hb9-kP-BrN"/>
                                             <constraint firstAttribute="trailing" secondItem="h8A-xk-7aT" secondAttribute="trailing" constant="20" id="I8f-82-N85"/>
@@ -503,9 +733,8 @@
                                             <constraint firstItem="h8A-xk-7aT" firstAttribute="leading" secondItem="qSg-J1-OlS" secondAttribute="leading" constant="20" id="Rbv-Lv-CAu"/>
                                             <constraint firstAttribute="trailing" secondItem="3mX-rR-2Va" secondAttribute="trailing" constant="20" id="V0U-rF-MCy"/>
                                             <constraint firstItem="3mX-rR-2Va" firstAttribute="top" secondItem="iL3-P6-WET" secondAttribute="bottom" constant="30" id="WMs-ds-NaW"/>
-                                            <constraint firstItem="O0g-hn-3RI" firstAttribute="leading" secondItem="qSg-J1-OlS" secondAttribute="leading" constant="20" id="luW-6o-8zq"/>
                                             <constraint firstAttribute="bottom" secondItem="3mX-rR-2Va" secondAttribute="bottom" constant="20" id="rzg-r6-r4Z"/>
-                                            <constraint firstItem="O0g-hn-3RI" firstAttribute="top" secondItem="qSg-J1-OlS" secondAttribute="top" constant="16" id="s6a-1X-iFo"/>
+                                            <constraint firstItem="Ezq-Ug-t9x" firstAttribute="width" secondItem="qSg-J1-OlS" secondAttribute="width" multiplier="1:6.5" id="wI7-dS-LAG"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -530,7 +759,7 @@
                     <connections>
                         <outlet property="blueSlider" destination="j8r-5M-OJC" id="gqV-H6-v6M"/>
                         <outlet property="brightnessSlider" destination="ssX-qZ-VK4" id="9Kc-GV-YUX"/>
-                        <outlet property="colorPreview" destination="O0g-hn-3RI" id="Eyh-2p-ssU"/>
+                        <outlet property="colorPreview" destination="Ezq-Ug-t9x" id="3Y1-MV-ZaC"/>
                         <outlet property="greenSlider" destination="djP-Iq-Ety" id="nsv-KY-FLk"/>
                         <outlet property="radialHsbPalette" destination="h8A-xk-7aT" id="cOa-4H-xs9"/>
                         <outlet property="rectangularHsbPalette" destination="3mX-rR-2Va" id="qjX-Fv-ee3"/>
@@ -583,7 +812,7 @@
         <!--Standard Color Picker-->
         <scene sceneID="4Wg-fa-SNS">
             <objects>
-                <viewController title="Standard Color Picker" id="KoP-gf-YCa" customClass="FlexColorPickerController" customModule="FlexColorPicker" sceneMemberID="viewController">
+                <viewController title="Standard Color Picker" id="KoP-gf-YCa" customClass="DefaultColorPickerViewController" customModule="FlexColorPicker" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nSc-Qt-TNq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -593,12 +822,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQK-up-aRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1188" y="-605"/>
+            <point key="canvasLocation" x="2110" y="-605"/>
         </scene>
         <!--Rectangular Palette-->
         <scene sceneID="9oR-TJ-b4H">
             <objects>
-                <viewController title="Rectangular Palette" id="5ZE-ec-uhS" customClass="FlexColorPickerController" customModule="FlexColorPicker" sceneMemberID="viewController">
+                <viewController title="Rectangular Palette" id="5ZE-ec-uhS" customClass="DefaultColorPickerViewController" customModule="FlexColorPicker" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r5e-YV-kQe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -611,7 +840,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xi1-SR-gAO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2110" y="-605"/>
+            <point key="canvasLocation" x="3081" y="-605"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2MD-Ze-PAl">

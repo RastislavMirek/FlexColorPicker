@@ -28,16 +28,13 @@
 
 import UIKit
 
-private let sideMargin: CGFloat = 20
-private let topMargin: CGFloat = 24
-private let paleteTopMargin: CGFloat = 32
-let flexColorPickerBundle = Bundle(for: FlexColorPickerController.self)
+let flexColorPickerBundle = Bundle(for: CustomColorPickerViewController.self)
 
-open class FlexColorPickerController: UIViewController {
+open class CustomColorPickerViewController: UIViewController, ColorPickerControllerProtocol {
     
-    open let colorPicker = FlexColorPicker()
+    open let colorPicker = ColorPickerController()
 
-    open var delegate: FlexColorPickerDelegate? {
+    open var delegate: ColorPickerDelegate? {
         get {
             return colorPicker.delegate
         }
@@ -46,6 +43,7 @@ open class FlexColorPickerController: UIViewController {
         }
     }
 
+    @IBInspectable
     open var selectedColor: UIColor {
         get {
             return colorPicker.selectedColor
@@ -54,9 +52,6 @@ open class FlexColorPickerController: UIViewController {
             colorPicker.selectedColor = newValue
         }
     }
-
-    @IBInspectable
-    open var useRadialPalette = true
 
     @IBOutlet public var colorPreview: ColorPreviewWithHex? {
         get {
@@ -127,51 +122,6 @@ open class FlexColorPickerController: UIViewController {
         }
         set {
             colorPicker.blueSlider = newValue
-        }
-    }
-
-    open override func viewDidLoad() {
-        super.viewDidLoad()
-        addStandardColorControls()
-    }
-
-    open func addStandardColorControls() {
-        if colorPreview == nil {
-            let colorPreview = ColorPreviewWithHex()
-            colorPreview.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(colorPreview)
-            colorPreview.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: sideMargin).isActive = true
-            colorPreview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topMargin).isActive = true
-            self.colorPreview = colorPreview
-        }
-        if brightnessSlider == nil {
-            let brightnessSlider = BrightnessSliderControl()
-            brightnessSlider.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(brightnessSlider)
-            brightnessSlider.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: colorPreviewWithHexIntristicContentSize.width + sideMargin * 2).isActive = true
-            brightnessSlider.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -sideMargin).isActive = true
-            brightnessSlider.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: colorPreviewWithHexIntristicContentSize.height + topMargin).isActive = true
-            brightnessSlider.hitBoxInsets = UIEdgeInsets(top: defaultHitBoxInset, left: sideMargin, bottom: defaultHitBoxInset, right: sideMargin)
-            self.brightnessSlider = brightnessSlider
-        }
-        if radialHsbPalette == nil && rectangularHsbPalette == nil {
-            let palette: ColorPaletteControl
-            if useRadialPalette {
-                radialHsbPalette = RadialPaletteControl()
-                palette = radialHsbPalette!
-            }
-            else {
-                rectangularHsbPalette = RectangularPaletteControl()
-                palette = rectangularHsbPalette!
-            }
-            palette.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(palette)
-            palette.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: sideMargin).isActive = true
-            palette.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -sideMargin).isActive = true
-            palette.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: colorPreviewWithHexIntristicContentSize.height + topMargin + paleteTopMargin).isActive = true
-            palette.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: 0).isActive = true
-            palette.contentMode = .top
-            palette.hitBoxInsets = UIEdgeInsets(top: defaultHitBoxInset, left: sideMargin, bottom: defaultHitBoxInset, right: sideMargin)
         }
     }
 }

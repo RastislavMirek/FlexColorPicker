@@ -26,11 +26,22 @@
 //  SOFTWARE.
 //
 
-open class FlexColorPicker {
+open class ColorPickerController: NSObject, ColorPickerControllerProtocol {
+    public private(set) var selectedHSBColor: HSBColor = defaultSelectedColor
     public private(set) var colorControls = [ColorControl]()
-    open weak var delegate: FlexColorPickerDelegate?
+    open weak var delegate: ColorPickerDelegate?
 
-    @IBOutlet public var colorPreview: ColorPreviewWithHex? {
+    @IBInspectable
+    open var selectedColor: UIColor {
+        get {
+            return selectedHSBColor.toUIColor()
+        }
+        set {
+            setColor(newValue.hsbColor, exceptControl: nil)
+        }
+    }
+
+    @IBOutlet open var colorPreview: ColorPreviewWithHex? {
         didSet {
             controlDidSet(newValue: colorPreview, oldValue: oldValue)
         }
@@ -96,18 +107,6 @@ open class FlexColorPicker {
 //        }
 //    }
 
-    private(set) open var selectedHSBColor: HSBColor = defaultSelectedColor
-
-    @IBInspectable
-    open var selectedColor: UIColor {
-        get {
-            return selectedHSBColor.toUIColor()
-        }
-        set {
-            setColor(newValue.hsbColor, exceptControl: nil)
-        }
-    }
-
     open func addControl(_ colorControl: ColorControl) {
         colorControls.append(colorControl)
         colorControl.addTarget(self, action: #selector(colorPicked(by:)), for: .valueChanged)
@@ -155,11 +154,11 @@ open class FlexColorPicker {
 }
 
 extension ColorControl {
-    func add(to picker: FlexColorPicker) {
+    func add(to picker: ColorPickerController) {
         picker.addControl(self)
     }
 
-    func remove(from picker: FlexColorPicker) {
+    func remove(from picker: ColorPickerController) {
         picker.removeControl(self)
     }
 }

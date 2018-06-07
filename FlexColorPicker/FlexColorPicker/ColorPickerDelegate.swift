@@ -1,6 +1,6 @@
 //
-//  ModelDemoController.swift
-//  FlexColorPickerDemo
+//  FlexColorPickerDelegate.swift
+//  FlexColorPicker
 //
 //  Created by Rastislav Mirek on 4/6/18.
 //  
@@ -26,27 +26,7 @@
 //  SOFTWARE.
 //
 
-import FlexColorPicker
-
-class ModalDemoViewController: DefaultColorPickerViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        selectedColor = pickedColor
-        self.delegate = self
-    }
-
-    @IBAction func donePressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-}
-
-extension ModalDemoViewController: ColorPickerDelegate {
-    func colorPicker(_: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl) {
-        pickedColor = selectedColor
-    }
-
-    func colorPicker(_: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl) {
-        dismiss(animated: true, completion: nil)
-    }
+public protocol ColorPickerDelegate: class {
+    func colorPicker(_ colorPicker: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl)
+    func colorPicker(_ colorPicker: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl)
 }

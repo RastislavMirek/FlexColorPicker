@@ -1,6 +1,6 @@
 //
-//  DemoRootViewController.swift
-//  FlexColorPickerDemo
+//  ColorPickerController.swift
+//  FlexColorPicker
 //
 //  Created by Rastislav Mirek on 7/6/18.
 //  
@@ -26,34 +26,7 @@
 //  SOFTWARE.
 //
 
-import UIKit
-import FlexColorPicker
-
-var pickedColor = #colorLiteral(red: 0.6813090444, green: 0.253660053, blue: 1, alpha: 1)
-
-class DemoRootViewController: UITableViewController {
-    @IBOutlet weak var pickerColorPreview: CircleShapedView!
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        pickerColorPreview.backgroundColor = pickedColor
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationColorPicker = segue.destination as? ColorPickerControllerProtocol {
-            destinationColorPicker.selectedColor = pickedColor
-            destinationColorPicker.delegate = self
-        }
-    }
-}
-
-extension DemoRootViewController: ColorPickerDelegate {
-    func colorPicker(_: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl) {
-        pickedColor = selectedColor
-        pickerColorPreview.backgroundColor = selectedColor
-    }
-
-    func colorPicker(_: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl) {
-        navigationController?.popViewController(animated: true)
-    }
+public protocol ColorPickerControllerProtocol: class {
+    var delegate: ColorPickerDelegate? { get set }
+    var selectedColor: UIColor { get set }
 }

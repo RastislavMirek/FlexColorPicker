@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30184F2820C9E02400A81D6A /* PickerInTableDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30184F2720C9E02400A81D6A /* PickerInTableDemoViewController.swift */; };
 		3021F6D820C59EFD004E5D5A /* ModalDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3021F6D720C59EFD004E5D5A /* ModalDemoViewController.swift */; };
 		305A236A20BB4F7700271A59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A236920BB4F7700271A59 /* AppDelegate.swift */; };
 		305A237320BB4F7800271A59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305A237220BB4F7800271A59 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		30184F2720C9E02400A81D6A /* PickerInTableDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerInTableDemoViewController.swift; sourceTree = "<group>"; };
 		3021F6D720C59EFD004E5D5A /* ModalDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDemoViewController.swift; sourceTree = "<group>"; };
 		305A236920BB4F7700271A59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		305A237220BB4F7800271A59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				305A239820BBFDC100271A59 /* Main.storyboard */,
 				30B950CE20C8B3A9004E207C /* DemoRootViewController.swift */,
 				3021F6D720C59EFD004E5D5A /* ModalDemoViewController.swift */,
+				30184F2720C9E02400A81D6A /* PickerInTableDemoViewController.swift */,
 				305A237220BB4F7800271A59 /* Assets.xcassets */,
 				305A237420BB4F7800271A59 /* LaunchScreen.storyboard */,
 				305A237720BB4F7800271A59 /* Info.plist */,
@@ -151,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30B950CF20C8B3A9004E207C /* DemoRootViewController.swift in Sources */,
+				30184F2820C9E02400A81D6A /* PickerInTableDemoViewController.swift in Sources */,
 				3021F6D820C59EFD004E5D5A /* ModalDemoViewController.swift in Sources */,
 				305A236A20BB4F7700271A59 /* AppDelegate.swift in Sources */,
 			);

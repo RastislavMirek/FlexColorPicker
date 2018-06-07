@@ -1,8 +1,8 @@
 //
-//  FlexColorPickerDelegate.swift
-//  FlexColorPicker
+//  PickerInTableDemoViewController.swift
+//  FlexColorPickerDemo
 //
-//  Created by Rastislav Mirek on 4/6/18.
+//  Created by Rastislav Mirek on 7/6/18.
 //  
 //	MIT License
 //  Copyright (c) 2018 Rastislav Mirek
@@ -26,7 +26,21 @@
 //  SOFTWARE.
 //
 
-public protocol FlexColorPickerDelegate: class {
-    func colorPicker(_ colorPicker: FlexColorPicker, selectedColor: UIColor, usingControl: ColorControl)
-    func colorPicker(_ colorPicker: FlexColorPicker, confirmedColor: UIColor, usingControl: ColorControl)
+import UIKit
+import FlexColorPicker
+
+class PickerInTableDemoViewController: UITableViewController {
+    @IBOutlet var pickerController: ColorPickerController!
+}
+
+extension PickerInTableDemoViewController: ColorPickerControllerProtocol {
+    var delegate: ColorPickerDelegate? {
+        get { return pickerController.delegate }
+        set { pickerController.delegate = newValue}
+    }
+
+    var selectedColor: UIColor {
+        get { return pickerController.selectedColor }
+        set { pickerController.selectedColor = newValue }
+    }
 }
