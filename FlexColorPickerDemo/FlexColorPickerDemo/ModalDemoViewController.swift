@@ -28,8 +28,25 @@
 
 import FlexColorPicker
 
-class ModalDemoController: FlexColorPickerController {
+class ModalDemoViewController: FlexColorPickerController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        selectedColor = pickedColor
+        self.delegate = self
+    }
+
     @IBAction func donePressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ModalDemoViewController: FlexColorPickerDelegate {
+    func colorPicker(_: FlexColorPicker, selectedColor: UIColor, usingControl: ColorControl) {
+        pickedColor = selectedColor
+    }
+
+    func colorPicker(_: FlexColorPicker, confirmedColor: UIColor, usingControl: ColorControl) {
         dismiss(animated: true, completion: nil)
     }
 }

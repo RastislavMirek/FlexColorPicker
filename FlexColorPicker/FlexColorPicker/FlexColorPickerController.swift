@@ -37,6 +37,27 @@ open class FlexColorPickerController: UIViewController {
     
     open let colorPicker = FlexColorPicker()
 
+    open var delegate: FlexColorPickerDelegate? {
+        get {
+            return colorPicker.delegate
+        }
+        set {
+            colorPicker.delegate = newValue
+        }
+    }
+
+    open var selectedColor: UIColor {
+        get {
+            return colorPicker.selectedColor
+        }
+        set {
+            colorPicker.selectedColor = newValue
+        }
+    }
+
+    @IBInspectable
+    open var useRadialPalette = true
+
     @IBOutlet public var colorPreview: ColorPreviewWithHex? {
         get {
             return colorPicker.colorPreview
@@ -46,12 +67,21 @@ open class FlexColorPickerController: UIViewController {
         }
     }
 
-    @IBOutlet open var radialHsbPalette: ColorPaletteControl? {
+    @IBOutlet open var radialHsbPalette: RadialPaletteControl? {
         get {
             return colorPicker.radialHsbPalette
         }
         set {
             colorPicker.radialHsbPalette = newValue
+        }
+    }
+
+    @IBOutlet open var rectangularHsbPalette: RectangularPaletteControl? {
+        get {
+            return colorPicker.rectangularHsbPalette
+        }
+        set {
+            colorPicker.rectangularHsbPalette = newValue
         }
     }
 
@@ -124,17 +154,24 @@ open class FlexColorPickerController: UIViewController {
             brightnessSlider.hitBoxInsets = UIEdgeInsets(top: defaultHitBoxInset, left: sideMargin, bottom: defaultHitBoxInset, right: sideMargin)
             self.brightnessSlider = brightnessSlider
         }
-        if radialHsbPalette == nil {
-            let radialPalette = ColorPaletteControl()
-            radialPalette.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(radialPalette)
-            radialPalette.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: sideMargin).isActive = true
-            radialPalette.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -sideMargin).isActive = true
-            radialPalette.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: colorPreviewWithHexIntristicContentSize.height + topMargin + paleteTopMargin).isActive = true
-            radialPalette.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: 0).isActive = true
-            radialPalette.contentMode = .top
-            radialPalette.hitBoxInsets = UIEdgeInsets(top: defaultHitBoxInset, left: sideMargin, bottom: defaultHitBoxInset, right: sideMargin)
-            self.radialHsbPalette = radialPalette
+        if radialHsbPalette == nil && rectangularHsbPalette == nil {
+            let palette: ColorPaletteControl
+            if useRadialPalette {
+                radialHsbPalette = RadialPaletteControl()
+                palette = radialHsbPalette!
+            }
+            else {
+                rectangularHsbPalette = RectangularPaletteControl()
+                palette = rectangularHsbPalette!
+            }
+            palette.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(palette)
+            palette.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: sideMargin).isActive = true
+            palette.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -sideMargin).isActive = true
+            palette.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: colorPreviewWithHexIntristicContentSize.height + topMargin + paleteTopMargin).isActive = true
+            palette.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: 0).isActive = true
+            palette.contentMode = .top
+            palette.hitBoxInsets = UIEdgeInsets(top: defaultHitBoxInset, left: sideMargin, bottom: defaultHitBoxInset, right: sideMargin)
         }
     }
 }

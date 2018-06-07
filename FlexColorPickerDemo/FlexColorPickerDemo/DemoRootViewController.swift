@@ -1,8 +1,8 @@
 //
-//  ComponentSliderControls.swift
-//  FlexColorPicker
+//  DemoRootViewController.swift
+//  FlexColorPickerDemo
 //
-//  Created by Rastislav Mirek on 2/6/18.
+//  Created by Rastislav Mirek on 7/6/18.
 //  
 //	MIT License
 //  Copyright (c) 2018 Rastislav Mirek
@@ -26,38 +26,34 @@
 //  SOFTWARE.
 //
 
-@IBDesignable
-final public class SaturationSliderControl: ColorSliderControl {
-    public override func commonInit() {
-        colorSlider = SaturationSlider()
-        super.commonInit()
+import UIKit
+import FlexColorPicker
+
+var pickedColor: UIColor = .white
+
+class DemoRootViewController: UITableViewController {
+    @IBOutlet weak var pickerColorPreview: CircleShapedView!
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        pickerColorPreview.backgroundColor = pickedColor
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationColorPicker = segue.destination as? FlexColorPickerController {
+            destinationColorPicker.selectedColor = pickedColor
+            destinationColorPicker.delegate = self
+        }
     }
 }
 
-final public class BrightnessSliderControl: ColorSliderControl {
-    public override func commonInit() {
-        colorSlider = BrightnessSlider()
-        super.commonInit()
+extension DemoRootViewController: FlexColorPickerDelegate {
+    func colorPicker(_: FlexColorPicker, selectedColor: UIColor, usingControl: ColorControl) {
+        pickedColor = selectedColor
+        pickerColorPreview.backgroundColor = selectedColor
     }
-}
 
-final public class RedSliderControl: ColorSliderControl {
-    public override func commonInit() {
-        colorSlider = RedSlider()
-        super.commonInit()
-    }
-}
-
-final public class GreenSliderControl: ColorSliderControl {
-    public override func commonInit() {
-        colorSlider = GreenSlider()
-        super.commonInit()
-    }
-}
-
-final public class BlueSliderControl: ColorSliderControl {
-    public override func commonInit() {
-        colorSlider = BlueSlider()
-        super.commonInit()
+    func colorPicker(_: FlexColorPicker, confirmedColor: UIColor, usingControl: ColorControl) {
+        navigationController?.popViewController(animated: true)
     }
 }

@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3021F6D820C59EFD004E5D5A /* ModalDemoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3021F6D720C59EFD004E5D5A /* ModalDemoController.swift */; };
+		3021F6D820C59EFD004E5D5A /* ModalDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3021F6D720C59EFD004E5D5A /* ModalDemoViewController.swift */; };
 		305A236A20BB4F7700271A59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A236920BB4F7700271A59 /* AppDelegate.swift */; };
 		305A237320BB4F7800271A59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305A237220BB4F7800271A59 /* Assets.xcassets */; };
 		305A237620BB4F7800271A59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305A237420BB4F7800271A59 /* LaunchScreen.storyboard */; };
 		305A238E20BB512E00271A59 /* FlexColorPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305A238D20BB512E00271A59 /* FlexColorPicker.framework */; };
 		305A238F20BB512E00271A59 /* FlexColorPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 305A238D20BB512E00271A59 /* FlexColorPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		305A239920BBFDC100271A59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305A239820BBFDC100271A59 /* Main.storyboard */; };
+		30B950CF20C8B3A9004E207C /* DemoRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B950CE20C8B3A9004E207C /* DemoRootViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,7 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3021F6D720C59EFD004E5D5A /* ModalDemoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDemoController.swift; sourceTree = "<group>"; };
+		3021F6D720C59EFD004E5D5A /* ModalDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDemoViewController.swift; sourceTree = "<group>"; };
 		305A236920BB4F7700271A59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		305A237220BB4F7800271A59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		305A237520BB4F7800271A59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -39,6 +40,7 @@
 		305A238620BB50EB00271A59 /* FlexColorPickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlexColorPickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		305A238D20BB512E00271A59 /* FlexColorPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FlexColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		305A239820BBFDC100271A59 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		30B950CE20C8B3A9004E207C /* DemoRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoRootViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +69,8 @@
 			children = (
 				305A236920BB4F7700271A59 /* AppDelegate.swift */,
 				305A239820BBFDC100271A59 /* Main.storyboard */,
-				3021F6D720C59EFD004E5D5A /* ModalDemoController.swift */,
+				30B950CE20C8B3A9004E207C /* DemoRootViewController.swift */,
+				3021F6D720C59EFD004E5D5A /* ModalDemoViewController.swift */,
 				305A237220BB4F7800271A59 /* Assets.xcassets */,
 				305A237420BB4F7800271A59 /* LaunchScreen.storyboard */,
 				305A237720BB4F7800271A59 /* Info.plist */,
@@ -147,7 +150,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3021F6D820C59EFD004E5D5A /* ModalDemoController.swift in Sources */,
+				30B950CF20C8B3A9004E207C /* DemoRootViewController.swift in Sources */,
+				3021F6D820C59EFD004E5D5A /* ModalDemoViewController.swift in Sources */,
 				305A236A20BB4F7700271A59 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

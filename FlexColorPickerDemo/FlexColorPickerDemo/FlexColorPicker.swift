@@ -36,9 +36,15 @@ open class FlexColorPicker {
         }
     }
 
-    @IBOutlet open var radialHsbPalette: ColorPaletteControl? {
+    @IBOutlet open var radialHsbPalette: RadialPaletteControl? {
         didSet {
             controlDidSet(newValue: radialHsbPalette, oldValue: oldValue)
+        }
+    }
+
+    @IBOutlet open var rectangularHsbPalette: RectangularPaletteControl? {
+        didSet {
+            controlDidSet(newValue: rectangularHsbPalette, oldValue: oldValue)
         }
     }
 

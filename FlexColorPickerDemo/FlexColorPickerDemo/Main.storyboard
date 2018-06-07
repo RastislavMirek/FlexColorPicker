@@ -13,15 +13,29 @@
         <!--Flex Color Picker Demo-->
         <scene sceneID="yf2-23-bC2">
             <objects>
-                <tableViewController id="dXB-46-rD8" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="grq-w5-HjG">
+                <tableViewController id="dXB-46-rD8" customClass="DemoRootViewController" customModule="FlexColorPickerDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="grq-w5-HjG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="aEy-sF-c3W">
-                            <rect key="frame" x="0.0" y="308" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="308" width="375" height="140"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zT-MN-z7D" customClass="CircleShapedView" customModule="FlexColorPicker">
+                                    <rect key="frame" x="137" y="20" width="100" height="100"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="100" id="LTL-ed-Doi"/>
+                                        <constraint firstAttribute="height" constant="100" id="nGZ-NF-r6d"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="8zT-MN-z7D" firstAttribute="centerX" secondItem="aEy-sF-c3W" secondAttribute="centerX" id="VVO-vy-kGW"/>
+                                <constraint firstItem="8zT-MN-z7D" firstAttribute="centerY" secondItem="aEy-sF-c3W" secondAttribute="centerY" id="nZx-uX-9UJ"/>
+                            </constraints>
                         </view>
                         <sections>
                             <tableViewSection id="6h0-cn-83Z">
@@ -177,6 +191,9 @@
                     <navigationItem key="navigationItem" title="Flex Color Picker Demo" id="5yB-B9-cFb">
                         <barButtonItem key="backBarButtonItem" title="Demo" id="SpW-FY-olY"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="pickerColorPreview" destination="8zT-MN-z7D" id="ObR-bI-G9E"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Z9-v2-aZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -274,7 +291,7 @@
         <!--Modal Presentation-->
         <scene sceneID="w5s-se-EcL">
             <objects>
-                <viewController id="f9n-cL-kIC" customClass="ModalDemoController" customModule="FlexColorPickerDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="f9n-cL-kIC" customClass="ModalDemoViewController" customModule="FlexColorPickerDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6P6-Q7-wUd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -318,6 +335,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="DQ6-W5-tmb"/>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="useRadialPalette" value="NO"/>
+                    </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xi1-SR-gAO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

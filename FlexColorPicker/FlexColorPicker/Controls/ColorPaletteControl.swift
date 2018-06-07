@@ -118,6 +118,7 @@ open class ColorPaletteControl: ColorControlWithThumbView {
     }
 
     private func updateContentMode() {
+        let contentMode = colorPalete.supportedContentMode(for: self.contentMode)
         backgroundImageView.contentMode = contentMode
         foregroundImageView.contentMode = contentMode
     }

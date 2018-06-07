@@ -117,4 +117,11 @@ open class RadialHSBPalette: ColorPalette {
         let y = self.radius + radius * sin(hue * 2 * CGFloat.pi)
         return (CGPoint(x: x, y: y), brightness)
     }
+
+    open func supportedContentMode(for contentMode: UIViewContentMode) -> UIViewContentMode {
+        switch contentMode {
+        case .redraw, .scaleToFill, .scaleAspectFill: return .scaleAspectFit
+        default: return contentMode
+        }
+    }
 }

@@ -1,8 +1,8 @@
 //
-//  ColorPalete.swift
+//  PaletteControls.swift
 //  FlexColorPicker
 //
-//  Created by Rastislav Mirek on 27/5/18.
+//  Created by Rastislav Mirek on 7/6/18.
 //  
 //	MIT License
 //  Copyright (c) 2018 Rastislav Mirek
@@ -26,12 +26,16 @@
 //  SOFTWARE.
 //
 
-public protocol ColorPalette: class {
-    var size: CGSize { get set }
-    func modifyColor(_ color: HSBColor, with point: CGPoint) -> HSBColor
-    func renderForegroundImage() -> UIImage
-    func renderBackgroundImage() -> UIImage?
-    func closestValidPoint(to: CGPoint) -> CGPoint
-    func positionAndAlpha(for color: HSBColor) -> (position: CGPoint, foregroundImageAlpha: CGFloat)
-    func supportedContentMode(for contentMode: UIViewContentMode) -> UIViewContentMode
+public class RadialPaletteControl: ColorPaletteControl {
+    public override func commonInit() {
+        colorPalete = RadialHSBPalette()
+        super.commonInit()
+    }
+}
+
+public class RectangularPaletteControl: ColorPaletteControl {
+    public override func commonInit() {
+        colorPalete = RectangularHSBPalette()
+        super.commonInit()
+    }
 }

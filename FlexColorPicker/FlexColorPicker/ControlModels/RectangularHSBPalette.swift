@@ -29,6 +29,7 @@
 import Foundation
 
 class RectangularHSBPalette: ColorPalette {
+
     public var size: CGSize = .zero {
         didSet {
             intWidth = Int(size.width)
@@ -49,11 +50,11 @@ class RectangularHSBPalette: ColorPalette {
     }
 
     open func renderForegroundImage() -> UIImage {
-        var imageData = [UInt8](repeating: 255, count: (4 * intWidth * intHeight))
+        var imageData = [UInt8](repeating: 1, count: (4 * intWidth * intHeight))
         for i in 0 ..< intWidth {
             for j in 0 ..< intHeight {
-                let index = 4 * (i * intWidth + j)
-                let (hue, saturation) = hueAndSaturation(at: CGPoint(x: j, y: i)) // rendering image transforms it as it it was mirrored around x = -y axis - adjusting for it by switching i and j here
+                let index = 4 * (i + j * intWidth)
+                let (hue, saturation) = hueAndSaturation(at: CGPoint(x: i, y: j)) // rendering image transforms it as it it was mirrored around x = -y axis - adjusting for it by switching i and j here
                 let (r, g, b) = rgbFrom(hue: hue, saturation: saturation, brightness: 1)
                 imageData[index] = colorComponentToUInt8(r)
                 imageData[index + 1] = colorComponentToUInt8(g)
@@ -76,5 +77,9 @@ class RectangularHSBPalette: ColorPalette {
     open func positionAndAlpha(for color: HSBColor) -> (position: CGPoint, foregroundImageAlpha: CGFloat) {
         let (hue, saturation, brightness) = color.asTupleNoAlpha()
         return (CGPoint(x: hue * size.width, y: size.height - saturation * size.height), brightness)
+    }
+
+    open func supportedContentMode(for contentMode: UIViewContentMode) -> UIViewContentMode {
+        return contentMode
     }
 }
