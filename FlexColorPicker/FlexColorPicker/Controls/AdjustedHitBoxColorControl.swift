@@ -34,6 +34,11 @@ public let colorControlWithThumbViewDefaulthitBoxInsets = UIEdgeInsets(top: defa
 open class AdjustedHitBoxColorControl: AbstractColorControl {
     open let contentView = UIView()
 
+    public var contentBounds: CGRect {
+        layoutIfNeeded()
+        return contentView.frame
+    }
+
     @IBInspectable
     public var hitBoxInset: CGFloat {
         get {

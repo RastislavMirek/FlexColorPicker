@@ -72,14 +72,13 @@ open class ColorSliderControl: ColorControlWithThumbView {
     }
 
     private func updateCornerRadius() {
-        layoutIfNeeded() //ensure that subview bounds are updated
-        gradientBackgroundView.cornerRadius_ = gradientBackgroundView.bounds.height / 2
+        gradientBackgroundView.cornerRadius_ = contentBounds.height / 2
     }
 
     open func updateThumbAndGradient(isInteractive interactive: Bool) {
-        layoutIfNeeded() //ensure that subview bounds are updated as we are working with contentView.bounds
+        layoutIfNeeded() //ensure that subview bounds are updated as we are working with contentView.bounds.midY
         let (value, gradientStart, gradientEnd) = colorSlider.valueAndGradient(for: selectedHSBColor)
-        let gradientLength = contentView.bounds.width - thumbView.colorIdicatorRadius * 2 //cannot use self.bounds as that is extended compared to foregroundImageView.bounds when AdjustedHitBoxColorControl.hitBoxInsets are non-zero
+        let gradientLength = contentBounds.width - thumbView.colorIdicatorRadius * 2 //cannot use self.bounds as that is extended compared to foregroundImageView.bounds when AdjustedHitBoxColorControl.hitBoxInsets are non-zero
         thumbView.frame = CGRect(center: CGPoint(x: thumbView.colorIdicatorRadius + gradientLength * min(max(0, value), 1), y: contentView.bounds.midY), size: thumbView.intrinsicContentSize)
         thumbView.setColor(selectedHSBColor.toUIColor(), animateBorderColor: interactive)
         gradientView.startOffset = thumbView.colorIdicatorRadius
@@ -89,8 +88,7 @@ open class ColorSliderControl: ColorControlWithThumbView {
     }
 
     open override func updateSelectedColor(at point: CGPoint) {
-        layoutIfNeeded()
-        let gradientLength = contentView.bounds.width - thumbView.colorIdicatorRadius * 2
+        let gradientLength = contentBounds.width - thumbView.colorIdicatorRadius * 2
         let value = max(0, min(1, (point.x - thumbView.colorIdicatorRadius) / gradientLength))
         thumbView.percentage = Int(round(value * 100))
         setSelectedHSBColor(colorSlider.modifyColor(selectedHSBColor, with: min(max(0, value), 1)), isInteractive: true)

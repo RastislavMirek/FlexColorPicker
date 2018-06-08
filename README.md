@@ -1,5 +1,5 @@
 # Flex Color Picker
-Modern &amp; flexible iOS HSB Color picker component written in Swift. Great UX, high performance and open, protocol oriented design: You can set, override or replace almost anything.
+Modern &amp; flexible iOS HSB Color picker component written in Swift 4. Great UX, high performance and open, protocol oriented design: You can set, override or replace almost anything.
 
 ## Use cases supported
 1. ready-to-use color picker that works great out-of-box
