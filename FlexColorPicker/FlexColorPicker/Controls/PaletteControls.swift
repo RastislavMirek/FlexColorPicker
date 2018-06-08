@@ -36,6 +36,32 @@ public class RadialPaletteControl: ColorPaletteControl {
 public class RectangularPaletteControl: ColorPaletteControl {
     public override func commonInit() {
         colorPalete = RectangularHSBPalette()
+        setDefaultBorder(on: borderOn, forView: contentView)
+        setHue(horizontalAxis: hueHorizontal, updateImage: false)
         super.commonInit()
+    }
+
+    @IBInspectable
+    public var hueHorizontal: Bool = true {
+        didSet {
+            if oldValue != hueHorizontal {
+                setHue(horizontalAxis: hueHorizontal, updateImage: true)
+            }
+        }
+    }
+
+    @IBInspectable
+    open var borderOn: Bool = true {
+        didSet {
+            setDefaultBorder(on: borderOn, forView: contentView)
+        }
+    }
+
+    open func setHue(horizontalAxis: Bool, updateImage: Bool) {
+        hueHorizontal = horizontalAxis
+        (colorPalete as? RectangularHSBPalette)?.hueHorizontal = horizontalAxis
+        if updateImage {
+            updatePaleteImagesAndThumb(isInteractive: false)
+        }
     }
 }

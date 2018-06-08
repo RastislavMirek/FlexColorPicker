@@ -73,4 +73,9 @@ open class AbstractColorControl: UIControl, ColorControl {
     func locationForTouches(_ touches: Set<UITouch>) -> CGPoint? {
         return touches.first?.location(in: self)
     }
+
+    func setDefaultBorder(on: Bool, forView view: UIView) {
+        view.borderColor = UIColor(named: "BorderColor", in: flexColorPickerBundle)
+        view.borderWidth = on ? defaultBorderWidth : 0
+    }
 }

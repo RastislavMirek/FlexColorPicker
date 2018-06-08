@@ -29,6 +29,8 @@
 import Foundation
 
 class RectangularHSBPalette: ColorPalette {
+    public private(set) var intWidth = 0
+    public private(set) var intHeight = 0
 
     public var size: CGSize = .zero {
         didSet {
@@ -36,12 +38,13 @@ class RectangularHSBPalette: ColorPalette {
             intHeight = Int(size.height)
         }
     }
-    public private(set) var intWidth = 0
-    public private(set) var intHeight = 0
+    public var hueHorizontal = true
 
     @inline(__always)
     open func hueAndSaturation(at point: CGPoint) -> (hue: CGFloat, saturation: CGFloat) {
-        return (max (0, min(1, point.x / size.width)), 1 - max(0, min(1, point.y / size.height)))
+        let hue = hueHorizontal ? point.x / size.width : point.y / size.height
+        let saturation = hueHorizontal ? point.y / size.height : point.x / size.width
+        return (max (0, min(1, hue)), 1 - max(0, min(1, saturation)))
     }
 
     public func modifyColor(_ color: HSBColor, with point: CGPoint) -> HSBColor {
@@ -77,7 +80,7 @@ class RectangularHSBPalette: ColorPalette {
 
     open func positionAndAlpha(for color: HSBColor) -> (position: CGPoint, foregroundImageAlpha: CGFloat) {
         let (hue, saturation, brightness) = color.asTupleNoAlpha()
-        return (CGPoint(x: hue * size.width, y: size.height - saturation * size.height), brightness)
+        return (CGPoint(x: (hueHorizontal ? hue : 1 - saturation) * size.width, y: (hueHorizontal ? 1 - saturation : hue) * size.height), brightness)
     }
 
     open func supportedContentMode(for contentMode: UIViewContentMode) -> UIViewContentMode {

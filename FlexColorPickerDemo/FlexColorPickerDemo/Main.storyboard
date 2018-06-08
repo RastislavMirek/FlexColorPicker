@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -724,6 +723,10 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="250" id="eEa-5V-kEQ"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hueHorizontal" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="borderOn" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ezq-Ug-t9x" customClass="ColorPreviewWithHex" customModule="FlexColorPicker">
                                                 <rect key="frame" x="19.999999999999996" y="19.999999999999996" width="57.666666666666657" height="57.666666666666657"/>
@@ -858,6 +861,7 @@
                     </view>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="useRadialPalette" value="NO"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="rectangularPaletteBorderOn" value="NO"/>
                     </userDefinedRuntimeAttributes>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xi1-SR-gAO" userLabel="First Responder" sceneMemberID="firstResponder"/>

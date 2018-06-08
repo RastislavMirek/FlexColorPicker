@@ -53,8 +53,30 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
         }
     }
 
+    /// Does not update after viewDidLoad
     @IBInspectable
-    open var useRadialPalette = true
+    open var useRadialPalette: Bool = true
+
+    @IBInspectable
+    open var rectangularPaletteHueHorizontalInLandscape: Bool = true {
+        didSet {
+            updateLayout(for: view.bounds.size)
+        }
+    }
+
+    @IBInspectable
+    open var rectangularPaletteHueHorizontalInPortrait: Bool = false {
+        didSet {
+            updateLayout(for: view.bounds.size)
+        }
+    }
+
+    @IBInspectable
+    open var rectangularPaletteBorderOn: Bool = true {
+        didSet {
+            (colorPalette as? RectangularPaletteControl)?.borderOn = rectangularPaletteBorderOn
+        }
+    }
 
     open var delegate: ColorPickerDelegate? {
         get {
@@ -67,7 +89,8 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
 
     open override func viewDidLoad() {
         super.viewDidLoad()
-        addStandardColorControls()
+        addColorControls()
+        updateLayout(for: view.bounds.size)
     }
 
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -76,7 +99,7 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
         }, completion: nil)
     }
 
-    open func addStandardColorControls() {
+    open func addColorControls() {
         colorPreview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(colorPreview)
 
@@ -97,6 +120,7 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
         else {
             pickerManager.radialHsbPalette = colorPalette as? RadialPaletteControl
         }
+        (colorPalette as? RectangularPaletteControl)?.borderOn = rectangularPaletteBorderOn
         colorPalette.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(colorPalette)
 
@@ -105,7 +129,6 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
 
         makeStandardLayout()
         makeLandscapeLayout()
-        updateLayout(for: view.bounds.size)
     }
 
     private func makeStandardLayout() {
@@ -150,12 +173,18 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
     }
 
     private func updateLayout(for size: CGSize) {
-        if size.height < size.width {
+        if size == .zero || standardConstraints.isEmpty || landscapeConstraints.isEmpty {
+            return
+        }
+        let rectangularPalette = (colorPalette as? RectangularPaletteControl)
+        if size.height < size.width && traitCollection.verticalSizeClass != .regular {
+            rectangularPalette?.setHue(horizontalAxis: rectangularPaletteHueHorizontalInLandscape, updateImage: false) //image gets updated on bounds change
             NSLayoutConstraint.deactivate(standardConstraints)
             NSLayoutConstraint.activate(landscapeConstraints)
             return
         }
 
+        rectangularPalette?.setHue(horizontalAxis: rectangularPaletteHueHorizontalInPortrait, updateImage: false) //image gets updated on bounds change
         NSLayoutConstraint.deactivate(landscapeConstraints)
         NSLayoutConstraint.activate(standardConstraints)
     }

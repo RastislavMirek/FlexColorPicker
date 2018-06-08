@@ -96,8 +96,7 @@ open class ColorSliderControl: ColorControlWithThumbView {
     }
 
     open func setDefaultBorder(on: Bool) {
-        gradientBackgroundView.borderColor = UIColor(named: "BorderColor", in: flexColorPickerBundle)
-        gradientBackgroundView.borderWidth = on ? defaultBorderWidth : 0
+        setDefaultBorder(on: on, forView: gradientBackgroundView)
     }
 
     @IBInspectable
