@@ -15,7 +15,6 @@ Modern &amp; flexible iOS HSB Color picker component written in Swift. Great UX,
 - controls works in UIScrollView with little effort
 - great UX and simplistic yet customisable design
 - works with any controller, no need to subclass some specific controller
-- very fast, no performance issues (unlike some older libraries)
 - /* fully documented - not yet  */, clean and easy to understand code
 - well-thought animations where appropriate
 - to add your own slider/palete just by implementing a protocol

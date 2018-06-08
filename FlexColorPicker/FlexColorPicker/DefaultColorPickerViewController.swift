@@ -30,9 +30,14 @@ import UIKit
 
 private let sideMargin: CGFloat = 20
 private let topMargin: CGFloat = 24
-private let paletteTopMargin: CGFloat = 32
+private let paletteVerticalMargin: CGFloat = 42
+private let paletteHorizontalMargin: CGFloat = 32
+private let minDistanceFromSafeArea: CGFloat = 10
+private let minSpaceAboveSlider: CGFloat = 50
 
 open class DefaultColorPickerViewController: UIViewController, ColorPickerControllerProtocol {
+    private var standardConstraints = [NSLayoutConstraint]()
+    private var landscapeConstraints = [NSLayoutConstraint]()
     public let pickerManager = ColorPickerController()
     public let colorPreview = ColorPreviewWithHex()
     public let brightnessSlider = BrightnessSliderControl()
@@ -65,19 +70,24 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
         addStandardColorControls()
     }
 
+    open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: { _ in
+            self.updateLayout(for: size)
+        }, completion: nil)
+    }
+
     open func addStandardColorControls() {
         colorPreview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(colorPreview)
-        colorPreview.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: sideMargin).isActive = true
-        colorPreview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topMargin).isActive = true
+
         pickerManager.colorPreview = colorPreview
 
         brightnessSlider.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(brightnessSlider)
-        brightnessSlider.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: colorPreviewWithHexIntristicContentSize.width + sideMargin * 2).isActive = true
-        brightnessSlider.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -sideMargin).isActive = true
-        brightnessSlider.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: colorPreviewWithHexIntristicContentSize.height + topMargin).isActive = true
+
+
         brightnessSlider.hitBoxInsets = UIEdgeInsets(top: defaultHitBoxInset, left: sideMargin, bottom: defaultHitBoxInset, right: sideMargin)
+        brightnessSlider.expandOnTap = false
         pickerManager.brightnessSlider = brightnessSlider
 
         if !useRadialPalette {
@@ -89,11 +99,64 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
         }
         colorPalette.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(colorPalette)
-        colorPalette.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: sideMargin).isActive = true
-        colorPalette.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -sideMargin).isActive = true
-        colorPalette.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: colorPreviewWithHexIntristicContentSize.height + topMargin + paletteTopMargin).isActive = true
-        colorPalette.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -sideMargin).isActive = true
+
         colorPalette.contentMode = .top
         colorPalette.hitBoxInsets = UIEdgeInsets(top: defaultHitBoxInset, left: sideMargin, bottom: defaultHitBoxInset, right: sideMargin)
+
+        makeStandardLayout()
+        makeLandscapeLayout()
+        updateLayout(for: view.bounds.size)
+    }
+
+    private func makeStandardLayout() {
+        standardConstraints += [
+            colorPreview.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: sideMargin),
+            colorPreview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topMargin),
+            colorPreview.heightAnchor.constraint(equalToConstant: colorPreview.intrinsicContentSize.height)
+        ]
+        colorPreview.setContentCompressionResistancePriority(.init(900), for: .horizontal)
+        standardConstraints += [
+            brightnessSlider.leftAnchor.constraint(equalTo: colorPreview.rightAnchor, constant: sideMargin),
+            brightnessSlider.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -sideMargin),
+            brightnessSlider.bottomAnchor.constraint(equalTo: colorPreview.bottomAnchor, constant: 0)
+        ]
+        standardConstraints += [
+            colorPalette.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: sideMargin),
+            colorPalette.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -sideMargin),
+            colorPalette.topAnchor.constraint(equalTo: colorPreview.bottomAnchor, constant: paletteVerticalMargin),
+            colorPalette.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -sideMargin)
+        ]
+    }
+
+    private func makeLandscapeLayout() {
+        landscapeConstraints += [
+            colorPreview.centerXAnchor.constraint(equalTo: brightnessSlider.centerXAnchor),
+            colorPreview.bottomAnchor.constraint(equalTo: colorPalette.centerYAnchor, constant: -minSpaceAboveSlider * 0.25)
+        ]
+        landscapeConstraints += [
+            brightnessSlider.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: sideMargin),
+            brightnessSlider.topAnchor.constraint(equalTo: colorPalette.centerYAnchor, constant: minSpaceAboveSlider * 0.75),
+            brightnessSlider.rightAnchor.constraint(equalTo: view.centerXAnchor, constant: -paletteHorizontalMargin / 2)
+        ]
+        let nonRequiredConstraint = colorPalette.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -sideMargin)
+        landscapeConstraints += [
+            colorPalette.leftAnchor.constraint(equalTo: view.centerXAnchor, constant: paletteHorizontalMargin / 2),
+            colorPalette.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -sideMargin),
+            colorPalette.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: sideMargin),
+            nonRequiredConstraint,
+            colorPalette.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -minDistanceFromSafeArea)
+        ]
+        nonRequiredConstraint.priority = .init(999)
+    }
+
+    private func updateLayout(for size: CGSize) {
+        if size.height < size.width {
+            NSLayoutConstraint.deactivate(standardConstraints)
+            NSLayoutConstraint.activate(landscapeConstraints)
+            return
+        }
+
+        NSLayoutConstraint.deactivate(landscapeConstraints)
+        NSLayoutConstraint.activate(standardConstraints)
     }
 }

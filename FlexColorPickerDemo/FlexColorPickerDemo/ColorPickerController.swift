@@ -26,7 +26,7 @@
 //  SOFTWARE.
 //
 
-open class ColorPickerController: NSObject, ColorPickerControllerProtocol {
+open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //subclassing NSObject is required to use this class as object in interface builder
     public private(set) var selectedHSBColor: HSBColor = defaultSelectedColor
     public private(set) var colorControls = [ColorControl]()
     open weak var delegate: ColorPickerDelegate?

@@ -49,6 +49,18 @@ public class GradientView: UIView {
         }
     }
 
+    public var startOffset: CGFloat = 0 {
+        didSet {
+            updatePoints()
+        }
+    }
+
+    public var endOffset: CGFloat = 0 {
+        didSet {
+            updatePoints()
+        }
+    }
+
     public override var bounds: CGRect {
         didSet {
             updatePoints()
@@ -60,7 +72,8 @@ public class GradientView: UIView {
     }
 
     open func updatePoints() {
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        gradientLayer.startPoint = CGPoint(x: startOffset / bounds.width, y: 0.5)
+        gradientLayer.endPoint.x = 1 - endOffset / bounds.width //some strange bug causes it to asign NaN for x when directly assigning CGPoint
+        gradientLayer.endPoint.y = 0.5
     }
 }
