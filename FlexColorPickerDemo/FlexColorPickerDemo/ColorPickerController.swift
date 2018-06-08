@@ -37,7 +37,7 @@ open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //su
             return selectedHSBColor.toUIColor()
         }
         set {
-            setColor(newValue.hsbColor, exceptControl: nil)
+            setColor(newValue.hsbColor, exceptControl: nil, isInteractive: false)
         }
     }
 
@@ -124,7 +124,7 @@ open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //su
             return
         }
         let selectedColor = control.selectedHSBColor
-        setColor(selectedColor, exceptControl: control)
+        setColor(selectedColor, exceptControl: control, isInteractive: true)
         delegate?.colorPicker(self, selectedColor: self.selectedColor, usingControl: control)
     }
 
@@ -139,16 +139,16 @@ open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //su
         delegate?.colorPicker(self, confirmedColor: selectedColor, usingControl: control)
     }
 
-    open func setColor(_ selectedColor: HSBColor, exceptControl control: ColorControl?) {
+    open func setColor(_ selectedColor: HSBColor, exceptControl control: ColorControl?, isInteractive: Bool) {
         for c in colorControls where c !== control {
-            c.selectedHSBColor = selectedColor
+            c.setSelectedHSBColor(selectedColor, isInteractive: isInteractive)
         }
         selectedHSBColor = selectedColor
     }
 
     open func controlDidSet(newValue: ColorControl?, oldValue: ColorControl?) {
         oldValue?.remove(from: self)
-        newValue?.selectedHSBColor = selectedHSBColor
+        newValue?.setSelectedHSBColor(selectedHSBColor, isInteractive: false)
         newValue?.add(to: self)
     }
 }

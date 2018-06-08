@@ -29,7 +29,7 @@
 import UIKit
 
 open class AbstractColorControl: UIControl, ColorControl {
-    open var selectedHSBColor: HSBColor = defaultSelectedColor
+    private(set) public var selectedHSBColor: HSBColor = defaultSelectedColor
 
     @IBInspectable
     public var selectedColor: UIColor {
@@ -64,6 +64,10 @@ open class AbstractColorControl: UIControl, ColorControl {
     /// This empty method is override point for initialization tasks that needs to be carried no matter how the view is constructed (e. g. via Interface Builder or from code).
     open func commonInit() {
         isExclusiveTouch = true
+    }
+
+    open func setSelectedHSBColor(_ hsbColor: HSBColor, isInteractive: Bool) {
+        selectedHSBColor = hsbColor
     }
 
     func locationForTouches(_ touches: Set<UITouch>) -> CGPoint? {

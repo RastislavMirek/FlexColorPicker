@@ -387,10 +387,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ttT-xx-KWV" customClass="ColorPreviewWithHex" customModule="FlexColorPicker">
-                                <rect key="frame" x="137.66666666666666" y="108" width="100" height="100"/>
+                                <rect key="frame" x="137.66666666666666" y="108" width="100" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="lXX-20-ngX"/>
+                                    <constraint firstAttribute="height" constant="80" id="lXX-20-ngX"/>
                                     <constraint firstAttribute="width" constant="100" id="pFT-EE-9QU"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -403,7 +403,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="L3x-MT-WOb">
-                                <rect key="frame" x="16" y="238" width="343" height="150"/>
+                                <rect key="frame" x="16" y="218" width="343" height="150"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chc-oP-JQG">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>

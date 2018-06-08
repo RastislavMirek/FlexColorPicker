@@ -37,26 +37,15 @@ open class ColorPaletteControl: ColorControlWithThumbView {
     public let foregroundImageView = UIImageView()
     /// Black image in the background used to apply brightnes chnage by blending it with colorMapImageView.
     public let backgroundImageView = UIImageView()
-
-    open override var selectedHSBColor: HSBColor {
-        didSet {
-            thumbView.color = selectedHSBColor.toUIColor()
-            if oldValue != selectedHSBColor {
-                let (position, foregroundAlpha) = colorPalete.positionAndAlpha(for: selectedHSBColor)
-                updateThumbPosition(position: position)
-                foregroundImageView.alpha = foregroundAlpha
-            }
-        }
-    }
     
     open var colorPalete: ColorPalette = RadialHSBPalette() {
         didSet {
-            updatePaleteImagesAndThumb()
+            updatePaleteImagesAndThumb(isInteractive: false)
         }
     }
     open override var bounds: CGRect {
         didSet {
-            updatePaleteImagesAndThumb()
+            updatePaleteImagesAndThumb(isInteractive: false)
         }
     }
 
@@ -73,10 +62,21 @@ open class ColorPaletteControl: ColorControlWithThumbView {
         backgroundImageView.addAutolayoutFillingSubview(foregroundImageView)
         updateContentMode()
         contentView.addSubview(thumbView)
-        updatePaleteImagesAndThumb()
+        updatePaleteImagesAndThumb(isInteractive: false)
     }
 
-    open func updatePaleteImagesAndThumb() {
+    open override func setSelectedHSBColor(_ hsbColor: HSBColor, isInteractive interactive: Bool) {
+        let hasChanged = selectedHSBColor != hsbColor
+        super.setSelectedHSBColor(hsbColor, isInteractive: interactive)
+        if hasChanged {
+            thumbView.setColor(hsbColor.toUIColor(), animateBorderColor: interactive)
+            let (position, foregroundAlpha) = colorPalete.positionAndAlpha(for: hsbColor)
+            updateThumbPosition(position: position)
+            foregroundImageView.alpha = foregroundAlpha
+        }
+    }
+
+    open func updatePaleteImagesAndThumb(isInteractive interactive: Bool) {
         layoutIfNeeded() //force subviews layout to update their bounds - bounds of subviews are not automatically updated
         colorPalete.size = foregroundImageView.bounds.size //cannot use self.bounds as that is extended compared to foregroundImageView.bounds when AdjustedHitBoxColorControl.hitBoxInsets are non-zero
         foregroundImageView.image = colorPalete.renderForegroundImage()
@@ -85,7 +85,7 @@ open class ColorPaletteControl: ColorControlWithThumbView {
         assert(backgroundImageView.image == nil || foregroundImageView.image?.size == backgroundImageView.image?.size, "foreground and background images rendered must have same size")
         updateContentMode()
         updateThumbPosition(position: colorPalete.positionAndAlpha(for: selectedHSBColor).position)
-        thumbView.color = selectedHSBColor.toUIColor()
+        thumbView.setColor(selectedColor, animateBorderColor: interactive)
     }
 
     open func imageCoordinates(point: CGPoint, fromCoordinateSpace coordinateSpace: UICoordinateSpace) -> CGPoint {
@@ -96,9 +96,10 @@ open class ColorPaletteControl: ColorControlWithThumbView {
         return foregroundImageView.convert(foregroundImageView.convertFromImageSpace(point: point), to: coordinateSpace)
     }
 
+    /// Not ready to be called directly but you may override
     open override func updateSelectedColor(at point: CGPoint) {
         let pointInside = colorPalete.closestValidPoint(to: imageCoordinates(point: point, fromCoordinateSpace: contentView))
-        selectedHSBColor = colorPalete.modifyColor(selectedHSBColor, with: pointInside)
+        setSelectedHSBColor(colorPalete.modifyColor(selectedHSBColor, with: pointInside), isInteractive: true)
         updateThumbPosition(position: pointInside)
         sendActions(for: .valueChanged)
     }

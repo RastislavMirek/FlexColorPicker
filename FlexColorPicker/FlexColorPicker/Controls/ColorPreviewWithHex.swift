@@ -47,12 +47,6 @@ open class ColorPreviewWithHex: AbstractColorControl {
         return hexLabel.topAnchor
     }
 
-    open override var selectedHSBColor: HSBColor {
-        didSet {
-            updateSelectedColor(with: selectedHSBColor)
-        }
-    }
-
     @IBInspectable
     public var displayHex: Bool = true {
         didSet {
@@ -126,7 +120,7 @@ open class ColorPreviewWithHex: AbstractColorControl {
         hexLabel.textAlignment = .center
         hexLabel.font = hexFont
         setDefaultBorder(on: borderOn)
-        updateSelectedColor(with: selectedHSBColor) // set default color if it is not set, otherwise keep color set in storyboard via IBInspectable
+        setSelectedHSBColor(selectedHSBColor, isInteractive: false) // set default color if it is not set, otherwise keep color set in storyboard via IBInspectable
         updateCornerRadius()
     }
 
@@ -135,8 +129,9 @@ open class ColorPreviewWithHex: AbstractColorControl {
         borderWidth = on ? defaultBorderWidth : 0
     }
 
-    open func updateSelectedColor(with selectedColor: HSBColor) {
-        let color = selectedColor.toUIColor()
+    open override func setSelectedHSBColor(_ hsbColor: HSBColor, isInteractive interactive: Bool) {
+        super.setSelectedHSBColor(hsbColor, isInteractive: interactive)
+        let color = hsbColor.toUIColor()
         colorView.backgroundColor = color
         hexLabel.text = "#\(color.hexValue())"
     }

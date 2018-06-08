@@ -27,11 +27,7 @@
 //
 
 extension CGRect {
-    public init(center: CGPoint, size: CGSize) {
+    init(center: CGPoint, size: CGSize) {
         self.init(origin: CGPoint(x: center.x - size.width / 2, y: center.y - size.height / 2), size: size)
-    }
-    
-    public func rectByInsetting(_ edgeInsets: UIEdgeInsets) -> CGRect {
-        return UIEdgeInsetsInsetRect(self, edgeInsets)
     }
 }

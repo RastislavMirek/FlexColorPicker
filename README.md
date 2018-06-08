@@ -54,4 +54,4 @@ If you like it, have a question or want to hire iOS developers shoot me a messag
 Suggestions, feedback, bug reorts & pull requests are very wellcomed.
 
 Thanks
-Visual of slider control inspired by popular Objective-C library HRColorPicker.  
+Visual of slider control inspired by popular Objective-C library HRColorPicker.  Thank you  for using FlexColorPicker! If you just have 5 seconds to give back, please star this repository.

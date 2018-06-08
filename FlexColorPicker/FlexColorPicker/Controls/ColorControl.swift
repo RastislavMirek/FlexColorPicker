@@ -29,7 +29,9 @@
 import UIKit
 
 public protocol ColorControl: class {
-    var selectedHSBColor: HSBColor { get set }
+    var selectedHSBColor: HSBColor { get }
+    func setSelectedHSBColor(_ hsbColor: HSBColor, isInteractive: Bool)
+    
     func addTarget(_ target: Any?, action: Selector, for: UIControlEvents)
     func removeTarget(_ target: Any?, action: Selector?, for: UIControlEvents)
 }

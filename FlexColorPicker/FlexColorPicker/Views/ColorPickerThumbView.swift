@@ -33,6 +33,7 @@ private let defaultWideBorderWidth: CGFloat = 6
 private let defaultExpandedUpscaleRatio: CGFloat = 1.6
 private let expansionAnimationDuration = 0.3
 private let collapsingAnimationDelay = 0.1
+private let borderDarkeningAnimationDuration = 0.3
 private let expansionAnimationSpringDamping: CGFloat = 0.7
 private let brightnessToChangeToDark: CGFloat = 0.3
 private let saturationToChangeToDark: CGFloat = 0.4
@@ -57,12 +58,8 @@ open class ColorPickerThumbView: UIViewWithCommonInit {
             }
         }
     }
-    open var color: UIColor = .clear {
-        didSet {
-            colorView.backgroundColor = color
-            setDarkBorderIfNeeded()
-        }
-    }
+    private(set) open var color: UIColor = defaultSelectedColor.toUIColor()
+
     open var percentage: Int = 0 {
         didSet {
             updatePercentage(percentage)
@@ -92,6 +89,13 @@ open class ColorPickerThumbView: UIViewWithCommonInit {
         percentageLabel.alpha = 0
         clipsToBounds = false // required for the text label to be displayed ourside of bounds
         borderView.backgroundColor = UIColor(named: "ThumbViewWideBorderColor", in: flexColorPickerBundle)
+        setColor(color, animateBorderColor: false)
+    }
+
+    open func setColor(_ color: UIColor, animateBorderColor: Bool) {
+        self.color = color
+        colorView.backgroundColor = color
+        setDarkBorderIfNeeded(animated: animateBorderColor)
     }
 
     public func updatePercentage(_ percentage: Int) {
@@ -100,6 +104,7 @@ open class ColorPickerThumbView: UIViewWithCommonInit {
 }
 
 extension ColorPickerThumbView {
+    
     open func setExpanded(_ expanded: Bool, animated: Bool) {
         let transform = expanded && expandOnTap ? CATransform3DMakeScale(expandedUpscaleRatio, expandedUpscaleRatio, 1) : CATransform3DIdentity
         let textLabelRaiseAmount: CGFloat = expanded && expandOnTap ? (bounds.height / 2) * defaultExpandedUpscaleRatio + textLabelUpShift : (bounds.height / 2)  + textLabelUpShift
@@ -114,7 +119,7 @@ extension ColorPickerThumbView {
         }, completion: nil)
     }
 
-    open func setDarkBorderIfNeeded() {
+    open func setDarkBorderIfNeeded(animated: Bool = true) {
         let (_, s, b) = color.hsbColor.asTupleNoAlpha()
         let isBorderDark = autoDarken && 1 - b < brightnessToChangeToDark && s < saturationToChangeToDark
 //        let isBorderDark = autoDarken && color.constrastRatio(with: .white) < maxContrastRatioWithWhiteToDarken
@@ -122,7 +127,7 @@ extension ColorPickerThumbView {
         #if TARGET_INTERFACE_BUILDER
             setWideBorderColors(isBorderDark) //animations do not work
         #else
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: animated ? borderDarkeningAnimationDuration : 0) {
             self.setWideBorderColors(isBorderDark)
         }
         #endif

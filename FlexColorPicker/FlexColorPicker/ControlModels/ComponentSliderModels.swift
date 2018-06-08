@@ -52,7 +52,7 @@ struct RedSlider: ColorSlider {
     }
 
     public func valueAndGradient(for color: HSBColor) -> (value: CGFloat, gradientStart: UIColor, gradientEnd: UIColor) {
-        return (color.rgb.red, color.toUIColor().withRed(0), color.toUIColor().withRed(1))
+        return (color.rgb.red, color.withRed(0).toUIColor(), color.withRed(1).toUIColor())
     }
 }
 
@@ -62,7 +62,7 @@ struct GreenSlider: ColorSlider {
     }
 
     public func valueAndGradient(for color: HSBColor) -> (value: CGFloat, gradientStart: UIColor, gradientEnd: UIColor) {
-        return (color.rgb.green, color.toUIColor().withGreen(0), color.toUIColor().withGreen(1))
+        return (color.rgb.green, color.withGreen(0).toUIColor(), color.withGreen(1).toUIColor())
     }
 }
 
@@ -72,6 +72,6 @@ struct BlueSlider: ColorSlider {
     }
 
     public func valueAndGradient(for color: HSBColor) -> (value: CGFloat, gradientStart: UIColor, gradientEnd: UIColor) {
-        return (color.rgb.blue, color.toUIColor().withBlue(0), color.toUIColor().withBlue(1))
+        return (color.rgb.blue, color.withBlue(0).toUIColor(), color.withBlue(1).toUIColor())
     }
 }

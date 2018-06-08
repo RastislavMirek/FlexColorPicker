@@ -29,17 +29,13 @@
 import UIKit
 
 extension UIColor {
-//    convenience init(hue: CGFloat, saturation: CGFloat) {
-//        super.init(hue: hue, saturation: saturation, brightness: 1, alpha: 1)
-//    }
-//
-    public var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+    var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         return (red, green, blue, alpha)
     }
 
-    public var rgb: (red: CGFloat, green: CGFloat, blue: CGFloat) {
+    var rgb: (red: CGFloat, green: CGFloat, blue: CGFloat) {
         let (red, green, blue, _) = rgba
         return (red, green, blue)
     }
@@ -50,25 +46,6 @@ extension UIColor {
 
     public var hsbColor: HSBColor {
         return HSBColor(color: self)
-    }
-
-    public var alpha: CGFloat {
-        return cgColor.alpha
-    }
-
-    public func withRed(_ red: CGFloat) -> UIColor {
-        let (_, g, b) = self.rgb
-        return UIColor(red: red, green: g, blue: b, alpha: alpha)
-    }
-
-    public func withGreen(_ green: CGFloat) -> UIColor {
-        let (r, _ , b) = self.rgb
-        return UIColor(red: r, green: green, blue: b, alpha: alpha)
-    }
-
-    public func withBlue(_ blue: CGFloat) -> UIColor {
-        let (r, g, _) = self.rgb
-        return UIColor(red: r, green: g, blue: blue, alpha: alpha)
     }
 
     public func hexValue(alwaysIncludeAlpha: Bool = false) -> String {
@@ -85,17 +62,12 @@ extension UIColor {
     }
 
     /// Computes contrast ratio between this color and given color as a value from interval <0, 1> where 0 is contrast ratio of the same colors and 1 is contrast ratio between black and white.
-    public func constrastRatio(with color: UIColor) -> CGFloat {
+    func constrastRatio(with color: UIColor) -> CGFloat {
         let (r1, g1, b1) = rgb
         let (r2, g2, b2) = color.rgb
 
         return (abs(r1 - r2) + abs(g1 - g2) + abs(b1 - b2)) / 3
     }
-
-//    public func withBrightness(_ brightness: CGFloat) -> UIColor {
-//        let (h, s, _) = self.hsbColor
-//        return  UIColor(hue: h, saturation: s, brightness: brightness, alpha: alpha)
-//    }
 }
 
 @inline(__always)
@@ -122,4 +94,26 @@ public func rgbFrom(hue: CGFloat, saturation: CGFloat, brightness: CGFloat) -> (
     case 4: return (t, p, brightness)
     default: return (brightness, p, q)
     }
+}
+
+//code currently not used but might consider publishing it in the future as a color utilities - leaving here for reference
+extension UIColor {
+    //    public var alpha: CGFloat {
+    //        return rgba.alpha
+    //    }
+    //
+    //    public func withRed(_ red: CGFloat) -> UIColor {
+    //        let (_, g, b, a) = self.rgba
+    //        return UIColor(red: red, green: g, blue: b, alpha: a)
+    //    }
+    //
+    //    public func withGreen(_ green: CGFloat) -> UIColor {
+    //        let (r, _ , b, a) = self.rgba
+    //        return UIColor(red: r, green: green, blue: b, alpha: a)
+    //    }
+    //
+    //    public func withBlue(_ blue: CGFloat) -> UIColor {
+    //        let (r, g, _, a) = self.rgba
+    //        return UIColor(red: r, green: g, blue: blue, alpha: a)
+    //    }
 }
