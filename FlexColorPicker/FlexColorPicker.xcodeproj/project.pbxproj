@@ -65,7 +65,7 @@
 		3034757020BC7EE500028A15 /* ColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorControl.swift; sourceTree = "<group>"; };
 		3034757220BC81CC00028A15 /* ColorSliderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSliderDelegate.swift; sourceTree = "<group>"; };
 		3034757620BC8D1300028A15 /* ControlWithThumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlWithThumbView.swift; sourceTree = "<group>"; };
-		3034757820BC9DBB00028A15 /* ColorPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorPickerController.swift; path = ../../FlexColorPickerDemo/FlexColorPickerDemo/ColorPickerController.swift; sourceTree = "<group>"; };
+		3034757820BC9DBB00028A15 /* ColorPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerController.swift; sourceTree = "<group>"; };
 		303ECED420C4A201005BB029 /* ColorPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerDelegate.swift; sourceTree = "<group>"; };
 		3049576E20C1B19800CEC32F /* ColorPreviewWithHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPreviewWithHex.swift; sourceTree = "<group>"; };
 		305A234F20BB179000271A59 /* CustomColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorPickerViewController.swift; sourceTree = "<group>"; };
@@ -94,7 +94,8 @@
 		3004B91520BB055100A0F93B = {
 			isa = PBXGroup;
 			children = (
-				3004B92120BB055100A0F93B /* FlexColorPicker */,
+				3004B92120BB055100A0F93B /* Classes */,
+				3071788E20CBDF94001D886E /* Assets */,
 				3004B92020BB055100A0F93B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,7 +108,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3004B92120BB055100A0F93B /* FlexColorPicker */ = {
+		3004B92120BB055100A0F93B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				303ECED420C4A201005BB029 /* ColorPickerDelegate.swift */,
@@ -122,9 +123,8 @@
 				3034756320BC0C7300028A15 /* Utilities */,
 				3004B92220BB055100A0F93B /* FlexColorPicker.h */,
 				3004B92320BB055100A0F93B /* Info.plist */,
-				3034755A20BC072800028A15 /* Colors.xcassets */,
 			);
-			path = FlexColorPicker;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		3034755C20BC0BD600028A15 /* Views */ = {
@@ -178,6 +178,14 @@
 				3021F6D920C5C6AE004E5D5A /* UIImageViewExtension.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		3071788E20CBDF94001D886E /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				3034755A20BC072800028A15 /* Colors.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,7 +436,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = FlexColorPicker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Classes/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -456,7 +464,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = FlexColorPicker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Classes/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

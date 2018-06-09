@@ -28,9 +28,22 @@
 
 import UIKit
 
+/// Protocol to which all color picker controls must conform. This protocol defines contract of color controls.
+///
+/// A color control is standalone view that should subclass `UIControl` which can be used to pick a color. Value of color control is stored in `selectedHSBColor` property. Color control sends `UIControlEvents.valueChanged` events to registered targets when its value (`selectedHSBColor`) changes as consequence of user interaction with the control. A color control can also send `UIControlEvents.primaryActionTriggered` when user takes action to confirm current selected color as final.
+///
+/// A color control should be usable as standalone component but is usually used together with other color picker controls managed and synchornized by instance of `ColorPickerConrtoller`.
 public protocol ColorControl: class {
+    /// Override this and return `false` if you do not want to `UIControlEvents.primaryActionTriggered` events send by your color control to be considered confirmation of color selection.
     static var canConfirmColor: Bool { get }
+    /// The value of this color control. Represents current selected color.
     var selectedHSBColor: HSBColor { get }
+
+    /// Sets `selectedHSBColor` and adjust visual state of the control according to that value.
+    ///
+    /// - Parameters:
+    ///   - hsbColor: New value to be set as selected color of this picker color control.
+    ///   - isInteractive: Whether new selected color was specified programatically or by user via interaction with another control. This can used to determine if some animations should be played.
     func setSelectedHSBColor(_ hsbColor: HSBColor, isInteractive: Bool)
     
     func addTarget(_ target: Any?, action: Selector, for: UIControlEvents)

@@ -71,12 +71,12 @@
 			isa = PBXGroup;
 			children = (
 				305A238D20BB512E00271A59 /* FlexColorPicker.framework */,
-				305A236820BB4F7700271A59 /* FlexColorPickerDemo */,
+				305A236820BB4F7700271A59 /* Classes */,
 				305A238620BB50EB00271A59 /* FlexColorPickerDemo.app */,
 			);
 			sourceTree = "<group>";
 		};
-		305A236820BB4F7700271A59 /* FlexColorPickerDemo */ = {
+		305A236820BB4F7700271A59 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				305A236920BB4F7700271A59 /* AppDelegate.swift */,
@@ -90,7 +90,7 @@
 				305A237420BB4F7800271A59 /* LaunchScreen.storyboard */,
 				305A237720BB4F7800271A59 /* Info.plist */,
 			);
-			path = FlexColorPickerDemo;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		30FE28DE20CB0F3800D0063E /* CustomControls */ = {
@@ -322,7 +322,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UWF3VQ79QJ;
-				INFOPLIST_FILE = FlexColorPickerDemo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Classes/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -341,7 +341,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UWF3VQ79QJ;
-				INFOPLIST_FILE = FlexColorPickerDemo/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Classes/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

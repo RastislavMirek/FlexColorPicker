@@ -1,8 +1,9 @@
 # Flex Color Picker
-Modern &amp; flexible iOS HSB Color picker component written in Swift 4. Great UX, high performance and open, protocol oriented design: You can set, override or replace almost anything.
+Modern &amp; flexible Color picker component for iOS written in Swift 4. Great UX, high performance and open, protocol oriented design: You can set, override or replace almost anything.
 
 ![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/SampleGifs/Flex_color_picker_for_swift_preview1.gif)
 ![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/SampleGifs/Flex_color_picker_for_swift_preview2.gif)
+![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/SampleGifs/Flex_color_picker_for_swift_preview3.gif)
 
 ## Use cases supported
 1. ready-to-use color picker that works great out-of-box
@@ -22,7 +23,6 @@ Modern &amp; flexible iOS HSB Color picker component written in Swift 4. Great U
 - or reuse existing slider/palete for different color model by implementing another protocol
 - all key classes are opened &amp ready for extending with many override points 
 
-![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/SampleGifs/Flex_color_picker_for_swift_preview3.gif)
 ![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/SampleGifs/Flex_color_picker_for_swift_preview4.gif)
 
 ## Instalation
@@ -55,9 +55,9 @@ When setting up slider controls in storyboard it is a good practise to set its b
 Color preview component (the one that shows hex of color by default) can be tapped. When it it tapped color picker controller sends selected confirmed call to its delegate. You can comunicate this feature to your users or opt out by disabling it setting `ColorPreviewWithHex.tapToConfirm` to `false`.   
 
 ## Getting in Touch
-If you like it, have a question or want to hire iOS developers shoot me a message at [my first name, see profile] at [epytysae spelled backwards] dot [first 4 letters of word information]. Email will goes directly to author FlexColorPicker, cryptic emial format is just spam bot protection. 
+If you like it, have a question or want to hire iOS developers shoot me a message at [my first name, see profile] at [epytysae spelled backwards] dot [first 4 letters of word information]. Email will goes directly to author FlexColorPicker, cryptic email format is just spam bot protection. 
 
 Suggestions, feedback, bug reorts & pull requests are very wellcomed.
 
-Thanks
+### Thanks
 Visual of slider control inspired by popular Objective-C library HRColorPicker.  Thank you  for using FlexColorPicker! If you just have 5 seconds to give back, please star this repository.

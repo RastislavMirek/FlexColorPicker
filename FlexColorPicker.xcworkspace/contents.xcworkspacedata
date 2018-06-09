@@ -7,6 +7,25 @@
    <FileRef
       location = "group:README.md">
    </FileRef>
+   <FileRef
+      location = "group:/Users/Rasto/Documents/XCode/FlexColorPicker/FlexColorPicker.podspec">
+   </FileRef>
+   <Group
+      location = "container:Screenshots"
+      name = "Screenshots">
+      <FileRef
+         location = "group:All_Flex_Colop_Picker_Controls_showcase.png">
+      </FileRef>
+      <FileRef
+         location = "group:Custom_Color_Picker_Components.png">
+      </FileRef>
+      <FileRef
+         location = "group:Default_Flex_Color_Picker.png">
+      </FileRef>
+      <FileRef
+         location = "group:Rectangular_Color_Picker_Palette.png">
+      </FileRef>
+   </Group>
    <Group
       location = "container:SampleGifs"
       name = "SampleGifs">
