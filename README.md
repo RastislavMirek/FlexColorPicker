@@ -1,5 +1,5 @@
 # Flex Color Picker
-Modern &amp; flexible Color picker component for iOS written in Swift 4. Great UX, high performance and open, protocol oriented design: You can set, override or replace almost anything.
+Modern &amp; flexible color picker for iOS written in Swift 4. Great UX, high performance and open, protocol oriented design: You can set, override or replace almost anything.
 
 ![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/SampleGifs/Flex_color_picker_for_swift_preview1.gif)
 ![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/SampleGifs/Flex_color_picker_for_swift_preview2.gif)

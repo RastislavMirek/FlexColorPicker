@@ -14,6 +14,18 @@
       location = "container:Screenshots"
       name = "Screenshots">
       <FileRef
+         location = "group:All_Flex_Colop_Picker_Controls_showcase.jpg">
+      </FileRef>
+      <FileRef
+         location = "group:Custom_Color_Picker_Components.jpg">
+      </FileRef>
+      <FileRef
+         location = "group:Default_Flex_Color_Picker.jpg">
+      </FileRef>
+      <FileRef
+         location = "group:Rectangular_Color_Picker_Palette.jpg">
+      </FileRef>
+      <FileRef
          location = "group:All_Flex_Colop_Picker_Controls_showcase.png">
       </FileRef>
       <FileRef
