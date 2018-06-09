@@ -157,4 +157,11 @@ open class CustomColorPickerViewController: UIViewController, ColorPickerControl
             colorPicker.customControl3 = newValue
         }
     }
+
+    open override func viewDidLoad() {
+        if view.backgroundColor == nil {
+            view.backgroundColor = .white
+        }
+        super.viewDidLoad()
+    }
 }

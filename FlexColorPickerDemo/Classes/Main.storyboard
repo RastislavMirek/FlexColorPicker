@@ -25,7 +25,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zT-MN-z7D" customClass="CircleShapedView" customModule="FlexColorPicker">
-                                    <rect key="frame" x="250" y="20" width="100" height="100"/>
+                                    <rect key="frame" x="137.66666666666666" y="20" width="100" height="100"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="100" id="LTL-ed-Doi"/>

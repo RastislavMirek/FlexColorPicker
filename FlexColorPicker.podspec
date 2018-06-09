@@ -22,7 +22,7 @@ Modern color picker library written in Swift 4 that can be easily extended and c
                        DESC
 
   s.homepage         = 'https://github.com/RastislavMirek/FlexColorPicker'
-  s.screenshots      = 'https://github.com/RastislavMirek/FlexColorPicker/blob/master/Screenshots/All_Flex_Colop_Picker_Controls_showcase.png', 'https://github.com/RastislavMirek/FlexColorPicker/blob/master/Screenshots/Custom_Color_Picker_Components.png', 'https://github.com/RastislavMirek/FlexColorPicker/blob/master/Screenshots/Default_Flex_Color_Picker.png', 'https://github.com/RastislavMirek/FlexColorPicker/blob/master/Screenshots/Rectangular_Color_Picker_Palette.png'
+  s.screenshots      = 'https://github.com/RastislavMirek/FlexColorPicker/blob/master/Screenshots/Default_Flex_Color_Picker.jpg', 'https://github.com/RastislavMirek/FlexColorPicker/blob/master/Screenshots/Custom_Color_Picker_Components.png', 'https://github.com/RastislavMirek/FlexColorPicker/blob/master/Screenshots/Default_Flex_Color_Picker.png', 'https://github.com/RastislavMirek/FlexColorPicker/blob/master/Screenshots/Rectangular_Color_Picker_Palette.png'
   s.swift_version    = '4.1'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Rastislav Mirek' => 'RastislavMirek@users.noreply.github.com' }

@@ -98,7 +98,11 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
     }
 
     open override func viewDidLoad() {
+        if view.backgroundColor == nil {
+            view.backgroundColor = .white
+        }
         super.viewDidLoad()
+
         addColorControls()
         updateLayout(for: view.bounds.size)
     }
