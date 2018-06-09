@@ -28,7 +28,7 @@
 
 import Foundation
 
-class RectangularHSBPalette: ColorPalette {
+open class RectangularHSBPalette: ColorPalette {
     public private(set) var intWidth = 0
     public private(set) var intHeight = 0
 
@@ -39,6 +39,8 @@ class RectangularHSBPalette: ColorPalette {
         }
     }
     public var hueHorizontal = true
+
+    public init() {}
 
     @inline(__always)
     open func hueAndSaturation(at point: CGPoint) -> (hue: CGFloat, saturation: CGFloat) {

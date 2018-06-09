@@ -89,28 +89,30 @@ open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //su
         }
     }
 
-//    @IBOutlet open var customControl1: AbstractColorControl? {
-//        didSet {
-//            controlDidSet(newValue: customControl1, oldValue: oldValue)
-//        }
-//    }
-//
-//    @IBOutlet open var customControl2: AbstractColorControl? {
-//        didSet {
-//            controlDidSet(newValue: customControl2, oldValue: oldValue)
-//        }
-//    }
-//
-//    @IBOutlet open var customControl3: AbstractColorControl? {
-//        didSet {
-//            controlDidSet(newValue: customControl3, oldValue: oldValue)
-//        }
-//    }
+    @IBOutlet open var customControl1: AbstractColorControl? {
+        didSet {
+            controlDidSet(newValue: customControl1, oldValue: oldValue)
+        }
+    }
+
+    @IBOutlet open var customControl2: AbstractColorControl? {
+        didSet {
+            controlDidSet(newValue: customControl2, oldValue: oldValue)
+        }
+    }
+
+    @IBOutlet open var customControl3: AbstractColorControl? {
+        didSet {
+            controlDidSet(newValue: customControl3, oldValue: oldValue)
+        }
+    }
 
     open func addControl(_ colorControl: ColorControl) {
         colorControls.append(colorControl)
         colorControl.addTarget(self, action: #selector(colorPicked(by:)), for: .valueChanged)
-        colorControl.addTarget(self, action: #selector(colorConfirmed(by:)), for: .primaryActionTriggered)
+        if type(of: colorControl).canConfirmColor {
+            colorControl.addTarget(self, action: #selector(colorConfirmed(by:)), for: .primaryActionTriggered)
+        }
     }
 
     open func removeControl(_ colorControl: ColorControl) {

@@ -124,4 +124,31 @@ open class CustomColorPickerViewController: UIViewController, ColorPickerControl
             colorPicker.blueSlider = newValue
         }
     }
+
+    @IBOutlet open var customControl1: AbstractColorControl? {
+        get {
+            return colorPicker.customControl1
+        }
+        set {
+            colorPicker.customControl1 = newValue
+        }
+    }
+
+    @IBOutlet open var customControl2: AbstractColorControl? {
+        get {
+            return colorPicker.customControl2
+        }
+        set {
+            colorPicker.customControl2 = newValue
+        }
+    }
+
+    @IBOutlet open var customControl3: AbstractColorControl? {
+        get {
+            return colorPicker.customControl3
+        }
+        set {
+            colorPicker.customControl3 = newValue
+        }
+    }
 }

@@ -1,8 +1,8 @@
 //
-//  ColorPickerControl.swift
-//  FlexColorPicker
+//  CustomControlsDemoViewController.swift
+//  FlexColorPickerDemo
 //
-//  Created by Rastislav Mirek on 28/5/18.
+//  Created by Rastislav Mirek on 9/6/18.
 //  
 //	MIT License
 //  Copyright (c) 2018 Rastislav Mirek
@@ -26,20 +26,17 @@
 //  SOFTWARE.
 //
 
-import UIKit
+import FlexColorPicker
 
-public protocol ColorControl: class {
-    static var canConfirmColor: Bool { get }
-    var selectedHSBColor: HSBColor { get }
-    func setSelectedHSBColor(_ hsbColor: HSBColor, isInteractive: Bool)
-    
-    func addTarget(_ target: Any?, action: Selector, for: UIControlEvents)
-    func removeTarget(_ target: Any?, action: Selector?, for: UIControlEvents)
-}
-
-public extension ColorControl {
-    /// Provides the default value for canConfirmColor. Returns true.
-    public static var canConfirmColor: Bool {
-        return true
+class CustomControlsDemoViewController: CustomColorPickerViewController {
+    @IBOutlet weak var hueSlider: HueUISliderColorControl! {
+        didSet {
+            colorPicker.controlDidSet(newValue: hueSlider, oldValue: oldValue)
+        }
+    }
+    @IBOutlet weak var saturationUISlider: SaturationUISliderColorControl! {
+        didSet {
+            colorPicker.controlDidSet(newValue: saturationUISlider, oldValue: oldValue)
+        }
     }
 }

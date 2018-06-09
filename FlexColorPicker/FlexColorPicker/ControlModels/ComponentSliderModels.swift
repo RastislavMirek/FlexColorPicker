@@ -26,7 +26,9 @@
 //  SOFTWARE.
 //
 
-struct SaturationSlider: ColorSlider {
+public struct SaturationSlider: ColorSlider {
+    public init() {}
+
     public func modifyColor(_ color: HSBColor, with value: CGFloat) -> HSBColor {
         return color.withSaturation(value)
     }
@@ -36,7 +38,9 @@ struct SaturationSlider: ColorSlider {
     }
 }
 
-struct BrightnessSlider: ColorSlider {
+public struct BrightnessSlider: ColorSlider {
+    public init() {}
+
     public func modifyColor(_ color: HSBColor, with value: CGFloat) -> HSBColor {
         return color.withBrightness(1 - value)
     }
@@ -46,7 +50,9 @@ struct BrightnessSlider: ColorSlider {
     }
 }
 
-struct RedSlider: ColorSlider {
+public struct RedSlider: ColorSlider {
+    public init() {}
+
     public func modifyColor(_ color: HSBColor, with value: CGFloat) -> HSBColor {
         return color.withRed(value)
     }
@@ -56,7 +62,9 @@ struct RedSlider: ColorSlider {
     }
 }
 
-struct GreenSlider: ColorSlider {
+public struct GreenSlider: ColorSlider {
+    public init() {}
+
     public func modifyColor(_ color: HSBColor, with value: CGFloat) -> HSBColor {
         return color.withGreen(value)
     }
@@ -66,7 +74,9 @@ struct GreenSlider: ColorSlider {
     }
 }
 
-struct BlueSlider: ColorSlider {
+public struct BlueSlider: ColorSlider {
+    public init() {}
+    
     public func modifyColor(_ color: HSBColor, with value: CGFloat) -> HSBColor {
         return color.withBlue(value)
     }

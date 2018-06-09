@@ -1,8 +1,8 @@
 //
-//  RadialColorPalete.swift
-//  FlexColorPicker
+//  RadialHueControlDelegate.swift
+//  FlexColorPickerDemo
 //
-//  Created by Rastislav Mirek on 27/5/18.
+//  Created by Rastislav Mirek on 8/6/18.
 //  
 //	MIT License
 //  Copyright (c) 2018 Rastislav Mirek
@@ -26,16 +26,17 @@
 //  SOFTWARE.
 //
 
-import UIKit
+import FlexColorPicker
 
-open class RadialHSBPalette: ColorPalette {
-    public private(set) var diameter: CGFloat = 0
-    public private(set) var radius: CGFloat = 0
-    public private(set) var midX: CGFloat = 0
-    public private(set) var midY: CGFloat = 0
-    public private(set) var ceiledDiameter: Int = 0
+//This class has some of code common with RadialHSBPalette but is it not its specialization so subclassing it would be incorrect object model
+class RadialHueColorPaletteDelegate: ColorPalette {
+    private(set) var diameter: CGFloat = 0
+    private(set) var radius: CGFloat = 0
+    private(set) var midX: CGFloat = 0
+    private(set) var midY: CGFloat = 0
+    private(set) var ceiledDiameter: Int = 0
 
-    open var size: CGSize = .zero {
+    var size: CGSize = .zero {
         didSet {
             let diameter = min(size.width, size.height)
             self.diameter = diameter
@@ -46,32 +47,32 @@ open class RadialHSBPalette: ColorPalette {
         }
     }
 
-    public init() {}
+    var indicatorDistance: CGFloat {
+        return radius - radialHuePaletteStripWidth / 2
+    }
 
-    @inline(__always)
-    open func hueAndSaturation(at point: CGPoint) -> (hue: CGFloat, saturation: CGFloat) {
+    private func hue(at point: CGPoint) -> CGFloat {
         let dy = (point.y - midY) / radius
         let dx = (point.x - midX) / radius
         let distance = sqrt(dx * dx + dy * dy)
         if distance <= 0 {
-            return (0, 0)
+            return 0
         }
         let hue = acos(dx / distance) / CGFloat.pi / 2
-        return (dy < 0 ? 1 - hue : hue, min(1, distance))
+        return dy < 0 ? 1 - hue : hue
     }
 
-    open func modifyColor(_ color: HSBColor, with point: CGPoint) -> HSBColor {
-        let (hue, saturation) = hueAndSaturation(at: point)
-        return color.withHue(hue, andSaturation: saturation)
+    func modifyColor(_ color: HSBColor, with point: CGPoint) -> HSBColor {
+        return color.withHue(hue(at: point))
     }
 
-    open func renderForegroundImage() -> UIImage {
+    func renderForegroundImage() -> UIImage {
         var imageData = [UInt8](repeating: 255, count: (4 * ceiledDiameter * ceiledDiameter))
         for i in 0 ..< ceiledDiameter{
-              for j in 0 ..< ceiledDiameter {
+            for j in 0 ..< ceiledDiameter {
                 let index = 4 * (i * ceiledDiameter + j)
-                let (hue, saturation) = hueAndSaturation(at: CGPoint(x: j, y: i)) // rendering image transforms it as it it was mirrored around x = -y axis - adjusting for it by switching i and j here
-                let (r, g, b) = rgbFrom(hue: hue, saturation: saturation, brightness: 1)
+                let hue = self.hue(at: CGPoint(x: j, y: i)) // rendering image transforms it as it it was mirrored around x = -y axis - adjusting for it by switching i and j here
+                let (r, g, b) = rgbFrom(hue: hue, saturation: 1, brightness: 1)
                 imageData[index] = colorComponentToUInt8(r)
                 imageData[index + 1] = colorComponentToUInt8(g)
                 imageData[index + 2] = colorComponentToUInt8(b)
@@ -85,8 +86,12 @@ open class RadialHSBPalette: ColorPalette {
 
         // clip the image to circle
         let imageRect = CGRect(x: 0,y: 0, width: diameter, height: diameter)
+        let holeRect = CGRect(x: radialHuePaletteStripWidth, y: radialHuePaletteStripWidth, width: diameter - 2 * radialHuePaletteStripWidth, height: diameter - 2 * radialHuePaletteStripWidth)
         UIGraphicsBeginImageContextWithOptions(imageRect.size, false, 0)
-        UIBezierPath(ovalIn: imageRect).addClip()
+        let context = UIGraphicsGetCurrentContext()
+        context?.addPath(UIBezierPath(ovalIn: imageRect).cgPath)
+        context?.addPath(UIBezierPath(ovalIn: holeRect).cgPath)
+        context?.clip(using: .evenOdd)
         image.draw(in: imageRect)
         defer {
             UIGraphicsEndImageContext()
@@ -97,33 +102,40 @@ open class RadialHSBPalette: ColorPalette {
         return UIImage()
     }
 
-    open func renderBackgroundImage() -> UIImage? {
-        let imageSize = CGSize(width: diameter, height: diameter)
-        return UIImage.drawImage(ofSize: imageSize, path: UIBezierPath(ovalIn: CGRect(origin: .zero, size: CGSize(width: diameter, height: diameter))), fillColor: .black)
+    func renderBackgroundImage() -> UIImage? {
+        return nil
     }
 
-    open func closestValidPoint(to point: CGPoint) -> CGPoint {
+    func closestValidPoint(to point: CGPoint) -> CGPoint {
         let distance = point.distanceTo(x: midX, y: midY)
-        if distance <= radius {
-            return point
-        }
-        let x = midX + radius * ((point.x - midX) / distance)
-        let y = midY + radius * ((point.y - midY) / distance)
+        let x = midX + indicatorDistance * ((point.x - midX) / distance)
+        let y = midY + indicatorDistance * ((point.y - midY) / distance)
         return CGPoint(x: x, y: y)
     }
 
-    open func positionAndAlpha(for color: HSBColor) -> (position: CGPoint, foregroundImageAlpha: CGFloat) {
-        let (hue, saturation, brightness) = color.asTupleNoAlpha()
-        let radius = saturation * self.radius
-        let x = self.radius + radius * cos(hue * 2 * CGFloat.pi)
-        let y = self.radius + radius * sin(hue * 2 * CGFloat.pi)
-        return (CGPoint(x: x, y: y), brightness)
+    func positionAndAlpha(for color: HSBColor) -> (position: CGPoint, foregroundImageAlpha: CGFloat) {
+        let (hue, _, _) = color.asTupleNoAlpha()
+        let x = radius + radius * cos(hue * 2 * CGFloat.pi)
+        let y = radius + radius * sin(hue * 2 * CGFloat.pi)
+        return (closestValidPoint(to: CGPoint(x: x, y: y)), 1)
     }
 
-    open func supportedContentMode(for contentMode: UIViewContentMode) -> UIViewContentMode {
+    func supportedContentMode(for contentMode: UIViewContentMode) -> UIViewContentMode {
         switch contentMode {
         case .redraw, .scaleToFill, .scaleAspectFill: return .scaleAspectFit
         default: return contentMode
         }
+    }
+}
+
+extension CGPoint {
+    func distanceTo(x: CGFloat, y: CGFloat) -> CGFloat {
+        let dx = self.x - x
+        let dy = self.y - y
+        return sqrt(dx * dx + dy * dy)
+    }
+
+    func distance(to point: CGPoint) -> CGFloat {
+        return distanceTo(x: point.x, y: point.y)
     }
 }

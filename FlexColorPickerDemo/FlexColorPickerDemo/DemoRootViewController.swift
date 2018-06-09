@@ -48,6 +48,7 @@ class DemoRootViewController: UITableViewController {
 }
 
 extension DemoRootViewController: ColorPickerDelegate {
+
     func colorPicker(_: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl) {
         pickedColor = selectedColor
         pickerColorPreview.backgroundColor = selectedColor

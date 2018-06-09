@@ -72,6 +72,18 @@ extension HSBColor {
         return HSBColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
     }
 
+    public func withSaturation(_ saturation: CGFloat, andBrightness brightness: CGFloat) -> HSBColor {
+        return HSBColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
+    }
+
+    public func withHue(_ hue: CGFloat, andBrightness brightness: CGFloat) -> HSBColor {
+        return HSBColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
+    }
+
+    public func withHue(_ hue: CGFloat) -> HSBColor {
+        return HSBColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
+    }
+
     public func withSaturation(_ saturation: CGFloat) -> HSBColor {
         return HSBColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
     }

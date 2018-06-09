@@ -1,8 +1,8 @@
 //
-//  ColorPickerControl.swift
-//  FlexColorPicker
+//  RadialHuePalette.swift
+//  FlexColorPickerDemo
 //
-//  Created by Rastislav Mirek on 28/5/18.
+//  Created by Rastislav Mirek on 8/6/18.
 //  
 //	MIT License
 //  Copyright (c) 2018 Rastislav Mirek
@@ -27,19 +27,25 @@
 //
 
 import UIKit
+import FlexColorPicker
 
-public protocol ColorControl: class {
-    static var canConfirmColor: Bool { get }
-    var selectedHSBColor: HSBColor { get }
-    func setSelectedHSBColor(_ hsbColor: HSBColor, isInteractive: Bool)
-    
-    func addTarget(_ target: Any?, action: Selector, for: UIControlEvents)
-    func removeTarget(_ target: Any?, action: Selector?, for: UIControlEvents)
-}
+let radialHuePaletteStripWidth: CGFloat = 28
 
-public extension ColorControl {
-    /// Provides the default value for canConfirmColor. Returns true.
-    public static var canConfirmColor: Bool {
-        return true
+@IBDesignable
+class RadialHueControl: ColorPaletteControl {
+    public override func commonInit() {
+        colorPalete = RadialHueColorPaletteDelegate()
+        thumbView.autoDarken = false
+        super.commonInit()
+    }
+
+    override func updatePaleteImagesAndThumb(isInteractive interactive: Bool) {
+        super.updatePaleteImagesAndThumb(isInteractive: interactive)
+        thumbView.setColor(selectedHSBColor.withSaturation(1, andBrightness: 1).toUIColor(), animateBorderColor: false)
+    }
+
+    override func setSelectedHSBColor(_ hsbColor: HSBColor, isInteractive interactive: Bool) {
+        super.setSelectedHSBColor(hsbColor, isInteractive: interactive)
+        thumbView.setColor(selectedHSBColor.withSaturation(1, andBrightness: 1).toUIColor(), animateBorderColor: false)
     }
 }
