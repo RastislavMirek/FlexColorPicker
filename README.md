@@ -10,13 +10,11 @@ Modern &amp; flexible iOS HSB Color picker component written in Swift 4. Great U
 ## Features
 - life synchronization of all color picker components 
 - storyboards support with realistic design time preview and customisation directly from storyboard
-- full code-only support
 - freely combine, leave out or add your own picker components
 - controls works in UIScrollView with little effort
-- great UX and simplistic yet customisable design
+- great UX and simplistic, customisable design
 - works with any controller, no need to subclass some specific controller
 - /* fully documented - not yet  */, clean and easy to understand code
-- well-thought animations where appropriate
 - to add your own slider/palete just by implementing a protocol
 - or reuse existing slider/palete for different color model by implementing another protocol
 - all key classes are opened &amp ready for extending with many override points 

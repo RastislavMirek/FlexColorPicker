@@ -7,18 +7,22 @@
    <FileRef
       location = "group:README.md">
    </FileRef>
-   <FileRef
-      location = "group:Flex_color_picker_for_swift_preview1.gif">
-   </FileRef>
-   <FileRef
-      location = "group:Flex_color_picker_for_swift_preview2.gif">
-   </FileRef>
-   <FileRef
-      location = "group:Flex_color_picker_for_swift_preview3.gif">
-   </FileRef>
-   <FileRef
-      location = "group:Flex_color_picker_for_swift_preview4.gif">
-   </FileRef>
+   <Group
+      location = "container:SampleGifs"
+      name = "SampleGifs">
+      <FileRef
+         location = "group:Flex_color_picker_for_swift_preview1.gif">
+      </FileRef>
+      <FileRef
+         location = "group:/Users/Rasto/Documents/XCode/FlexColorPicker/SampleGifs/Flex_color_picker_for_swift_preview2.gif">
+      </FileRef>
+      <FileRef
+         location = "group:/Users/Rasto/Documents/XCode/FlexColorPicker/SampleGifs/Flex_color_picker_for_swift_preview3.gif">
+      </FileRef>
+      <FileRef
+         location = "group:/Users/Rasto/Documents/XCode/FlexColorPicker/SampleGifs/Flex_color_picker_for_swift_preview4.gif">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:FlexColorPicker/FlexColorPicker/../../FlexColorPickerDemo/FlexColorPickerDemo.xcodeproj">
    </FileRef>
