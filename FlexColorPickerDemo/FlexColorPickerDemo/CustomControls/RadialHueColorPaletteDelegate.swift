@@ -29,7 +29,8 @@
 import FlexColorPicker
 
 //This class has some of code common with RadialHSBPalette but is it not its specialization so subclassing it would be incorrect object model
-class RadialHueColorPaletteDelegate: ColorPalette {
+class RadialHueColorPaletteDelegate: ColorPaletteDelegate {
+
     private(set) var diameter: CGFloat = 0
     private(set) var radius: CGFloat = 0
     private(set) var midX: CGFloat = 0
@@ -62,11 +63,11 @@ class RadialHueColorPaletteDelegate: ColorPalette {
         return dy < 0 ? 1 - hue : hue
     }
 
-    func modifyColor(_ color: HSBColor, with point: CGPoint) -> HSBColor {
+    func modifiedColor(from color: HSBColor, with point: CGPoint) -> HSBColor {
         return color.withHue(hue(at: point))
     }
 
-    func renderForegroundImage() -> UIImage {
+    func foregroundImage() -> UIImage {
         var imageData = [UInt8](repeating: 255, count: (4 * ceiledDiameter * ceiledDiameter))
         for i in 0 ..< ceiledDiameter{
             for j in 0 ..< ceiledDiameter {
@@ -102,7 +103,7 @@ class RadialHueColorPaletteDelegate: ColorPalette {
         return UIImage()
     }
 
-    func renderBackgroundImage() -> UIImage? {
+    func backgroundImage() -> UIImage? {
         return nil
     }
 

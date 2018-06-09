@@ -28,14 +28,14 @@
 
 public class RadialPaletteControl: ColorPaletteControl {
     public override func commonInit() {
-        colorPalete = RadialHSBPalette()
+        paletteDelegate = RadialHSBPaletteDelegate()
         super.commonInit()
     }
 }
 
 public class RectangularPaletteControl: ColorPaletteControl {
     public override func commonInit() {
-        colorPalete = RectangularHSBPalette()
+        paletteDelegate = RectangularHSBPaletteDelegate()
         setDefaultBorder(on: borderOn, forView: contentView)
         setHue(horizontalAxis: hueHorizontal, updateImage: false)
         super.commonInit()
@@ -59,7 +59,7 @@ public class RectangularPaletteControl: ColorPaletteControl {
 
     open func setHue(horizontalAxis: Bool, updateImage: Bool) {
         hueHorizontal = horizontalAxis
-        (colorPalete as? RectangularHSBPalette)?.hueHorizontal = horizontalAxis
+        (paletteDelegate as? RectangularHSBPaletteDelegate)?.hueHorizontal = horizontalAxis
         if updateImage {
             updatePaleteImagesAndThumb(isInteractive: false)
         }

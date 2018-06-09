@@ -1,5 +1,5 @@
 //
-//  RadialColorPalete.swift
+//  RadialHSBPaletteDelegate.swift
 //  FlexColorPicker
 //
 //  Created by Rastislav Mirek on 27/5/18.
@@ -28,7 +28,7 @@
 
 import UIKit
 
-open class RadialHSBPalette: ColorPalette {
+open class RadialHSBPaletteDelegate: ColorPaletteDelegate {
     public private(set) var diameter: CGFloat = 0
     public private(set) var radius: CGFloat = 0
     public private(set) var midX: CGFloat = 0
@@ -60,12 +60,12 @@ open class RadialHSBPalette: ColorPalette {
         return (dy < 0 ? 1 - hue : hue, min(1, distance))
     }
 
-    open func modifyColor(_ color: HSBColor, with point: CGPoint) -> HSBColor {
+    open func modifiedColor(from color: HSBColor, with point: CGPoint) -> HSBColor {
         let (hue, saturation) = hueAndSaturation(at: point)
         return color.withHue(hue, andSaturation: saturation)
     }
 
-    open func renderForegroundImage() -> UIImage {
+    open func foregroundImage() -> UIImage {
         var imageData = [UInt8](repeating: 255, count: (4 * ceiledDiameter * ceiledDiameter))
         for i in 0 ..< ceiledDiameter{
               for j in 0 ..< ceiledDiameter {
@@ -97,7 +97,7 @@ open class RadialHSBPalette: ColorPalette {
         return UIImage()
     }
 
-    open func renderBackgroundImage() -> UIImage? {
+    open func backgroundImage() -> UIImage? {
         let imageSize = CGSize(width: diameter, height: diameter)
         return UIImage.drawImage(ofSize: imageSize, path: UIBezierPath(ovalIn: CGRect(origin: .zero, size: CGSize(width: diameter, height: diameter))), fillColor: .black)
     }

@@ -26,11 +26,17 @@
 //  SOFTWARE.
 //
 
+
+/// Principal class and the controller of FlexColorPicker (not to be confused with view controllers). Synchronizes separate color controls (instances of `ColorControl` protocol) so thay can act as one system and notifies client code via delegate.
+/// This can also be used from interface builder (e.g. a storyboard) as a class of custom object and the controls can be added to this controler in interface builder outlets.
 open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //subclassing NSObject is required to use this class as object in interface builder
     public private(set) var selectedHSBColor: HSBColor = defaultSelectedColor
+    /// Array of all color controls currently managed by the color picker. These are the controls that this `ColorPickerController` receives updates from and synchonizes with each other.
     public private(set) var colorControls = [ColorControl]()
+    /// Color picker delegate that gets called when selected color is updated or confirmed. The delegate is not retained.
     open weak var delegate: ColorPickerDelegate?
 
+    /// Color currently selected with color picker.
     @IBInspectable
     open var selectedColor: UIColor {
         get {
@@ -107,6 +113,9 @@ open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //su
         }
     }
 
+    /// Adds a `ColorControl` to be managed. Color updates of added control are synchronized with other `ColorControl`s managed by this `ColorPickerController`. Overrides must call super implementation.
+    ///
+    /// - Parameter colorControl: `ColorControl` to be managed.
     open func addControl(_ colorControl: ColorControl) {
         colorControls.append(colorControl)
         colorControl.addTarget(self, action: #selector(colorPicked(by:)), for: .valueChanged)
@@ -115,11 +124,18 @@ open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //su
         }
     }
 
+
+    /// Removes a `ColorControl` so that is no longer managed. Color updates of removed control will no longer be synchronized with other `ColorControl`s managed by this `ColorPickerController`. Overrides must call super implementation.
+    ///
+    /// - Parameter colorControl: Control to be removed.
     open func removeControl(_ colorControl: ColorControl) {
         colorControls = colorControls.filter { $0 !== colorControl}
         colorControl.removeTarget(self, action: nil, for: [.valueChanged, .primaryActionTriggered])
     }
 
+    /// Called by a managed color control when new color is picked (valueChanged action occures). Distributes the event to all other color controls and notifies the `delegate`.
+    ///
+    /// - Parameter control: The control where color change originated.
     @objc
     open func colorPicked(by control: Any?) {
         guard let control = control as? ColorControl else {
@@ -130,6 +146,10 @@ open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //su
         delegate?.colorPicker(self, selectedColor: self.selectedColor, usingControl: control)
     }
 
+
+    /// Called by a managed color control when user confirms currently selected color using that control (primaryAction action occures). Notifies the delegate.
+    ///
+    /// - Parameter control: Control used to confirm currently selected color.
     @objc
     open func colorConfirmed(by control: Any?) {
         guard let control = control as? ColorControl else {
@@ -148,6 +168,12 @@ open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //su
         selectedHSBColor = selectedColor
     }
 
+
+    /// Adds new color control to be managed by this `ColorPickerController` and removes the old one. Color updates of added control are synchronized with other `ColorControl`s managed by this `ColorPickerController`.
+    ///
+    /// - Parameters:
+    ///   - newValue: New color control to be added.
+    ///   - oldValue: Color control to be removed.
     open func controlDidSet(newValue: ColorControl?, oldValue: ColorControl?) {
         oldValue?.remove(from: self)
         newValue?.setSelectedHSBColor(selectedHSBColor, isInteractive: false)

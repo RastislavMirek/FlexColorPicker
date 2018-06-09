@@ -483,7 +483,7 @@
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
-                                                                        <color key="value" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="value" red="0.0" green="0.94901960780000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
@@ -545,7 +545,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YCn-AJ-8Ci" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2109.5999999999999" y="776.60098522167493"/>
+            <point key="canvasLocation" x="2110" y="78"/>
         </scene>
         <!--Customized RGB Sliders-->
         <scene sceneID="529-sf-cIa">
@@ -980,7 +980,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DIP-ov-EJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2110" y="78"/>
+            <point key="canvasLocation" x="2110" y="-605"/>
         </scene>
         <!--Modal Presentation-->
         <scene sceneID="w5s-se-EcL">
@@ -1002,7 +1002,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRg-V6-aYa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3081" y="78"/>
+            <point key="canvasLocation" x="3081" y="-605"/>
         </scene>
         <!--Standard Color Picker-->
         <scene sceneID="4Wg-fa-SNS">
@@ -1017,7 +1017,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TQK-up-aRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2110" y="-605"/>
+            <point key="canvasLocation" x="3081" y="78"/>
         </scene>
         <!--Rectangular Palette-->
         <scene sceneID="9oR-TJ-b4H">
@@ -1036,7 +1036,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xi1-SR-gAO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3081" y="-605"/>
+            <point key="canvasLocation" x="2110" y="773"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2MD-Ze-PAl">

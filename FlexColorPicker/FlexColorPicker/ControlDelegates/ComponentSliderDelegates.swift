@@ -1,5 +1,5 @@
 //
-//  ComponentSliderModels.swift
+//  ComponentSliderDelagates.swift
 //  FlexColorPicker
 //
 //  Created by Rastislav Mirek on 2/6/18.
@@ -26,10 +26,10 @@
 //  SOFTWARE.
 //
 
-public struct SaturationSlider: ColorSlider {
+public struct SaturationSliderDelegate: ColorSliderDelegate {
     public init() {}
 
-    public func modifyColor(_ color: HSBColor, with value: CGFloat) -> HSBColor {
+    public func modifiedColor(from color: HSBColor, with value: CGFloat) -> HSBColor {
         return color.withSaturation(value)
     }
 
@@ -38,10 +38,10 @@ public struct SaturationSlider: ColorSlider {
     }
 }
 
-public struct BrightnessSlider: ColorSlider {
+public struct BrightnessSliderDelegate: ColorSliderDelegate {
     public init() {}
 
-    public func modifyColor(_ color: HSBColor, with value: CGFloat) -> HSBColor {
+    public func modifiedColor(from color: HSBColor, with value: CGFloat) -> HSBColor {
         return color.withBrightness(1 - value)
     }
 
@@ -50,10 +50,10 @@ public struct BrightnessSlider: ColorSlider {
     }
 }
 
-public struct RedSlider: ColorSlider {
+public struct RedSliderDelegate: ColorSliderDelegate {
     public init() {}
 
-    public func modifyColor(_ color: HSBColor, with value: CGFloat) -> HSBColor {
+    public func modifiedColor(from color: HSBColor, with value: CGFloat) -> HSBColor {
         return color.withRed(value)
     }
 
@@ -62,10 +62,10 @@ public struct RedSlider: ColorSlider {
     }
 }
 
-public struct GreenSlider: ColorSlider {
+public struct GreenSliderDelegate: ColorSliderDelegate {
     public init() {}
 
-    public func modifyColor(_ color: HSBColor, with value: CGFloat) -> HSBColor {
+    public func modifiedColor(from color: HSBColor, with value: CGFloat) -> HSBColor {
         return color.withGreen(value)
     }
 
@@ -74,10 +74,10 @@ public struct GreenSlider: ColorSlider {
     }
 }
 
-public struct BlueSlider: ColorSlider {
+public struct BlueSliderDelegate: ColorSliderDelegate {
     public init() {}
     
-    public func modifyColor(_ color: HSBColor, with value: CGFloat) -> HSBColor {
+    public func modifiedColor(from color: HSBColor, with value: CGFloat) -> HSBColor {
         return color.withBlue(value)
     }
 

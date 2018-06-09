@@ -1,5 +1,5 @@
 //
-//  RectangularHSBPalette.swift
+//  RectangularHSBPaletteDelegate.swift
 //  FlexColorPicker
 //
 //  Created by Rastislav Mirek on 2/6/18.
@@ -28,7 +28,7 @@
 
 import Foundation
 
-open class RectangularHSBPalette: ColorPalette {
+open class RectangularHSBPaletteDelegate: ColorPaletteDelegate {
     public private(set) var intWidth = 0
     public private(set) var intHeight = 0
 
@@ -49,12 +49,12 @@ open class RectangularHSBPalette: ColorPalette {
         return (max (0, min(1, hue)), 1 - max(0, min(1, saturation)))
     }
 
-    public func modifyColor(_ color: HSBColor, with point: CGPoint) -> HSBColor {
+    public func modifiedColor(from color: HSBColor, with point: CGPoint) -> HSBColor {
         let (hue, saturation) = hueAndSaturation(at: point)
         return color.withHue(hue, andSaturation: saturation)
     }
 
-    open func renderForegroundImage() -> UIImage {
+    open func foregroundImage() -> UIImage {
         var imageData = [UInt8](repeating: 1, count: (4 * intWidth * intHeight))
         for i in 0 ..< intWidth {
             for j in 0 ..< intHeight {
@@ -70,7 +70,7 @@ open class RectangularHSBPalette: ColorPalette {
         return UIImage(rgbaBytes: imageData, width: intWidth, height: intHeight) ?? UIImage()
     }
 
-    open func renderBackgroundImage() -> UIImage? {
+    open func backgroundImage() -> UIImage? {
         UIColor.black.setFill()
         let size = CGSize(width: intWidth, height: intHeight) // overriding size property to get same size of background image in situations when foreground image dimestions are rounded down to int
         return UIImage.drawImage(ofSize: size, path: UIBezierPath(rect: CGRect(origin: .zero, size: size)), fillColor: .black)

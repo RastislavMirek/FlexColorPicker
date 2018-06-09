@@ -34,7 +34,7 @@ let radialHuePaletteStripWidth: CGFloat = 28
 @IBDesignable
 class RadialHueControl: ColorPaletteControl {
     public override func commonInit() {
-        colorPalete = RadialHueColorPaletteDelegate()
+        paletteDelegate = RadialHueColorPaletteDelegate()
         thumbView.autoDarken = false
         super.commonInit()
     }

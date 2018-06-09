@@ -29,35 +29,35 @@
 @IBDesignable
 final public class SaturationSliderControl: ColorSliderControl {
     public override func commonInit() {
-        colorSlider = SaturationSlider()
+        sliderDelegate = SaturationSliderDelegate()
         super.commonInit()
     }
 }
 
 final public class BrightnessSliderControl: ColorSliderControl {
     public override func commonInit() {
-        colorSlider = BrightnessSlider()
+        sliderDelegate = BrightnessSliderDelegate()
         super.commonInit()
     }
 }
 
 final public class RedSliderControl: ColorSliderControl {
     public override func commonInit() {
-        colorSlider = RedSlider()
+        sliderDelegate = RedSliderDelegate()
         super.commonInit()
     }
 }
 
 final public class GreenSliderControl: ColorSliderControl {
     public override func commonInit() {
-        colorSlider = GreenSlider()
+        sliderDelegate = GreenSliderDelegate()
         super.commonInit()
     }
 }
 
 final public class BlueSliderControl: ColorSliderControl {
     public override func commonInit() {
-        colorSlider = BlueSlider()
+        sliderDelegate = BlueSliderDelegate()
         super.commonInit()
     }
 }

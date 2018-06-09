@@ -28,8 +28,8 @@
 
 import FlexColorPicker
 
-struct HueColorSliderDelegate: ColorSlider {
-    public func modifyColor(_ color: HSBColor, with value: CGFloat) -> HSBColor {
+struct HueColorSliderDelegate: ColorSliderDelegate {
+    public func modifiedColor(from color: HSBColor, with value: CGFloat) -> HSBColor {
         return color.withHue(value)
     }
 

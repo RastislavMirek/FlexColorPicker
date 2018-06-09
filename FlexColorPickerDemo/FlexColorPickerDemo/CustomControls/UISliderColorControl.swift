@@ -32,8 +32,8 @@ import FlexColorPicker
 @IBDesignable
 class UISliderColorControl: UISlider, ColorControl {
     var selectedHSBColor: HSBColor = UIColor.white.hsbColor
-    var delegate: ColorSlider {
-        return BrightnessSlider()
+    var delegate: ColorSliderDelegate {
+        return BrightnessSliderDelegate()
     }
 
     static var canConfirmColor: Bool {
@@ -73,20 +73,20 @@ class UISliderColorControl: UISlider, ColorControl {
 
     @objc
     func valueChanged() {
-        selectedHSBColor = delegate.modifyColor(selectedHSBColor, with: CGFloat(value))
+        selectedHSBColor = delegate.modifiedColor(from: selectedHSBColor, with: CGFloat(value))
         setSelectedHSBColor(selectedHSBColor, isInteractive: true)
     }
 }
 
 final class HueUISliderColorControl: UISliderColorControl {
-    override var delegate: ColorSlider {
+    override var delegate: ColorSliderDelegate {
         return HueColorSliderDelegate()
     }
 }
 
 final class SaturationUISliderColorControl: UISliderColorControl {
-    override var delegate: ColorSlider {
-        return SaturationSlider()
+    override var delegate: ColorSliderDelegate {
+        return SaturationSliderDelegate()
     }
 
     override func setSelectedHSBColor(_ hsbColor: HSBColor, isInteractive: Bool) {

@@ -26,7 +26,25 @@
 //  SOFTWARE.
 //
 
+
+/// Delegate that gets called when a color picker value (the picker color) is changed or when user finishes color picking.
 public protocol ColorPickerDelegate: class {
+
+    /// Called when a user changes color picker's current selected color.
+    ///
+    /// Current selected color can change frequently. If you are just interested in final selected color consider only using `colorPicker(_:, confirmedColor:, usingControl:)`
+    ///
+    /// - Parameters:
+    ///   - colorPicker: Controller of the color picker whose `selectedColor` has changed. This is the representiation (principal class) of color picker instance.
+    ///   - selectedColor: New value of currently selected color.
+    ///   - usingControl: The color control that was used to pick the new `selectedColor`.
     func colorPicker(_ colorPicker: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl)
+
+    /// Called when a user has finished picking a color.
+    ///
+    /// - Parameters:
+    ///   - colorPicker: Controller of color pciker that finished picking color. This is the representiation (principal class) of color picker instance.
+    ///   - confirmedColor: The final selected color.
+    ///   - usingControl: The control that user used to confirm selected color (control that send primaryAction event).
     func colorPicker(_ colorPicker: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl)
 }
