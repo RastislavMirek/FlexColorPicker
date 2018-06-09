@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-Modern color picker library written in Swift 4 that can be easily extended and customized. Good performance and stable, quality code is its core philosophy.
+Modern color picker library written in Swift 4 that can be easily extended and customized. Good performance and stable, quality code are its core values.
                        DESC
 
   s.homepage         = 'https://github.com/RastislavMirek/FlexColorPicker'

@@ -11,19 +11,19 @@
       location = "group:/Users/Rasto/Documents/XCode/FlexColorPicker/FlexColorPicker.podspec">
    </FileRef>
    <Group
-      location = "container:Screenshots"
+      location = "container:GifsAndScreenshots"
       name = "GifsAndScreenshots">
       <FileRef
-         location = "group:/Users/Rasto/Documents/XCode/FlexColorPicker/Screenshots/Flex_color_picker_for_swift_preview1.gif">
+         location = "group:Flex_color_picker_for_swift_preview1.gif">
       </FileRef>
       <FileRef
-         location = "group:/Users/Rasto/Documents/XCode/FlexColorPicker/Screenshots/Flex_color_picker_for_swift_preview2.gif">
+         location = "group:Flex_color_picker_for_swift_preview2.gif">
       </FileRef>
       <FileRef
-         location = "group:/Users/Rasto/Documents/XCode/FlexColorPicker/Screenshots/Flex_color_picker_for_swift_preview3.gif">
+         location = "group:Flex_color_picker_for_swift_preview3.gif">
       </FileRef>
       <FileRef
-         location = "group:/Users/Rasto/Documents/XCode/FlexColorPicker/Screenshots/Flex_color_picker_for_swift_preview4.gif">
+         location = "group:Flex_color_picker_for_swift_preview4.gif">
       </FileRef>
       <FileRef
          location = "group:All_Flex_Colop_Picker_Controls_showcase.png">

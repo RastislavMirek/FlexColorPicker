@@ -1,8 +1,8 @@
 # Flex Color Picker
-Modern &amp; flexible color picker for iOS written in Swift 4. Great UX, high performance and open, protocol oriented design: You can set, override or replace almost anything.
+Modern color picker library written in Swift 4 that can be easily extended and customized. Good performance and stable, quality code are its core values.
 
-![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/SampleGifs/Flex_color_picker_for_swift_preview1.gif)
-![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/SampleGifs/Flex_color_picker_for_swift_preview2.gif)
+![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview1.gif)
+![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview2.gif)
 
 
 ## Supported Use Cases
@@ -11,12 +11,12 @@ Modern &amp; flexible color picker for iOS written in Swift 4. Great UX, high pe
 3. framework that allows adding your own sliders, palettes &amp; previews or modifying existing ones without changing the code of the library
 4. combine 3 approaches above freely to get level of customisation that you need
 
-![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/SampleGifs/Flex_color_picker_for_swift_preview3.gif)
-![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/SampleGifs/Flex_color_picker_for_swift_preview4.gif)
+![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview3.gif)
+![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview4.gif)
 
 ## Features
 - supports HSB and RGB color models, radial and rectangular hue/saturation palette
-- there is "just set the delegate" view controller providing great UX if you prefer to keep it simple  
+- "just set the delegate" view controller with great UX if you just need something simple  
 - life synchronization and preview of all color picker components
 - robust, easy to understand code, easily customisable, partially* documented
 - storyboards support with realistic, design time preview and customisation directly from storyboard
