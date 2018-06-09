@@ -1,6 +1,9 @@
 # Flex Color Picker
 Modern &amp; flexible iOS HSB Color picker component written in Swift 4. Great UX, high performance and open, protocol oriented design: You can set, override or replace almost anything.
 
+![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/SampleGifs/Flex_color_picker_for_swift_preview1.gif)
+![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/SampleGifs/Flex_color_picker_for_swift_preview2.gif)
+
 ## Use cases supported
 1. ready-to-use color picker that works great out-of-box
 2. agile library that supports components positioning with autolayout and customisation directly from storyboard (or from code)     
@@ -18,6 +21,9 @@ Modern &amp; flexible iOS HSB Color picker component written in Swift 4. Great U
 - to add your own slider/palete just by implementing a protocol
 - or reuse existing slider/palete for different color model by implementing another protocol
 - all key classes are opened &amp ready for extending with many override points 
+
+![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/SampleGifs/Flex_color_picker_for_swift_preview3.gif)
+![Demo CountPages alpha](https://github.com/RastislavMirek/FlexColorPicker/blob/master/SampleGifs/Flex_color_picker_for_swift_preview4.gif)
 
 ## Instalation
 
