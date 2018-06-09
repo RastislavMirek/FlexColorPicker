@@ -46,7 +46,9 @@ You can also clone this repository and add FlexColorPicker framework to your pro
 ### Working with UIScrollView
 
 ## Tips
-When setting up slider controls in storyboard it is a good practise to set its backgound to transparent. Alignment rectangle (rectangle that autolayout uses to lay out the control) is smaller than the actual frame of the slider to allow for extra hit box margin as well as background framing of the slider. Therefore, if backgound is left solid white it can overlap other views close to it. If you do not want this behavior, set Hit Box Inset to 0 in Attributes Inspector or set `hitBoxInset` to `0` in code.   
+When setting up slider controls in storyboard it is a good practise to set its backgound to transparent. Alignment rectangle (rectangle that autolayout uses to lay out the control) is smaller than the actual frame of the slider to allow for extra hit box margin as well as background framing of the slider. Therefore, if backgound is left solid white it can overlap other views close to it. If you do not want this behavior, set Hit Box Inset to 0 in Attributes Inspector or set `hitBoxInset` to `0` in code.
+
+Color preview component (the one that shows hex of color by default) can be tapped. When it it tapped color picker controller sends selected confirmed call to its delegate. You can comunicate this feature to your users or opt out by disabling it setting `ColorPreviewWithHex.tapToConfirm` to `false`.   
 
 ## Getting in Touch
 If you like it, have a question or want to hire iOS developers shoot me a message at [my first name, see profile] at [epytysae spelled backwards] dot [first 4 letters of word information]. Email will goes directly to author FlexColorPicker, cryptic emial format is just spam bot protection. 

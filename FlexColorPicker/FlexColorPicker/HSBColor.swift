@@ -26,7 +26,9 @@
 //  SOFTWARE.
 //
 
-public struct HSBColor { //cannot be struct becuase it must be @objc
+
+/// Represetation of HSB (Hue, Saturation, Brightness) color model. This model can be directly converted to and from RGB model. It is better representation for color picker as its components often maps directly to user interactions.
+public struct HSBColor {
     /// Hue value in interval <0, 1>
     public let hue: CGFloat
     /// Saturation value in interval <0, 1>
@@ -46,10 +48,14 @@ public struct HSBColor { //cannot be struct becuase it must be @objc
 
 extension HSBColor {
 
+    /// RGB representation of this HSBColor
     var rgb: (red: CGFloat, green: CGFloat, blue: CGFloat) {
         return rgbFrom(hue: hue, saturation: saturation, brightness: brightness)
     }
 
+    /// Initializes `HSBColor` instance that represents the same color as passed color.
+    ///
+    /// - Parameter color: A color to construct an equivalent `HSBColor` from.
     init(color: UIColor) {
         var hue: CGFloat = 0, saturation: CGFloat = 0, brightness: CGFloat = 0, alpha: CGFloat = 0
         color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
@@ -64,6 +70,10 @@ extension HSBColor {
         return (hue, saturation, brightness)
     }
 
+
+    /// Returs `UIColor` that represents the same color as this instance.
+    ///
+    /// - Returns: `UIColor` equivalent to this `HSBColor`.
     public func toUIColor() -> UIColor {
         return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
     }

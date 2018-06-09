@@ -36,7 +36,7 @@ open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //su
     /// Color picker delegate that gets called when selected color is updated or confirmed. The delegate is not retained.
     open weak var delegate: ColorPickerDelegate?
 
-    /// Color currently selected with color picker.
+    /// Color currently selected by color picker.
     @IBInspectable
     open var selectedColor: UIColor {
         get {

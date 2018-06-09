@@ -35,28 +35,34 @@ private let paletteHorizontalMargin: CGFloat = 32
 private let minDistanceFromSafeArea: CGFloat = 10
 private let minSpaceAboveSlider: CGFloat = 50
 
+/// Color picker controller with predefined layout and limited customisation options. It is designed to be easy to use. You can customize it from interface builder (e.g. you can choose radial or rectangular palette) or from code by setting its properties or directly setting properties of `colorPalette`, `colorPreview` or `colorPalette`. If you need more customisation please use `CustomColorPickerViewController`.
 open class DefaultColorPickerViewController: UIViewController, ColorPickerControllerProtocol {
     private var standardConstraints = [NSLayoutConstraint]()
     private var landscapeConstraints = [NSLayoutConstraint]()
-    public let pickerManager = ColorPickerController()
+
+   /// Color picker controller that synchonizes color controls. This is backing controller that this controller delegates interaction logic to. It is also instance of `ColorPickerController` passed to delegate calls.
+    public let colorPicker = ColorPickerController()
     public let colorPreview = ColorPreviewWithHex()
     public let brightnessSlider = BrightnessSliderControl()
     private(set) public var colorPalette: ColorPaletteControl = RadialPaletteControl()
 
+    /// Color currently selected by color picker.
     @IBInspectable
     open var selectedColor: UIColor {
         get {
-            return pickerManager.selectedColor
+            return colorPicker.selectedColor
         }
         set {
-            pickerManager.selectedColor = newValue
+            colorPicker.selectedColor = newValue
         }
     }
 
-    /// Does not update after viewDidLoad
+    /// Determines if radial or rectangular color palette will be used. This property is checked during `viewDidLoad()` and later changes are ignored. If you set this in your `viewDidLoad()` override, call `super.viewDidLoad()` only after you have set this property. Also works with interface builder.
     @IBInspectable
     open var useRadialPalette: Bool = true
 
+    /// If `useRadialPalette` is `true` then this property specifies whether hue color component is changed with x (value `true`) or y axis (value `false`) of the color palette.
+    /// Only applied in landscape orientation on iPhone devices.
     @IBInspectable
     open var rectangularPaletteHueHorizontalInLandscape: Bool = true {
         didSet {
@@ -64,6 +70,8 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
         }
     }
 
+    /// If `useRadialPalette` is `true` then this property specifies whether hue color component is changed with x (value `true`) or y axis (value `false`) of the color palette.
+    /// Only applied in potrait orientation on iPhone devices and in all iPad orientations.
     @IBInspectable
     open var rectangularPaletteHueHorizontalInPortrait: Bool = false {
         didSet {
@@ -71,6 +79,7 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
         }
     }
 
+    /// If `useRadialPalette` is `true` then this specifies whether `colorPalette` has border.
     @IBInspectable
     open var rectangularPaletteBorderOn: Bool = true {
         didSet {
@@ -78,12 +87,13 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
         }
     }
 
+    /// Color picker delegate that gets called when selected color is updated or confirmed. The delegate is not retained. This is just convinience property and getting or setting it is equivalent to getting or setting `colorPicker.delegate`.
     open var delegate: ColorPickerDelegate? {
         get {
-            return pickerManager.delegate
+            return colorPicker.delegate
         }
         set {
-            pickerManager.delegate = newValue
+            colorPicker.delegate = newValue
         }
     }
 
@@ -99,26 +109,27 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
         }, completion: nil)
     }
 
+    /// This method creates sets up and lays out `colorPreview`, `brightnessSlider` and `colorPalette`. It also applies initial values of properties like `useRadialPalette` on them.
+    /// You can override this method to create your own default layout.
     open func addColorControls() {
         colorPreview.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(colorPreview)
 
-        pickerManager.colorPreview = colorPreview
+        colorPicker.colorPreview = colorPreview
 
         brightnessSlider.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(brightnessSlider)
 
 
         brightnessSlider.hitBoxInsets = UIEdgeInsets(top: defaultHitBoxInset, left: sideMargin, bottom: defaultHitBoxInset, right: sideMargin)
-        brightnessSlider.expandOnTap = false
-        pickerManager.brightnessSlider = brightnessSlider
+        colorPicker.brightnessSlider = brightnessSlider
 
         if !useRadialPalette {
             colorPalette = RectangularPaletteControl()
-            pickerManager.rectangularHsbPalette = colorPalette as? RectangularPaletteControl
+            colorPicker.rectangularHsbPalette = colorPalette as? RectangularPaletteControl
         }
         else {
-            pickerManager.radialHsbPalette = colorPalette as? RadialPaletteControl
+            colorPicker.radialHsbPalette = colorPalette as? RadialPaletteControl
         }
         (colorPalette as? RectangularPaletteControl)?.borderOn = rectangularPaletteBorderOn
         colorPalette.translatesAutoresizingMaskIntoConstraints = false

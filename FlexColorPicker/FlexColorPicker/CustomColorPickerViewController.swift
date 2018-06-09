@@ -30,10 +30,15 @@ import UIKit
 
 let flexColorPickerBundle = Bundle(for: CustomColorPickerViewController.self)
 
+/// Conviniece customizable color picker view controller that can be subclassed or used from interface builder (or both). This class basically just delegates its exposed properties to wrapped ColorPickerController that is value of `colorPicker` property. This is convinience support for common practise that uses view controllers to atach outlets to.
+///
+/// When color controls are set to properties of this view controller via code or interface builder, they become managed by underlaying instance of `ColorPickerController` and are therefore synchronized.
 open class CustomColorPickerViewController: UIViewController, ColorPickerControllerProtocol {
-    
+
+    /// Color picker controller that synchonizes color controls. This is backing controller that this controller delegates interaction logic to. It is also instance of `ColorPickerController` passed to delegate calls.
     open let colorPicker = ColorPickerController()
 
+    /// Color picker delegate that gets called when selected color is updated or confirmed. The delegate is not retained. This is just convinience property and getting or setting it is equivalent to getting or setting `colorPicker.delegate`.
     open var delegate: ColorPickerDelegate? {
         get {
             return colorPicker.delegate
@@ -43,6 +48,7 @@ open class CustomColorPickerViewController: UIViewController, ColorPickerControl
         }
     }
 
+    /// Color currently selected by color picker.
     @IBInspectable
     open var selectedColor: UIColor {
         get {
