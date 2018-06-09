@@ -104,7 +104,7 @@ If a _palette color controls_ is added as subview of  `UIScrollView` it might ca
 ## Getting in Touch
 If you like it, have a question or want to hire iOS developers shoot me a message at
 
-#### _my first name, see profile_ **at** _epytysae spelled backwards_ **dot** _first 4 letters of word information_
+ **[my first name, see profile] at [epytysae spelled backwards] dot [first 4 letters of word information]**
 
 This email goes directly to author FlexColorPicker, cryptic email format is just spam bot protection. 
 
