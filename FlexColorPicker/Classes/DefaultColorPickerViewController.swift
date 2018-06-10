@@ -36,6 +36,9 @@ private let minDistanceFromSafeArea: CGFloat = 10
 private let minSpaceAboveSlider: CGFloat = 50
 
 /// Color picker controller with predefined layout and limited customisation options. It is designed to be easy to use. You can customize it from interface builder (e.g. you can choose radial or rectangular palette) or from code by setting its properties or directly setting properties of `colorPalette`, `colorPreview` or `colorPalette`. If you need more customisation please use `CustomColorPickerViewController`.
+///
+/// ** See also:**
+/// [CustomColorPickerViewController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/CustomColorPickerViewController.swift), [ColorPickerController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/ColorPickerController.swift)
 open class DefaultColorPickerViewController: UIViewController, ColorPickerControllerProtocol {
     private var standardConstraints = [NSLayoutConstraint]()
     private var landscapeConstraints = [NSLayoutConstraint]()

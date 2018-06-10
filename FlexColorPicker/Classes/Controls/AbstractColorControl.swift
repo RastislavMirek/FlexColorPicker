@@ -28,16 +28,18 @@
 
 import UIKit
 
+/// Contains common functionality for `ColorControl`. It is recomended to subclass this rather than `UIView` or `UIControl` when implementing custom `ColorControl`.
 open class AbstractColorControl: UIControl, ColorControl {
     private(set) public var selectedHSBColor: HSBColor = defaultSelectedColor
 
+    /// Property for color currently selected color. Backed by and delegated to `selectedHSBColor`.
     @IBInspectable
-    public var selectedColor: UIColor {
+    public var selectedColor: UIColor { //overriding default implementation from ColorControl to add @IBInspectable
         get {
-            return selectedHSBColor.toUIColor()
+            return (self as ColorControl).selectedColor
         }
         set {
-            selectedHSBColor = newValue.hsbColor
+            (self as ColorControl).selectedColor = newValue
         }
     }
 
@@ -61,7 +63,7 @@ open class AbstractColorControl: UIControl, ColorControl {
         commonInit()
     }
 
-    /// This empty method is override point for initialization tasks that needs to be carried no matter how the view is constructed (e. g. via Interface Builder or from code).
+    /// This method is override point for initialization tasks that needs to be carried no matter how the view is constructed (e. g. via Interface Builder or from code). Overriders must call super implementation.
     open func commonInit() {
         isExclusiveTouch = true
     }

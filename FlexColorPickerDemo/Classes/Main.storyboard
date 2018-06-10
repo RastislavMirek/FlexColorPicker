@@ -25,7 +25,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zT-MN-z7D" customClass="CircleShapedView" customModule="FlexColorPicker">
-                                    <rect key="frame" x="137.66666666666666" y="20" width="100" height="100"/>
+                                    <rect key="frame" x="250" y="20" width="100" height="100"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="100" id="LTL-ed-Doi"/>
@@ -476,7 +476,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Z3K-l9-WOa" customClass="BrightnessSliderControl" customModule="FlexColorPicker">
-                                                                <rect key="frame" x="15.666666666666657" y="3" width="335.33333333333337" height="43"/>
+                                                                <rect key="frame" x="15.666666666666657" y="3.3333333333333712" width="335.33333333333337" height="43"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="11" id="FB5-7o-UZl"/>
@@ -584,7 +584,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="oyw-Qa-Plg" customClass="RedSliderControl" customModule="FlexColorPicker">
-                                                <rect key="frame" x="15.666666666666657" y="6" width="343.33333333333337" height="38"/>
+                                                <rect key="frame" x="15.666666666666657" y="6.3333333333333428" width="343.33333333333337" height="38"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="6" id="4FI-c2-RQ5"/>
@@ -861,10 +861,10 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="j8r-5M-OJC" customClass="BlueSliderControl" customModule="FlexColorPicker">
-                                                                <rect key="frame" x="35.666666666666657" y="4" width="335.33333333333337" height="43"/>
+                                                                <rect key="frame" x="35.666666666666657" y="3.6666666666666288" width="335.33333333333337" height="44"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="11" id="2fK-AG-SF8"/>
+                                                                    <constraint firstAttribute="height" constant="12" id="2fK-AG-SF8"/>
                                                                 </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">

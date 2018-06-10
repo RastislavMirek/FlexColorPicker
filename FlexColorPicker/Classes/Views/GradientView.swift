@@ -28,6 +28,7 @@
 
 import UIKit
 
+/// View with linear gradient background instead of solid color.
 public class GradientView: UIView {
     open override class var layerClass: AnyClass {
         return CAGradientLayer.self
@@ -37,24 +38,28 @@ public class GradientView: UIView {
         return layer as! CAGradientLayer
     }
 
+    /// Background gradient first color (first stop of the gradient).
     public var startColor: UIColor = .clear {
         didSet {
             updateColors()
         }
     }
 
+    /// Background gradient last color (last stop of the gradient).
     public var endColor: UIColor = .clear {
         didSet {
             updateColors()
         }
     }
 
+    /// How far to right the begining of background gradient shoulds be from the view's left edge. In points.
     public var startOffset: CGFloat = 0 {
         didSet {
             updatePoints()
         }
     }
 
+    /// How far to the left the end of background gradient shoulds be from the view's right edge. In points.
     public var endOffset: CGFloat = 0 {
         didSet {
             updatePoints()

@@ -36,7 +36,7 @@ import UIKit
 public protocol ColorControl: class {
     /// Override this and return `false` if you do not want to `UIControlEvents.primaryActionTriggered` events send by your color control to be considered confirmation of color selection.
     static var canConfirmColor: Bool { get }
-    /// The value of this color control. Represents current selected color.
+    /// The value of this color control. Represents current selected color. Value is set by `setSelectedHSBColor(_: isInteractive:)`
     var selectedHSBColor: HSBColor { get }
 
     /// Sets `selectedHSBColor` and adjust visual state of the control according to that value.
@@ -54,5 +54,15 @@ public extension ColorControl {
     /// Provides the default value for canConfirmColor. Returns true.
     public static var canConfirmColor: Bool {
         return true
+    }
+
+    /// Property for color currently selected color. Backed by and delegated to `selectedHSBColor`.
+    public var selectedColor: UIColor {
+        get {
+            return selectedHSBColor.toUIColor()
+        }
+        set {
+            setSelectedHSBColor(selectedColor.hsbColor, isInteractive: false)
+        }
     }
 }

@@ -28,6 +28,9 @@
 
 import UIKit
 
+/// A scroll view that supports adding instances of `ColorPaletteControl` in its content without compromising their panning (color selction by dragging a finger) functionality.
+///
+/// This scroll view interprets panning over palettes inside its content as a gesture intended for that palette but as scroll gesture.
 open class PaletteAwareScrollView: UIScrollView {
 
     open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -37,19 +40,19 @@ open class PaletteAwareScrollView: UIScrollView {
 
         let touchLocation = gestureRecognizer.location(in: self)
         let hitView = hitTest(touchLocation, with: nil)
-        if anyParent(ofView: hitView, satisfiesCondition: { $0 is ColorPaletteControl}) {
+        if isCondition({ $0 is ColorPaletteControl}, satisfiedByParentOf: hitView) {
             return false
         }
         return super.gestureRecognizerShouldBegin(gestureRecognizer)
     }
 
-    private func anyParent(ofView view: UIView?, satisfiesCondition condition: (UIView) -> Bool) -> Bool {
+    private func isCondition(_ condition: (UIView) -> Bool, satisfiedByParentOf view: UIView?) -> Bool {
         guard let view = view, view !== self else {
             return false
         }
         if condition(view) {
             return true
         }
-        return anyParent(ofView: view.superview, satisfiesCondition: condition)
+        return isCondition(condition, satisfiedByParentOf: view.superview)
     }
 }

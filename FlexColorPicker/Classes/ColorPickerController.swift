@@ -29,6 +29,9 @@
 
 /// Principal class and the controller of FlexColorPicker (not to be confused with view controllers). Synchronizes separate color controls (instances of `ColorControl` protocol) so thay can act as one system and notifies client code via delegate.
 /// This can also be used from interface builder (e.g. a storyboard) as a class of custom object and the controls can be added to this controler in interface builder outlets.
+///
+/// ** See also:**
+/// [CustomColorPickerViewController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/CustomColorPickerViewController.swift), [DefaultColorPickerViewController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/DefaultColorPickerViewController.swift)
 open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //subclassing NSObject is required to use this class as object in interface builder
     public private(set) var selectedHSBColor: HSBColor = defaultSelectedColor
     /// Array of all color controls currently managed by the color picker. These are the controls that this `ColorPickerController` receives updates from and synchonizes with each other.

@@ -33,11 +33,11 @@ let defaultSelectedColor = UIColor.white.hsbColor
 
 @IBDesignable
 open class ColorPaletteControl: ColorControlWithThumbView {
-    /// The picture with hue and saturation color options.
+    /// The picture view providing preview of selected color for each particular point. Its image might be e.g. hue/saturation map.
     public let foregroundImageView = UIImageView()
-    /// Black image in the background used to apply brightnes chnage by blending it with colorMapImageView.
+    /// Background image view that holds image which blends with image displayed by `foregroundImageView` when its alpha is less then 1, providing more accurate color options preview. E.g. back image that blends with hue/saturation map in foreground to show color map adjusted for brightness .
     public let backgroundImageView = UIImageView()
-    
+
     open var paletteDelegate: ColorPaletteDelegate = RadialHSBPaletteDelegate() {
         didSet {
             updatePaleteImagesAndThumb(isInteractive: false)

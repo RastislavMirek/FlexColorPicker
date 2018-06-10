@@ -29,16 +29,24 @@
 import UIKit
 
 let defaultHitBoxInset: CGFloat = 16
-public let colorControlWithThumbViewDefaulthitBoxInsets = UIEdgeInsets(top: defaultHitBoxInset, left: defaultHitBoxInset, bottom: defaultHitBoxInset, right: defaultHitBoxInset)
+public let colorControlWithThumbViewDefaultHitBoxInsets = UIEdgeInsets(top: defaultHitBoxInset, left: defaultHitBoxInset, bottom: defaultHitBoxInset, right: defaultHitBoxInset)
 
+/// Color control with frame (and hit box) extended beyond its alighnment rectangle.
+///
+/// - Important: The disproportion between the `AdjustedHitBoxColorControl`'s frame (and bounds) and its alighnment rectangle means that when alighning it using autolayout the frame might extend behond alighnment rectangle specified by layout constraits. When using lautolayout mind that the frame might therefore overlap other views.
+///
+/// It is generally recomeneded that to subclass this class rather than `AbstractColorControl` when creating custom `ColorControls` to have better control over your control's hit box.
 open class AdjustedHitBoxColorControl: AbstractColorControl {
     open let contentView = UIView()
 
+    // The alighnment rectangle of the `AdjustedHitBoxColorControl` in its own coordinate system.
     public var contentBounds: CGRect {
         layoutIfNeeded()
         return contentView.frame
     }
 
+    /// A single hit box inset value for all inset directions (top, bottom, left, right) meant to only be used from interface builder.
+    /// - Important: Do **not** use this property from code. Use hitBoxInset**s** property instead.
     @IBInspectable
     public var hitBoxInset: CGFloat {
         get {
@@ -49,7 +57,10 @@ open class AdjustedHitBoxColorControl: AbstractColorControl {
         }
     }
 
-    public var hitBoxInsets = colorControlWithThumbViewDefaulthitBoxInsets {
+    /// Insets of the alighnment rectangle relative to frame (where frame is also hit box rectangle).
+    ///
+    /// Applying this insets to `frame` results in alighnment rectangle.
+    public var hitBoxInsets = colorControlWithThumbViewDefaultHitBoxInsets {
         didSet {
             setNeedsLayout()
         }

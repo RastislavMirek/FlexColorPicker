@@ -37,6 +37,9 @@
       <FileRef
          location = "group:Rectangular_Color_Picker_Palette.png">
       </FileRef>
+      <FileRef
+         location = "group:Working_with_flex_color_picker_from_storyboard.png">
+      </FileRef>
    </Group>
    <FileRef
       location = "group:FlexColorPicker/FlexColorPicker/../../FlexColorPickerDemo/FlexColorPickerDemo.xcodeproj">

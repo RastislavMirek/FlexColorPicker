@@ -28,6 +28,9 @@
 
 
 /// Delegate that gets called when a color picker value (the picker color) is changed or when user finishes color picking.
+///
+/// **See also:**
+/// [DefaultColorPickerViewController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/DefaultColorPickerViewController.swift), [ColorPickerController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/ColorPickerController.swift)
 public protocol ColorPickerDelegate: class {
 
     /// Called when a user changes color picker's current selected color.
