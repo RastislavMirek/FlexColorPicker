@@ -1,5 +1,5 @@
 [![Build status](https://build.appcenter.ms/v0.1/apps/70a55ab5-1147-43c7-8d31-535b26dc90e9/branches/master/badge)](https://appcenter.ms) 
-[![License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/RastislavMirek/FlexColorPicker/blob/master/LICENSE)
+[![License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 # Flex Color Picker
 Modern color picker library written in Swift 4 that can be easily extended and customized. Good performance and stable, quality code are its core values.
 
@@ -8,7 +8,7 @@ Modern color picker library written in Swift 4 that can be easily extended and c
 
 ## Supported Use Cases
 1. ready-to-use color picker that works great out-of-box
-2. agile library that supports components positioning with autolayout and customisation directly from storyboard (or from code)     
+2. agile library that supports components positioning with autolayout and customisation directly from storyboard
 3. framework that allows adding your own sliders, palettes &amp; previews or modifying existing ones without changing the code of the library
 4. combine 3 approaches above freely to get level of customisation that you need
 
@@ -22,12 +22,12 @@ Modern color picker library written in Swift 4 that can be easily extended and c
 - _highly customisable_
 - _storyboard support_ with realistic, design time preview and customisation directly from storyboard
 - robust, easy to understand code
-- well documented*
+- well documented**
 - works with any controller, no need to subclass some specific controller
 - _protocols_ for adding custom picker controls and reusing existing sliders/palettes
 - key classes opened &amp ready for extending
 
-* work in progress
+** work in progress
 
 ## Instalation
 
