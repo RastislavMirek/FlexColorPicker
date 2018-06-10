@@ -109,7 +109,7 @@ If you like it, have a question or want to hire iOS developers shoot me a messag
 
 **[my first name, see profile] _at_ [epytysae spelled backwards] _dot_ [first 4 letters of word information]**
 
-Emails go directly to author FlexColorPicker, cryptic format is just spam bot protection. 
+Emails go directly to author of FlexColorPicker, cryptic format is just spam bot protection. 
 
 Suggestions, feedback, bug reports & pull requests are very wellcomed.
 
