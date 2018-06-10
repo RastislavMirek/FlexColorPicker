@@ -31,13 +31,17 @@ import UIKit
 private let defaultGradientViewHeight: CGFloat = 15
 internal let defaultBorderWidth: CGFloat = 1 / UIScreen.main.scale
 
+/// Color conrtol that allows to change selected color by tapping a point (or draging a thumb view to a point) on a line. The control displays color preview for all positions in that line.
 @IBDesignable
 open class ColorSliderControl: ColorControlWithThumbView {
 
     private var gradientViewHeightConstraint: NSLayoutConstraint?
+    /// This is view behind gradient that can be used to show custom color options preview if the preview cannot be represented by simple gradient.
     public let gradientBackgroundView = UIImageView()
+    /// Previews color options avaialable va chnaging value of the slider in form of linear gradient.
     public let gradientView = GradientView()
 
+    /// A delegate that specifies gradient of slider and how selecting a value is interpreted.
     open var sliderDelegate: ColorSliderDelegate = BrightnessSliderDelegate() {
         didSet {
             updateThumbAndGradient(isInteractive: false)
@@ -75,6 +79,12 @@ open class ColorSliderControl: ColorControlWithThumbView {
         gradientBackgroundView.cornerRadius_ = contentBounds.height / 2
     }
 
+
+    /// Updates sliders preview (the gradient) to reflect current state of this control (e.g. value of `selectedHSBColor` and `sliderDelegate`).
+    ///
+    /// Override this if you need update slider's visual state differently on state change.
+    ///
+    /// - Parameter interactive:  Whether the change originated from user interaction or is programatic. This can used to determine if some animations should be played.
     open func updateThumbAndGradient(isInteractive interactive: Bool) {
         layoutIfNeeded() //ensure that subview bounds are updated as we are working with contentView.bounds.midY
         let (value, gradientStart, gradientEnd) = sliderDelegate.valueAndGradient(for: selectedHSBColor)
@@ -87,18 +97,24 @@ open class ColorSliderControl: ColorControlWithThumbView {
         gradientView.endColor = gradientEnd
     }
 
-    open override func updateSelectedColor(at point: CGPoint) {
+    open override func updateSelectedColor(at point: CGPoint, isInteractive: Bool) {
         let gradientLength = contentBounds.width - thumbView.colorIdicatorRadius * 2
         let value = max(0, min(1, (point.x - thumbView.colorIdicatorRadius) / gradientLength))
         thumbView.percentage = Int(round(value * 100))
-        setSelectedHSBColor(sliderDelegate.modifiedColor(from: selectedHSBColor, with: min(max(0, value), 1)), isInteractive: true)
+        setSelectedHSBColor(sliderDelegate.modifiedColor(from: selectedHSBColor, with: min(max(0, value), 1)), isInteractive: isInteractive)
         sendActions(for: .valueChanged)
     }
 
+
+    /// Override to change the border drawn around the slider.
+    ///
+    /// - Parameter on: Whether to display the border.
     open func setDefaultBorder(on: Bool) {
         setDefaultBorder(on: on, forView: gradientBackgroundView)
     }
 
+
+    /// Whether to display default thin border around the slider.
     @IBInspectable
     public var borderOn: Bool = true {
         didSet {
@@ -108,6 +124,7 @@ open class ColorSliderControl: ColorControlWithThumbView {
 }
 
 extension ColorSliderControl {
+    /// When `true` the slider's thumb will automatically darken its border when selected color is too bright to be contrast enought with white border.
     @IBInspectable
     public var autoDaken: Bool {
         get {
@@ -118,6 +135,7 @@ extension ColorSliderControl {
         }
     }
 
+    /// Whether to show selected value as percentage of above the thumb view while user is interacting with the slider.
     @IBInspectable
     public var showPercentage: Bool {
         get {
@@ -128,6 +146,7 @@ extension ColorSliderControl {
         }
     }
 
+    /// Whether the slider's thumb should be expanded when user is interacting with the slider.
     @IBInspectable
     public var expandOnTap: Bool {
         get {

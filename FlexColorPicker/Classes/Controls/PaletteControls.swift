@@ -26,6 +26,7 @@
 //  SOFTWARE.
 //
 
+/// Circular palette color control that allows to change both hue and saturation of current color by selecting a point on the palette.
 public class RadialPaletteControl: ColorPaletteControl {
     public override func commonInit() {
         paletteDelegate = RadialHSBPaletteDelegate()
@@ -33,6 +34,7 @@ public class RadialPaletteControl: ColorPaletteControl {
     }
 }
 
+/// Rectangle shaped palette color control that allows to change both hue and saturation of current color by selecting a point on the palette.
 public class RectangularPaletteControl: ColorPaletteControl {
     public override func commonInit() {
         paletteDelegate = RectangularHSBPaletteDelegate()
@@ -41,6 +43,8 @@ public class RectangularPaletteControl: ColorPaletteControl {
         super.commonInit()
     }
 
+    /// When `true` the different values of color hue will correspond to different coordinates along x axis (that means that vertical lines will have same hue but different saturation). When `false`, different values of color hue will correspond to different coordinates along y axis.
+    /// @important Do not set this property from code. It is only intended to be set from interface builder. Call `setHue(horizontalAxis: updateImage:)` instead.
     @IBInspectable
     public var hueHorizontal: Bool = true {
         didSet {
@@ -50,6 +54,7 @@ public class RectangularPaletteControl: ColorPaletteControl {
         }
     }
 
+    /// Whether to display thin border around the palette.
     @IBInspectable
     open var borderOn: Bool = true {
         didSet {
@@ -57,6 +62,11 @@ public class RectangularPaletteControl: ColorPaletteControl {
         }
     }
 
+    /// Sets the value of `hueHorizontal` property.
+    /// - Note: This operation can be computationally expensive if `updateImage` parameter is `true`.
+    /// - Parameters:
+    ///   - horizontalAxis: New value for `hueHorizontal` property.
+    ///   - updateImage: Then `true`, new palete preview images will be created by palette delegate. This can be computationally expensive. Pass `false` if further updates are expecetd e.g. chnage of palette's bounds.
     open func setHue(horizontalAxis: Bool, updateImage: Bool) {
         hueHorizontal = horizontalAxis
         (paletteDelegate as? RectangularHSBPaletteDelegate)?.hueHorizontal = horizontalAxis

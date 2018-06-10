@@ -33,9 +33,11 @@ import UIKit
 open class ColorControlWithThumbView: AdjustedHitBoxColorControl {
     open let thumbView = ColorPickerThumbView()
 
-    /// Abstract method (just override point). It is called every time the touch is detected in new location. The thumbView should be moved accordingly and the color should be changed here.
-    /// Touches are in coordinate space of the content (adjusted for hitBoxInsets) that is in coordinate space of contentView
-    open func updateSelectedColor(at point: CGPoint) {
+    /// Override point. It is called every time the touch is detected in new location. The thumbView should be moved and changed accordingly.
+    ///
+    /// - Parameter point: New location for thub view in coordinate space of the content (adjusted for hitBoxInsets) - that is in coordinate space of `contentView`.
+    /// - Parameter isInteractive Whether the change originated from user interaction or is programatic. This can used to determine if some animations should be played.
+    open func updateSelectedColor(at point: CGPoint, isInteractive: Bool = true) {
     }
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

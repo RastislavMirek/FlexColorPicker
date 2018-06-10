@@ -31,6 +31,7 @@ import UIKit
 let minimumDistanceForInBoundsTouchFromValidPoint: CGFloat = 44
 let defaultSelectedColor = UIColor.white.hsbColor
 
+/// Color control that allows to select color by tapping color palette that shows available color options.
 @IBDesignable
 open class ColorPaletteControl: ColorControlWithThumbView {
     /// The picture view providing preview of selected color for each particular point. Its image might be e.g. hue/saturation map.
@@ -38,6 +39,7 @@ open class ColorPaletteControl: ColorControlWithThumbView {
     /// Background image view that holds image which blends with image displayed by `foregroundImageView` when its alpha is less then 1, providing more accurate color options preview. E.g. back image that blends with hue/saturation map in foreground to show color map adjusted for brightness .
     public let backgroundImageView = UIImageView()
 
+    /// A delegate that specifies what pallete color options look like (image of the palette) and how selecting a point on the palette is interpreted. It also specifies tappable region of the palette.
     open var paletteDelegate: ColorPaletteDelegate = RadialHSBPaletteDelegate() {
         didSet {
             updatePaleteImagesAndThumb(isInteractive: false)
@@ -48,7 +50,7 @@ open class ColorPaletteControl: ColorControlWithThumbView {
             updatePaleteImagesAndThumb(isInteractive: false)
         }
     }
-
+    
     open override var contentMode: UIViewContentMode {
         didSet {
             updateContentMode()
@@ -76,6 +78,11 @@ open class ColorPaletteControl: ColorControlWithThumbView {
         }
     }
 
+    /// Updates palette foreground and backround images and thumb view to reflect current state of this control (e.g. value of `selectedHSBColor` and `paletteDelegate`). Call this only if update of visual state of the pallete is necessary as this call has performance implications - new images are requested from palette delegate.
+    ///
+    /// Override this if you need update palette visual state differently on state change.
+    ///
+    /// - Parameter interactive:  Whether the change originated from user interaction or is programatic. This can used to determine if some animations should be played.
     open func updatePaleteImagesAndThumb(isInteractive interactive: Bool) {
         layoutIfNeeded() //force subviews layout to update their bounds - bounds of subviews are not automatically updated
         paletteDelegate.size = foregroundImageView.bounds.size //cannot use self.bounds as that is extended compared to foregroundImageView.bounds when AdjustedHitBoxColorControl.hitBoxInsets are non-zero
@@ -88,18 +95,31 @@ open class ColorPaletteControl: ColorControlWithThumbView {
         thumbView.setColor(selectedColor, animateBorderColor: interactive)
     }
 
+    /// Translates a point from given coordinate space to coordinate space of foreground image. Image coordinate space is used by the palette delegate.
+    /// - Note: This translates from the coordiate space of the image itself not the coordinate space of its image view. Those can be different and the translation between them is dependent on current value of image view's `contentMode`.
+    ///
+    /// - Parameters:
+    ///   - point: The point to translate.
+    ///   - coordinateSpace: Source (current) coordinate space of the point to translate from.
+    /// - Returns: Corresponding point in image coordinate space.
     open func imageCoordinates(point: CGPoint, fromCoordinateSpace coordinateSpace: UICoordinateSpace) -> CGPoint {
         return foregroundImageView.convertToImageSpace(point: foregroundImageView.convert(point, from: coordinateSpace))
     }
 
+    /// Translates a point from coordinate space of foreground image to given coordinate space. Image coordinate space is used by the palette delegate.
+    /// - Note: This translates to the coordiate space of the image itself not the coordinate space of its image view. Those can be different and the translation between them is dependent on current value of image view's `contentMode`.
+    ///
+    /// - Parameters:
+    ///   - point: The point to translate.
+    ///   - coordinateSpace: target (destination) coordinate space to translate to.
+    /// - Returns: Corresponding point in target coordinate space.
     open func imageCoordinates(point: CGPoint, toCoordinateSpace coordinateSpace: UICoordinateSpace) -> CGPoint {
         return foregroundImageView.convert(foregroundImageView.convertFromImageSpace(point: point), to: coordinateSpace)
     }
 
-    /// Not ready to be called directly but you may override
-    open override func updateSelectedColor(at point: CGPoint) {
+    open override func updateSelectedColor(at point: CGPoint, isInteractive: Bool) {
         let pointInside = paletteDelegate.closestValidPoint(to: imageCoordinates(point: point, fromCoordinateSpace: contentView))
-        setSelectedHSBColor(paletteDelegate.modifiedColor(from: selectedHSBColor, with: pointInside), isInteractive: true)
+        setSelectedHSBColor(paletteDelegate.modifiedColor(from: selectedHSBColor, with: pointInside), isInteractive: isInteractive)
         updateThumbPosition(position: pointInside)
         sendActions(for: .valueChanged)
     }

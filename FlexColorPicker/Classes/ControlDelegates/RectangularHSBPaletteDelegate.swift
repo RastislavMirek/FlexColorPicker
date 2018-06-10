@@ -38,6 +38,7 @@ open class RectangularHSBPaletteDelegate: ColorPaletteDelegate {
             intHeight = Int(size.height)
         }
     }
+     /// When `true` the different values of color hue will correspond to different coordinates along x axis (that means that vertical lines will have same hue but different saturation). When `false`, different values of color hue will correspond to different coordinates along y axis.
     public var hueHorizontal = true
 
     public init() {}

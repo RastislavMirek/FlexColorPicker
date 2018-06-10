@@ -46,9 +46,11 @@ open class ColorPickerThumbView: UIViewWithCommonInit {
     public let borderView = CircleShapedView()
     public let colorView = CircleShapedView()
     public let percentageLabel = UILabel()
-
+    /// When `true` the border automatically darken when color is too bright to be contrast enought with white border.
     public var autoDarken: Bool = true
+    /// Whether to show percentage label above the thumb view.
     public var showPercentage: Bool = true
+    /// Whether the thumb view should be expanded when user is interacting with it.
     public var expandOnTap: Bool = true
 
     var expandedUpscaleRatio: CGFloat = defaultExpandedUpscaleRatio {
