@@ -1,4 +1,5 @@
-[![Build status](https://build.appcenter.ms/v0.1/apps/70a55ab5-1147-43c7-8d31-535b26dc90e9/branches/master/badge)](https://appcenter.ms) ![License Badge](https://img.shields.io/badge/license-MIT-blue.svg)]
+[![Build status](https://build.appcenter.ms/v0.1/apps/70a55ab5-1147-43c7-8d31-535b26dc90e9/branches/master/badge)](https://appcenter.ms) 
+[![License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/RastislavMirek/FlexColorPicker/blob/master/LICENSE)
 # Flex Color Picker
 Modern color picker library written in Swift 4 that can be easily extended and customized. Good performance and stable, quality code are its core values.
 
