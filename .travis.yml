@@ -19,9 +19,9 @@ before_install:
 
 script:
 # - xcodebuild clean build -sdk iphonesimulator -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo CODE_SIGNING_REQUIRED=NO
- - xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S,OS=11.3' CODE_SIGNING_REQUIRED=NO clean build | xcpretty && exit ${PIPESTATUS[0]}
- - xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S,OS=10.3' CODE_SIGNING_REQUIRED=NO clean build | xcpretty && exit ${PIPESTATUS[0]}
- - xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.2' CODE_SIGNING_REQUIRED=NO clean build | xcpretty && exit ${PIPESTATUS[0]}
+ - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S,OS=11.3' CODE_SIGNING_REQUIRED=NO clean build | xcpretty
+ - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.3' CODE_SIGNING_REQUIRED=NO clean build | xcpretty
+ - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.2' CODE_SIGNING_REQUIRED=NO clean build | xcpretty
  - pod lib lint
 
 # script:
