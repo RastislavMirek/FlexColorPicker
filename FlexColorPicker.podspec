@@ -8,6 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'FlexColorPicker'
+  s.module_name      = 'FlexColorPicker'
   s.version          = '1.0.3'
   s.summary          = 'Modern & flexible full spectrum color picker written in Swift 4.'
 
@@ -32,6 +33,8 @@ Modern color picker library written in Swift 4 that can be easily extended and c
 #  s.ios.deployment_target = '10.2'
 
   s.source_files = 'FlexColorPicker/Classes/**/*'
+  s.platform = :ios, '10.0'
+  s.requires_arc = true # FlexColor picker requires automatic reference counting
   #  s.frameworks = 'UIKit'
   
   #  s.resource_bundles = {
