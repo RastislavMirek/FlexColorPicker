@@ -8,7 +8,7 @@ Modern color picker library written in Swift 4 that can be easily extended and c
 ![Color Picker with All Controls Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview2.gif)
 
 ## Supported Use Cases
-1. ready-to-use color picker that works great out-of-box
+1. ready-to-use color picker that works great out-of-box 
 2. agile library that supports components positioning with autolayout and customisation directly from storyboard
 3. framework that allows adding your own sliders, palettes &amp; previews or modifying existing ones without changing the code of the library
 4. combine 3 approaches above freely to get level of customisation that you need
