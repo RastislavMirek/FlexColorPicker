@@ -30,7 +30,7 @@ Modern color picker library written in Swift 4 that can be easily extended and c
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   s.summary          = 'Modern color picker library written in Swift 4 that can be easily extended and customized.'
 
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'FlexColorPicker/Classes/**/*'
   s.frameworks = 'UIKit'

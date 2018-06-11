@@ -14,28 +14,13 @@
 		305A236A20BB4F7700271A59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A236920BB4F7700271A59 /* AppDelegate.swift */; };
 		305A237320BB4F7800271A59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305A237220BB4F7800271A59 /* Assets.xcassets */; };
 		305A237620BB4F7800271A59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305A237420BB4F7800271A59 /* LaunchScreen.storyboard */; };
-		305A238E20BB512E00271A59 /* FlexColorPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305A238D20BB512E00271A59 /* FlexColorPicker.framework */; };
-		305A238F20BB512E00271A59 /* FlexColorPicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 305A238D20BB512E00271A59 /* FlexColorPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		305A239920BBFDC100271A59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 305A239820BBFDC100271A59 /* Main.storyboard */; };
 		3094B99120CB46AE00B6D0A0 /* CustomControlsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3094B99020CB46AE00B6D0A0 /* CustomControlsDemoViewController.swift */; };
 		30B950CF20C8B3A9004E207C /* DemoRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B950CE20C8B3A9004E207C /* DemoRootViewController.swift */; };
 		30FE28E020CB11D700D0063E /* RadialHuePalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE28DF20CB11D700D0063E /* RadialHuePalette.swift */; };
 		30FE28E220CB1AAA00D0063E /* RadialHueColorPaletteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE28E120CB1AAA00D0063E /* RadialHueColorPaletteDelegate.swift */; };
+		B58C92F4D844DE1A62F9A7C3 /* Pods_FlexColorPickerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC614FA21DCDEA52C65C17 /* Pods_FlexColorPickerDemo.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		305A238720BB50EB00271A59 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				305A238F20BB512E00271A59 /* FlexColorPicker.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		30184F2720C9E02400A81D6A /* PickerInTableDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerInTableDemoViewController.swift; sourceTree = "<group>"; };
@@ -47,12 +32,14 @@
 		305A237520BB4F7800271A59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		305A237720BB4F7800271A59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		305A238620BB50EB00271A59 /* FlexColorPickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlexColorPickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		305A238D20BB512E00271A59 /* FlexColorPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FlexColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		305A239820BBFDC100271A59 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3094B99020CB46AE00B6D0A0 /* CustomControlsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomControlsDemoViewController.swift; sourceTree = "<group>"; };
 		30B950CE20C8B3A9004E207C /* DemoRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoRootViewController.swift; sourceTree = "<group>"; };
 		30FE28DF20CB11D700D0063E /* RadialHuePalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialHuePalette.swift; sourceTree = "<group>"; };
 		30FE28E120CB1AAA00D0063E /* RadialHueColorPaletteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialHueColorPaletteDelegate.swift; sourceTree = "<group>"; };
+		ADAC614FA21DCDEA52C65C17 /* Pods_FlexColorPickerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlexColorPickerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9FA8BCD0B37E6DADE683D48 /* Pods-FlexColorPickerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlexColorPickerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlexColorPickerDemo/Pods-FlexColorPickerDemo.release.xcconfig"; sourceTree = "<group>"; };
+		D5911E4D803C6CD9312A74D8 /* Pods-FlexColorPickerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlexColorPickerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlexColorPickerDemo/Pods-FlexColorPickerDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				305A238E20BB512E00271A59 /* FlexColorPicker.framework in Frameworks */,
+				B58C92F4D844DE1A62F9A7C3 /* Pods_FlexColorPickerDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,9 +57,10 @@
 		305A235D20BB4F7700271A59 = {
 			isa = PBXGroup;
 			children = (
-				305A238D20BB512E00271A59 /* FlexColorPicker.framework */,
 				305A236820BB4F7700271A59 /* Classes */,
 				305A238620BB50EB00271A59 /* FlexColorPickerDemo.app */,
+				C4147B53B95F69CDE95E6F79 /* Pods */,
+				3C39EF8ECEF404214C0DA0FA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,6 +92,23 @@
 			path = CustomControls;
 			sourceTree = "<group>";
 		};
+		3C39EF8ECEF404214C0DA0FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADAC614FA21DCDEA52C65C17 /* Pods_FlexColorPickerDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C4147B53B95F69CDE95E6F79 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D5911E4D803C6CD9312A74D8 /* Pods-FlexColorPickerDemo.debug.xcconfig */,
+				C9FA8BCD0B37E6DADE683D48 /* Pods-FlexColorPickerDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -111,10 +116,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 305A237A20BB4F7800271A59 /* Build configuration list for PBXNativeTarget "FlexColorPickerDemo" */;
 			buildPhases = (
+				D2C1C60F8CC6FB879A3B49C3 /* [CP] Check Pods Manifest.lock */,
 				305A236220BB4F7700271A59 /* Sources */,
 				305A236320BB4F7700271A59 /* Frameworks */,
 				305A236420BB4F7700271A59 /* Resources */,
-				305A238720BB50EB00271A59 /* Embed Frameworks */,
+				D0F4756DC01C55C83085E07D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,6 +176,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D0F4756DC01C55C83085E07D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FlexColorPickerDemo/Pods-FlexColorPickerDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/FlexColorPicker/FlexColorPicker.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexColorPicker.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlexColorPickerDemo/Pods-FlexColorPickerDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2C1C60F8CC6FB879A3B49C3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlexColorPickerDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		305A236220BB4F7700271A59 /* Sources */ = {
@@ -318,12 +363,13 @@
 		};
 		305A237B20BB4F7800271A59 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5911E4D803C6CD9312A74D8 /* Pods-FlexColorPickerDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UWF3VQ79QJ;
 				INFOPLIST_FILE = "$(SRCROOT)/Classes/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -337,12 +383,13 @@
 		};
 		305A237C20BB4F7800271A59 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9FA8BCD0B37E6DADE683D48 /* Pods-FlexColorPickerDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UWF3VQ79QJ;
 				INFOPLIST_FILE = "$(SRCROOT)/Classes/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

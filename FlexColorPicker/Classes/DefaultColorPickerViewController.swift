@@ -154,21 +154,21 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
 
     private func makeStandardLayout() {
         standardConstraints += [
-            colorPreview.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: sideMargin),
-            colorPreview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topMargin),
+            colorPreview.leftAnchor.constraint(equalTo: view.safeAreaLeftAnchor, constant: sideMargin),
+            colorPreview.topAnchor.constraint(equalTo: view.safeAreaTopAnchor, constant: topMargin),
             colorPreview.heightAnchor.constraint(equalToConstant: colorPreview.intrinsicContentSize.height)
         ]
         colorPreview.setContentCompressionResistancePriority(.init(900), for: .horizontal)
         standardConstraints += [
             brightnessSlider.leftAnchor.constraint(equalTo: colorPreview.rightAnchor, constant: sideMargin),
-            brightnessSlider.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -sideMargin),
+            brightnessSlider.rightAnchor.constraint(equalTo: view.safeAreaRightAnchor, constant: -sideMargin),
             brightnessSlider.bottomAnchor.constraint(equalTo: colorPreview.bottomAnchor, constant: 0)
         ]
         standardConstraints += [
-            colorPalette.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: sideMargin),
-            colorPalette.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -sideMargin),
+            colorPalette.leftAnchor.constraint(equalTo: view.safeAreaLeftAnchor, constant: sideMargin),
+            colorPalette.rightAnchor.constraint(equalTo: view.safeAreaRightAnchor, constant: -sideMargin),
             colorPalette.topAnchor.constraint(equalTo: colorPreview.bottomAnchor, constant: paletteVerticalMargin),
-            colorPalette.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -sideMargin)
+            colorPalette.bottomAnchor.constraint(equalTo: view.safeAreaBottomAnchor, constant: -sideMargin)
         ]
     }
 
@@ -178,17 +178,17 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
             colorPreview.bottomAnchor.constraint(equalTo: colorPalette.centerYAnchor, constant: -minSpaceAboveSlider * 0.25)
         ]
         landscapeConstraints += [
-            brightnessSlider.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: sideMargin),
+            brightnessSlider.leftAnchor.constraint(equalTo: view.safeAreaLeftAnchor, constant: sideMargin),
             brightnessSlider.topAnchor.constraint(equalTo: colorPalette.centerYAnchor, constant: minSpaceAboveSlider * 0.75),
             brightnessSlider.rightAnchor.constraint(equalTo: view.centerXAnchor, constant: -paletteHorizontalMargin / 2)
         ]
         let nonRequiredConstraint = colorPalette.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -sideMargin)
         landscapeConstraints += [
             colorPalette.leftAnchor.constraint(equalTo: view.centerXAnchor, constant: paletteHorizontalMargin / 2),
-            colorPalette.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -sideMargin),
-            colorPalette.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: sideMargin),
+            colorPalette.rightAnchor.constraint(equalTo: view.safeAreaRightAnchor, constant: -sideMargin),
+            colorPalette.topAnchor.constraint(equalTo: view.safeAreaTopAnchor, constant: sideMargin),
             nonRequiredConstraint,
-            colorPalette.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -minDistanceFromSafeArea)
+            colorPalette.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaBottomAnchor, constant: -minDistanceFromSafeArea)
         ]
         nonRequiredConstraint.priority = .init(999)
     }
@@ -208,5 +208,35 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
         rectangularPalette?.setHue(horizontalAxis: rectangularPaletteHueHorizontalInPortrait, updateImage: false) //image gets updated on bounds change
         NSLayoutConstraint.deactivate(landscapeConstraints)
         NSLayoutConstraint.activate(standardConstraints)
+    }
+}
+
+fileprivate extension UIView {
+    fileprivate var safeAreaLeftAnchor: NSLayoutXAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return safeAreaLayoutGuide.leftAnchor
+        }
+        return leftAnchor
+    }
+
+    var safeAreaRightAnchor: NSLayoutXAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return safeAreaLayoutGuide.rightAnchor
+        }
+        return rightAnchor
+    }
+
+    fileprivate var safeAreaBottomAnchor: NSLayoutYAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return safeAreaLayoutGuide.bottomAnchor
+        }
+        return topAnchor
+    }
+
+    fileprivate var safeAreaTopAnchor: NSLayoutYAxisAnchor {
+        if #available(iOS 11.0, *) {
+            return safeAreaLayoutGuide.topAnchor
+        }
+        return topAnchor
     }
 }
