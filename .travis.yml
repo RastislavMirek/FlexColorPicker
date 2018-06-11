@@ -19,7 +19,7 @@ before_install:
 
 script:
 # - xcodebuild clean build -sdk iphonesimulator -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo CODE_SIGNING_REQUIRED=NO
-- xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S, OS=11.3' CODE_SIGNING_REQUIRED=NO clean build
+ - xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S, OS=11.3' CODE_SIGNING_REQUIRED=NO clean build
 
 # script:
 # - set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/TestDeleteMe.xcworkspace -scheme TestDeleteMe-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
