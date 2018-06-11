@@ -1,5 +1,5 @@
 [![Build status](https://build.appcenter.ms/v0.1/apps/70a55ab5-1147-43c7-8d31-535b26dc90e9/branches/master/badge)](https://appcenter.ms) 
-[![License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
+[![License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/RastislavMirek/FlexColorPicker/blob/master/LICENSE)
 # Flex Color Picker
 Modern color picker library written in Swift 4 that can be easily extended and customized. It aims to provide great UX and performance with stable, quality code. It includes controls for selecting color using HSB & RGB color models.     
 
@@ -69,18 +69,20 @@ Or when presented modally:
     present(navigationController, animated: true, completion: nil)
 
 ### Customisation
-FlexColorPicker consists of _color controls_ and _color picker controllers_ that manage them. _Color controls_ are (usually) subclasses of [`UIControl`](https://developer.apple.com/documentation/uikit/uicontrol) that allow user to pick desired color. Predefined _color controls_ include hue/saturation palettes (circular or rectangular), sliders for saturation, brightness and for RGB components and a picked color preview control. Additional can by added by implementing [`ColorControl`](./FlexColorPicker/Classes/Controls/ColorControl.swift) protocol.
+FlexColorPicker consists of _color controls_ and _color picker controllers_ that manage them. _Color controls_ are (usually) subclasses of [`UIControl`](https://developer.apple.com/documentation/uikit/uicontrol) that allow user to pick desired color. Predefined _color controls_ include hue/saturation palettes (circular or rectangular), sliders for saturation, brightness and for RGB components and a picked color preview control. Additional can by added by implementing [`ColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ColorControl.swift) protocol.
 
 If you want to customize your color picker, you can choose and lay out _color controls_ that you want, set their properties if needed and connect them add them to a _color picker controller_. 
 
-> #### Connecting Color Controls
-> In storyboard, lay out _color controls_ and set their classes  in _Identity Inspector_ to classes of controls you want to use. Then set controller's class to  `CustomColorPickerViewController`, open its _Connection Inspector_ and connect corresponding outlets the controls.
-> 
-> The same can be done in code simply by assigning _color controls_ to appropriate properties of `CustomColorPickerViewController`. 
-> 
-> If you cannot subclass `CustomColorPickerViewController` e.g. because your controller is a subclass of another class use `ColorPickerController` instead. It can also be used in storyboard as interface builder custom object. It has same properties as  `CustomColorPickerViewController` (actually, `CustomColorPickerViewController` is just a convenience wrapper for `ColorPickerController`). You can also add  _color controls_ to it via `ColorPickerController.addControl(:)`  so you are not limited to properties.
+#### Connecting Color Controls
+In storyboard, lay out _color controls_ and set their classes  in _Identity Inspector_ to classes of controls you want to use. Then set controller's class to  `CustomColorPickerViewController`, open its _Connection Inspector_ and connect corresponding outlets the controls.
+
+The same can be done in code simply by assigning _color controls_ to appropriate properties of `CustomColorPickerViewController`. 
+
+If you cannot subclass `CustomColorPickerViewController` e.g. because your controller is a subclass of another class use `ColorPickerController` instead. It can also be used in storyboard as interface builder custom object. It has same properties as  `CustomColorPickerViewController` (actually, `CustomColorPickerViewController` is just a convenience wrapper for `ColorPickerController`). You can also add  _color controls_ to it via `ColorPickerController.addControl(:)`  so you are not limited to properties.
 
 Once added to a _color picker controller_ (e.g. `ColorPickerController`) a _color control_ will be synchronized with other controls managed by the same controller together selecting a single color.
+
+#### Available Color Controls
 
 Each _color control_ has some properties (some of them can be set in storyboard) that can be used for customisation of that control's look and feel.
 This is the list of included _color controls_:
@@ -96,6 +98,7 @@ This is the list of included _color controls_:
 
 ### Extending & Overriding
 FlexColorPicker is made to be tweaked and extended with minimum effort. You can add you own _color control_ by implementing `ColorControl` protocol or extending one of following subclass-ready classes:
+
 - `AbstractColorControl` - aways subclass if you can
 - `AdjustedHitBoxColorControl` - if you need extended hit box margin around the control
 - `ColorSliderControl` - e.g. if you need sliders for another color model then HSB or RGB
