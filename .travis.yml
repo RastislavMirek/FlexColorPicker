@@ -2,17 +2,23 @@
 # * https://www.objc.io/issues/6-build-tools/travis-ci/
 # * https://github.com/supermarin/xcpretty#usage
 
-language: swift
-osx_image: xcode9
-xcode_project: FlexColorPickerDemo/FlexColorPickerDemo.xcodeproj
-xcode_scheme: FlexColorPickerDemo
+language: objective-c
+osx_image: xcode9.3
+
+# IMPORTANT: xctool that Travis uses by default is not working so we need to run custom xcodebuild instead. Therefore, following default configurations are not applied.
+# xcode_project: FlexColorPickerDemo/FlexColorPickerDemo.xcodeproj
+# xcode_scheme: FlexColorPickerDemo
 # xcode_sdk: iphonesimulator11.3
 
 # cache: cocoapods
-podfile: FlexColorPickerDemo/Podfile
-before_install:
-- gem install cocoapods # Since Travis is not always on latest version
-- pod install --project-directory=FlexColorPickerDemo
+# podfile: FlexColorPickerDemo/Podfile
+# before_install:
+# - gem install cocoapods # Since Travis is not always on latest version
+# - pod install --project-directory=FlexColorPickerDemo
+
+script:
+ - xcodebuild clean build -sdk iphonesimulator -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo CODE_SIGNING_REQUIRED=NO
+
 # script:
 # - set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/TestDeleteMe.xcworkspace -scheme TestDeleteMe-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
 # - xcodebuild -scheme SwiftExample -workspace SwiftExample.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S,OS=9.1' build test
