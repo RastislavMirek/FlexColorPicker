@@ -29,7 +29,7 @@ Modern color picker library written in Swift 4 that can be easily extended and c
   s.source           = { :git => 'https://github.com/RastislavMirek/FlexColorPicker.git', :tag => s.version.to_s }
   #   s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
+#  s.ios.deployment_target = '10.2'
 
   s.source_files = 'FlexColorPicker/Classes/**/*'
   #  s.frameworks = 'UIKit'

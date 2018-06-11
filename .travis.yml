@@ -17,16 +17,12 @@ before_install:
  - gem install cocoapods # Since Travis is not always on latest version
  - pod install --project-directory=FlexColorPickerDemo
 
+# Add -tc to xcpretty for no printout at all
 script:
  - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO clean build | xcpretty
  - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S,OS=11.3' CODE_SIGNING_REQUIRED=NO clean build | xcpretty
  - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.2' CODE_SIGNING_REQUIRED=NO clean build | xcpretty
  - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.2' CODE_SIGNING_REQUIRED=NO clean build | xcpretty
- - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPad Pro (9.7-inch),OS=10.0' CODE_SIGNING_REQUIRED=NO clean build | xcpretty
+# - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPad Pro (9.7-inch),OS=10.0' CODE_SIGNING_REQUIRED=NO clean build | xcpretty
  - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPad Pro (10.5-inch),OS=11.0.1' CODE_SIGNING_REQUIRED=NO clean build | xcpretty
  - pod lib lint
-
-# script:
-# - set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/TestDeleteMe.xcworkspace -scheme TestDeleteMe-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
-# - xcodebuild -scheme SwiftExample -workspace SwiftExample.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S,OS=9.1' build test
-# - pod lib lint
