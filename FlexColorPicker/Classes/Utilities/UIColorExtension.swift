@@ -40,21 +40,19 @@ extension UIColor {
         return (red, green, blue)
     }
 
-    convenience init?(named name: String, in bundle: Bundle) {
-        if #available(iOS 11.0, *) {
-            self.init(named: name, in: bundle, compatibleWith: nil)
-        } else {
-            let color: UIColor
-            switch name {
-            case "BorderColor": color = #colorLiteral(red: 0.7089999914, green: 0.7089999914, blue: 0.7089999914, alpha: 1)
-            case "LabelTextsColor": color = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
-            case "LightBorderColor": color = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.200000003)
-            case "ThumbViewWideBorderColor": color = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.6999999881)
-            case "ThumbViewWideBorderDarkColor": color = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3000000119)
-            default: color = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
-            }
-            self.init(cgColor: color.cgColor)
+    convenience init?(named name: String) {
+        let color: UIColor
+        switch name {
+        case "BorderColor": color = #colorLiteral(red: 0.7089999914, green: 0.7089999914, blue: 0.7089999914, alpha: 1)
+        case "LabelTextsColor": color = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+        case "LightBorderColor": color = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.200000003)
+        case "ThumbViewWideBorderColor": color = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.6999999881)
+        case "ThumbViewWideBorderDarkColor": color = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3000000119)
+        default:
+            NSLog("FlexColorPicker: Unknow named color requested with name: \(name). Falling back to default color (grey).")
+            color = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
         }
+        self.init(cgColor: color.cgColor)
     }
 
     public var hsbColor: HSBColor {

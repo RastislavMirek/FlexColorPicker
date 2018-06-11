@@ -53,7 +53,4 @@
    <FileRef
       location = "group:FlexColorPickerDemo/Pods/Pods.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:FlexColorPickerDemo/FlexColorPickerDemo.xcodeproj">
-   </FileRef>
 </Workspace>

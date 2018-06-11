@@ -77,7 +77,7 @@ open class AbstractColorControl: UIControl, ColorControl {
     }
 
     func setDefaultBorder(on: Bool, forView view: UIView) {
-        view.borderColor = UIColor(named: "BorderColor", in: flexColorPickerBundle)
+        view.borderColor = UIColor(named: "BorderColor")
         view.borderWidth = on ? defaultBorderWidth : 0
     }
 }

@@ -74,7 +74,7 @@ open class ColorPreviewWithHex: AbstractColorControl {
 
     /// Text color of the hex label that displys hex value of currently selected color.
     @IBInspectable
-    public var textColor: UIColor = UIColor(named: "LabelTextsColor", in: flexColorPickerBundle) ?? .black {
+    public var textColor: UIColor = UIColor(named: "LabelTextsColor") ?? .black {
         didSet {
             hexLabel.textColor = textColor
         }
@@ -147,7 +147,7 @@ open class ColorPreviewWithHex: AbstractColorControl {
     ///
     /// - Parameter on: Whether to display or hide the border.
     open func setDefaultBorder(on: Bool) {
-        borderColor = UIColor(named: "BorderColor", in: flexColorPickerBundle)
+        borderColor = UIColor(named: "BorderColor")
         borderWidth = on ? defaultBorderWidth : 0
     }
 

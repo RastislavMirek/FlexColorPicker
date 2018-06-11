@@ -83,14 +83,14 @@ open class ColorPickerThumbView: UIViewWithCommonInit {
         addAutolayoutFillingSubview(borderView)
         addAutolayoutFillingSubview(colorView, edgeInsets: UIEdgeInsets(top: wideBorderWidth, left: wideBorderWidth, bottom: wideBorderWidth, right: wideBorderWidth))
         addAutolayoutCentredView(percentageLabel)
-        borderView.borderColor = UIColor(named: "BorderColor", in: flexColorPickerBundle)
+        borderView.borderColor = UIColor(named: "BorderColor")
         borderView.borderWidth = 1 / UIScreen.main.scale
         percentageLabel.font = percentageTextFont
-        percentageLabel.textColor = UIColor(named: "LabelTextsColor", in: flexColorPickerBundle)
+        percentageLabel.textColor = UIColor(named: "LabelTextsColor")
         percentageLabel.textAlignment = .center
         percentageLabel.alpha = 0
         clipsToBounds = false // required for the text label to be displayed ourside of bounds
-        borderView.backgroundColor = UIColor(named: "ThumbViewWideBorderColor", in: flexColorPickerBundle)
+        borderView.backgroundColor = UIColor(named: "ThumbViewWideBorderColor")
         setColor(color, animateBorderColor: false)
     }
 
@@ -140,7 +140,7 @@ extension ColorPickerThumbView {
     }
 
     private func setWideBorderColors(_ isDark: Bool) {
-        self.borderView.borderColor = UIColor(named: isDark ? "BorderColor" : "LightBorderColor", in: flexColorPickerBundle)
-        self.borderView.backgroundColor = UIColor(named: isDark ? "ThumbViewWideBorderDarkColor" : "ThumbViewWideBorderColor", in: flexColorPickerBundle)
+        self.borderView.borderColor = UIColor(named: isDark ? "BorderColor" : "LightBorderColor")
+        self.borderView.backgroundColor = UIColor(named: isDark ? "ThumbViewWideBorderDarkColor" : "ThumbViewWideBorderColor")
     }
 }
