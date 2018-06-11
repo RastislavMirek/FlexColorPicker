@@ -19,7 +19,7 @@
 		30B950CF20C8B3A9004E207C /* DemoRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B950CE20C8B3A9004E207C /* DemoRootViewController.swift */; };
 		30FE28E020CB11D700D0063E /* RadialHuePalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE28DF20CB11D700D0063E /* RadialHuePalette.swift */; };
 		30FE28E220CB1AAA00D0063E /* RadialHueColorPaletteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FE28E120CB1AAA00D0063E /* RadialHueColorPaletteDelegate.swift */; };
-		B58C92F4D844DE1A62F9A7C3 /* Pods_FlexColorPickerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC614FA21DCDEA52C65C17 /* Pods_FlexColorPickerDemo.framework */; };
+		4672EEC680B79A24A32C9EDA /* Pods_FlexColorPickerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAC614FA21DCDEA52C65C17 /* Pods_FlexColorPickerDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B58C92F4D844DE1A62F9A7C3 /* Pods_FlexColorPickerDemo.framework in Frameworks */,
+				4672EEC680B79A24A32C9EDA /* Pods_FlexColorPickerDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,10 +370,7 @@
 				DEVELOPMENT_TEAM = UWF3VQ79QJ;
 				INFOPLIST_FILE = "$(SRCROOT)/Classes/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.typesoft.FlexColorPickerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -390,10 +387,7 @@
 				DEVELOPMENT_TEAM = UWF3VQ79QJ;
 				INFOPLIST_FILE = "$(SRCROOT)/Classes/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.typesoft.FlexColorPickerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
