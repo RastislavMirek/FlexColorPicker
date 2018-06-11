@@ -23,7 +23,7 @@ script:
  - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7 Plus,OS=10.2' CODE_SIGNING_REQUIRED=NO clean build | xcpretty
  - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.2' CODE_SIGNING_REQUIRED=NO clean build | xcpretty
  - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPad Pro (9.7-inch),OS=10.0' CODE_SIGNING_REQUIRED=NO clean build | xcpretty
- - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPad Pro (10.5-inch),OS=11.0' CODE_SIGNING_REQUIRED=NO clean build | xcpretty
+ - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPad Pro (10.5-inch),OS=11.0.1' CODE_SIGNING_REQUIRED=NO clean build | xcpretty
  - pod lib lint
 
 # script:
