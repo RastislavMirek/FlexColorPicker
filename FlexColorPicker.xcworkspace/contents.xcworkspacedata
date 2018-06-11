@@ -10,6 +10,9 @@
    <FileRef
       location = "group:/Users/Rasto/Documents/XCode/FlexColorPicker/FlexColorPicker.podspec">
    </FileRef>
+   <FileRef
+      location = "group:travis.yml">
+   </FileRef>
    <Group
       location = "container:GifsAndScreenshots"
       name = "GifsAndScreenshots">
