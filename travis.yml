@@ -4,7 +4,7 @@
 
 osx_image: xcode9.3
 language: objective-c
-xcode_project: ./FlexColorPickerDemo/FlexColorPickerDemo.xcodeproj
+xcode_project: FlexColorPickerDemo/FlexColorPickerDemo.xcodeproj
 xcode_scheme: FlexColorPickerDemo
 
 # cache: cocoapods
@@ -14,4 +14,5 @@ xcode_scheme: FlexColorPickerDemo
 # - pod install --project-directory=Example
 # script:
 # - set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/TestDeleteMe.xcworkspace -scheme TestDeleteMe-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
+# - xcodebuild -scheme SwiftExample -workspace SwiftExample.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S,OS=9.1' build test
 # - pod lib lint

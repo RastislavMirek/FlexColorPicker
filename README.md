@@ -1,4 +1,4 @@
-[![Travis](https://img.shields.io/travis/RastislavMirek/FlexColorPicker.svg)]
+[![Travis](https://img.shields.io/travis/RastislavMirek/FlexColorPicker.svg)]()
 [![License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/RastislavMirek/FlexColorPicker/blob/master/LICENSE)
 [![Pod Version Badge](https://img.shields.io/cocoapods/v/FlexColorPicker.svg)](https://cocoapods.org/pods/FlexColorPicker)
 # Flex Color Picker
