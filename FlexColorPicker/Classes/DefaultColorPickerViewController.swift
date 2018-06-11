@@ -35,21 +35,21 @@ private let paletteHorizontalMargin: CGFloat = 32
 private let minDistanceFromSafeArea: CGFloat = 10
 private let minSpaceAboveSlider: CGFloat = 50
 
-/// Color picker controller with predefined layout and limited customisation options. It is designed to be easy to use. You can customize it from interface builder (e.g. you can choose radial or rectangular palette) or from code by setting its properties or directly setting properties of `colorPalette`, `colorPreview` or `colorPalette`. If you need more customisation please use `CustomColorPickerViewController`.
+/// Color picker view controller with predefined layout and limited customisation options. It is designed to be easy to use. You can customize it from interface builder (e.g. you can choose radial or rectangular palette) or from code by setting its properties or directly setting properties of its `colorPalette`, `colorPreview` & `brightnessSlider`. If you need more customisation please use `CustomColorPickerViewController`.
 ///
-/// ** See also:**
+/// **See also:**
 /// [CustomColorPickerViewController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/CustomColorPickerViewController.swift), [ColorPickerController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/ColorPickerController.swift)
 open class DefaultColorPickerViewController: UIViewController, ColorPickerControllerProtocol {
     private var standardConstraints = [NSLayoutConstraint]()
     private var landscapeConstraints = [NSLayoutConstraint]()
 
-   /// Color picker controller that synchonizes color controls. This is backing controller that this controller delegates interaction logic to. It is also instance of `ColorPickerController` passed to delegate calls.
+   /// Color picker controller that synchonizes color controls. This is controller that this controller delegates interaction logic to. It is also instance of `ColorPickerController` passed to delegate calls.
     public let colorPicker = ColorPickerController()
     public let colorPreview = ColorPreviewWithHex()
     public let brightnessSlider = BrightnessSliderControl()
     private(set) public var colorPalette: ColorPaletteControl = RadialPaletteControl()
 
-    /// Color currently selected by color picker.
+    /// Color currently selected by color the picker.
     @IBInspectable
     open var selectedColor: UIColor {
         get {
@@ -60,23 +60,25 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
         }
     }
 
-    /// Determines if radial or rectangular color palette will be used. This property is checked during `viewDidLoad()` and later changes are ignored. If you set this in your `viewDidLoad()` override, call `super.viewDidLoad()` only after you have set this property. Also works with interface builder.
+    /// Determines if radial or rectangular color palette will be used. This property is checked only during `viewDidLoad()` and later changes have no effect. If you set this in your `viewDidLoad()` override, call `super.viewDidLoad()` only after you have set this property. Also works with interface builder.
     @IBInspectable
     open var useRadialPalette: Bool = true
 
-    /// If `useRadialPalette` is `true` then this property specifies whether hue color component is changed with x (value `true`) or y axis (value `false`) of the color palette.
-    /// Only applied in landscape orientation on iPhone devices.
+    /// If `useRadialPalette` is `true` then this property specifies whether hue color component is changed with x (`true`) or y axis (`false`) of the color palette.
+    ///
+    /// Only applied in potrait orientation on iPhone devices and in all iPad orientations.
     @IBInspectable
-    open var rectangularPaletteHueHorizontalInLandscape: Bool = true {
+    open var rectangularPaletteHueHorizontalInPortrait: Bool = false {
         didSet {
             updateLayout(for: view.bounds.size)
         }
     }
 
-    /// If `useRadialPalette` is `true` then this property specifies whether hue color component is changed with x (value `true`) or y axis (value `false`) of the color palette.
-    /// Only applied in potrait orientation on iPhone devices and in all iPad orientations.
+    /// If `useRadialPalette` is `true` then this property specifies whether hue color component is changed with x (`true`) or y axis (`false`) of the color palette.
+    ///
+    /// Only applied in landscape orientation on iPhone devices.
     @IBInspectable
-    open var rectangularPaletteHueHorizontalInPortrait: Bool = false {
+    open var rectangularPaletteHueHorizontalInLandscape: Bool = true {
         didSet {
             updateLayout(for: view.bounds.size)
         }
@@ -116,7 +118,8 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
         }, completion: nil)
     }
 
-    /// This method creates sets up and lays out `colorPreview`, `brightnessSlider` and `colorPalette`. It also applies initial values of properties like `useRadialPalette` on them.
+    /// This method sets up and lays out `colorPreview`, `brightnessSlider` and `colorPalette`. It also applies initial values of properties like `useRadialPalette` on them.
+    ///
     /// You can override this method to create your own default layout.
     open func addColorControls() {
         colorPreview.translatesAutoresizingMaskIntoConstraints = false

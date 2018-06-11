@@ -27,14 +27,16 @@
 //
 
 
-/// Principal class and the controller of FlexColorPicker (not to be confused with view controllers). Synchronizes separate color controls (instances of `ColorControl` protocol) so thay can act as one system and notifies client code via delegate.
-/// This can also be used from interface builder (e.g. a storyboard) as a class of custom object and the controls can be added to this controler in interface builder outlets.
+/// Principal class and the controller of FlexColorPicker (not to be confused with view controllers). Synchronizes selected color of separate color controls so they can cooperate as one system. Also responsible for notifying client code via delegate.
 ///
-/// ** See also:**
+/// This can also be used from interface builder (e.g. a storyboard) as a class of custom object and the controls can be added to the controler in using Connection Inspector's outlets.
+///
+/// **See also:**
 /// [CustomColorPickerViewController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/CustomColorPickerViewController.swift), [DefaultColorPickerViewController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/DefaultColorPickerViewController.swift)
 open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //subclassing NSObject is required to use this class as object in interface builder
+    /// HSB representation of currently selected color.
     public private(set) var selectedHSBColor: HSBColor = defaultSelectedColor
-    /// Array of all color controls currently managed by the color picker. These are the controls that this `ColorPickerController` receives updates from and synchonizes with each other.
+    /// Array of all color controls currently managed by the color picker. These are the controls that the `ColorPickerController` receives updates from and synchonizes with each other.
     public private(set) var colorControls = [ColorControl]()
     /// Color picker delegate that gets called when selected color is updated or confirmed. The delegate is not retained.
     open weak var delegate: ColorPickerDelegate?
@@ -118,7 +120,7 @@ open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //su
 
     /// Adds a `ColorControl` to be managed. Color updates of added control are synchronized with other `ColorControl`s managed by this `ColorPickerController`. Overrides must call super implementation.
     ///
-    /// - Parameter colorControl: `ColorControl` to be managed.
+    /// - Parameter colorControl: Control to be added.
     open func addControl(_ colorControl: ColorControl) {
         colorControls.append(colorControl)
         colorControl.addTarget(self, action: #selector(colorPicked(by:)), for: .valueChanged)
@@ -150,7 +152,7 @@ open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //su
     }
 
 
-    /// Called by a managed color control when user confirms currently selected color using that control (primaryAction action occures). Notifies the delegate.
+    /// Called by a managed color control when user confirms currently selected color using that control (primaryActionTriggered event occures). Notifies the delegate.
     ///
     /// - Parameter control: Control used to confirm currently selected color.
     @objc
@@ -164,6 +166,13 @@ open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //su
         delegate?.colorPicker(self, confirmedColor: selectedColor, usingControl: control)
     }
 
+
+    /// Override point, should not be called directly. Synchronizes `selectedHSBColor` values of all managed color controls.
+    ///
+    /// - Parameters:
+    ///   - selectedColor: New value of selected color to be set to all managed controls.
+    ///   - control: The source control of new value of selected color, if any.
+    ///   - isInteractive: `true` if the value change of selected color is caused by user interaction with one of the color controls.
     open func setColor(_ selectedColor: HSBColor, exceptControl control: ColorControl?, isInteractive: Bool) {
         for c in colorControls where c !== control {
             c.setSelectedHSBColor(selectedColor, isInteractive: isInteractive)
@@ -172,7 +181,7 @@ open class ColorPickerController: NSObject, ColorPickerControllerProtocol { //su
     }
 
 
-    /// Adds new color control to be managed by this `ColorPickerController` and removes the old one. Color updates of added control are synchronized with other `ColorControl`s managed by this `ColorPickerController`.
+    /// Adds a new color control to be managed by this `ColorPickerController` and removes an old one. Color updates of added control are synchronized with other `ColorControl`s managed by this controller.
     ///
     /// - Parameters:
     ///   - newValue: New color control to be added.

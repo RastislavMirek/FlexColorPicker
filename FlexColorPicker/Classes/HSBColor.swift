@@ -27,7 +27,8 @@
 //
 
 
-/// Represetation of HSB (Hue, Saturation, Brightness) color model. This model can be directly converted to and from RGB model. It is better representation for color picker as its components often maps directly to user interactions.
+/// Represetation of a color in HSB (Hue, Saturation, Brightness) color model. This model can be directly converted to and from RGB model.
+/// - Note: HSB is better representation for color picker than RGB as its components often maps directly to user interactions.
 public struct HSBColor {
     /// Hue value in interval <0, 1>
     public let hue: CGFloat
@@ -71,7 +72,7 @@ extension HSBColor {
     }
 
 
-    /// Returs `UIColor` that represents the same color as this instance.
+    /// Returs `UIColor` that represents equivalent color as this instance.
     ///
     /// - Returns: `UIColor` equivalent to this `HSBColor`.
     public func toUIColor() -> UIColor {
@@ -102,11 +103,12 @@ extension HSBColor {
         return HSBColor(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
     }
 
-    /// Computes new HSL color based on given RGB values while keeping alpha value of original color. Also, if the RGB values given specify achromatic color the hue of original color is kept.
-    /// @param red Red component of new color specified as value from <0, 1>
-    /// @param green Green component of new color specified as value from <0, 1>
-    /// @param blue Blue component of new color specified as value from <0, 1>
-    /// @return HSHColor specified by the given RGB values with the same alpha as current color.
+    /// Computes new HSL color based on given RGB values while keeping alpha value of original color.
+    /// - Note: If the RGB values given specify achromatic color the hue of original color is kept.
+    /// - Parameter red: Red component of new color specified as value from <0, 1>
+    /// - Parameter green: Green component of new color specified as value from <0, 1>
+    /// - Parameter blue: Blue component of new color specified as value from <0, 1>
+    /// - Returns: Color specified by the given RGB values with the same alpha as current color.
     public func withRGB(red: CGFloat, green: CGFloat, blue: CGFloat) -> HSBColor {
         let red_ = min(1, max(0, red))
         let green_ = min(1, max(0, green))

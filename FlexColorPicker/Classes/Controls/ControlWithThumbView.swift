@@ -28,15 +28,15 @@
 
 import UIKit
 
-/// Common ancestor of color controls that make use of `ColorPickerThumbView`.
+/// Common ancestor of color controls that use `ColorPickerThumbView`.
 /// - Important: It is **not** recomended to subclass this class directly. Subclass `ColorPaletteControl` or `ColorSliderControl` instead.
 open class ColorControlWithThumbView: AdjustedHitBoxColorControl {
     open let thumbView = ColorPickerThumbView()
 
-    /// Override point. It is called every time the touch is detected in new location. The thumbView should be moved and changed accordingly.
+    /// Override point. It is called every time the touch is detected in new location. The `thumbView` should be moved and changed accordingly.
     ///
-    /// - Parameter point: New location for thub view in coordinate space of the content (adjusted for hitBoxInsets) - that is in coordinate space of `contentView`.
-    /// - Parameter isInteractive Whether the change originated from user interaction or is programatic. This can used to determine if some animations should be played.
+    /// - Parameter point: New location for the thumb view in coordinate space of the content (adjusted for hitBoxInsets) - that is in coordinate space of `contentView`.
+    /// - Parameter isInteractive: Whether the change originated from user interaction or is programatic. This can be used to determine if certain animations should be played.
     open func updateSelectedColor(at point: CGPoint, isInteractive: Bool = true) {
     }
 

@@ -71,6 +71,20 @@ Or when presented modally:
 ### Customisation
 FlexColorPicker consists of _color controls_ and _color picker controllers_ that manage them. _Color controls_ are (usually) subclasses of [`UIControl`](https://developer.apple.com/documentation/uikit/uicontrol) that allow user to pick desired color. Predefined _color controls_ include hue/saturation palettes (circular or rectangular), sliders for saturation, brightness and for RGB components and a picked color preview control. Additional can by added by implementing [`ColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ColorControl.swift) protocol.
 
+#### Available Color Controls
+
+Each _color control_ has some properties (some of them can be set in storyboard) that can be used for customisation of that control's look and feel.
+This is the list of included _color controls_:
+
+`ColorPreviewWithHex`
+`RadialPaletteControl`
+`RectangularPaletteControl`
+`SaturationSliderControl`
+`BrightnessSliderControl`
+`RedSliderControl`
+`GreenSliderControl`
+`BlueSliderControl`
+
 If you want to customize your color picker, you can choose and lay out _color controls_ that you want, set their properties if needed and connect them add them to a _color picker controller_. 
 
 #### Connecting Color Controls
@@ -82,41 +96,27 @@ If you cannot subclass `CustomColorPickerViewController` e.g. because your contr
 
 Once added to a _color picker controller_ (e.g. `ColorPickerController`) a _color control_ will be synchronized with other controls managed by the same controller together selecting a single color.
 
-#### Available Color Controls
-
-Each _color control_ has some properties (some of them can be set in storyboard) that can be used for customisation of that control's look and feel.
-This is the list of included _color controls_:
-
-- `ColorPreviewWithHex`
-- `RadialPaletteControl`
-- `RectangularPaletteControl`
-- `SaturationSliderControl`
-- `BrightnessSliderControl`
-- `RedSliderControl`
-- `GreenSliderControl`
-- `BlueSliderControl`
-
 ### Extending & Overriding
 FlexColorPicker is made to be tweaked and extended with minimum effort. You can add you own _color control_ by implementing `ColorControl` protocol or extending one of following subclass-ready classes:
 
-- `AbstractColorControl` - aways subclass if you can
-- `AdjustedHitBoxColorControl` - if you need extended hit box margin around the control
-- `ColorSliderControl` - e.g. if you need sliders for another color model then HSB or RGB
-- `ColorPaletteControl` - if you want to create another color palette
+- [`AbstractColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/AbstractColorControl.swift) - aways subclass if you can
+- [`AdjustedHitBoxColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/AdjustedHitBoxColorControl.swift) - if you need extended hit box margin around the control
+- [`ColorSliderControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ColorSliderControl.swift) - e.g. if you need sliders for another color model then HSB or RGB
+- [`ColorPaletteControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ColorPaletteControl.swift) - if you want to create another color palette
 
 In many cases there will be no need to subclass `ColorSliderControl` or `ColorPaletteControl`. They both relay on their _color delegates_ in how they handle color updates, present themselves and how they interpret user interactions. Therefore, you can instead implement `ColorSliderDelegate` or `ColorPaletteDelegate` protocols respectively to change look and behavior without changing the code of the control itself. 
 
 Demo project has good examples on both approaches (overriding and composition) and their combination, feel free to check it. 
 
 ## Tips
-When setting up slider controls in storyboard it is a good practise to set its background to be transparent. Alignment rectangle (rectangle that autolayout uses to lay out the control) is smaller than the actual frame of the slider to allow for extra hit box margin as well as background framing of the slider. Therefore, if background is solid white it can overlap other views close to it. 
-> If you do not want this behavior, set Hit Box Inset to 0 in Attributes Inspector or set `hitBoxInset` to `0` in code.
+When setting up slider controls in storyboard it is a good practise to set its background to be transparent. [Alignment rectangle](https://developer.apple.com/documentation/uikit/uiview/1622648-alignmentrectinsets) ([rectangle that autolayout uses to lay out the control](https://useyourloaf.com/blog/auto-layout-and-alignment-rectangles/)) is smaller than the actual frame of the slider to allow for extra hit box margin as well as background framing of the slider. Therefore, if background is solid white it can overlap other views close to it. 
+☛ If you do not want this behavior, set Hit Box Inset to 0 in Attributes Inspector or set `hitBoxInset` to `0` in code.
 
 `ColorPreviewWithHex` can be tapped. When it it tapped, `ColorPickerController` calls `ColorPickerDelegate.colorPicker(_:selectedColor:usingControl:)` on its delegate. 
-> You can communicate this feature to your users or opt out by setting `ColorPreviewWithHex.tapToConfirm` to `false`. 
+☛ You can communicate this feature to your users or opt out by setting `ColorPreviewWithHex.tapToConfirm` to `false`. 
 
 If a _palette color controls_ is added as subview of  `UIScrollView` it might cause issues because  _palette color controls_ make use of pan gestures as well as `UIScrollView`. `UIScrollView` will take priority, making any palette control hard to work with. 
-> Using `PaletteAwareScrollView` instead of `UIScrollView` solves that issue.    
+☛ Using `PaletteAwareScrollView` instead of `UIScrollView` solves that issue.    
 
 ## Getting in Touch
 If you like it, have a question or want to hire iOS developers shoot me a message at

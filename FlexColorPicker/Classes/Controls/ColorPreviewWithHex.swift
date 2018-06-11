@@ -37,26 +37,26 @@ private let confirmAnimationScaleRatio: CGFloat = 0.87
 private let confirmAnimationSpringDamping: CGFloat = 0.7
 private let confirmAnimationDuration = 0.3
 
-/// A color control that displays currently selected color so that the user can evaluate it that is the color they want.
+/// A color control that displays currently selected color. It allows the user to evaluate if it is the color they want.
 ///
-/// when tapped, it animates and sends `primaryActionTriggered` event. This event is interpreted as user confirming current color as final picked color by the `ColorPickerController`.
+/// When tapped, it animates and sends `primaryActionTriggered` event. This event is interpreted as user confirming current color as final picked color by the `ColorPickerController`.
 @IBDesignable
 open class ColorPreviewWithHex: AbstractColorControl {
     private var labelHeightConstraint = NSLayoutConstraint()
 
     /// A subview that shows example of selected color. It is set as its `backgroundColor`.
     public let colorView = UIView()
-    /// A label subview that shows hex value of selected color.
+    /// A label subview that shows hex value of selected color as text.
     public let hexLabel = UILabel()
 
-    /// Convinience layout anchor that corresponds to bottom edge of `colorView`. This might not be equivalent of `bottomAnchor` as the `hexLabel` is below `colorView` when it is displayed.
+    /// Convinience layout anchor that corresponds to bottom edge of `colorView`. This might not be equivalent of `bottomAnchor` as the `hexLabel` is below `colorView` (it it is displayed).
     ///
-    /// Use this to alighn other views with the `colorView`.
+    /// Use this to align other views to `colorView`.
     open var hexLabelToLayoutAnchor: NSLayoutYAxisAnchor {
         return hexLabel.topAnchor
     }
 
-    /// Whether to show (`true`) or hide (`false`) the subview that shows hex value of currently selected color (`hexLabel`).
+    /// Whether to show (`true`) or hide (`false`) the subview that shows hex value of currently selected color (the `hexLabel`).
     @IBInspectable
     public var displayHex: Bool = true {
         didSet {
@@ -88,7 +88,9 @@ open class ColorPreviewWithHex: AbstractColorControl {
         }
     }
 
-    /// Corner radius of the preview. You can set it to very high value to make the view oval (or circular if bounds are square).
+    /// Corner radius of the preview.
+    ///
+    /// You can set it to very high value to make the view oval (or circular if bounds are square).
     @IBInspectable
     public var cornerRadius: CGFloat = defaultCornerradius {
         didSet {
@@ -143,7 +145,7 @@ open class ColorPreviewWithHex: AbstractColorControl {
 
     /// Override to change the border drawn around the preview.
     ///
-    /// - Parameter on: Whether to display the border.
+    /// - Parameter on: Whether to display or hide the border.
     open func setDefaultBorder(on: Bool) {
         borderColor = UIColor(named: "BorderColor", in: flexColorPickerBundle)
         borderWidth = on ? defaultBorderWidth : 0

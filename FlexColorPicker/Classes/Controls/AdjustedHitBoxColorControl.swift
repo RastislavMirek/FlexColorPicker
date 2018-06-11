@@ -31,15 +31,15 @@ import UIKit
 let defaultHitBoxInset: CGFloat = 16
 public let colorControlWithThumbViewDefaultHitBoxInsets = UIEdgeInsets(top: defaultHitBoxInset, left: defaultHitBoxInset, bottom: defaultHitBoxInset, right: defaultHitBoxInset)
 
-/// Color control with frame (and hit box) extended beyond its alighnment rectangle.
+/// Color control with frame (and hit box) extended beyond its alignment rectangle.
 ///
-/// - Important: The disproportion between the `AdjustedHitBoxColorControl`'s frame (and bounds) and its alighnment rectangle means that when alighning it using autolayout the frame might extend behond alighnment rectangle specified by layout constraits. When using lautolayout mind that the frame might therefore overlap other views.
+/// - Important: The disproportion between the `AdjustedHitBoxColorControl`'s frame (and bounds) and its alignment rectangle means that when aligning it using autolayout the frame might extend behond rectangle specified by layout constraits. When using lautolayout mind that the frame might therefore overlap other views.
 ///
-/// It is generally recomeneded that to subclass this class rather than `AbstractColorControl` when creating custom `ColorControls` to have better control over your control's hit box.
+/// It is generally recomeneded to subclass this class rather than `AbstractColorControl` when creating custom color controls to have better control over your control's hit box.
 open class AdjustedHitBoxColorControl: AbstractColorControl {
     open let contentView = UIView()
 
-    // The alighnment rectangle of the `AdjustedHitBoxColorControl` in its own coordinate system.
+    /// The alighnment rectangle of the color control in its own coordinate system.
     public var contentBounds: CGRect {
         layoutIfNeeded()
         return contentView.frame
@@ -57,9 +57,9 @@ open class AdjustedHitBoxColorControl: AbstractColorControl {
         }
     }
 
-    /// Insets of the alighnment rectangle relative to frame (where frame is also hit box rectangle).
+    /// Insets of the alignment rectangle relative to frame (frame is also hit box rectangle).
     ///
-    /// Applying this insets to `frame` results in alighnment rectangle.
+    /// Applying this insets to `frame` results in alignment rectangle.
     public var hitBoxInsets = colorControlWithThumbViewDefaultHitBoxInsets {
         didSet {
             setNeedsLayout()

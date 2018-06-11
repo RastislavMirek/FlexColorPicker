@@ -28,11 +28,11 @@
 
 import UIKit
 
-/// Contains common functionality for `ColorControl`. It is recomended to subclass this rather than `UIView` or `UIControl` when implementing custom `ColorControl`.
+/// Contains common functionality for `ColorControl`. It is recomended to subclass this rather than `UIView` or `UIControl` when implementing customcolor control.
 open class AbstractColorControl: UIControl, ColorControl {
     private(set) public var selectedHSBColor: HSBColor = defaultSelectedColor
 
-    /// Property for color currently selected color. Backed by and delegated to `selectedHSBColor`.
+    /// Currently selected color of the color control as `UIColor`. Convinience property: Value is backed by and changes are reflected to `selectedHSBColor`.
     @IBInspectable
     public var selectedColor: UIColor { //overriding default implementation from ColorControl to add @IBInspectable
         get {

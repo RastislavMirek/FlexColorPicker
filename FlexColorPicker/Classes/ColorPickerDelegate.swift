@@ -27,7 +27,7 @@
 //
 
 
-/// Delegate that gets called when a color picker value (the picker color) is changed or when user finishes color picking.
+/// Delegate that gets called when color picker's value (picked color) is changed or when user finishes color picking.
 ///
 /// **See also:**
 /// [DefaultColorPickerViewController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/DefaultColorPickerViewController.swift), [ColorPickerController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/ColorPickerController.swift)
@@ -38,7 +38,7 @@ public protocol ColorPickerDelegate: class {
     /// Current selected color can change frequently. If you are just interested in final selected color consider only using `colorPicker(_:, confirmedColor:, usingControl:)`
     ///
     /// - Parameters:
-    ///   - colorPicker: Controller of the color picker whose `selectedColor` has changed. This is the representiation (principal class) of color picker instance.
+    ///   - colorPicker: Controller of the color picker whose `selectedColor` has changed. This is the representiation (principal class) of a color picker instance.
     ///   - selectedColor: New value of currently selected color.
     ///   - usingControl: The color control that was used to pick the new `selectedColor`.
     func colorPicker(_ colorPicker: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl)
@@ -46,8 +46,8 @@ public protocol ColorPickerDelegate: class {
     /// Called when a user has finished picking a color.
     ///
     /// - Parameters:
-    ///   - colorPicker: Controller of color pciker that finished picking color. This is the representiation (principal class) of color picker instance.
+    ///   - colorPicker: Controller of color picker that finished picking color. This is the representiation (principal class) of color picker instance.
     ///   - confirmedColor: The final selected color.
-    ///   - usingControl: The control that user used to confirm selected color (control that send primaryAction event).
+    ///   - usingControl: The control that was used to confirm selected color (control that sent `primaryActionTriggered` event).
     func colorPicker(_ colorPicker: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl)
 }

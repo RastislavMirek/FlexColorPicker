@@ -26,9 +26,9 @@
 //  SOFTWARE.
 //
 
-/// Color slider that allows to change saturation (in terms of HSB color model) of currently selected color by dragging along slider line or by tapping it.
+/// Color slider that allows to change saturation (in terms of HSB color model) of currently selected color by panning the slider line or by tapping it.
 ///
-/// Tapping left end of the slider will select sliders current color modified to have 0% saturation while tapping right edge of the slider will select current color modified to have 100% saturation.
+/// Tapping left end of the slider will select slider's current color modified to have 0% saturation. Tapping right edge of the slider will select current color modified to have 100% saturation.
 @IBDesignable
 final public class SaturationSliderControl: ColorSliderControl {
     public override func commonInit() {
@@ -37,9 +37,9 @@ final public class SaturationSliderControl: ColorSliderControl {
     }
 }
 
-/// Color slider that allows to change brightness (in terms of HSB color model) of currently selected color by dragging along slider line or by tapping it.
+/// Color slider that allows to change brightness (in terms of HSB color model) of currently selected color by panning the slider line or by tapping it.
 ///
-/// Tapping left end of the slider will select sliders current color modified to have 100% brightness while tapping right edge of the slider will select current color modified to have 0% brightness.
+/// Tapping left end of the slider will select slider's current color modified to have 100% brightness. Tapping right edge of the slider will select current color modified to have 0% brightness.
 final public class BrightnessSliderControl: ColorSliderControl {
     public override func commonInit() {
         sliderDelegate = BrightnessSliderDelegate()
@@ -47,9 +47,9 @@ final public class BrightnessSliderControl: ColorSliderControl {
     }
 }
 
-/// Color slider that allows to change red component (in terms of RGB color model) of currently selected color by dragging along slider line or by tapping it.
+/// Color slider that allows to change red component (in terms of RGB color model) of currently selected color by panning the slider line or by tapping it.
 ///
-/// Tapping left end of the slider will select sliders current color modified to have 0% red while tapping right edge of the slider will select current color modified to have 100% red.
+/// Tapping left end of the slider will select slider's current color modified to have 0% red. Tapping right edge of the slider will select current color modified to have 100% red.
 final public class RedSliderControl: ColorSliderControl {
     public override func commonInit() {
         sliderDelegate = RedSliderDelegate()
@@ -57,9 +57,9 @@ final public class RedSliderControl: ColorSliderControl {
     }
 }
 
-/// Color slider that allows to change green component (in terms of RGB color model) of currently selected color by dragging along slider line or by tapping it.
+/// Color slider that allows to change green component (in terms of RGB color model) of currently selected color by panning the slider line or by tapping it.
 ///
-/// Tapping left end of the slider will select sliders current color modified to have 0% green while tapping right edge of the slider will select current color modified to have 100% green.
+/// Tapping left end of the slider will select slider's current color modified to have 0% green. Tapping right edge of the slider will select current color modified to have 100% green.
 final public class GreenSliderControl: ColorSliderControl {
     public override func commonInit() {
         sliderDelegate = GreenSliderDelegate()
@@ -67,9 +67,9 @@ final public class GreenSliderControl: ColorSliderControl {
     }
 }
 
-/// Color slider that allows to change blue component (in terms of RGB color model) of currently selected color by dragging along slider line or by tapping it.
+/// Color slider that allows to change blue component (in terms of RGB color model) of currently selected color by panning the slider line or by tapping it.
 ///
-/// Tapping left end of the slider will select sliders current color modified to have 0% blue while tapping right edge of the slider will select current color modified to have 100% blue.
+/// Tapping left end of the slider will select slider's current color modified to have 0% blue. Tapping right edge of the slider will select current color modified to have 100% blue.
 final public class BlueSliderControl: ColorSliderControl {
     public override func commonInit() {
         sliderDelegate = BlueSliderDelegate()

@@ -30,9 +30,9 @@ import UIKit
 
 let flexColorPickerBundle = Bundle(for: CustomColorPickerViewController.self)
 
-/// Conviniece customizable color picker view controller that can be subclassed or used from interface builder (or both). This class basically just delegates its exposed properties to wrapped `ColorPickerController` that is value of `colorPicker` property. This is convinience support for common practise that uses view controllers to atach outlets to.
+/// Customizable color picker view controller that can be subclassed or used from interface builder (or both). This class basically just delegates its exposed properties to wrapped `ColorPickerController`. It is convinience to support common practise that uses view controllers to attach outlets to.
 ///
-/// When color controls are set to properties of this view controller via code or interface builder, they become managed by underlaying instance of `ColorPickerController` and are therefore synchronized.
+/// When color controls are set to properties of this view controller via code or interface builder, they become managed by underlaying instance of `ColorPickerController` and thus their value (selected color) is synchronized.
 ///
 /// **See also:**
 /// [DefaultColorPickerViewController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/DefaultColorPickerViewController.swift), [ColorPickerController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/ColorPickerController.swift)
