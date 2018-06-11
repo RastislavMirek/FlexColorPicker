@@ -11,8 +11,8 @@ osx_image: xcode9.3
 # xcode_sdk: iphonesimulator11.3
 
 # cache: cocoapods
- podfile: FlexColorPickerDemo/Podfile
- before_install:
+podfile: FlexColorPickerDemo/Podfile
+before_install:
  - gem install cocoapods # Since Travis is not always on latest version
  - pod install --project-directory=FlexColorPickerDemo
 
