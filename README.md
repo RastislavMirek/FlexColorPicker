@@ -29,8 +29,7 @@ Modern color picker library written in Swift 4 that can be easily extended and c
 
 ** work in progress
 
-![Default Circular HSB Color Picker Palette Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Default_Flex_Color_Picker.png)
-![Default Rectangular HSB Color Picker Palette Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Rectangular_Color_Picker_Palette.png)
+![Default HSB Color Picker Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Combined_Color_Picker_Preview.jpg)
 
 ## Instalation
 
