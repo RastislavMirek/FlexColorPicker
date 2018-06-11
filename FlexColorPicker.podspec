@@ -9,38 +9,27 @@
 Pod::Spec.new do |s|
   s.name             = 'FlexColorPicker'
   s.module_name      = 'FlexColorPicker'
-  s.version          = '1.0.4'
+  s.version          = '1.0.5'
   s.summary          = 'Modern & flexible full spectrum color picker written in Swift 4.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
 Modern color picker library written in Swift 4 that can be easily extended and customized. It aims to provide great UX and performance with stable, quality code. Supports HSB and RGB color models.
                        DESC
 
   s.homepage         = 'https://github.com/RastislavMirek/FlexColorPicker'
-  #  s.screenshots      = 'https://github.com/RastislavMirek/FlexColorPicker/blob/master/Screenshots/Default_Flex_Color_Picker.jpg', 'https://github.com/RastislavMirek/FlexColorPicker/blob/master/Screenshots/Custom_Color_Picker_Components.png', 'https://github.com/RastislavMirek/FlexColorPicker/blob/master/Screenshots/Default_Flex_Color_Picker.png', 'https://github.com/RastislavMirek/FlexColorPicker/blob/master/Screenshots/Rectangular_Color_Picker_Palette.png'
   s.swift_version    = '4.1'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Rastislav Mirek' => 'rmirek@easytype.info' }
   s.source           = { :git => 'https://github.com/RastislavMirek/FlexColorPicker.git', :tag => s.version.to_s }
-  #   s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-#  s.ios.deployment_target = '10.2'
 
   s.source_files = 'FlexColorPicker/Classes/**/*'
-  s.platform = :ios, '10.0'
+  s.platform = :ios, '9.0'
   s.requires_arc = true # FlexColor picker requires automatic reference counting
-  #  s.frameworks = 'UIKit'
   
+  #  s.ios.deployment_target = '10.2'
+  #  s.frameworks = 'UIKit'
   #  s.resource_bundles = {
   #    'FlexColorPicker' => ['FlexColorPicker/Assets/**/*']
   #  }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
