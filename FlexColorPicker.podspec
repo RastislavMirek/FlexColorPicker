@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'FlexColorPicker'
   s.module_name      = 'FlexColorPicker'
-  s.version          = '1.0.5'
+  s.version          = '1.0.6'
   s.summary          = 'Modern & flexible full spectrum color picker written in Swift 4.'
 
   s.description      = <<-DESC
