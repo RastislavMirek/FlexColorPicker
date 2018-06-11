@@ -71,7 +71,7 @@ Or when presented modally:
     let navigationController = UINavigationController(rootViewController: colorPickerController)
     present(navigationController, animated: true, completion: nil)
 
-![Color Picker All Controls Showcase ](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/All_Flex_Colop_Picker_Controls_showcase.png)
+![Color Picker All Controls Showcase ](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/All_Flex_Colop_Picker_Controls_showcase.png | width=100)
 
 ### Customisation
 FlexColorPicker consists of _color controls_ and _color picker controllers_ that manage them. _Color controls_ are (usually) subclasses of [`UIControl`](https://developer.apple.com/documentation/uikit/uicontrol) that allow user to pick desired color. Predefined _color controls_ include hue/saturation palettes (circular or rectangular), sliders for saturation, brightness and for RGB components and a picked color preview control. Additional can by added by implementing [`ColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ColorControl.swift) protocol.
