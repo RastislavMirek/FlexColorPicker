@@ -39,8 +39,8 @@ class RadialHueControl: ColorPaletteControl {
         super.commonInit()
     }
 
-    override func updatePaleteImagesAndThumb(isInteractive interactive: Bool) {
-        super.updatePaleteImagesAndThumb(isInteractive: interactive)
+    override func updatePaletteImagesAndThumb(isInteractive interactive: Bool) {
+        super.updatePaletteImagesAndThumb(isInteractive: interactive)
         thumbView.setColor(selectedHSBColor.withSaturation(1, andBrightness: 1).toUIColor(), animateBorderColor: false)
     }
 
