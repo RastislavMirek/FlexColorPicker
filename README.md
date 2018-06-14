@@ -2,7 +2,7 @@
 [![License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/RastislavMirek/FlexColorPicker/blob/master/LICENSE)
 [![Pod Version Badge](https://img.shields.io/cocoapods/v/FlexColorPicker.svg)](https://cocoapods.org/pods/FlexColorPicker)
 # Flex Color Picker
-Modern color picker library written in Swift 4 that can be easily extended and customized. It aims to provide great UX and performance with stable, quality code. It includes controls for selecting color using HSB & RGB color models.     
+Modern color picker library written in Swift 4 that can be easily extended and customized. It aims to provide great UX and performance with stable, quality code. Includes controls for both HSB and RGB color models.     
 
 ![Default Flex Color Picker Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview1.gif)
 ![Color Picker with All Controls Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview2.gif)

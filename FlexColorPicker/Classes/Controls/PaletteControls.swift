@@ -71,7 +71,7 @@ public class RectangularPaletteControl: ColorPaletteControl {
         hueHorizontal = horizontalAxis
         (paletteDelegate as? RectangularHSBPaletteDelegate)?.hueHorizontal = horizontalAxis
         if updateImage {
-            updatePaleteImagesAndThumb(isInteractive: false)
+            updatePaletteImagesAndThumb(isInteractive: false)
         }
     }
 }

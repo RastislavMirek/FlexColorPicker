@@ -36,10 +36,11 @@ open class AbstractColorControl: UIControl, ColorControl {
     @IBInspectable
     public var selectedColor: UIColor { //overriding default implementation from ColorControl to add @IBInspectable
         get {
-            return (self as ColorControl).selectedColor
+            return selectedHSBColor.toUIColor()
+            // do not do something like  return (self as ColorControl).selectedColor here as that breaks IBDesignable
         }
         set {
-            (self as ColorControl).selectedColor = newValue
+            selectedHSBColor = newValue.hsbColor // do not do something like  (self as ColorControl).selectedColor = newValue here as that breaks IBDesignable
         }
     }
 

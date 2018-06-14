@@ -99,7 +99,10 @@ open class RadialHSBPaletteDelegate: ColorPaletteDelegate {
 
     open func backgroundImage() -> UIImage? {
         let imageSize = CGSize(width: diameter, height: diameter)
-        return UIImage.drawImage(ofSize: imageSize, path: UIBezierPath(ovalIn: CGRect(origin: .zero, size: CGSize(width: diameter, height: diameter))), fillColor: .black)
+        if imageSize == .zero {
+            return nil
+        }
+        return UIImage.drawImage(ofSize: imageSize, path: UIBezierPath(ovalIn: CGRect(origin: .zero, size: imageSize)), fillColor: .black)
     }
 
     open func closestValidPoint(to point: CGPoint) -> CGPoint {

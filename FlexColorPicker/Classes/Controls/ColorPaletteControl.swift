@@ -42,12 +42,12 @@ open class ColorPaletteControl: ColorControlWithThumbView {
     /// A delegate that specifies what pallete color options look like (image of the palette) and how selecting a point on the palette is interpreted. It also specifies tappable region of the palette.
     open var paletteDelegate: ColorPaletteDelegate = RadialHSBPaletteDelegate() {
         didSet {
-            updatePaleteImagesAndThumb(isInteractive: false)
+            updatePaletteImagesAndThumb(isInteractive: false)
         }
     }
     open override var bounds: CGRect {
         didSet {
-            updatePaleteImagesAndThumb(isInteractive: false)
+            updatePaletteImagesAndThumb(isInteractive: false)
         }
     }
     
@@ -64,7 +64,7 @@ open class ColorPaletteControl: ColorControlWithThumbView {
         backgroundImageView.addAutolayoutFillingSubview(foregroundImageView)
         updateContentMode()
         contentView.addSubview(thumbView)
-        updatePaleteImagesAndThumb(isInteractive: false)
+        updatePaletteImagesAndThumb(isInteractive: false)
     }
 
     open override func setSelectedHSBColor(_ hsbColor: HSBColor, isInteractive interactive: Bool) {
@@ -83,7 +83,7 @@ open class ColorPaletteControl: ColorControlWithThumbView {
     /// Override this if you need update palette visual state differently on state change.
     ///
     /// - Parameter interactive:  Whether the change originated from user interaction or is programatic. This can be used to determine if certain animations should be played.
-    open func updatePaleteImagesAndThumb(isInteractive interactive: Bool) {
+    open func updatePaletteImagesAndThumb(isInteractive interactive: Bool) {
         layoutIfNeeded() //force subviews layout to update their bounds - bounds of subviews are not automatically updated
         paletteDelegate.size = foregroundImageView.bounds.size //cannot use self.bounds as that is extended compared to foregroundImageView.bounds when AdjustedHitBoxColorControl.hitBoxInsets are non-zero
         foregroundImageView.image = paletteDelegate.foregroundImage()
