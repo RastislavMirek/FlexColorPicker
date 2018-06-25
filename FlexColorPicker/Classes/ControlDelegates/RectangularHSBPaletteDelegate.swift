@@ -73,6 +73,9 @@ open class RectangularHSBPaletteDelegate: ColorPaletteDelegate {
 
     open func backgroundImage() -> UIImage? {
         let size = CGSize(width: intWidth, height: intHeight) // overriding size property to get same size of background image in situations when foreground image dimestions are rounded down to int
+        if size.width == 0 || size.height == 0 {
+            return nil
+        }
         return UIImage.drawImage(ofSize: size, path: UIBezierPath(rect: CGRect(origin: .zero, size: size)), fillColor: .black)
     }
 
