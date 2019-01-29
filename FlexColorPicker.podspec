@@ -24,6 +24,7 @@ Modern color picker written in Swift 4. Supports HSB and RGB color models.
   s.source           = { :git => 'https://github.com/RastislavMirek/FlexColorPicker.git', :tag => s.version.to_s }
 
   s.source_files = 'FlexColorPicker/Classes/**/*'
+  s.exclude_files = "FlexColorPicker/**/*.plist"
   s.platform = :ios, '9.0'
   s.requires_arc = true # FlexColor picker requires automatic reference counting
   
