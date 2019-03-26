@@ -18,7 +18,7 @@ Color picker written in Swift 4.2
                        DESC
 
   s.homepage         = 'https://github.com/RastislavMirek/FlexColorPicker'
-  #  s.swift_version    = '4.2' # causing Warnings: Unrecognized `swift_version` key. with new cocoapods
+  s.swift_version    = '4.2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Rastislav Mirek' => 'rmirek@easytype.info' }
   s.source           = { :git => 'https://github.com/RastislavMirek/FlexColorPicker.git', :tag => s.version.to_s }
