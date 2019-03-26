@@ -26,6 +26,8 @@
 //  SOFTWARE.
 //
 
+import UIKit
+
 public protocol ColorPaletteDelegate: class {
     var size: CGSize { get set }
     func modifiedColor(from color: HSBColor, with point: CGPoint) -> HSBColor
@@ -33,5 +35,5 @@ public protocol ColorPaletteDelegate: class {
     func backgroundImage() -> UIImage?
     func closestValidPoint(to: CGPoint) -> CGPoint
     func positionAndAlpha(for color: HSBColor) -> (position: CGPoint, foregroundImageAlpha: CGFloat)
-    func supportedContentMode(for contentMode: UIViewContentMode) -> UIViewContentMode
+    func supportedContentMode(for contentMode: UIView.ContentMode) -> UIView.ContentMode
 }

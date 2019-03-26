@@ -26,6 +26,7 @@
 //  SOFTWARE.
 //
 
+import UIKit
 
 /// Delegate that gets called when color picker's value (picked color) is changed or when user finishes color picking.
 ///

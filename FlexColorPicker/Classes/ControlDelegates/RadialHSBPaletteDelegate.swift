@@ -123,7 +123,7 @@ open class RadialHSBPaletteDelegate: ColorPaletteDelegate {
         return (CGPoint(x: x, y: y), brightness)
     }
 
-    open func supportedContentMode(for contentMode: UIViewContentMode) -> UIViewContentMode {
+    open func supportedContentMode(for contentMode: UIView.ContentMode) -> UIView.ContentMode {
         switch contentMode {
         case .redraw, .scaleToFill, .scaleAspectFill: return .scaleAspectFit
         default: return contentMode

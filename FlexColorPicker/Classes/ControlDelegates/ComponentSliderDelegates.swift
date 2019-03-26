@@ -26,6 +26,8 @@
 //  SOFTWARE.
 //
 
+import UIKit
+
 public struct SaturationSliderDelegate: ColorSliderDelegate {
     public init() {}
 

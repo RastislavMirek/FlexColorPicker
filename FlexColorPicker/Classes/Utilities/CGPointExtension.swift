@@ -26,6 +26,8 @@
 //  SOFTWARE.
 //
 
+import Foundation
+
 extension CGPoint {
     func distanceTo(x: CGFloat, y: CGFloat) -> CGFloat {
         let dx = self.x - x

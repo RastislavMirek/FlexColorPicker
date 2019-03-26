@@ -51,7 +51,7 @@ open class ColorPaletteControl: ColorControlWithThumbView {
         }
     }
     
-    open override var contentMode: UIViewContentMode {
+    open override var contentMode: UIView.ContentMode {
         didSet {
             updateContentMode()
             updateThumbPosition(position: paletteDelegate.positionAndAlpha(for: selectedHSBColor).position)

@@ -37,7 +37,7 @@ import UIKit
 open class CustomColorPickerViewController: UIViewController, ColorPickerControllerProtocol {
 
     /// Color picker controller that synchonizes color controls. This is backing controller that this controller delegates interaction logic to. It is also instance of `ColorPickerController` passed to delegate calls.
-    open let colorPicker = ColorPickerController()
+    public let colorPicker = ColorPickerController()
 
     /// Color picker delegate that gets called when selected color is updated or confirmed. The delegate is not retained. This is just convinience property and getting or setting it is equivalent to getting or setting `colorPicker.delegate`.
     open var delegate: ColorPickerDelegate? {

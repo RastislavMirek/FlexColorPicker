@@ -9,16 +9,16 @@
 Pod::Spec.new do |s|
   s.name             = 'FlexColorPicker'
   s.module_name      = 'FlexColorPicker'
-  s.version          = '1.1'
+  s.version          = '1.2'
   s.summary          = 'Modern & flexible full spectrum color picker written in Swift 4. Supports HSB and RGB color models.'
 
   s.description      = <<-DESC
-Color picker written in Swift 4.
+Color picker written in Swift 4.2
 # Modern color picker written in Swift 4. Supports HSB and RGB color models. Easily extended and customized.
                        DESC
 
   s.homepage         = 'https://github.com/RastislavMirek/FlexColorPicker'
-  s.swift_version    = '4.1'
+  s.swift_version    = '4.2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Rastislav Mirek' => 'rmirek@easytype.info' }
   s.source           = { :git => 'https://github.com/RastislavMirek/FlexColorPicker.git', :tag => s.version.to_s }

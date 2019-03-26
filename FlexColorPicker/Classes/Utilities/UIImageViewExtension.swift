@@ -64,7 +64,7 @@ private enum Alighnment {
     case begining, center, end
 }
 
-fileprivate extension UIViewContentMode {
+fileprivate extension UIView.ContentMode {
     fileprivate var verticalAlighnment: Alighnment {
         switch self {
         case .bottom, .bottomLeft, .bottomRight: return .end

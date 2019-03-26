@@ -88,7 +88,7 @@ open class RectangularHSBPaletteDelegate: ColorPaletteDelegate {
         return (CGPoint(x: (hueHorizontal ? hue : 1 - saturation) * size.width, y: (hueHorizontal ? 1 - saturation : hue) * size.height), brightness)
     }
 
-    open func supportedContentMode(for contentMode: UIViewContentMode) -> UIViewContentMode {
+    open func supportedContentMode(for contentMode: UIView.ContentMode) -> UIView.ContentMode {
         return contentMode
     }
 }

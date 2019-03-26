@@ -26,10 +26,11 @@
 //  SOFTWARE.
 //
 
+import UIKit
 
 /// Principal class and the controller of FlexColorPicker (not to be confused with view controllers). Synchronizes selected color of separate color controls so they can cooperate as one system. Also responsible for notifying client code via delegate.
 ///
-/// This can also be used from interface builder (e.g. a storyboard) as a class of custom object and the controls can be added to the controler in using Connection Inspector's outlets.
+/// This can also be used from interface builder (e.g. a storyboard) as a class of custom object and the controls can be added to the controler by using Connection Inspector's outlets.
 ///
 /// **See also:**
 /// [CustomColorPickerViewController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/CustomColorPickerViewController.swift), [DefaultColorPickerViewController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/DefaultColorPickerViewController.swift)

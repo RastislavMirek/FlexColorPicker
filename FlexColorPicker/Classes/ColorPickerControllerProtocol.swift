@@ -26,7 +26,12 @@
 //  SOFTWARE.
 //
 
+import UIKit
+
+/// Protocol implemented by ViewControllers that contain controls to pick color.
 public protocol ColorPickerControllerProtocol: class {
+    /// Delegate notified when selected color is changed or when user confirms currently selected color.
     var delegate: ColorPickerDelegate? { get set }
+    /// Currently selected color.
     var selectedColor: UIColor { get set }
 }

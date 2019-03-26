@@ -48,8 +48,8 @@ public protocol ColorControl: class {
     ///   - isInteractive: Whether new selected color was specified programatically or by user via interaction with another control. This can used to determine if some animations should be played.
     func setSelectedHSBColor(_ hsbColor: HSBColor, isInteractive: Bool)
     
-    func addTarget(_ target: Any?, action: Selector, for: UIControlEvents)
-    func removeTarget(_ target: Any?, action: Selector?, for: UIControlEvents)
+    func addTarget(_ target: Any?, action: Selector, for: UIControl.Event)
+    func removeTarget(_ target: Any?, action: Selector?, for: UIControl.Event)
 }
 
 public extension ColorControl {

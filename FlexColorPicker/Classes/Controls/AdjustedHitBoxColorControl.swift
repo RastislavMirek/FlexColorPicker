@@ -37,7 +37,7 @@ public let colorControlWithThumbViewDefaultHitBoxInsets = UIEdgeInsets(top: defa
 ///
 /// It is generally recomeneded to subclass this class rather than `AbstractColorControl` when creating custom color controls to have better control over your control's hit box.
 open class AdjustedHitBoxColorControl: AbstractColorControl {
-    open let contentView = UIView()
+    public let contentView = UIView()
 
     /// The alighnment rectangle of the color control in its own coordinate system.
     public var contentBounds: CGRect {

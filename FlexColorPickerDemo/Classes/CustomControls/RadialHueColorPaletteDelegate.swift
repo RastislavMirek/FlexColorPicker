@@ -121,7 +121,7 @@ class RadialHueColorPaletteDelegate: ColorPaletteDelegate {
         return (closestValidPoint(to: CGPoint(x: x, y: y)), 1)
     }
 
-    func supportedContentMode(for contentMode: UIViewContentMode) -> UIViewContentMode {
+    func supportedContentMode(for contentMode: UIView.ContentMode) -> UIView.ContentMode {
         switch contentMode {
         case .redraw, .scaleToFill, .scaleAspectFill: return .scaleAspectFit
         default: return contentMode

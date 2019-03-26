@@ -23,12 +23,10 @@ Modern color picker library written in Swift 4 that can be easily extended and c
 - _highly customisable_
 - _storyboard support_ with realistic, design time preview and customisation directly from storyboard
 - robust, easy to understand code
-- well documented**
+- well documented
 - can be used without subclassing specific controller
 - _protocols_ for adding custom picker controls and reusing existing sliders/palettes
 - key classes opened &amp ready for extending
-
-** work in progress
 
 ## Instalation
 
