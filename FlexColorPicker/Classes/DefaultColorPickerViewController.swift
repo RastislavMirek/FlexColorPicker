@@ -212,7 +212,7 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
 }
 
 fileprivate extension UIView {
-    fileprivate var safeAreaLeftAnchor: NSLayoutXAxisAnchor {
+    var safeAreaLeftAnchor: NSLayoutXAxisAnchor {
         if #available(iOS 11.0, *) {
             return safeAreaLayoutGuide.leftAnchor
         }
@@ -226,14 +226,14 @@ fileprivate extension UIView {
         return rightAnchor
     }
 
-    fileprivate var safeAreaBottomAnchor: NSLayoutYAxisAnchor {
+    var safeAreaBottomAnchor: NSLayoutYAxisAnchor {
         if #available(iOS 11.0, *) {
             return safeAreaLayoutGuide.bottomAnchor
         }
         return topAnchor
     }
 
-    fileprivate var safeAreaTopAnchor: NSLayoutYAxisAnchor {
+    var safeAreaTopAnchor: NSLayoutYAxisAnchor {
         if #available(iOS 11.0, *) {
             return safeAreaLayoutGuide.topAnchor
         }

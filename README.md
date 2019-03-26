@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/RastislavMirek/FlexColorPicker.svg?branch=master)](https://travis-ci.org/RastislavMirek/FlexColorPicker)
+[![Build Status](https://travis-ci.org/RastislavMirek/FlexColorPicker.svg?branch=master)](https://travis-ci.org/RastislavMirek/FlexColorPicker.svg?branch=masterr)
 [![License Badge](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/RastislavMirek/FlexColorPicker/blob/master/LICENSE)
 [![Pod Version Badge](https://img.shields.io/cocoapods/v/FlexColorPicker.svg)](https://cocoapods.org/pods/FlexColorPicker)
 [Swift Version Badge](https://img.shields.io/badge/swift_version-4.2-brightgreen.svg)]

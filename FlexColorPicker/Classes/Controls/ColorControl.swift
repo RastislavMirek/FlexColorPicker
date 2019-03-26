@@ -54,12 +54,12 @@ public protocol ColorControl: class {
 
 public extension ColorControl {
     /// Provides the default value for canConfirmColor. Returns true.
-    public static var canConfirmColor: Bool {
+    static var canConfirmColor: Bool {
         return true
     }
 
     /// Currently selected color of the color control as `UIColor`. Convinience property: Value is backed by and changes are reflected to `selectedHSBColor`.
-    public var selectedColor: UIColor {
+    var selectedColor: UIColor {
         get {
             return selectedHSBColor.toUIColor()
         }

@@ -65,7 +65,7 @@ private enum Alighnment {
 }
 
 fileprivate extension UIView.ContentMode {
-    fileprivate var verticalAlighnment: Alighnment {
+    var verticalAlighnment: Alighnment {
         switch self {
         case .bottom, .bottomLeft, .bottomRight: return .end
         case .center, .left, .right, .scaleAspectFit, .scaleAspectFill, .scaleToFill, .redraw: return .center
@@ -73,7 +73,7 @@ fileprivate extension UIView.ContentMode {
         }
     }
 
-    fileprivate var horizontalAlighnment: Alighnment {
+    var horizontalAlighnment: Alighnment {
         switch self {
         case .left, .topLeft, .bottomLeft: return .begining
         case .top, .center, .bottom, .scaleAspectFit, .scaleAspectFill, .scaleToFill, .redraw: return .center

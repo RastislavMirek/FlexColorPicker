@@ -158,17 +158,7 @@ extension HSBColor {
     }
 }
 
-private let multiplyForHashing: CGFloat = 255
 extension HSBColor: Hashable {
-    public var hashValue: Int {
-        var hash = 17
-        hash = 31 * hash + Int(hue * multiplyForHashing)
-        hash = 31 * hash + Int(saturation * multiplyForHashing)
-        hash = 31 * hash + Int(brightness * multiplyForHashing)
-        hash = 31 * hash + Int(alpha * multiplyForHashing)
-        return hash
-    }
-
     public static func == (l: HSBColor, r: HSBColor) -> Bool {
         return l.hue == r.hue && l.saturation == r.saturation && l.brightness == r.brightness && l.alpha == r.alpha
     }
