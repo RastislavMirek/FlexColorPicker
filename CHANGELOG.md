@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.2.1 - 2019-03-26
+
+### Changed
+- README updated 
+
+### Fixed
+- Code warnings in XCode 10.1
+
+
 ## 1.2 - 2019-03-26
 
 ### Added
