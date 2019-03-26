@@ -3,7 +3,7 @@
 # * https://github.com/supermarin/xcpretty#usage
 
 language: objective-c
-osx_image: xcode9.3
+osx_image: xcode10.1
 
 # IMPORTANT: xctool that Travis uses by default is not working so we need to run custom xcodebuild instead. Therefore, following default configurations are not applied.
 # xcode_project: FlexColorPickerDemo/FlexColorPickerDemo.xcodeproj
