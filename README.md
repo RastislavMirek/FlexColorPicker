@@ -3,7 +3,7 @@
 [![Pod Version Badge](https://img.shields.io/cocoapods/v/FlexColorPicker.svg)](https://cocoapods.org/pods/FlexColorPicker)
 ![Swift Version Badge](https://img.shields.io/badge/swift-v4.2-blue.svg)
 # Flex Color Picker
-Modern color picker library written in Swift 4.2 that can be easily extended and customized. It aims to provide great UX and performance with stable, quality code. Includes controls for both HSB and RGB color models.     
+Modern color picker library written in Swift 4.2 that can be easily extended and customized. It aims to provide great UX and performance with stable, quality code. Includes controls for both HSB and RGB color models.
 
 ![Default Flex Color Picker Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview1.gif)
 ![Color Picker with All Controls Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview2.gif)
@@ -12,7 +12,7 @@ Modern color picker library written in Swift 4.2 that can be easily extended and
 1. ready-to-use color picker that works great out-of-box 
 2. agile library that supports components positioning with autolayout and customisation directly from storyboard
 3. framework that allows adding your own sliders, palettes &amp; previews or modifying existing ones without changing the code of the library
-4. combine 3 approaches above freely to get level of customisation that you need
+4. combine 3 approaches above freely to get the level of customisation that you need
 
 ![Default Color Picker with Rectangular Palette Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview3.gif)
 ![Custom Color Picker Controls Written in Swift Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview4.gif)
@@ -21,13 +21,12 @@ Modern color picker library written in Swift 4.2 that can be easily extended and
 - supports HSB and RGB color models, radial and rectangular hue/saturation palette
 - there is _great UX_ "just set the delegate" view controller _if you need something simple_
 - freely combine, leave out or add your own picker components
+- well documented
 - _highly customisable_
 - _storyboard support_ with realistic, design time preview and customisation directly from storyboard
-- robust, easy to understand code
-- well documented
+- small classes, robust, easy to understand code
 - can be used without subclassing specific controller
-- _protocols_ for adding custom picker controls and reusing existing sliders/palettes
-- key classes opened &amp ready for extending
+- hackable: _protocols_ for adding custom picker controls, open classes ready for subclassing
 
 ## Instalation
 
