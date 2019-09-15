@@ -100,8 +100,8 @@ Once added to a _color picker controller_ (e.g. `ColorPickerController`) a _colo
 ### Extending & Overriding
 FlexColorPicker is made to be tweaked and extended with minimum effort. You can add you own _color control_ by implementing `ColorControl` protocol or extending one of following subclass-ready classes:
 
-- [`AbstractColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/AbstractColorControl.swift) - aways subclass if you can
-- [`AdjustedHitBoxColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/AdjustedHitBoxColorControl.swift) - if you need extended hit box margin around the control
+- [`AbstractColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/AbstractColorControl.swift) - aways subclass if possible
+- [`AdjustedHitBoxColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/AdjustedHitBoxColorControl.swift) - provides extended hit box margin around the control
 - [`ColorSliderControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ColorSliderControl.swift) - e.g. if you need sliders for another color model then HSB or RGB
 - [`ColorPaletteControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ColorPaletteControl.swift) - if you want to create another color palette
 
@@ -109,7 +109,7 @@ In many cases there will be no need to subclass `ColorSliderControl` or `ColorPa
 
 Demo project has good examples on both approaches (overriding and composition) and their combination, feel free to check it. 
 
-## Tips
+## Tips & Troubleshooting
 When setting up slider controls in storyboard it is a good practise to set its background to be transparent. [Alignment rectangle](https://developer.apple.com/documentation/uikit/uiview/1622648-alignmentrectinsets) ([rectangle that autolayout uses to lay out the control](https://useyourloaf.com/blog/auto-layout-and-alignment-rectangles/)) is smaller than the actual frame of the slider to allow for extra hit box margin as well as background framing of the slider. Therefore, if background is solid white it can overlap other views close to it. 
 ☛ If you do not want this behavior, set Hit Box Inset to 0 in Attributes Inspector or set `hitBoxInset` to `0` in code.
 
