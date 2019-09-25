@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.3 - 2019-09-25
+
+### Changed
+- updated to Swift 5
+
+### Fixed
+- modal presentation dismiss gesture conflict for iOS 13
+- issue #10: Warning under Xcode 11.0 - Setter argument 'newValue' was never used, but the property was accessed
+
 ## 1.2.1 - 2019-03-26
 
 ### Changed
