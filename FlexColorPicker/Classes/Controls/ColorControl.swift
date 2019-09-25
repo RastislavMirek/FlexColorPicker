@@ -64,7 +64,7 @@ public extension ColorControl {
             return selectedHSBColor.toUIColor()
         }
         set {
-            setSelectedHSBColor(selectedColor.hsbColor, isInteractive: false)
+            setSelectedHSBColor(newValue.hsbColor, isInteractive: false)
         }
     }
 }
