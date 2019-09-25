@@ -38,6 +38,14 @@ Add this to your podfile:
 You can also try the Demo project with following command:
 
     pod try FlexColorPicker
+    
+### Swift Package Manager
+
+Once you have your Swift package set up, just add this dependency to your Package.swift:
+
+    dependencies: [
+        .package(url: "https://github.com/RastislavMirek/FlexColorPicker.git", from: "1.3")
+    ]
 
 ### Direct Instalation
 If you do not use Cocoapods clone the color picker from repository with this command:
@@ -116,8 +124,16 @@ When setting up slider controls in storyboard it is a good practise to set its b
 `ColorPreviewWithHex` can be tapped. When it it tapped, `ColorPickerController` calls `ColorPickerDelegate.colorPicker(_:selectedColor:usingControl:)` on its delegate. 
 ☛ You can communicate this feature to your users or opt out by setting `ColorPreviewWithHex.tapToConfirm` to `false`. 
 
-If a _palette color controls_ is added as subview of  `UIScrollView` it might cause issues because  _palette color controls_ make use of pan gestures as well as `UIScrollView`. `UIScrollView` will take priority, making any palette control hard to work with. 
-☛ Using `PaletteAwareScrollView` instead of `UIScrollView` solves that issue.    
+If you create your own _color controls_ that do not inherit from `AdjustedHitBoxColorControl` and add use them with a modally presented `UIViewController`, their pan gestures may conflict with dismiss modal gesture on iOS 13. 
+☛ Solve this by adding following code to the view that receives touches (bottom most one in view hierarchy) of your custom _color control_:
+    
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return !(gestureRecognizer is UIPanGestureRecognizer)
+    }
+
+Also, your own _color controls_ that do not inherit from `AdjustedHitBoxColorControl` added as subview of  `UIScrollView` may cause issues because  _palette color controls_ make use of pan gestures as well as `UIScrollView`. `UIScrollView` will take priority, making any palette control hard to work with. 
+☛ Using `PaletteAwareScrollView` instead of `UIScrollView` solves that issue.
+
 
 ## Getting in Touch
 If you like it, have a question or want to hire iOS developers shoot me a message at

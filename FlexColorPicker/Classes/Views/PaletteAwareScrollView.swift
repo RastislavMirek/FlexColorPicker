@@ -28,7 +28,7 @@
 
 import UIKit
 
-/// A scroll view that supports adding instances of `ColorPaletteControl` in its content without compromising their panning (color selction by dragging a finger) functionality.
+/// A scroll view that supports adding instances of `ColorPaletteControl` in its content without compromising their panning (color selection by dragging a finger) functionality.
 ///
 /// This scroll view interprets panning over palettes inside its content as a gesture intended for that palette but as scroll gesture.
 open class PaletteAwareScrollView: UIScrollView {

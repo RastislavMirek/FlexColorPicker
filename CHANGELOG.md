@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## 1.3 - 2019-09-25
 
+### Added
+- support for Swift Package Manager
+
 ### Changed
 - updated to Swift 5
 
