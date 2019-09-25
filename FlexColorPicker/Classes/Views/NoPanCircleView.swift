@@ -1,8 +1,8 @@
 //
-//  CircleShapedView.swift
-//  FlexColorPicker
+//  NoPanCircleView.swift
+//  Pods
 //
-//  Created by Rastislav Mirek on 28/5/18.
+//  Created by Rastislav Mirek on 25/9/19.
 //  
 //	MIT License
 //  Copyright (c) 2018 Rastislav Mirek
@@ -26,21 +26,9 @@
 //  SOFTWARE.
 //
 
-import UIKit
+open class NoPanCircleView: CircleShapedView {
 
-open class CircleShapedView: UIViewWithCommonInit {
-    public override var bounds: CGRect {
-        didSet {
-            updateCornerRadius()
-        }
-    }
-
-    open override func commonInit() {
-        super.commonInit()
-        updateCornerRadius()
-    }
-
-    private func updateCornerRadius() {
-        cornerRadius_ = min(bounds.height, bounds.width) / 2
+    open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return !(gestureRecognizer is UIPanGestureRecognizer)
     }
 }

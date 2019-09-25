@@ -43,8 +43,8 @@ private let percentageTextFont = UIFont.monospacedDigitSystemFont(ofSize: 14, we
 
 @IBDesignable
 open class ColorPickerThumbView: UIViewWithCommonInit {
-    public let borderView = CircleShapedView()
-    public let colorView = CircleShapedView()
+    public let borderView = NoPanCircleView()
+    public let colorView = NoPanCircleView()
     public let percentageLabel = UILabel()
     /// When `true` the border automatically darken when color is too bright to be contrast enought with white border.
     public var autoDarken: Bool = true

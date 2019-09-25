@@ -70,6 +70,7 @@ fileprivate extension UIView.ContentMode {
         case .bottom, .bottomLeft, .bottomRight: return .end
         case .center, .left, .right, .scaleAspectFit, .scaleAspectFill, .scaleToFill, .redraw: return .center
         case .top, .topRight, .topLeft: return .begining
+        @unknown default: return .center
         }
     }
 
@@ -78,6 +79,7 @@ fileprivate extension UIView.ContentMode {
         case .left, .topLeft, .bottomLeft: return .begining
         case .top, .center, .bottom, .scaleAspectFit, .scaleAspectFill, .scaleToFill, .redraw: return .center
         case .right, .topRight, .bottomRight: return .end
+        @unknown default: return .center
         }
     }
 }

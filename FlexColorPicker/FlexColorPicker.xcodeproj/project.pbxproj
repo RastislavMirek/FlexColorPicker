@@ -37,6 +37,7 @@
 		305A235A20BB2D9100271A59 /* RadialHSBPaletteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A235920BB2D9100271A59 /* RadialHSBPaletteDelegate.swift */; };
 		305A235C20BB4A7100271A59 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A235B20BB4A7100271A59 /* UIViewExtension.swift */; };
 		306F04A420C2F6F900ABEB71 /* RectangularHSBPaletteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306F04A320C2F6F900ABEB71 /* RectangularHSBPaletteDelegate.swift */; };
+		309DC02B233B2B5800FD0D37 /* NoPanCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309DC02A233B2B5700FD0D37 /* NoPanCircleView.swift */; };
 		30B45CC720C9769F000CF044 /* PaletteAwareScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B45CC620C9769F000CF044 /* PaletteAwareScrollView.swift */; };
 		30EF527420BD431900E9E247 /* HSBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF527320BD431900E9E247 /* HSBColor.swift */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		305A235920BB2D9100271A59 /* RadialHSBPaletteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadialHSBPaletteDelegate.swift; sourceTree = "<group>"; };
 		305A235B20BB4A7100271A59 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		306F04A320C2F6F900ABEB71 /* RectangularHSBPaletteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularHSBPaletteDelegate.swift; sourceTree = "<group>"; };
+		309DC02A233B2B5700FD0D37 /* NoPanCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPanCircleView.swift; sourceTree = "<group>"; };
 		30B45CC620C9769F000CF044 /* PaletteAwareScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteAwareScrollView.swift; sourceTree = "<group>"; };
 		30EF527320BD431900E9E247 /* HSBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,8 +130,9 @@
 			isa = PBXGroup;
 			children = (
 				3034756C20BC768000028A15 /* UIViewWithCommonInit.swift */,
-				3034755820BC041700028A15 /* ColorPickerThumbView.swift */,
 				3034756020BC0C4000028A15 /* CircleShapedView.swift */,
+				309DC02A233B2B5700FD0D37 /* NoPanCircleView.swift */,
+				3034755820BC041700028A15 /* ColorPickerThumbView.swift */,
 				3034756A20BC677000028A15 /* GradientView.swift */,
 				30B45CC620C9769F000CF044 /* PaletteAwareScrollView.swift */,
 			);
@@ -281,6 +284,7 @@
 				3034755920BC041700028A15 /* ColorPickerThumbView.swift in Sources */,
 				3034756B20BC677000028A15 /* GradientView.swift in Sources */,
 				3034756120BC0C4000028A15 /* CircleShapedView.swift in Sources */,
+				309DC02B233B2B5800FD0D37 /* NoPanCircleView.swift in Sources */,
 				300A24E120C30D7400BA8874 /* ComponentSliderDelegates.swift in Sources */,
 				3034757920BC9DBB00028A15 /* ColorPickerController.swift in Sources */,
 				3034756520BC14A600028A15 /* CGRectExtension.swift in Sources */,
@@ -420,6 +424,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = UWF3VQ79QJ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -433,6 +438,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.typesoft.FlexColorPicker;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -449,6 +455,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 20;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = UWF3VQ79QJ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -462,6 +469,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.typesoft.FlexColorPicker;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

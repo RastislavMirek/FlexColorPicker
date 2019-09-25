@@ -31,7 +31,7 @@ import UIKit
 extension UIImage {
     public convenience init?(rgbaBytes: [UInt8], width: Int, height: Int) {
         let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-        let data = Data(bytes: rgbaBytes)
+        let data = Data(rgbaBytes)
         let mutableData = UnsafeMutableRawPointer.init(mutating: (data as NSData).bytes)
         let context = CGContext(data: mutableData, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 4 * width, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: bitmapInfo.rawValue)
         guard let cgImage = context?.makeImage() else {
