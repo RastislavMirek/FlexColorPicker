@@ -126,7 +126,7 @@ open class ColorSliderControl: ColorControlWithThumbView {
 extension ColorSliderControl {
     /// When `true` the slider's thumb will automatically darken its border when selected color is too bright to be contrast enought with white border.
     @IBInspectable
-    public var autoDaken: Bool {
+    public var autoDarken: Bool {
         get {
             return thumbView.autoDarken
         }
