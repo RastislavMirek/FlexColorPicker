@@ -593,7 +593,7 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
                                                         <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoDaken" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autoDarken" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
