@@ -20,4 +20,5 @@ before_install:
 # Add -tc to xcpretty for no printout at all
 script:
  - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator CODE_SIGNING_REQUIRED=NO clean build | xcpretty
- - pod lib lint
+# - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.4' CODE_SIGNING_REQUIRED=NO clean build | xcpretty
+# - pod lib lint
