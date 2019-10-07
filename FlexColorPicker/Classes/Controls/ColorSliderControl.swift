@@ -28,6 +28,8 @@
 
 import UIKit
 
+public let OUTSIDE_DRAG_HORIZONTAL_TO_VERTICAL_TRANSLATION_RATIO: CGFloat = 2.5
+
 private let defaultGradientViewHeight: CGFloat = 15
 internal let defaultBorderWidth: CGFloat = 1 / UIScreen.main.scale
 
@@ -155,5 +157,13 @@ extension ColorSliderControl {
         set {
             thumbView.expandOnTap = newValue
         }
+    }
+
+    open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let gestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer else {
+            return false
+        }
+        let translation = gestureRecognizer.translation(in: self)
+        return abs(translation.x) * OUTSIDE_DRAG_HORIZONTAL_TO_VERTICAL_TRANSLATION_RATIO < abs(translation.y) || !bounds.contains(gestureRecognizer.location(in: self)) && abs(translation.x) < abs(translation.y)
     }
 }

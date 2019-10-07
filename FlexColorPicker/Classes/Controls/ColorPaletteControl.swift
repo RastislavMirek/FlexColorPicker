@@ -142,3 +142,9 @@ open class ColorPaletteControl: ColorControlWithThumbView {
         foregroundImageView.contentMode = contentMode
     }
 }
+
+extension ColorPaletteControl {
+    open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return !(gestureRecognizer is UIPanGestureRecognizer)
+    }
+}

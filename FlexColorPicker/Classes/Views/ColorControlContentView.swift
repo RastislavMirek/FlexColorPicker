@@ -1,5 +1,5 @@
 //
-//  NoPanCircleView.swift
+//  ColorControlContentView.swift
 //  Pods
 //
 //  Created by Rastislav Mirek on 25/9/19.
@@ -26,9 +26,18 @@
 //  SOFTWARE.
 //
 
-open class NoPanCircleView: CircleShapedView {
+protocol ColorControlContentViewDelegate: class {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool
+}
 
-    open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return !(gestureRecognizer is UIPanGestureRecognizer)
+/// Content holder for all color controls derived from `AbstractColorControl`. It allows Delegates its `gestureRecognizerShouldBegin(:)` method to settable delegate. Use it as a regular `UIView`.
+class ColorControlContentView: UIView {
+    weak var delegate: ColorControlContentViewDelegate?
+
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if let delegate = delegate {
+            return delegate.gestureRecognizerShouldBegin(gestureRecognizer)
+        }
+        return true
     }
 }

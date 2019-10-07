@@ -37,7 +37,6 @@ public let colorControlWithThumbViewDefaultHitBoxInsets = UIEdgeInsets(top: defa
 ///
 /// It is generally recomeneded to subclass this class rather than `AbstractColorControl` when creating custom color controls to have better control over your control's hit box.
 open class AdjustedHitBoxColorControl: AbstractColorControl {
-    public let contentView = ColorControlContentView()
 
     /// The alighnment rectangle of the color control in its own coordinate system.
     public var contentBounds: CGRect {
@@ -66,11 +65,6 @@ open class AdjustedHitBoxColorControl: AbstractColorControl {
         }
     }
 
-    open override func commonInit() {
-        super.commonInit()
-        addAutolayoutFillingSubview(contentView)
-    }
-
     open override var alignmentRectInsets: UIEdgeInsets {
         return hitBoxInsets
     }
@@ -80,11 +74,5 @@ open class AdjustedHitBoxColorControl: AbstractColorControl {
             return nil
         }
         return convert(location, to: contentView)
-    }
-}
-
-public class ColorControlContentView: UIView {
-    public override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return !(gestureRecognizer is UIPanGestureRecognizer)
     }
 }

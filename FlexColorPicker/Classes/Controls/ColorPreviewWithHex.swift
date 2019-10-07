@@ -213,4 +213,8 @@ extension ColorPreviewWithHex {
         handleTouchUp(valid: false)
         super.touchesCancelled(touches, with: event)
     }
+
+    open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
 }

@@ -29,7 +29,9 @@
 import UIKit
 
 /// Contains common functionality for `ColorControl`. It is recomended to subclass this rather than `UIView` or `UIControl` when implementing customcolor control.
-open class AbstractColorControl: UIControl, ColorControl {
+open class AbstractColorControl: UIControl, ColorControl, ColorControlContentViewDelegate {
+    /// Content holder for AbstractColorControl. All subviews must be added here.
+    public let contentView: UIView = ColorControlContentView()
     private(set) public var selectedHSBColor: HSBColor = defaultSelectedColor
 
     /// Currently selected color of the color control as `UIColor`. Convinience property: Value is backed by and changes are reflected to `selectedHSBColor`.
@@ -66,6 +68,8 @@ open class AbstractColorControl: UIControl, ColorControl {
 
     /// This method is override point for initialization tasks that needs to be carried no matter how the view is constructed (e. g. via Interface Builder or from code). Overriders must call super implementation.
     open func commonInit() {
+        (contentView as! ColorControlContentView).delegate = self
+        addAutolayoutFillingSubview(contentView)
         isExclusiveTouch = true
     }
 
@@ -80,5 +84,14 @@ open class AbstractColorControl: UIControl, ColorControl {
     func setDefaultBorder(on: Bool, forView view: UIView) {
         view.borderColor = UIColor(named: "BorderColor")
         view.borderWidth = on ? defaultBorderWidth : 0
+    }
+}
+
+extension AbstractColorControl {
+    open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let gestureRecognizer = gestureRecognizer as? UIPanGestureRecognizer else {
+            return false
+        }
+        return !bounds.contains(gestureRecognizer.location(in: self))
     }
 }

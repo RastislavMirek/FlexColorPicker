@@ -30,8 +30,13 @@ import UIKit
 
 /// Common ancestor of color controls that use `ColorPickerThumbView`.
 /// - Important: It is **not** recomended to subclass this class directly. Subclass `ColorPaletteControl` or `ColorSliderControl` instead.
-open class ColorControlWithThumbView: AdjustedHitBoxColorControl {
+open class ColorControlWithThumbView: AdjustedHitBoxColorControl, LimitedGestureViewDelegate {
     public let thumbView = ColorPickerThumbView()
+
+    open override func commonInit() {
+        super.commonInit()
+        thumbView.delegate = self
+    }
 
     /// Override point. It is called every time the touch is detected in new location. The `thumbView` should be moved and changed accordingly.
     ///

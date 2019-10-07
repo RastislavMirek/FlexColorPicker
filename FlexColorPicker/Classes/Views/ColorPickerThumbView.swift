@@ -43,8 +43,8 @@ private let percentageTextFont = UIFont.monospacedDigitSystemFont(ofSize: 14, we
 
 @IBDesignable
 open class ColorPickerThumbView: UIViewWithCommonInit {
-    public let borderView = NoPanCircleView()
-    public let colorView = NoPanCircleView()
+    public let borderView = RestrictedPanCircleView()
+    public let colorView = RestrictedPanCircleView()
     public let percentageLabel = UILabel()
     /// When `true` the border automatically darken when color is too bright to be contrast enought with white border.
     public var autoDarken: Bool = true
@@ -52,6 +52,12 @@ open class ColorPickerThumbView: UIViewWithCommonInit {
     public var showPercentage: Bool = true
     /// Whether the thumb view should be expanded when user is interacting with it.
     public var expandOnTap: Bool = true
+    var delegate: LimitedGestureViewDelegate? {
+        didSet {
+            borderView.delegate = delegate
+            colorView.delegate = delegate
+        }
+    }
 
     var expandedUpscaleRatio: CGFloat = defaultExpandedUpscaleRatio {
         didSet {
@@ -91,6 +97,8 @@ open class ColorPickerThumbView: UIViewWithCommonInit {
         percentageLabel.alpha = 0
         clipsToBounds = false // required for the text label to be displayed ourside of bounds
         borderView.backgroundColor = UIColor(named: "ThumbViewWideBorderColor")
+        borderView.delegate = delegate
+        colorView.delegate = delegate
         setColor(color, animateBorderColor: false)
     }
 

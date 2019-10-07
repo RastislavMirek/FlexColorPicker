@@ -16,6 +16,9 @@
    <FileRef
       location = "group:.travis.yml">
    </FileRef>
+   <FileRef
+      location = "group:FlexColorPicker/Classes/Controls/../../../Package.swift">
+   </FileRef>
    <Group
       location = "container:GifsAndScreenshots"
       name = "GifsAndScreenshots">
