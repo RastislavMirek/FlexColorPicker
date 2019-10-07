@@ -9,12 +9,12 @@
 Pod::Spec.new do |s|
   s.name             = 'FlexColorPicker'
   s.module_name      = 'FlexColorPicker'
-  s.version          = '1.3'
+  s.version          = '1.3.0'
   s.summary          = 'Modern & flexible full spectrum color picker written in Swift 5. Supports HSB and RGB color models.'
 
   s.description      = <<-DESC
-Color picker written in Swift 4.2
-# Modern color picker written in Swift 4. Supports HSB and RGB color models. Easily extended and customized.
+Color picker written in Swift 5
+# Modern color picker written in Swift 5. Supports HSB and RGB color models. Easily extended and customized.
                        DESC
 
   s.homepage         = 'https://github.com/RastislavMirek/FlexColorPicker'
