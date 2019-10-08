@@ -44,7 +44,7 @@ You can also try the Demo project with following command:
 Once you have your Swift package set up, just add this dependency to your Package.swift:
 
     dependencies: [
-        .package(url: "https://github.com/RastislavMirek/FlexColorPicker.git", from: "1.3")
+        .package(url: "https://github.com/RastislavMirek/FlexColorPicker.git", from: "1.3.0")
     ]
 
 ### Direct Instalation
