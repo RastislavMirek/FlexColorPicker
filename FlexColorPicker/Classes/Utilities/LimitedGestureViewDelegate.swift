@@ -26,6 +26,8 @@
 //  SOFTWARE.
 //
 
+import UIKit
+
 public protocol LimitedGestureViewDelegate: class {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool
 }
