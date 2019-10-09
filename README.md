@@ -48,11 +48,13 @@ Once you have your Swift package set up, just add this dependency to your Packag
     ]
 
 ### Direct Instalation
-If you do not use Cocoapods clone the color picker from repository with this command:
+If you are not Cocoapods or SPM user clone the color picker from repository with this command:
 
     git clone https://github.com/RastislavMirek/FlexColorPicker
+    
+Alternativelly, you can download latest release as ZIP from [releases](https://github.com/RastislavMirek/FlexColorPicker/releases).
 
-Then open the cloned project in XCode and compile target _FlexColorPicker_. File FlexColorPicker.framework will be created in _Products_ directory. Open project that you want to add the color picker to in XCode, select project file, select your application's target on the left side, select _General_ tab and add FlexColorPicker.framework under _Embedded Binaries_ section.  
+Then open the cloned/downloaded project in XCode and compile target _FlexColorPicker_. File FlexColorPicker.framework will be created in _Products_ directory. Open project that you want to add the color picker to in XCode, select project file, select your application's target on the left side, select _General_ tab and add FlexColorPicker.framework under _Embedded Binaries_ section.  
 
 ![Default HSB Color Picker Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Combined_Color_Picker_Preview.jpg)
 
