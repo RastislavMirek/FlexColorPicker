@@ -122,11 +122,11 @@ When subclassing `AbstractColorControl` or `AdjustedHitBoxColorControl` directly
 ## Tips & Troubleshooting
 When setting up slider controls in storyboard it is a good practise to set its background to be transparent. [Alignment rectangle](https://developer.apple.com/documentation/uikit/uiview/1622648-alignmentrectinsets) ([rectangle that autolayout uses to lay out the control](https://useyourloaf.com/blog/auto-layout-and-alignment-rectangles/)) is smaller than the actual frame of the slider to allow for extra hit box margin as well as background framing of the slider. Therefore, if background is solid white it can overlap other views close to it.  
 ☛ If you do not want this behavior, set Hit Box Inset to 0 in Attributes Inspector or set `hitBoxInset` to `0` in code.
-
+  
 
 `ColorPreviewWithHex` can be tapped. When it it tapped, `ColorPickerController` calls `ColorPickerDelegate.colorPicker(_:selectedColor:usingControl:)` on its delegate.  
 ☛ You can communicate this feature to your users or opt out by setting `ColorPreviewWithHex.tapToConfirm` to `false`.
-
+  
 
 When you create your own [_color controls_](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ColorControl.swift) that do not inherit from [`AbstractColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/AbstractColorControl.swift) and add use them with a modally presented `UIViewController`, their pan gestures may conflict with dismiss modal gesture on iOS 13. The pan gesture may also conflict with scrolling when they are subclass of `UIScrollView`.  
 ☛ Solve this by adding following code to the view that receives touches (bottom most one in view hierarchy) of your custom _color control_:
@@ -138,7 +138,7 @@ When you create your own [_color controls_](https://github.com/RastislavMirek/Fl
 
 Implementation of all provided _color controls_ (including `AbstractColorControl` and `AdjustedHitBoxColorControl`) overrides `gestureRecognizerShouldBegin(:)` in order to  ensure that the _color controls_ work correctly when embeded inside `UIScrollView`s and iOS 13 modal view conctollers presented modally. The implametation prevents instaces of `UIPanGestureRecognizer` from recognizing any gesture if some condition is met.  In some rare cases this may interfere with custom `UIPanGestureRecognizer`s that you add to view hierarchy.  
 ☛ Solve this by subclassing the _color control_ that you want to use with your `UIPanGestureRecognizer` and overriding `gestureRecognizerShouldBegin(:)` so that the gesture is recognized.
-
+  
 
 When you add a subview to a _color control_ (either your _custom color control_ or any of the provided ones), that subview has user interaction enabled and the _color control_ is embedded inside a `UIScrollView` or iOS 13 modally presented view controller you may experience following issue when panning/swiping that subview: Panning/swiping meant to interact with your _control control_ might be interpreted as scrolling/dismissing the controller or vice-versa.  
 ☛ Solve this by adding following code to the subview that you added to the _color control_ and setting the delegate to the color control itself:
