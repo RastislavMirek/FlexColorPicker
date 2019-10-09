@@ -26,7 +26,7 @@
 //  SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
 extension CGRect {
     init(center: CGPoint, size: CGSize) {

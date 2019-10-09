@@ -129,7 +129,7 @@ When setting up slider controls in storyboard it is a good practise to set its b
 `ColorPreviewWithHex` can be tapped. When it it tapped, `ColorPickerController` calls `ColorPickerDelegate.colorPicker(_:selectedColor:usingControl:)` on its delegate.  
 ☛ You can communicate this feature to your users or opt out by setting `ColorPreviewWithHex.tapToConfirm` to `false`.
   
-
+  ### Scrolling & Modal Presentation Concerns
 When you create your own [_color controls_](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ColorControl.swift) that do not inherit from [`AbstractColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/AbstractColorControl.swift) and add use them with a modally presented `UIViewController`, their pan gestures may conflict with dismiss modal gesture on iOS 13. The pan gesture may also conflict with scrolling when they are subclass of `UIScrollView`.  
 ☛ Solve this by adding following code to the view that receives touches (bottom most one in view hierarchy) of your custom _color control_:
     
