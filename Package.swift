@@ -35,6 +35,9 @@ let package = Package(
         .library(name: "FlexColorPicker", targets: ["FlexColorPicker"]),
     ],
     dependencies: [],
+    platforms: [
+        .iOS(.v9),
+    ],
     targets: [
         .target(name: "FlexColorPicker",
                 dependencies: [],

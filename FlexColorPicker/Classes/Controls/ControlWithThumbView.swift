@@ -29,6 +29,7 @@
 import UIKit
 
 /// Common ancestor of color controls that use `ColorPickerThumbView`.
+///
 /// - Important: It is **not** recomended to subclass this class directly. Subclass `ColorPaletteControl` or `ColorSliderControl` instead.
 open class ColorControlWithThumbView: AdjustedHitBoxColorControl, LimitedGestureViewDelegate {
     public let thumbView = ColorPickerThumbView()

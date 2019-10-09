@@ -33,9 +33,15 @@ public let colorControlWithThumbViewDefaultHitBoxInsets = UIEdgeInsets(top: defa
 
 /// Color control with frame (and hit box) extended beyond its alignment rectangle.
 ///
+/// It is generally recomeneded to subclass this class rather than `AbstractColorControl` when creating custom color controls to have better control over your control's hit box.
+///
+/// Any subvies must be added to `contentView` only for this to work correctly inside `UIScrollView` and iOS 13 modal view controllers.
+///
+/// If you directly subclass this rather than `ColorPaletteControl` or `ColorSliderControl` override `gestureRecognizerShouldBegin(:)` to ensure that your custom color control works correctly inside `UIScrollView` and iOS 13 modal view controllers (that can be dragged to down to dismiss). Default implementation of the method disables any `UIPanGestureRecognizer`. E.g. you might want to allow some pan directions.
+/// 
 /// - Important: The disproportion between the `AdjustedHitBoxColorControl`'s frame (and bounds) and its alignment rectangle means that when aligning it using autolayout the frame might extend behond rectangle specified by layout constraits. When using lautolayout mind that the frame might therefore overlap other views.
 ///
-/// It is generally recomeneded to subclass this class rather than `AbstractColorControl` when creating custom color controls to have better control over your control's hit box.
+/// See README for more information on subclassing.
 open class AdjustedHitBoxColorControl: AbstractColorControl {
 
     /// The alighnment rectangle of the color control in its own coordinate system.

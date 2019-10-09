@@ -28,7 +28,13 @@
 
 import UIKit
 
-/// Contains common functionality for `ColorControl`. It is recomended to subclass this rather than `UIView` or `UIControl` when implementing customcolor control.
+/// Contains common functionality for `ColorControl`. It is recomended to subclass this rather than `UIView` or `UIControl` when implementing custom color control.
+///
+/// Any subvies must be added to `contentView` only for this to work correctly inside `UIScrollView` and iOS 13 modal view controllers.
+///
+/// If you directly subclass this rather than `ColorPaletteControl` or `ColorSliderControl` override `gestureRecognizerShouldBegin(:)` to ensure that your custom color control works correctly inside `UIScrollView` and iOS 13 modal view controllers (that can be dragged to down to dismiss). Default implementation of the method disables any `UIPanGestureRecognizer`. E.g. you might want to allow some pan directions.
+///
+/// See README for more information on subclassing.
 open class AbstractColorControl: UIControl, ColorControl, ColorControlContentViewDelegate {
     /// Content holder for AbstractColorControl. All subviews must be added here.
     public let contentView: UIView = ColorControlContentView()

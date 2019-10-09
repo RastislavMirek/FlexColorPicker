@@ -26,10 +26,13 @@
 //  SOFTWARE.
 //
 
-open class RestrictedPanCircleView: CircleShapedView {
-    var delegate: LimitedGestureViewDelegate?
+import UIKit
 
-    open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+/// Delegates gesture recognition control to its delegate. Use it as CircleShapedView.
+class LimitedGestureCircleView: CircleShapedView {
+    weak var delegate: LimitedGestureViewDelegate?
+
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         guard let delegate = delegate else {
             return !(gestureRecognizer is UIPanGestureRecognizer)
         }

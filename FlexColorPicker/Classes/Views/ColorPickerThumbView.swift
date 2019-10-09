@@ -43,8 +43,8 @@ private let percentageTextFont = UIFont.monospacedDigitSystemFont(ofSize: 14, we
 
 @IBDesignable
 open class ColorPickerThumbView: UIViewWithCommonInit {
-    public let borderView = RestrictedPanCircleView()
-    public let colorView = RestrictedPanCircleView()
+    public let borderView: CircleShapedView = LimitedGestureCircleView()
+    public let colorView: CircleShapedView = LimitedGestureCircleView()
     public let percentageLabel = UILabel()
     /// When `true` the border automatically darken when color is too bright to be contrast enought with white border.
     public var autoDarken: Bool = true
@@ -54,8 +54,8 @@ open class ColorPickerThumbView: UIViewWithCommonInit {
     public var expandOnTap: Bool = true
     var delegate: LimitedGestureViewDelegate? {
         didSet {
-            borderView.delegate = delegate
-            colorView.delegate = delegate
+            (borderView as? LimitedGestureCircleView)?.delegate = delegate
+            (colorView as? LimitedGestureCircleView)?.delegate = delegate
         }
     }
 
@@ -97,8 +97,8 @@ open class ColorPickerThumbView: UIViewWithCommonInit {
         percentageLabel.alpha = 0
         clipsToBounds = false // required for the text label to be displayed ourside of bounds
         borderView.backgroundColor = UIColor(named: "ThumbViewWideBorderColor")
-        borderView.delegate = delegate
-        colorView.delegate = delegate
+        (borderView as? LimitedGestureCircleView)?.delegate = delegate
+        (colorView as? LimitedGestureCircleView)?.delegate = delegate
         setColor(color, animateBorderColor: false)
     }
 
@@ -150,5 +150,14 @@ extension ColorPickerThumbView {
     private func setWideBorderColors(_ isDark: Bool) {
         self.borderView.borderColor = UIColor(named: isDark ? "BorderColor" : "LightBorderColor")
         self.borderView.backgroundColor = UIColor(named: isDark ? "ThumbViewWideBorderDarkColor" : "ThumbViewWideBorderColor")
+    }
+}
+
+extension ColorPickerThumbView {
+    open override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let delegate = (borderView as? LimitedGestureCircleView)?.delegate else {
+            return !(gestureRecognizer is UIPanGestureRecognizer)
+        }
+        return delegate.gestureRecognizerShouldBegin(gestureRecognizer)
     }
 }

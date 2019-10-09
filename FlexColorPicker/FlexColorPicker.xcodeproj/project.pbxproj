@@ -16,7 +16,6 @@
 		3021F6DA20C5C6AE004E5D5A /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3021F6D920C5C6AE004E5D5A /* UIImageViewExtension.swift */; };
 		3021F6DE20C82845004E5D5A /* AdjustedHitBoxColorControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3021F6DD20C82845004E5D5A /* AdjustedHitBoxColorControl.swift */; };
 		3021F6E220C8A7EB004E5D5A /* PaletteControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3021F6E120C8A7EB004E5D5A /* PaletteControls.swift */; };
-		3022FCF0234BEAFD005F033F /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3022FCEF234BEAFD005F033F /* Package.swift */; };
 		3034755920BC041700028A15 /* ColorPickerThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034755820BC041700028A15 /* ColorPickerThumbView.swift */; };
 		3034756120BC0C4000028A15 /* CircleShapedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034756020BC0C4000028A15 /* CircleShapedView.swift */; };
 		3034756520BC14A600028A15 /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3034756420BC14A600028A15 /* CGRectExtension.swift */; };
@@ -39,7 +38,7 @@
 		305A235C20BB4A7100271A59 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305A235B20BB4A7100271A59 /* UIViewExtension.swift */; };
 		306F04A420C2F6F900ABEB71 /* RectangularHSBPaletteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306F04A320C2F6F900ABEB71 /* RectangularHSBPaletteDelegate.swift */; };
 		309DC02F233B51AC00FD0D37 /* ColorControlContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309DC02E233B51AB00FD0D37 /* ColorControlContentView.swift */; };
-		309DC0312341042800FD0D37 /* RestrictedPanCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309DC0302341042800FD0D37 /* RestrictedPanCircleView.swift */; };
+		309DC0312341042800FD0D37 /* LimitedGestureCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309DC0302341042800FD0D37 /* LimitedGestureCircleView.swift */; };
 		309DC0332341048000FD0D37 /* LimitedGestureViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309DC0322341048000FD0D37 /* LimitedGestureViewDelegate.swift */; };
 		30B45CC720C9769F000CF044 /* PaletteAwareScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B45CC620C9769F000CF044 /* PaletteAwareScrollView.swift */; };
 		30EF527420BD431900E9E247 /* HSBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EF527320BD431900E9E247 /* HSBColor.swift */; };
@@ -57,7 +56,6 @@
 		3021F6D920C5C6AE004E5D5A /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		3021F6DD20C82845004E5D5A /* AdjustedHitBoxColorControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustedHitBoxColorControl.swift; sourceTree = "<group>"; };
 		3021F6E120C8A7EB004E5D5A /* PaletteControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteControls.swift; sourceTree = "<group>"; };
-		3022FCEF234BEAFD005F033F /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../../../Package.swift; sourceTree = "<group>"; };
 		3034755820BC041700028A15 /* ColorPickerThumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerThumbView.swift; sourceTree = "<group>"; };
 		3034756020BC0C4000028A15 /* CircleShapedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleShapedView.swift; sourceTree = "<group>"; };
 		3034756420BC14A600028A15 /* CGRectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
@@ -80,7 +78,7 @@
 		305A235B20BB4A7100271A59 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		306F04A320C2F6F900ABEB71 /* RectangularHSBPaletteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularHSBPaletteDelegate.swift; sourceTree = "<group>"; };
 		309DC02E233B51AB00FD0D37 /* ColorControlContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorControlContentView.swift; sourceTree = "<group>"; };
-		309DC0302341042800FD0D37 /* RestrictedPanCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestrictedPanCircleView.swift; sourceTree = "<group>"; };
+		309DC0302341042800FD0D37 /* LimitedGestureCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LimitedGestureCircleView.swift; sourceTree = "<group>"; };
 		309DC0322341048000FD0D37 /* LimitedGestureViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitedGestureViewDelegate.swift; sourceTree = "<group>"; };
 		30B45CC620C9769F000CF044 /* PaletteAwareScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteAwareScrollView.swift; sourceTree = "<group>"; };
 		30EF527320BD431900E9E247 /* HSBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HSBColor.swift; sourceTree = "<group>"; };
@@ -141,7 +139,7 @@
 				3034756A20BC677000028A15 /* GradientView.swift */,
 				30B45CC620C9769F000CF044 /* PaletteAwareScrollView.swift */,
 				309DC02E233B51AB00FD0D37 /* ColorControlContentView.swift */,
-				309DC0302341042800FD0D37 /* RestrictedPanCircleView.swift */,
+				309DC0302341042800FD0D37 /* LimitedGestureCircleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -154,7 +152,6 @@
 				3021F6DD20C82845004E5D5A /* AdjustedHitBoxColorControl.swift */,
 				3034757620BC8D1300028A15 /* ControlWithThumbView.swift */,
 				3049576E20C1B19800CEC32F /* ColorPreviewWithHex.swift */,
-				3022FCEF234BEAFD005F033F /* Package.swift */,
 				305A235120BB181500271A59 /* ColorPaletteControl.swift */,
 				3034756820BC66E900028A15 /* ColorSliderControl.swift */,
 				3021F6E120C8A7EB004E5D5A /* PaletteControls.swift */,
@@ -289,7 +286,7 @@
 				3034757720BC8D1300028A15 /* ControlWithThumbView.swift in Sources */,
 				3034756920BC66E900028A15 /* ColorSliderControl.swift in Sources */,
 				305A235220BB181500271A59 /* ColorPaletteControl.swift in Sources */,
-				309DC0312341042800FD0D37 /* RestrictedPanCircleView.swift in Sources */,
+				309DC0312341042800FD0D37 /* LimitedGestureCircleView.swift in Sources */,
 				300A24DF20C3069600BA8874 /* UIImageExtension.swift in Sources */,
 				300A24E320C30E8100BA8874 /* ComponentSliderControls.swift in Sources */,
 				3034755920BC041700028A15 /* ColorPickerThumbView.swift in Sources */,
@@ -299,7 +296,6 @@
 				3034757920BC9DBB00028A15 /* ColorPickerController.swift in Sources */,
 				3034756520BC14A600028A15 /* CGRectExtension.swift in Sources */,
 				309DC0332341048000FD0D37 /* LimitedGestureViewDelegate.swift in Sources */,
-				3022FCF0234BEAFD005F033F /* Package.swift in Sources */,
 				303ECED520C4A201005BB029 /* ColorPickerDelegate.swift in Sources */,
 				3049576F20C1B19800CEC32F /* ColorPreviewWithHex.swift in Sources */,
 				3034756D20BC768000028A15 /* UIViewWithCommonInit.swift in Sources */,
@@ -436,7 +432,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = UWF3VQ79QJ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -450,7 +446,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.typesoft.FlexColorPicker;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -467,7 +463,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = UWF3VQ79QJ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -481,7 +477,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.typesoft.FlexColorPicker;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

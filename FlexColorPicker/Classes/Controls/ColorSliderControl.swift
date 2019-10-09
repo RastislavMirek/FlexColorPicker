@@ -34,6 +34,8 @@ private let defaultGradientViewHeight: CGFloat = 15
 internal let defaultBorderWidth: CGFloat = 1 / UIScreen.main.scale
 
 /// Color control that allows to change selected color by tapping a point on (or panning over) a line. The control displays color preview for all positions in that line.
+/// 
+/// Any subvies must be added to `contentView` only for this to work correctly inside `UIScrollView` and iOS 13 modal view controllers.
 @IBDesignable
 open class ColorSliderControl: ColorControlWithThumbView {
 

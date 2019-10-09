@@ -2,7 +2,7 @@
 # * https://www.objc.io/issues/6-build-tools/travis-ci/
 # * https://github.com/supermarin/xcpretty#usage
 
-language: objective-c
+language: swift
 osx_image: xcode11
 
 # IMPORTANT: xctool that Travis uses by default is not working so we need to run custom xcodebuild instead. Therefore, following default configurations are not applied.
@@ -21,4 +21,4 @@ before_install:
 script:
  - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator13.0 CODE_SIGNING_REQUIRED=NO clean build | xcpretty
 # - set -o pipefail && xcodebuild -workspace FlexColorPickerDemo/FlexColorPickerDemo.xcworkspace -scheme FlexColorPickerDemo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.4' CODE_SIGNING_REQUIRED=NO clean build | xcpretty
-# - pod lib lint
+ - pod lib lint

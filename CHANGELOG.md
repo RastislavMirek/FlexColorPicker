@@ -2,7 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
-## 1.3.0 - 2019-09-25
+## 1.3.1 - 2019-10-08
+
+### Added
+- `Package.swift` to fix SPM support 
+
+### Changed
+- renamed `autoDaken` property of `ColorPickerThumbView` to `autoDarken` (typo fix)
+- improved documentation
+- hidden `RestrictedPanCircleView` from clients (and renamed it to `LimitedGestureCircleView`) as it is implementation detail. 
+- added minimum platform to `Package.swift` and explicit imports of `UIKit` where missing trying to fix SPM issues   
+
+### Deprecated
+- deprecated `PaletteAwareScrollView` as it is not needed any more. Supplied color controls and custom color controls subclassing `AbstractColorControl` will now work inside `UIScrollView` and iOS 13 modally presented controllers out of box.
+
+### Fixed
+- memory leak introduced in 1.3 where color controls would not be released
+
+## 1.3 - 2019-09-25
 
 ### Added
 - support for Swift Package Manager

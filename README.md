@@ -115,24 +115,42 @@ FlexColorPicker is made to be tweaked and extended with minimum effort. You can 
 
 In many cases there will be no need to subclass `ColorSliderControl` or `ColorPaletteControl`. They both relay on their _color delegates_ in how they handle color updates, present themselves and how they interpret user interactions. Therefore, you can instead implement `ColorSliderDelegate` or `ColorPaletteDelegate` protocols respectively to change look and behavior without changing the code of the control itself. 
 
-Demo project has good examples on both approaches (overriding and composition) and their combination, feel free to check it. 
+Demo project has good examples on both approaches (overriding and composition) and their combination, feel free to check it.
+
+When subclassing `AbstractColorControl` or `AdjustedHitBoxColorControl` directly ( not via `ColorSliderControl` or `ColorPaletteControl`) you might want to override `gestureRecognizerShouldBegin(:)`. By default, no `UIPanGestureRecognizer` is allowed to recognize any gesture on instances of  `AbstractColorControl`. Depending on type of your _custom color control_ you might want to allow `UIPanGestureRecognizer` to recognize the gesture in some (or all) cases. For example, horizontal slider will want to prevent `UIPanGestureRecognizer` from recognizing horizontal pan gesture because that means changing slider's value. In the same time, it may allow `UIPanGestureRecognizer` to recognize any vertical pan gesture as by those user probably ment to scoll the superview of the slider (it might be `UIScrollView`), not changing slider's value. 
 
 ## Tips & Troubleshooting
-When setting up slider controls in storyboard it is a good practise to set its background to be transparent. [Alignment rectangle](https://developer.apple.com/documentation/uikit/uiview/1622648-alignmentrectinsets) ([rectangle that autolayout uses to lay out the control](https://useyourloaf.com/blog/auto-layout-and-alignment-rectangles/)) is smaller than the actual frame of the slider to allow for extra hit box margin as well as background framing of the slider. Therefore, if background is solid white it can overlap other views close to it. 
+When setting up slider controls in storyboard it is a good practise to set its background to be transparent. [Alignment rectangle](https://developer.apple.com/documentation/uikit/uiview/1622648-alignmentrectinsets) ([rectangle that autolayout uses to lay out the control](https://useyourloaf.com/blog/auto-layout-and-alignment-rectangles/)) is smaller than the actual frame of the slider to allow for extra hit box margin as well as background framing of the slider. Therefore, if background is solid white it can overlap other views close to it.  
 ☛ If you do not want this behavior, set Hit Box Inset to 0 in Attributes Inspector or set `hitBoxInset` to `0` in code.
 
-`ColorPreviewWithHex` can be tapped. When it it tapped, `ColorPickerController` calls `ColorPickerDelegate.colorPicker(_:selectedColor:usingControl:)` on its delegate. 
-☛ You can communicate this feature to your users or opt out by setting `ColorPreviewWithHex.tapToConfirm` to `false`. 
 
-If you create your own _color controls_ that do not inherit from `AdjustedHitBoxColorControl` and add use them with a modally presented `UIViewController`, their pan gestures may conflict with dismiss modal gesture on iOS 13. 
+`ColorPreviewWithHex` can be tapped. When it it tapped, `ColorPickerController` calls `ColorPickerDelegate.colorPicker(_:selectedColor:usingControl:)` on its delegate.  
+☛ You can communicate this feature to your users or opt out by setting `ColorPreviewWithHex.tapToConfirm` to `false`.
+
+
+When you create your own [_color controls_](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ColorControl.swift) that do not inherit from [`AbstractColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/AbstractColorControl.swift) and add use them with a modally presented `UIViewController`, their pan gestures may conflict with dismiss modal gesture on iOS 13. The pan gesture may also conflict with scrolling when they are subclass of `UIScrollView`.  
 ☛ Solve this by adding following code to the view that receives touches (bottom most one in view hierarchy) of your custom _color control_:
     
     override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         return !(gestureRecognizer is UIPanGestureRecognizer)
     }
 
-Also, your own _color controls_ that do not inherit from `AdjustedHitBoxColorControl` added as subview of  `UIScrollView` may cause issues because  _palette color controls_ make use of pan gestures as well as `UIScrollView`. `UIScrollView` will take priority, making any palette control hard to work with. 
-☛ Using `PaletteAwareScrollView` instead of `UIScrollView` solves that issue.
+
+Implementation of all provided _color controls_ (including `AbstractColorControl` and `AdjustedHitBoxColorControl`) overrides `gestureRecognizerShouldBegin(:)` in order to  ensure that the _color controls_ work correctly when embeded inside `UIScrollView`s and iOS 13 modal view conctollers presented modally. The implametation prevents instaces of `UIPanGestureRecognizer` from recognizing any gesture if some condition is met.  In some rare cases this may interfere with custom `UIPanGestureRecognizer`s that you add to view hierarchy.  
+☛ Solve this by subclassing the _color control_ that you want to use with your `UIPanGestureRecognizer` and overriding `gestureRecognizerShouldBegin(:)` so that the gesture is recognized.
+
+
+When you add a subview to a _color control_ (either your _custom color control_ or any of the provided ones), that subview has user interaction enabled and the _color control_ is embedded inside a `UIScrollView` or iOS 13 modally presented view controller you may experience following issue when panning/swiping that subview: Panning/swiping meant to interact with your _control control_ might be interpreted as scrolling/dismissing the controller or vice-versa.  
+☛ Solve this by adding following code to the subview that you added to the _color control_ and setting the delegate to the color control itself:
+
+    weak var delegate: LimitedGestureViewDelegate?
+
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let delegate = delegate else {
+            return !(gestureRecognizer is UIPanGestureRecognizer)
+        }
+        return delegate.gestureRecognizerShouldBegin(gestureRecognizer)
+    }
 
 
 ## Getting in Touch

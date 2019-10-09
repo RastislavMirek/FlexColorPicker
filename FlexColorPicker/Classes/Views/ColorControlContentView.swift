@@ -26,6 +26,8 @@
 //  SOFTWARE.
 //
 
+import UIKit
+
 protocol ColorControlContentViewDelegate: class {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool
 }

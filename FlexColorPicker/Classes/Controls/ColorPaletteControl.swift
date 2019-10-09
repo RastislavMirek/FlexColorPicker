@@ -32,6 +32,8 @@ let minimumDistanceForInBoundsTouchFromValidPoint: CGFloat = 44
 let defaultSelectedColor = UIColor.white.hsbColor
 
 /// Color control that allows to select color by tapping or panning a palette that displays available color options.
+///
+/// Any subvies must be added to `contentView` only for this to work correctly inside `UIScrollView` and iOS 13 modal view controllers.
 @IBDesignable
 open class ColorPaletteControl: ColorControlWithThumbView {
     /// The image view providing preview of color option for each particular point. Its image might be e.g. hue/saturation map.

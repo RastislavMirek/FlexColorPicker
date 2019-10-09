@@ -28,6 +28,7 @@
 
 import UIKit
 
+/// A view with shaped into circle by setting corner radius.
 open class CircleShapedView: UIViewWithCommonInit {
     public override var bounds: CGRect {
         didSet {
