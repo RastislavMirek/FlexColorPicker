@@ -26,7 +26,7 @@
 //  SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
 open class RectangularHSBPaletteDelegate: ColorPaletteDelegate {
     public private(set) var intWidth = 0

@@ -26,7 +26,7 @@
 //  SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
 extension CGPoint {
     func distanceTo(x: CGFloat, y: CGFloat) -> CGFloat {
