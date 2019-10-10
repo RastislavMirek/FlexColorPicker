@@ -36,7 +36,7 @@ let package = Package(
     ],
     products: [
         Product.library(name: "FlexColorPicker", targets: ["FlexColorPicker"]),
-        Product.executable(name: "FlexColorPickerDemo", targets: ["FlexColorPickerDemo"]),
+//        Product.executable(name: "FlexColorPickerDemo", targets: ["FlexColorPickerDemo"]),
     ],
     dependencies: [],
     targets: [
@@ -46,12 +46,12 @@ let package = Package(
             path: "FlexColorPicker/Classes",
             exclude: ["../../FlexColorPicker.podspec", "FlexColorPicker.podspec", "../GifsAndScreenshots"]
         ),
-        PackageDescription.Target.target(
-            name: "FlexColorPickerDemo",
-            dependencies: ["FlexColorPicker"],
-            path: "FlexColorPickerDemo/Classes",
-            exclude: ["../../FlexColorPicker.podspec", "FlexColorPicker.podspec"]
-        )
+//        PackageDescription.Target.target(
+//            name: "FlexColorPickerDemo",
+//            dependencies: ["FlexColorPicker"],
+//            path: "FlexColorPickerDemo/Classes",
+//            exclude: ["../../FlexColorPicker.podspec", "FlexColorPicker.podspec"]
+//        )
     ]
 )
 
