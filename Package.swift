@@ -31,9 +31,6 @@ import PackageDescription
 
 let package = Package(
     name: "FlexColorPicker",
-    exclude: [
-        "GifsAndScreenshots", "FlexColorPickerDemo", "FlexColorPicker.podspec", ".travis.yml"
-    ],
     platforms: [
         .iOS(.v9),
     ],
