@@ -32,7 +32,7 @@ Modern color picker library written in Swift 5 that can be easily extended and c
 
 ### Swift Package Manager
 
-In XCode 11 and above click _File_ → _Swift Packages_ → _Add Package Dependency..._ → choose target to add FlexColorPicker to → search for FlexColorPicker, select it and click next → set version prefference and confirm.
+In XCode 11 and above click _File_ → _Swift Packages_ → _Add Package Dependency..._ → choose target to add FlexColorPicker to → enter `https://github.com/RastislavMirek/FlexColorPicker`, press next → set version prefference and confirm.
 
 Alternativelly, if you are using Package.swift just add this dependency:
 
