@@ -32,10 +32,10 @@ import PackageDescription
 let package = Package(
     name: "FlexColorPicker",
     platforms: [
-        .iOS(.v9),
+        SupportedPlatform.iOS(.v9),
     ],
     products: [
-        .library(name: "FlexColorPicker", targets: ["FlexColorPicker"]),
+        Product.library(name: "FlexColorPicker", targets: ["FlexColorPicker"])
     ],
     dependencies: [],
     targets: [
