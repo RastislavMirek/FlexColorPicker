@@ -32,7 +32,7 @@ protocol ColorControlContentViewDelegate: class {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool
 }
 
-/// Content holder for all color controls derived from `AbstractColorControl`. It allows Delegates its `gestureRecognizerShouldBegin(:)` method to settable delegate. Use it as a regular `UIView`.
+/// Content holder for all color controls derived from `AbstractColorControl`. Delegates its `gestureRecognizerShouldBegin(:)` method to settable delegate. Use it as a regular `UIView`.
 class ColorControlContentView: UIView {
     weak var delegate: ColorControlContentViewDelegate?
 
