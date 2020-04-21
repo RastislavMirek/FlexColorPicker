@@ -114,7 +114,7 @@ If preffered, you can use following code to set `DefaultColorPickerViewControlle
     colorPickerController.useRadialPalette = false
     
 You can also set 3 additional properties that influence how color picker looks when rectangular palette is used (`rectangularPaletteBorderOn`, `rectangularPaletteHueHorizontalInPortrait` and `rectangularPaletteHueHorizontalInLandscape`). See [in-code
-documentation](##tips-&-troubleshooting) for details. For more customisation please refer to section [Customisation](###customisation) below.
+documentation](#tips--troubleshooting) for details. For more customisation please refer to section [Customisation](#customisation) below.
 
 ### Customisation
 FlexColorPicker consists of _color controls_ and _color picker controllers_ that manage them. _Color controls_ are `UIView`s that (usually) subclass [`UIControl`](https://developer.apple.com/documentation/uikit/uicontrol) and allow user to pick desired color. Predefined _color controls_ include hue/saturation palettes (circular or rectangular), sliders for saturation, brightness and for RGB components and a picked color preview control. Additional can by added by implementing [`ColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ColorControl.swift) protocol.
