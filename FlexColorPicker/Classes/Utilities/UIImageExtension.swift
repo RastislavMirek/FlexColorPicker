@@ -41,7 +41,6 @@ extension UIImage {
     }
 
     public static func drawImage(ofSize size: CGSize, path: UIBezierPath, fillColor: UIColor) -> UIImage? {
-        let imageRect = CGRect(origin: .zero, size: size)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         let context = UIGraphicsGetCurrentContext()
         context?.setFillColor(fillColor.cgColor)

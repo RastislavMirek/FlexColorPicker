@@ -61,26 +61,63 @@ Then open the cloned/downloaded project in XCode and compile target _FlexColorPi
 ![Default HSB Color Picker Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Combined_Color_Picker_Preview.jpg)
 
 ## How to Use
-There are several ways how to use FlexColorPicker depending on how much customization you require. The fastest and simplest option is using `DefaultColorPickerViewController`.
+There are several ways how to use FlexColorPicker depending on how much customization you require. 
 
-### Adding Default Color Picker
-In storyboard, FlexColorPicker can be used by specifying _Class_ of a view controller to be `DefaultColorPickerViewController`. That is done in _Identity Inspector_ in right panel under _Custom Class_. Delegate of `DefaultColorPickerViewController` can only be set in code. Basic customisation of the controller is supported in storyboard via properties in [_Attributes Inspector_](https://www.quora.com/Where-is-an-attributes-inspector-in-Xcode).
+### Basic Usage
+The fastest and simplest way to add color picker to your project is using `DefaultColorPickerViewController`. You can add it either via storyboard or via code. In both cases you will need to implement `ColorPickerDelegate` protocol to receive update when a user selects color using the `DefaultColorPickerViewController`:
 
-In code,  `DefaultColorPickerViewController` can be setup like this if using a navigation controller:
+    // MyController is the controller that presents DefaultColorPickerViewController
+    extension MyController: ColorPickerDelegate {
+
+        func colorPicker(_ colorPicker: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl) {
+            // code to handle that user selected a color without confirmed it yet (may change selected color)  
+        }
+        
+        func colorPicker(_ colorPicker: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl) { 
+            // code to handle that user has confirmed selected color
+        }
+    }
+    
+Both functions in `ColorPickerDelegate` are optional. You can only use one of them or both in conjuncion.
+ 
+ #### Adding via Storyboard
+ 
+ In storyboard, FlexColorPicker can be used by specifying _Class_ of a view controller to be `DefaultColorPickerViewController`. That is done in _Identity Inspector_ in right panel under _Custom Class_. Basic customisation of the controller is supported in storyboard via properties in [_Attributes Inspector_](https://www.quora.com/Where-is-an-attributes-inspector-in-Xcode). Delegate of `DefaultColorPickerViewController` can only be set in code:
+ 
+    class MyController {
+        @IBOutlet var pickerController: ColorPickerController!
+        
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if let destinationColorPicker = segue.destination as? ColorPickerControllerProtocol {
+                destinationColorPicker.delegate = self
+            }
+        }
+    }
+
+#### Adding via Code
+
+`DefaultColorPickerViewController` can be displayed like this if using a navigation controller:
 
     let colorPickerController = DefaultColorPickerViewController()
     colorPickerController.delegate = self
     navigationController?.pushViewController(colorPickerController, animated: true)
 
-Or when presented modally:
+Replace the 3rd line of the above snippet with following code to display color picker modally:
 
-    let colorPickerController = DefaultColorPickerViewController()
-    colorPickerController.delegate = self
     let navigationController = UINavigationController(rootViewController: colorPickerController)
     present(navigationController, animated: true, completion: nil)
+    
+All the above code should go to handler that triggers color picker display (e.g. handler of "Pick Color" button press). 
+
+If preffered, you can use following code to set `DefaultColorPickerViewController` to use rectangular, rather than radial hue-saturation pallete. See third animated image on this page for example. 
+
+    colorPickerController.useRadialPalette = false
+    
+You can also set 3 additional properties that influence how color picker looks when rectangular palette is used (`rectangularPaletteBorderOn`, `rectangularPaletteHueHorizontalInPortrait` and `rectangularPaletteHueHorizontalInLandscape`). See [in-code
+documentation](##tips-&-troubleshooting) for details. For more customisation please refer to section [Customisation](###customisation) below.
 
 ### Customisation
-FlexColorPicker consists of _color controls_ and _color picker controllers_ that manage them. _Color controls_ are (usually) subclasses of [`UIControl`](https://developer.apple.com/documentation/uikit/uicontrol) that allow user to pick desired color. Predefined _color controls_ include hue/saturation palettes (circular or rectangular), sliders for saturation, brightness and for RGB components and a picked color preview control. Additional can by added by implementing [`ColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ColorControl.swift) protocol.
+FlexColorPicker consists of _color controls_ and _color picker controllers_ that manage them. _Color controls_ are `UIView`s that (usually) subclass [`UIControl`](https://developer.apple.com/documentation/uikit/uicontrol) and allow user to pick desired color. Predefined _color controls_ include hue/saturation palettes (circular or rectangular), sliders for saturation, brightness and for RGB components and a picked color preview control. Additional can by added by implementing [`ColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ColorControl.swift) protocol.
 
 #### Available Color Controls
 
@@ -124,9 +161,11 @@ Demo project has good examples on both approaches (overriding and composition) a
 When subclassing `AbstractColorControl` or `AdjustedHitBoxColorControl` directly ( not via `ColorSliderControl` or `ColorPaletteControl`) you might want to override `gestureRecognizerShouldBegin(:)`. By default, no `UIPanGestureRecognizer` is allowed to recognize any gesture on instances of  `AbstractColorControl`. Depending on type of your _custom color control_ you might want to allow `UIPanGestureRecognizer` to recognize the gesture in some (or all) cases. For example, horizontal slider will want to prevent `UIPanGestureRecognizer` from recognizing horizontal pan gesture because that means changing slider's value. In the same time, it may allow `UIPanGestureRecognizer` to recognize any vertical pan gesture as by those user probably ment to scoll the superview of the slider (it might be `UIScrollView`), not changing slider's value. 
 
 ## Tips & Troubleshooting
+All classes and functions of FlexColorPicker have great in-code documentation. It is there to help you when you are unsure about that class or function's purposer or usage.
+☛ Just alt-click name of any FlexColorPicker class or function in XCode to display detailed documentation.  
+
 When setting up slider controls in storyboard it is a good practise to set its background to be transparent. [Alignment rectangle](https://developer.apple.com/documentation/uikit/uiview/1622648-alignmentrectinsets) ([rectangle that autolayout uses to lay out the control](https://useyourloaf.com/blog/auto-layout-and-alignment-rectangles/)) is smaller than the actual frame of the slider to allow for extra hit box margin as well as background framing of the slider. Therefore, if background is solid white it can overlap other views close to it.  
 ☛ If you do not want this behavior, set Hit Box Inset to 0 in Attributes Inspector or set `hitBoxInset` to `0` in code.
-  
 
 `ColorPreviewWithHex` can be tapped. When it it tapped, `ColorPickerController` calls `ColorPickerDelegate.colorPicker(_:selectedColor:usingControl:)` on its delegate.  
 ☛ You can communicate this feature to your users or opt out by setting `ColorPreviewWithHex.tapToConfirm` to `false`.

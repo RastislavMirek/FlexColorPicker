@@ -52,3 +52,12 @@ public protocol ColorPickerDelegate: class {
     ///   - usingControl: The control that was used to confirm selected color (control that sent `primaryActionTriggered` event).
     func colorPicker(_ colorPicker: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl)
 }
+
+public extension ColorPickerDelegate {
+    
+    // an empty implemnetation to make this method of ColorPickerDelegate optional
+    func colorPicker(_ colorPicker: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl) { }
+    
+    // an empty implemnetation to make this method of ColorPickerDelegate optional
+    func colorPicker(_ colorPicker: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl) { }
+}
