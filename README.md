@@ -9,9 +9,9 @@ Modern color picker library written in Swift 5 that can be easily extended and c
 ![Color Picker with All Controls Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview2.gif)
 
 ## Supported Use Cases
-1. ready-to-use color picker that works great out-of-box 
-2. agile library that supports components positioning with autolayout and customisation directly from storyboard
-3. framework that allows adding your own sliders, palettes &amp; previews or modifying existing ones without changing the code of the library
+1. [ready-to-use color](#basic-usage) picker that works great out-of-box 
+2. [agile library](#available-color-controls) that supports components positioning with autolayout and customisation [directly from storyboard](#connecting-color-controls)
+3. framework that allows [adding your own sliders, palettes &amp; previews](#extending--overriding) or modifying existing ones without changing the code of the library
 4. combine 3 approaches above freely to get the level of customisation that you need
 
 ![Default Color Picker with Rectangular Palette Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview3.gif)
@@ -21,10 +21,10 @@ Modern color picker library written in Swift 5 that can be easily extended and c
 - supports HSB and RGB color models, radial and rectangular hue/saturation palette
 - there is _great UX_ "just set the delegate" view controller _if you need something simple_
 - freely combine, leave out or add your own picker components
-- well documented
+- [well documented](#documentation)
 - _highly customisable_
 - _storyboard support_ with realistic, design time preview and customisation directly from storyboard
-- small classes, robust, easy to understand code
+- library consists of small classes & robust, easy to understand code
 - can be used without subclassing specific controller
 - hackable: _protocols_ for adding custom picker controls, open classes ready for subclassing
 
@@ -133,14 +133,12 @@ This is the list of included _color controls_:
 [`GreenSliderControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ComponentSliderControls.swift)
 [`BlueSliderControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ComponentSliderControls.swift)
 
-If you want to customize your color picker, you can choose and lay out _color controls_ that you want, set their properties if needed and connect them add them to a _color picker controller_. 
+If you want to customize your color picker, you can choose and lay out _color controls_ that you want, set their properties if needed and [connect them by adding them to the same _color picker controller_](#connecting-color-controls). 
 
 ![Working with Color Picker in XCode Storyboard](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Working_with_flex_color_picker_from_storyboard.png)
 
 #### Connecting Color Controls
-In storyboard, lay out _color controls_ and set their classes  in _Identity Inspector_ to classes of controls you want to use. Then set controller's class to  `CustomColorPickerViewController`, open its _Connection Inspector_ and connect corresponding outlets the controls.
-
-The same can be done in code simply by assigning _color controls_ to appropriate properties of `CustomColorPickerViewController`. 
+In storyboard, lay out _color controls_ and set their classes  in _Identity Inspector_ to classes of controls you want to use. Then set controller's class to  `CustomColorPickerViewController`, open its _Connection Inspector_ and connect corresponding outlets the controls. The same can be done in code simply by assigning _color controls_ to appropriate properties of `CustomColorPickerViewController`. 
 
 If you cannot subclass `CustomColorPickerViewController` e.g. because your controller is a subclass of another class use `ColorPickerController` instead. It can also be used in storyboard as interface builder custom object. It has same properties as  `CustomColorPickerViewController` (actually, `CustomColorPickerViewController` is just a convenience wrapper for `ColorPickerController`). You can also add  _color controls_ to it via `ColorPickerController.addControl(:)`  so you are not limited to properties.
 
@@ -161,7 +159,7 @@ Demo project has good examples on both approaches (overriding and composition) a
 When subclassing `AbstractColorControl` or `AdjustedHitBoxColorControl` directly ( not via `ColorSliderControl` or `ColorPaletteControl`) you might want to override `gestureRecognizerShouldBegin(:)`. By default, no `UIPanGestureRecognizer` is allowed to recognize any gesture on instances of  `AbstractColorControl`. Depending on type of your _custom color control_ you might want to allow `UIPanGestureRecognizer` to recognize the gesture in some (or all) cases. For example, horizontal slider will want to prevent `UIPanGestureRecognizer` from recognizing horizontal pan gesture because that means changing slider's value. In the same time, it may allow `UIPanGestureRecognizer` to recognize any vertical pan gesture as by those user probably ment to scoll the superview of the slider (it might be `UIScrollView`), not changing slider's value. 
 
 ## Tips & Troubleshooting
-All classes and functions of FlexColorPicker have great in-code documentation. It is there to help you when you are unsure about that class or function's purposer or usage.  
+All<a name="documentation"></a> classes and functions of FlexColorPicker have great in-code documentation. It is there to help you when you are unsure about that class or function's purposer or usage.  
 ☛ Just option-click name of any FlexColorPicker class or function in XCode to display detailed documentation.  
 
 When setting up slider controls in storyboard it is a good practise to set its background to be transparent. [Alignment rectangle](https://developer.apple.com/documentation/uikit/uiview/1622648-alignmentrectinsets) ([rectangle that autolayout uses to lay out the control](https://useyourloaf.com/blog/auto-layout-and-alignment-rectangles/)) is smaller than the actual frame of the slider to allow for extra hit box margin as well as background framing of the slider. Therefore, if background is solid white it can overlap other views close to it.  
