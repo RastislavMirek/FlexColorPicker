@@ -82,7 +82,7 @@ Both functions in `ColorPickerDelegate` are optional. You can only use one of th
  
  #### Adding via Storyboard
  
- In storyboard, FlexColorPicker can be used by specifying _Class_ of a view controller to be `DefaultColorPickerViewController`. That is done in [_Identity Inspector_](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Identity_Inspector.png) in right panel under _Custom Class_. Basic customisation of the controller is supported in storyboard via properties in [_Attributes Inspector_](https://www.quora.com/Where-is-an-attributes-inspector-in-Xcode). Delegate of `DefaultColorPickerViewController` can only be set in code:
+ In storyboard, FlexColorPicker can be used by specifying _Class_ of a view controller to be `DefaultColorPickerViewController`. That is done in [_Identity Inspector_](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Identity_Inspector.jpg) in right panel under _Custom Class_. Basic customisation of the controller is supported in storyboard via properties in [_Attributes Inspector_](https://www.quora.com/Where-is-an-attributes-inspector-in-Xcode). Delegate of `DefaultColorPickerViewController` can only be set in code:
  
     class MyController {
         @IBOutlet var pickerController: ColorPickerController!
@@ -138,7 +138,7 @@ If you want to customize your color picker, you can choose and lay out _color co
 <a name="storyboardscreenshot">![Working with Color Picker in XCode Storyboard](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Working_with_flex_color_picker_from_storyboard.png)</a>
 
 #### Connecting Color Controls
-In storyboard, lay out _color controls_ and set their classes  in _Identity Inspector_ to classes of controls you want to use. Then set controller's class to  `CustomColorPickerViewController`, open its _Connection Inspector_ and connect corresponding outlets the controls. The same can be done in code simply by assigning _color controls_ to appropriate properties of `CustomColorPickerViewController`. 
+In storyboard, lay out _color controls_ and set their classes  in [_Identity Inspector_](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Identity_Inspector.jpg) to classes of controls you want to use. For example, set _class_ field in in [_Identity Inspector_](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Identity_Inspector.jpg) to text "RadialPaletteControl". Then set controller's class to  `CustomColorPickerViewController`, open its _Connection Inspector_ (right side of [this image](#storyboardscreenshot)) and connect corresponding outlets the controls. The same can be done in code simply by assigning _color controls_ to appropriate properties of `CustomColorPickerViewController`. 
 
 If<a name="nosubclassing"></a> you cannot subclass `CustomColorPickerViewController` e.g. because your controller is a subclass of another class use `ColorPickerController` instead. It can also be used in storyboard as interface builder custom object. It has same properties as  `CustomColorPickerViewController` (actually, `CustomColorPickerViewController` is just a convenience wrapper for `ColorPickerController`). You can also add  _color controls_ to it via `ColorPickerController.addControl(:)`  so you are not limited to properties.
 
