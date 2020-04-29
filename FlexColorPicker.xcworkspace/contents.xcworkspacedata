@@ -23,6 +23,9 @@
       location = "container:GifsAndScreenshots"
       name = "GifsAndScreenshots">
       <FileRef
+         location = "group:Identity_Inspector.png">
+      </FileRef>
+      <FileRef
          location = "group:Flex_color_picker_for_swift_preview1.gif">
       </FileRef>
       <FileRef

@@ -9,13 +9,13 @@ Modern color picker library written in Swift 5 that can be easily extended and c
 ![Color Picker with All Controls Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview2.gif)
 
 ## Features
-- supports [HSB and RGB](#storyboardscreenshot) color models, [radial and rectangular](#rectangular) hue/saturation palette
-- there is _great UX_ "just set the delegate" view controller _if you need [something simple](#basic-usage)_
-- freely combine, leave out or add your own picker components
+- supports [HSB and RGB](#storyboardscreenshot) color models, both [radial and rectangular](#rectangular) hue/saturation palette
+- there is [_ready-to-use view controller_](#basic-usage) if you need quick, simple solution
+- freely combine, leave out or [add your own](#extending--overriding) picker components when you need flexibility
 - well [documented](#documentation)
 - _highly [customisable](#customisation)_
 - _storyboard support_ with realistic [design time preview](#storyboardscreenshot) and customisation directly from storyboard
-- library consists of small classes and robust, easy to understand code
+- library consists of small classes and robust, easy to understand [code](https://github.com/RastislavMirek/FlexColorPicker/tree/master/FlexColorPicker/Classes)
 - can be used [without subclassing specific controller](#nosubclassing)
 - hackable: [_protocols_](#protocols) for adding custom picker controls, [open classes](#controlslist) ready for subclassing
 
@@ -23,9 +23,9 @@ Modern color picker library written in Swift 5 that can be easily extended and c
 ![Custom Color Picker Controls Written in Swift Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview4.gif)
 
 ## Use Cases
-1. [ready-to-use](#basic-usage) color picker that works great out-of-box 
+1. [plug & play](#basic-usage) color picker that works great out-of-box 
 2. [agile library](#available-color-controls) that supports components positioning with autolayout and customisation [directly from storyboard](#connecting-color-controls)
-3. framework that allows adding [your own sliders, palettes &amp; previews](#extending--overriding) or modifying [existing ones](#available-color-controls) without changing the code of the library
+3. framework that allows [adding your own](#extending--overriding) sliders, palettes &amp; previews or modifying [existing ones](#available-color-controls) without changing the code of the library
 4. combine 3 approaches above freely to get the level of customisation that you need
 
 ## Instalation
@@ -50,7 +50,7 @@ You can also try the Demo project with following command:
     pod try FlexColorPicker
 
 ### Direct Instalation
-If you are not Cocoapods or SPM user clone the color picker from repository with this command:
+If you are not Cocoapods or SPM user you can clone the color picker from repository with this command:
 
     git clone https://github.com/RastislavMirek/FlexColorPicker
     
@@ -64,7 +64,7 @@ Then open the cloned/downloaded project in XCode and compile target _FlexColorPi
 There are several ways how to use FlexColorPicker depending on how much customization you require. 
 
 ### Basic Usage
-The fastest and simplest way to add color picker to your project is using `DefaultColorPickerViewController`. You can add it either via storyboard or via code. In both cases you will need to implement `ColorPickerDelegate` protocol to receive update when a user selects color using the `DefaultColorPickerViewController`:
+The fastest and simplest way to add color picker to your project is using `DefaultColorPickerViewController`. You can add it either [via storyboard](#adding-via-storyboard) or [via code](adding-via-code). In both cases you will need to implement [`ColorPickerDelegate` protocol](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/ColorPickerDelegate.swift) to receive update when a user selects color using the `DefaultColorPickerViewController`:
 
     // MyController is the controller that presents DefaultColorPickerViewController
     extension MyController: ColorPickerDelegate {
@@ -82,7 +82,7 @@ Both functions in `ColorPickerDelegate` are optional. You can only use one of th
  
  #### Adding via Storyboard
  
- In storyboard, FlexColorPicker can be used by specifying _Class_ of a view controller to be `DefaultColorPickerViewController`. That is done in _Identity Inspector_ in right panel under _Custom Class_. Basic customisation of the controller is supported in storyboard via properties in [_Attributes Inspector_](https://www.quora.com/Where-is-an-attributes-inspector-in-Xcode). Delegate of `DefaultColorPickerViewController` can only be set in code:
+ In storyboard, FlexColorPicker can be used by specifying _Class_ of a view controller to be `DefaultColorPickerViewController`. That is done in [_Identity Inspector_](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Identity_Inspector.png) in right panel under _Custom Class_. Basic customisation of the controller is supported in storyboard via properties in [_Attributes Inspector_](https://www.quora.com/Where-is-an-attributes-inspector-in-Xcode). Delegate of `DefaultColorPickerViewController` can only be set in code:
  
     class MyController {
         @IBOutlet var pickerController: ColorPickerController!
