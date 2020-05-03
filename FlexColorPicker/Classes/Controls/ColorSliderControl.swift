@@ -31,7 +31,6 @@ import UIKit
 public let OUTSIDE_DRAG_HORIZONTAL_TO_VERTICAL_TRANSLATION_RATIO: CGFloat = 2.5
 
 private let defaultGradientViewHeight: CGFloat = 15
-internal let defaultBorderWidth: CGFloat = 1 / UIScreen.main.scale
 
 /// Color control that allows to change selected color by tapping a point on (or panning over) a line. The control displays color preview for all positions in that line.
 /// 
@@ -39,12 +38,19 @@ internal let defaultBorderWidth: CGFloat = 1 / UIScreen.main.scale
 @IBDesignable
 open class ColorSliderControl: ColorControlWithThumbView {
 
-    private var gradientViewHeightConstraint: NSLayoutConstraint?
     /// This is view behind gradient that can be used to show custom color options preview if the preview cannot be represented by simple gradient.
     public let gradientBackgroundView = UIImageView()
     /// Previews color options avaialable va chnaging value of the slider in form of linear gradient.
     public let gradientView = GradientView()
 
+    /// Whether to display default thin border around the slider.
+    @IBInspectable
+    public var borderOn: Bool = true {
+        didSet {
+            updateBorder(visible: borderOn, view: gradientBackgroundView)
+        }
+    }
+    
     /// A delegate that specifies gradient of the slider and how selecting a value is interpreted.
     open var sliderDelegate: ColorSliderDelegate = BrightnessSliderDelegate() {
         didSet {
@@ -71,7 +77,7 @@ open class ColorSliderControl: ColorControlWithThumbView {
         gradientBackgroundView.clipsToBounds = true
         updateThumbAndGradient(isInteractive: false)
         contentView.addSubview(thumbView)
-        setDefaultBorder(on: borderOn)
+        updateBorder(visible: borderOn, view: gradientBackgroundView)
     }
 
     open override func setSelectedHSBColor(_ hsbColor: HSBColor, isInteractive interactive: Bool) {
@@ -82,7 +88,6 @@ open class ColorSliderControl: ColorControlWithThumbView {
     private func updateCornerRadius() {
         gradientBackgroundView.cornerRadius_ = contentBounds.height / 2
     }
-
 
     /// Updates slider's preview (the gradient) to reflect current state of the slider (e.g. value of `selectedHSBColor` and `sliderDelegate`).
     ///
@@ -108,21 +113,12 @@ open class ColorSliderControl: ColorControlWithThumbView {
         setSelectedHSBColor(sliderDelegate.modifiedColor(from: selectedHSBColor, with: min(max(0, value), 1)), isInteractive: isInteractive)
         sendActions(for: .valueChanged)
     }
-
-
-    /// Override to change the border drawn around the slider.
-    ///
-    /// - Parameter on: Whether to display the border or hide it.
-    open func setDefaultBorder(on: Bool) {
-        setDefaultBorder(on: on, forView: gradientBackgroundView)
-    }
-
-
-    /// Whether to display default thin border around the slider.
-    @IBInspectable
-    public var borderOn: Bool = true {
-        didSet {
-            setDefaultBorder(on: borderOn)
+    
+    /// Updates  border color of the color slider control when interface is changed to dark or light mode.
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if #available(iOS 13.0, *), traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle  {
+            updateBorder(visible: borderOn, view: gradientBackgroundView)
         }
     }
 }

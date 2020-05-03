@@ -38,7 +38,7 @@ public class RadialPaletteControl: ColorPaletteControl {
 public class RectangularPaletteControl: ColorPaletteControl {
     public override func commonInit() {
         paletteDelegate = RectangularHSBPaletteDelegate()
-        setDefaultBorder(on: borderOn, forView: contentView)
+        updateBorder(visible: borderOn, view: contentView)
         setHue(horizontalAxis: hueHorizontal, updateImage: false)
         super.commonInit()
     }
@@ -56,9 +56,9 @@ public class RectangularPaletteControl: ColorPaletteControl {
 
     /// Whether to display thin border around the palette.
     @IBInspectable
-    open var borderOn: Bool = true {
+    public var borderOn: Bool = true {
         didSet {
-            setDefaultBorder(on: borderOn, forView: contentView)
+            updateBorder(visible: borderOn, view: contentView)
         }
     }
 
@@ -72,6 +72,14 @@ public class RectangularPaletteControl: ColorPaletteControl {
         (paletteDelegate as? RectangularHSBPaletteDelegate)?.hueHorizontal = horizontalAxis
         if updateImage {
             updatePaletteImagesAndThumb(isInteractive: false)
+        }
+    }
+    
+    /// Updates  border color of the rectangular palette control when interface is changed to dark or light mode.
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if #available(iOS 13.0, *), traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle  {
+            updateBorder(visible: borderOn, view: contentView)
         }
     }
 }

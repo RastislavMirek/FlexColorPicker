@@ -39,21 +39,22 @@ extension UIColor {
         let (red, green, blue, _) = rgba
         return (red, green, blue)
     }
-
-    convenience init?(named name: String) {
-        let color: UIColor
-        switch name {
-        case "BorderColor": color = #colorLiteral(red: 0.7089999914, green: 0.7089999914, blue: 0.7089999914, alpha: 1)
-        case "LabelTextsColor": color = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
-        case "LightBorderColor": color = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.200000003)
-        case "ThumbViewWideBorderColor": color = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.6999999881)
-        case "ThumbViewWideBorderDarkColor": color = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3000000119)
-        default:
-            NSLog("FlexColorPicker: Unknow named color requested with name: \(name). Falling back to default color (grey).")
-            color = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
-        }
-        self.init(cgColor: color.cgColor)
+    
+    // neither of the following computed static properties can be made stored property - their current values need to computed at the time of accesing them
+    public static var colorPickerBorderColor: UIColor {
+        return pickColorForMode(lightModeColor: #colorLiteral(red: 0.7089999914, green: 0.7089999914, blue: 0.7089999914, alpha: 1), darkModeColor: #colorLiteral(red: 0.4203212857, green: 0.4203212857, blue: 0.4203212857, alpha: 1))
     }
+    
+    public static var colorPickerLabelTextColor: UIColor {
+        return pickColorForMode(lightModeColor: #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1), darkModeColor: #colorLiteral(red: 0.6395837665, green: 0.6395837665, blue: 0.6395837665, alpha: 1))
+    }
+    
+    public static var colorPickerLightBorderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.200000003)
+    public static var colorPickerThumbViewWideBorderColor: UIColor {
+      return pickColorForMode(lightModeColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.6999999881), darkModeColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5995928578))
+    }
+    
+    public static var colorPickerThumbViewWideBorderDarkColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3000000119)
 
     public var hsbColor: HSBColor {
         return HSBColor(color: self)
@@ -79,6 +80,15 @@ extension UIColor {
 
         return (abs(r1 - r2) + abs(g1 - g2) + abs(b1 - b2)) / 3
     }
+}
+
+private func pickColorForMode(lightModeColor: UIColor, darkModeColor: UIColor) -> UIColor {
+    if #available(iOS 13, *) {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            UITraitCollection.userInterfaceStyle == .dark ? darkModeColor : lightModeColor
+        }
+    }
+    return lightModeColor
 }
 
 @inline(__always)

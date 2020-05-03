@@ -56,7 +56,7 @@ extension UIView {
         }
     }
 
-    var borderColor: UIColor? {
+    var viewBorderColor: UIColor? {
         get {
             if let cgColor = layer.borderColor {
                 return UIColor(cgColor: cgColor)

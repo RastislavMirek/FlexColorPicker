@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.4 - 2019-5-03
+
+### Added
+- complete support for iOS dark mode
+
+### Changed
+- **Breaking change:** removed method `setDefaultBorder(on:)` from classes `ColorSliderControl` and `ColorPreviewWithHex`. Instead of overriding that method, property `borderOn` should be set to `false` and custom border should be installed directly to appropriate views .
+- **Breaking change:** visibility of property `borderOn` from in class `RadialPaletteControl` was changed from `open` to `public`. Instead of overriding this property, clients should set it to `false` and install custom border directly on appropriate views.
+
+### Fixed
+- issue #25: iOS 13 dark mode support
+
+## 1.3.2 - 2020-4-20
+
+### Changed
+- `ColorPickerDelegate` functions were made optional to allow for more flexibility (now only one of them can be used)
+- updated README
+
+### Fixed
+- issue #26: Swift  5.2 complaint 
+
 ## 1.3.1 - 2019-10-08
 
 ### Added

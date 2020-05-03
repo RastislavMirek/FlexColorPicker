@@ -28,6 +28,8 @@
 
 import UIKit
 
+let defaultBorderWidth: CGFloat = 1 / UIScreen.main.scale
+
 /// Contains common functionality for `ColorControl`. It is recomended to subclass this rather than `UIView` or `UIControl` when implementing custom color control.
 ///
 /// Any subvies must be added to `contentView` only for this to work correctly inside `UIScrollView` and iOS 13 modal view controllers.
@@ -87,9 +89,11 @@ open class AbstractColorControl: UIControl, ColorControl, ColorControlContentVie
         return touches.first?.location(in: self)
     }
 
-    func setDefaultBorder(on: Bool, forView view: UIView) {
-        view.borderColor = UIColor(named: "BorderColor")
-        view.borderWidth = on ? defaultBorderWidth : 0
+    func updateBorder(visible: Bool, view: UIView) {
+        if visible {
+            view.viewBorderColor = UIColor.colorPickerBorderColor
+        }
+        view.borderWidth = visible ? defaultBorderWidth : 0
     }
 }
 

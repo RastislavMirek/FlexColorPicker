@@ -28,13 +28,13 @@
 
 import UIKit
 
-/// Protocol to which all color picker controls must conform. This protocol defines contract of color controls.
+/// Protocol to which all color picker controls must conform. This protocol defines contract of *color controls*.
 ///
-/// A color control is standalone view that should subclass `UIControl` and which can be used to pick a color. Value of color control is stored in `selectedHSBColor` property.
+/// A *color control* is standalone view that should subclass `UIControl` and which can be used to pick a color. Value of *color control* is stored in `selectedHSBColor` property.
 ///
-/// Color control sends `UIControlEvents.valueChanged` events to registered targets when its value (`selectedHSBColor`) changes as consequence of user interaction with the control. A color control can also send `UIControlEvents.primaryActionTriggered` when user takes action to confirm current selected color as final.
+/// *Color control* sends `UIControlEvents.valueChanged` events to registered targets when its value (`selectedHSBColor`) changes as consequence of user interaction with the control. A *color control* can also send `UIControlEvents.primaryActionTriggered` when user takes action to confirm current selected color as final.
 ///
-/// A color control should be usable as standalone component but is usually used together with other color controls managed and synchronized by instance of `ColorPickerController`.
+/// A *color control* should be usable as standalone component but is usually used together with other *color controls* managed and synchronized by instance of `ColorPickerController`.
 public protocol ColorControl: class {
     /// Override this and return `false` if you do not want `UIControlEvents.primaryActionTriggered` events sent by the color control to be considered confirmation of color selection.
     static var canConfirmColor: Bool { get }
@@ -58,7 +58,7 @@ public extension ColorControl {
         return true
     }
 
-    /// Currently selected color of the color control as `UIColor`. Convinience property: Value is backed by and changes are reflected to `selectedHSBColor`.
+    /// Currently selected color of the *color control* as `UIColor`. Convinience property: Value is backed by and changes are reflected to `selectedHSBColor`.
     var selectedColor: UIColor {
         get {
             return selectedHSBColor.toUIColor()

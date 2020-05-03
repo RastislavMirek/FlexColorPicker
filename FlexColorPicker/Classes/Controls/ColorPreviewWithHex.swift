@@ -74,7 +74,7 @@ open class ColorPreviewWithHex: AbstractColorControl {
 
     /// Text color of the hex label that displys hex value of currently selected color.
     @IBInspectable
-    public var textColor: UIColor = UIColor(named: "LabelTextsColor") ?? .black {
+    public var textColor: UIColor = UIColor.colorPickerLabelTextColor {
         didSet {
             hexLabel.textColor = textColor
         }
@@ -84,7 +84,7 @@ open class ColorPreviewWithHex: AbstractColorControl {
     @IBInspectable
     public var borderOn: Bool = true {
         didSet {
-            setDefaultBorder(on: borderOn)
+            updateBorder(visible: borderOn, view: self)
         }
     }
 
@@ -137,18 +137,9 @@ open class ColorPreviewWithHex: AbstractColorControl {
         hexLabel.textColor = textColor
         hexLabel.textAlignment = .center
         hexLabel.font = hexFont
-        setDefaultBorder(on: borderOn)
+        updateBorder(visible: borderOn, view: self)
         setSelectedHSBColor(selectedHSBColor, isInteractive: false) // set default color if it is not set, otherwise keep color set in storyboard via IBInspectable
         updateCornerRadius()
-    }
-
-
-    /// Override to change the border drawn around the preview.
-    ///
-    /// - Parameter on: Whether to display or hide the border.
-    open func setDefaultBorder(on: Bool) {
-        borderColor = UIColor(named: "BorderColor")
-        borderWidth = on ? defaultBorderWidth : 0
     }
 
     open override func setSelectedHSBColor(_ hsbColor: HSBColor, isInteractive interactive: Bool) {
@@ -160,6 +151,14 @@ open class ColorPreviewWithHex: AbstractColorControl {
 
     private func updateLabelHeight() {
         labelHeightConstraint.constant = displayHex ? hexHeight : 0
+    }
+    
+    /// Updates  border color of the color preview when interface is changed to dark or light mode.
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if #available(iOS 13.0, *), traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle  {
+            updateBorder(visible: borderOn, view: self)
+        }
     }
 
     private func handleTouchDown() {

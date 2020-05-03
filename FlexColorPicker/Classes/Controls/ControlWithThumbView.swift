@@ -45,6 +45,12 @@ open class ColorControlWithThumbView: AdjustedHitBoxColorControl, LimitedGesture
     /// - Parameter isInteractive: Whether the change originated from user interaction or is programatic. This can be used to determine if certain animations should be played.
     open func updateSelectedColor(at point: CGPoint, isInteractive: Bool = true) {
     }
+    
+    /// Updates  border color of the thumb view when interface is changed to dark or light mode.
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        thumbView.setDarkBorderIfNeeded(animated: false)
+    }
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let location = locationForTouches(touches) else {

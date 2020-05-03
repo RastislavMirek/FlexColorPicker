@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fTz-VN-FmS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fTz-VN-FmS">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,7 +29,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
                                 <constraint firstItem="8zT-MN-z7D" firstAttribute="centerX" secondItem="aEy-sF-c3W" secondAttribute="centerX" id="VVO-vy-kGW"/>
                                 <constraint firstItem="8zT-MN-z7D" firstAttribute="centerY" secondItem="aEy-sF-c3W" secondAttribute="centerY" id="nZx-uX-9UJ"/>
@@ -251,8 +251,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrY-Jr-a6s" customClass="RadialPaletteControl" customModule="FlexColorPicker">
-                                                    <rect key="frame" x="6" y="16" width="353" height="268"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <rect key="frame" x="-10" y="0.0" width="385" height="300"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
                                                             <color key="value" red="0.74115175102853725" green="1" blue="0.48205197265679023" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -387,8 +386,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="555"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ME3-tT-7nr" customClass="RadialHueControl" customModule="FlexColorPickerDemo" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="30" width="315" height="315"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <rect key="frame" x="14" y="14" width="347" height="347"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="315" id="P5l-T0-sNO"/>
                                                 </constraints>
@@ -453,7 +451,6 @@
                                                                 <rect key="frame" x="29.333333333333343" y="10" width="307.66666666666663" height="31"/>
                                                             </slider>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="je3-aA-Vhl" secondAttribute="trailing" constant="20" id="6DE-ai-mfC"/>
                                                             <constraint firstItem="je3-aA-Vhl" firstAttribute="centerY" secondItem="3Ze-xg-aVI" secondAttribute="centerY" id="LEE-GR-eNk"/>
@@ -472,8 +469,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Z3K-l9-WOa" customClass="BrightnessSliderControl" customModule="FlexColorPicker">
-                                                                <rect key="frame" x="31.666666666666657" y="19.666666666666629" width="303.33333333333337" height="11"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <rect key="frame" x="15.666666666666657" y="3.6666666666666288" width="335.33333333333337" height="43"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="11" id="FB5-7o-UZl"/>
                                                                 </constraints>
@@ -484,7 +480,6 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="VKz-2g-FeW" firstAttribute="leading" secondItem="kxO-la-8hs" secondAttribute="leading" id="3WX-fs-TC9"/>
                                                             <constraint firstItem="Z3K-l9-WOa" firstAttribute="leading" secondItem="VKz-2g-FeW" secondAttribute="trailing" constant="16" id="GN5-Ge-HsJ"/>
@@ -499,7 +494,6 @@
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="QN0-1P-NOG" secondAttribute="bottom" constant="30" id="2ZN-2c-POR"/>
                                             <constraint firstItem="ME3-tT-7nr" firstAttribute="leading" secondItem="f0K-Kl-eDz" secondAttribute="leading" constant="30" id="8Rk-wj-a8p"/>
@@ -553,7 +547,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ttT-xx-KWV" customClass="ColorPreviewWithHex" customModule="FlexColorPicker">
                                 <rect key="frame" x="137.66666666666666" y="108" width="100" height="80"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="lXX-20-ngX"/>
                                     <constraint firstAttribute="width" constant="100" id="pFT-EE-9QU"/>
@@ -580,8 +573,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="oyw-Qa-Plg" customClass="RedSliderControl" customModule="FlexColorPicker">
-                                                <rect key="frame" x="31.666666666666657" y="22" width="311.33333333333337" height="6"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <rect key="frame" x="15.666666666666657" y="6" width="343.33333333333337" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="6" id="4FI-c2-RQ5"/>
                                                 </constraints>
@@ -593,7 +585,6 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="oyw-Qa-Plg" firstAttribute="centerY" secondItem="chc-oP-JQG" secondAttribute="centerY" id="ULz-gh-a5s"/>
                                             <constraint firstItem="eYi-Zw-2GO" firstAttribute="leading" secondItem="chc-oP-JQG" secondAttribute="leading" id="XGc-ao-dOZ"/>
@@ -611,9 +602,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qMZ-rn-jlb" customClass="GreenSliderControl" customModule="FlexColorPicker">
-                                                <rect key="frame" x="33" y="1.6666666666666856" width="310" height="47"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="qMZ-rn-jlb" customClass="GreenSliderControl" customModule="FlexColorPicker">
+                                                <rect key="frame" x="17" y="1.6666666666666856" width="342" height="47"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
                                                         <color key="value" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -624,7 +614,6 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="qMZ-rn-jlb" secondAttribute="trailing" id="7vF-3z-L3O"/>
                                             <constraint firstItem="qMZ-rn-jlb" firstAttribute="leading" secondItem="KSP-b3-jOx" secondAttribute="trailing" constant="16" id="EAU-mR-Uf5"/>
@@ -656,7 +645,6 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="ERy-Kh-mZL" firstAttribute="leading" secondItem="9be-zW-JHg" secondAttribute="leading" id="Sov-nf-70W"/>
                                             <constraint firstItem="0Oh-lL-Ue8" firstAttribute="leading" secondItem="ERy-Kh-mZL" secondAttribute="trailing" constant="16" id="Y96-cx-8rP"/>
@@ -734,7 +722,6 @@
                                                             </label>
                                                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="ssX-qZ-VK4" customClass="BrightnessSliderControl" customModule="FlexColorPicker">
                                                                 <rect key="frame" x="35.666666666666657" y="3.6666666666666856" width="335.33333333333337" height="43"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="11" id="fYw-pB-ISg"/>
                                                                 </constraints>
@@ -745,7 +732,6 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="r4n-Pk-nO9" firstAttribute="leading" secondItem="ErH-aU-SiF" secondAttribute="leading" constant="20" id="4ka-6b-zJm"/>
                                                             <constraint firstItem="ssX-qZ-VK4" firstAttribute="leading" secondItem="r4n-Pk-nO9" secondAttribute="trailing" constant="16" id="Fh2-6D-p4i"/>
@@ -776,7 +762,6 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="nnH-Sn-nqR" firstAttribute="centerY" secondItem="UlR-tD-u14" secondAttribute="centerY" id="2dm-sd-Sct"/>
                                                             <constraint firstItem="fn3-mF-d7L" firstAttribute="leading" secondItem="nnH-Sn-nqR" secondAttribute="trailing" constant="16" id="7Vy-Fa-Rou"/>
@@ -807,7 +792,6 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="oLn-Po-36a" firstAttribute="centerY" secondItem="h18-NH-LYu" secondAttribute="centerY" id="76K-Ln-Iay"/>
                                                             <constraint firstItem="kp2-5E-cmE" firstAttribute="centerY" secondItem="h18-NH-LYu" secondAttribute="centerY" id="Eli-32-ZpW"/>
@@ -838,7 +822,6 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="SX5-ag-xxo" firstAttribute="centerY" secondItem="hV0-tq-541" secondAttribute="centerY" id="5EA-Yc-Jhk"/>
                                                             <constraint firstItem="djP-Iq-Ety" firstAttribute="leading" secondItem="SX5-ag-xxo" secondAttribute="trailing" constant="16" id="7mS-yM-PMT"/>
@@ -869,7 +852,6 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="j8r-5M-OJC" firstAttribute="leading" secondItem="5Ti-Fj-XKC" secondAttribute="trailing" constant="16" id="1ie-Uv-fk3"/>
                                                             <constraint firstAttribute="trailing" secondItem="j8r-5M-OJC" secondAttribute="trailing" constant="20" id="FBf-t8-wdv"/>
@@ -885,7 +867,6 @@
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mX-rR-2Va" customClass="RectangularPaletteControl" customModule="FlexColorPicker">
                                                 <rect key="frame" x="4" y="659" width="367" height="282"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="250" id="eEa-5V-kEQ"/>
                                                 </constraints>
@@ -911,7 +892,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="iL3-P6-WET" firstAttribute="leading" secondItem="qSg-J1-OlS" secondAttribute="leading" id="05p-zD-B1Q"/>
                                             <constraint firstItem="Ezq-Ug-t9x" firstAttribute="top" secondItem="qSg-J1-OlS" secondAttribute="top" constant="20" id="1Av-bj-NuQ"/>

@@ -103,7 +103,9 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
     }
 
     open override func viewDidLoad() {
-        if view.backgroundColor == nil {
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+        } else {
             view.backgroundColor = .white
         }
         super.viewDidLoad()
