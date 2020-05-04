@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.4.1 - 2019-5-04
+
+### Fixed
+Cocoapods pod file version
+
 ## 1.4 - 2019-5-03
 
 ### Added
