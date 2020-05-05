@@ -2,7 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.4.2 - 2019-5-06
+
+### Fixed
+Issue #27 that prevented compilation of 1.4.1 when installed via SPM. 
+
 ## 1.4.1 - 2019-5-04
+
+WARNING: Do not use this realese. It does not compile when istaled via SPM. Use 1.4.2 instead.
 
 ### Fixed
 Cocoapods pod file version

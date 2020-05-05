@@ -26,6 +26,8 @@
 //  SOFTWARE.
 //
 
+import UIKit
+
 /// Circular palette color control that allows to change both hue and saturation of current color by selecting a point on the palette.
 public class RadialPaletteControl: ColorPaletteControl {
     public override func commonInit() {
