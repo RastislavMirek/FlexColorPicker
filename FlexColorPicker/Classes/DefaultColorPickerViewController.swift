@@ -91,6 +91,19 @@ open class DefaultColorPickerViewController: UIViewController, ColorPickerContro
             (colorPalette as? RectangularPaletteControl)?.borderOn = rectangularPaletteBorderOn
         }
     }
+    
+    /// When `true` the brightness slider label shows 100% for the left-most possition of the slider thumb and 0% for right-most possition. Default is `false` (0% is displayed on left).
+    ///
+    /// This is usefull when "physically correct" percentage label behaviour of `BrightnessSliderControl` is preffered (as the most "bright" color is on the left of the slider). However, default value corresponds to the behaviour most users expect.
+    @IBInspectable
+    public var reverseBrightnessPercentage: Bool {
+        get {
+            return brightnessSlider.reversePercentage
+        }
+        set {
+            brightnessSlider.reversePercentage = newValue
+        }
+    }
 
     /// Color picker delegate that gets called when selected color is updated or confirmed. The delegate is not retained. This is just convinience property and getting or setting it is equivalent to getting or setting `colorPicker.delegate`.
     open var delegate: ColorPickerDelegate? {

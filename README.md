@@ -11,13 +11,13 @@ Modern color picker library written in Swift 5 that can be easily extended and c
 ## Features
 - supports [HSB and RGB](#storyboardscreenshot) color models, both [radial and rectangular](#rectangular) hue/saturation palette
 - there is [_ready-to-use view controller_](#basic-usage) if you need quick, simple solution
-- freely combine, leave out or [add your own](#extending--overriding) picker components when you need flexibility
-- well [documented](#documentation)
+- freely combine, leave out or add your own picker components when you need flexibility
+- well documented
 - _highly [customisable](#customisation)_
-- _storyboard support_ with realistic [design time preview](#storyboardscreenshot) and customisation directly from storyboard
-- library consists of small classes and robust, easy to understand [code](https://github.com/RastislavMirek/FlexColorPicker/tree/master/FlexColorPicker/Classes)
+- _storyboard support_ with [design time preview](#storyboardscreenshot) and customisation directly from storyboard
+- library consists of small classes and robust, easy to understand code
 - can be used [without subclassing specific controller](#nosubclassing)
-- hackable: [_protocols_](#protocols) for adding custom picker controls, [open classes](#controlslist) ready for subclassing
+- hackable: [_protocols_](#protocols) for adding custom picker controls, open classes ready for subclassing
 
 ![Default Color Picker with Rectangular Palette Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview3.gif)
 ![Custom Color Picker Controls Written in Swift Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Flex_color_picker_for_swift_preview4.gif)
@@ -60,10 +60,8 @@ Then open the cloned/downloaded project in XCode and compile target _FlexColorPi
 
 <a name="rectangular">![Default HSB Color Picker Preview](https://github.com/RastislavMirek/FlexColorPicker/blob/master/GifsAndScreenshots/Combined_Color_Picker_Preview.jpg)</a>
 
-## How to Use
-There are several ways how to use FlexColorPicker depending on how much customization you require. 
+## Basic Usage (Plug & Play)
 
-### Basic Usage
 The fastest and simplest way to add color picker to your project is using `DefaultColorPickerViewController`. You can add it either [via storyboard](#adding-via-storyboard) or [via code](adding-via-code). In both cases you will need to implement [`ColorPickerDelegate` protocol](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/ColorPickerDelegate.swift) to receive update when a user selects color using the `DefaultColorPickerViewController`:
 
     // MyController is the controller that presents DefaultColorPickerViewController
@@ -116,8 +114,20 @@ If preffered, you can use following code to set `DefaultColorPickerViewControlle
 You can also set 3 additional properties that influence how color picker looks when rectangular palette is used (`rectangularPaletteBorderOn`, `rectangularPaletteHueHorizontalInPortrait` and `rectangularPaletteHueHorizontalInLandscape`). See [in-code
 documentation](#documentation) for details. For more customisation please refer to section [Customisation](#customisation) below.
 
-### Customisation
-FlexColorPicker consists of _color controls_ and _color picker controllers_ that manage them. _Color controls_ are `UIView`s that (usually) subclass [`UIControl`](https://developer.apple.com/documentation/uikit/uicontrol) and allow user to pick desired color. Predefined _color controls_ include hue/saturation palettes (circular or rectangular), sliders for saturation, brightness and for RGB components and a picked color preview control. Additional can by added by implementing [`ColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ColorControl.swift) protocol.
+## Custom Usage
+
+`DefaultColorPickerViewController` is plug & play option (see [Basic Usage](#basic-usage--plug--play)) with limited customisation. It is a convinince "ready-to-use" view controller which makes use of FlexColorPicker's _color controls_ and _color picker controllers_. _Color controls_ are `UIView`s that (usually) subclass [`UIControl`](https://developer.apple.com/documentation/uikit/uicontrol) and allow user to pick desired color and _color picker controllers_ manage them. If more flexibility than what `DefaultColorPickerViewController` provides is needed, you can use them dirrectly:  
+
+1. If custom layout of _color controls_ is needed, read [Custom Layout](#custom-layout).
+2. If custom look or behavior of color _color controls_ is needed, read []
+3. If both custom layout and behavior/look of _color controls_ is needed, combine the above two approaches. 
+
+### Custom Layout
+Provided _color controls_ include hue/saturation palettes (circular or rectangular), sliders for saturation, brightness and for RGB components and a picked color preview control. 
+
+### Custom Controls & Behavior
+Additional can by added by implementing [`ColorControl`](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/Controls/ColorControl.swift) protocol.
+
 
 #### Available Color Controls
 

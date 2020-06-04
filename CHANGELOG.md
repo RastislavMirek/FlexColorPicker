@@ -2,19 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
-## 1.4.2 - 2019-5-06
+## 1.4.3 - 2020-6-04
+
+### Added
+- property `reversePercentage` and `thumbLabelFormatter` added to `ColorSliderControl` and property `reverseBrightnessPercentage` added to `DefaultColorPickerViewController` to allow for more control over thumb label (slider percentage).
+- new row added to demo demonstrating use of `reverseBrightnessPercentage` with `DefaultColorPickerViewController`
+
+### Fixed
+Issue  #29: Is it me or is does brightness work backwards?
+
+## 1.4.2 - 2020-5-06
 
 ### Fixed
 Issue #27 that prevented compilation of 1.4.1 when installed via SPM. 
 
-## 1.4.1 - 2019-5-04
+## 1.4.1 - 2020-5-04
 
 WARNING: Do not use this realese. It does not compile when istaled via SPM. Use 1.4.2 instead.
 
 ### Fixed
 Cocoapods pod file version
 
-## 1.4 - 2019-5-03
+## 1.4 - 2020-5-03
 
 ### Added
 - complete support for iOS dark mode

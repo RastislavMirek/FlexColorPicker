@@ -40,7 +40,20 @@ final public class SaturationSliderControl: ColorSliderControl {
 /// Color slider that allows to change brightness (in terms of HSB color model) of currently selected color by panning the slider line or by tapping it.
 ///
 /// Tapping left end of the slider will select slider's current color modified to have 100% brightness. Tapping right edge of the slider will select current color modified to have 0% brightness.
+///
+/// - Note: Unlike other provided sliders, this slider's default thumb label percentage shown does not correspond to actual physical properties of the selected color.
+/// When thumb is on lift-most side of the slider it shows 0% while the color brightness is actually 100% (and vice-versa for the right-most thumb position). This is intentional as most users expect such behaviour.
+/// If "physically correct" percentage label behaviour is preferred (this is usually the case when you your UI labels this slider as "Brightness:" or when your user base might be more knowleadgable about colors theory) set property `reversePercentage` to true.
 final public class BrightnessSliderControl: ColorSliderControl {
+    
+    /// When `true` the thumb shows 100% label for left-most possition of the slider and 0% for right-most possition. Default is `false` (0% is displayed on left). Has no effect if `thumbLabelFormatter` is set.
+    ///
+    /// This is usefull when "physically correct" percentage label behaviour is preferred (as the most "bright" color is on the left of the slider).
+    @IBInspectable
+    public override var reversePercentage: Bool {
+        didSet {} // override only to add inspectable
+    }
+    
     public override func commonInit() {
         sliderDelegate = BrightnessSliderDelegate()
         super.commonInit()

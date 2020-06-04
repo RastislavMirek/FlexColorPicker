@@ -42,6 +42,24 @@ open class ColorSliderControl: ColorControlWithThumbView {
     public let gradientBackgroundView = UIImageView()
     /// Previews color options avaialable va chnaging value of the slider in form of linear gradient.
     public let gradientView = GradientView()
+    
+    /// When `true` the thumb shows 100% label for left-most possition of the slider and 0% for right-most possition. Default is `false` (0% is displayed on left). Has no effect if `thumbLabelFormatter` is set.
+    ///
+    /// This is usefull e.g. when "physically correct" percentage label behaviour of `BrightnessSliderControl` is preferred (as the most "bright" color is on the left of the slider in that case).
+    public var reversePercentage: Bool = false {
+        didSet {
+            let (value, _, _) = sliderDelegate.valueAndGradient(for: selectedHSBColor)
+            updatePercentageLabel(for: value)
+        }
+    }
+    
+    /// When set to non-nil value it will be used to generate label text of `thumbView` directly instead of via setting `thumbView`s `percentage` property. setting this overrides `percentage` property.
+    public var thumbLabelFormatter: ((CGFloat) -> String)? {
+        didSet {
+            let (value, _, _) = sliderDelegate.valueAndGradient(for: selectedHSBColor)
+            updatePercentageLabel(for: value)
+        }
+    }
 
     /// Whether to display default thin border around the slider.
     @IBInspectable
@@ -109,9 +127,16 @@ open class ColorSliderControl: ColorControlWithThumbView {
     open override func updateSelectedColor(at point: CGPoint, isInteractive: Bool) {
         let gradientLength = contentBounds.width - thumbView.colorIdicatorRadius * 2
         let value = max(0, min(1, (point.x - thumbView.colorIdicatorRadius) / gradientLength))
-        thumbView.percentage = Int(round(value * 100))
+        updatePercentageLabel(for: value)
         setSelectedHSBColor(sliderDelegate.modifiedColor(from: selectedHSBColor, with: min(max(0, value), 1)), isInteractive: isInteractive)
         sendActions(for: .valueChanged)
+    }
+    
+    public func updatePercentageLabel(for value: CGFloat) {
+        thumbView.percentage = Int(round((reversePercentage ? 1 - value : value) * 100))
+        if let thumbLabelFormatter = thumbLabelFormatter {
+            thumbView.percentageLabel.text = thumbLabelFormatter(value)
+        }
     }
     
     /// Updates  border color of the color slider control when interface is changed to dark or light mode.
