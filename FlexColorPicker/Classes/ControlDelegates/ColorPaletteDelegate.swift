@@ -28,7 +28,7 @@
 
 import UIKit
 
-public protocol ColorPaletteDelegate: class {
+public protocol ColorPaletteDelegate: AnyObject {
     var size: CGSize { get set }
     func modifiedColor(from color: HSBColor, with point: CGPoint) -> HSBColor
     func foregroundImage() -> UIImage
