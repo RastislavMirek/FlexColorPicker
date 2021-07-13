@@ -35,7 +35,7 @@ import UIKit
 /// *Color control* sends `UIControlEvents.valueChanged` events to registered targets when its value (`selectedHSBColor`) changes as consequence of user interaction with the control. A *color control* can also send `UIControlEvents.primaryActionTriggered` when user takes action to confirm current selected color as final.
 ///
 /// A *color control* should be usable as standalone component but is usually used together with other *color controls* managed and synchronized by instance of `ColorPickerController`.
-public protocol ColorControl: class {
+public protocol ColorControl: AnyObject {
     /// Override this and return `false` if you do not want `UIControlEvents.primaryActionTriggered` events sent by the color control to be considered confirmation of color selection.
     static var canConfirmColor: Bool { get }
     /// The value of this color control. Represents current selected color. Use `setSelectedHSBColor(_: isInteractive:)` to set value of this property.

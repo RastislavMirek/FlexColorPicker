@@ -28,7 +28,7 @@
 
 import UIKit
 
-protocol ColorControlContentViewDelegate: class {
+protocol ColorControlContentViewDelegate: AnyObject {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool
 }
 

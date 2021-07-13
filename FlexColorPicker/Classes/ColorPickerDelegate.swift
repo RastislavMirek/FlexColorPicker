@@ -32,7 +32,7 @@ import UIKit
 ///
 /// **See also:**
 /// [DefaultColorPickerViewController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/DefaultColorPickerViewController.swift), [ColorPickerController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/ColorPickerController.swift)
-public protocol ColorPickerDelegate: class {
+public protocol ColorPickerDelegate: AnyObject {
 
     /// Called when a user changes color picker's current selected color.
     ///
