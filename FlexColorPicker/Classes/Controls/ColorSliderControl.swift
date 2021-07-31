@@ -113,7 +113,11 @@ open class ColorSliderControl: ColorControlWithThumbView {
     ///
     /// - Parameter interactive:  Whether the change originated from user interaction or is programatic. This can be used to determine if certain animations should be played.
     open func updateThumbAndGradient(isInteractive interactive: Bool) {
-        layoutIfNeeded() //ensure that subview bounds are updated as we are working with contentView.bounds.midY
+        if #available(iOS 15, *) {
+            /// Do nothing here
+        } else {
+            layoutIfNeeded() //force subviews layout to update their bounds - bounds of subviews are not automatically updated
+        }
         let (value, gradientStart, gradientEnd) = sliderDelegate.valueAndGradient(for: selectedHSBColor)
         let gradientLength = contentBounds.width - thumbView.colorIdicatorRadius * 2 //cannot use self.bounds as that is extended compared to foregroundImageView.bounds when AdjustedHitBoxColorControl.hitBoxInsets are non-zero
         thumbView.frame = CGRect(center: CGPoint(x: thumbView.colorIdicatorRadius + gradientLength * min(max(0, value), 1), y: contentView.bounds.midY), size: thumbView.intrinsicContentSize)

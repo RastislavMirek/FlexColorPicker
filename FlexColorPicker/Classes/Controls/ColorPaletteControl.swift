@@ -86,7 +86,11 @@ open class ColorPaletteControl: ColorControlWithThumbView {
     ///
     /// - Parameter interactive:  Whether the change originated from user interaction or is programatic. This can be used to determine if certain animations should be played.
     open func updatePaletteImagesAndThumb(isInteractive interactive: Bool) {
-        layoutIfNeeded() //force subviews layout to update their bounds - bounds of subviews are not automatically updated
+        if #available(iOS 15, *) {
+            /// Do nothing here
+        } else {
+            layoutIfNeeded() //force subviews layout to update their bounds - bounds of subviews are not automatically updated
+        }
         paletteDelegate.size = foregroundImageView.bounds.size //cannot use self.bounds as that is extended compared to foregroundImageView.bounds when AdjustedHitBoxColorControl.hitBoxInsets are non-zero
         foregroundImageView.image = paletteDelegate.foregroundImage()
         backgroundImageView.image = paletteDelegate.backgroundImage()
