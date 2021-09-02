@@ -43,7 +43,7 @@ Alternativelly, if you are using Package.swift just add this dependency:
 ### Cocoapods
 Add this to your podfile:
 
-    pod FlexColorPicker
+    pod 'FlexColorPicker'
 
 You can also try the Demo project with following command:
 
