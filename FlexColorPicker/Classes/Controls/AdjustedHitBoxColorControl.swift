@@ -46,11 +46,7 @@ open class AdjustedHitBoxColorControl: AbstractColorControl {
 
     /// The alighnment rectangle of the color control in its own coordinate system.
     public var contentBounds: CGRect {
-        if #available(iOS 15, *) {
-            /// Do nothing here
-        } else {
-            layoutIfNeeded()
-        }
+        layoutIfNeeded()
         return contentView.frame
     }
 
